@@ -75,7 +75,7 @@ function LoginPage(props) {
               error={errors && errors.password}
             />
             <p>
-              Esqueceu a senha? <Link to="/recuperar-senha">Recupere</Link>
+              Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link>
             </p>
           </FormCard>
         </StandaloneFormPage>

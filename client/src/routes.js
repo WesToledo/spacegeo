@@ -12,6 +12,7 @@ import { isAuthenticated } from "~/services/auth";
 import Error404 from "./pages/NotFound/404.react";
 
 import LoginPage from "~/pages/Login";
+import SignUpPage from "~/pages/SignUp";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -31,6 +32,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={LoginPage} />
+        <Route exact path="/cadastro" component={SignUpPage} />
 
         <Route component={Error404} />
       </Switch>
