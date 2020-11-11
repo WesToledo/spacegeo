@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
+  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script type="text/javascript">
+    AFRAME.registerComponent("enable-touch", {
+      init: function () {
+        var element = document.querySelector("body");
+        this.marker = document.querySelector("a-marker");
+        var model = document.querySelector("a-obj-model");
+        var hammertime = new Hammer(element);
+        var pinch = new Hammer.Pinch(); // Pinch is not by default in the recognisers
+        hammertime.add(pinch); // add it to the Manager instance
+
+        hammertime.on("pan", (ev) => {
+          let rotation = model.getAttribute("rotation");
+          switch (ev.direction) {
+            case 2:
+              rotation.y = rotation.y + 4;
+              break;
+            case 4:
+              rotation.y = rotation.y - 4;
+              break;
+            case 8:
+              rotation.x = rotation.x - 4;
+              break;
+            case 16:
+              rotation.x = rotation.x + 4;
+              break;
+            default:
+              break;
+          }
+          model.setAttribute("rotation", rotation);
+        });
+
+        hammertime.on("pinch", (ev) => {
+          let scale = { x: ev.scale, y: ev.scale, z: ev.scale };
+          model.setAttribute("scale", scale);
+        });
+      },
+    });
+  </script>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene
+      arjs="trackingMethod: best;"
+      vr-mode-ui="enabled: false;"
+    >
+      <a-assets>
+        <a-asset-item
+          id="tree-obj"
+          src="/models/dodecaedro.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="tree-mtl"
+          src="/models/dodecaedro.mtl"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-marker-camera preset='custom' type='pattern' url='/markers/qrcode.patt'>
+        <a-obj-model src="#tree-obj" mtl="#tree-mtl"></a-obj-model>
+      </a-marker-camera>
+    </a-scene>
+  </body>
+</html>

@@ -14,6 +14,8 @@ import Error404 from "./pages/NotFound/404.react";
 import LoginPage from "~/pages/Login";
 import SignUpPage from "~/pages/SignUp";
 
+import EstudosPage from "~/pages/Studies";
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -33,6 +35,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/cadastro" component={SignUpPage} />
+
+        <PrivateRoute exact path="/estudos" component={EstudosPage} />
 
         <Route component={Error404} />
       </Switch>

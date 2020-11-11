@@ -35,10 +35,10 @@ function LoginPage(props) {
             password,
           });
           setLoginCache(response.data.token, response.data.user._id);
-          props.history.push("/home");
+          props.history.push("/estudos");
         } catch (err) {
           setTextButton({ text: "Entrar" });
-          setErrors({ email: "Erro ao tentar logar" });
+          setErrors({ email: "Erro ao tentar logar" + err.message });
         }
       }}
       render={({
