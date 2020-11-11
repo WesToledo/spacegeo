@@ -46,22 +46,14 @@
   </script>
 
   <body style="margin: 0px; overflow: hidden">
-    <a-scene
-      arjs="trackingMethod: best;"
-      vr-mode-ui="enabled: false;"
-    >
+    <a-scene embedded arjs="trackingMethod: best;" vr-mode-ui="enabled: false;">
       <a-assets>
-        <a-asset-item
-          id="tree-obj"
-          src="/models/dodecaedro.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="tree-mtl"
-          src="/models/dodecaedro.mtl"
-        ></a-asset-item>
+        <a-asset-item id="tree-obj" src="/models/dodecaedro.obj"></a-asset-item>
+        <a-asset-item id="tree-mtl" src="/models/dodecaedro.mtl"></a-asset-item>
       </a-assets>
 
-      <a-marker-camera preset='custom' type='pattern' url='/markers/qrcode.patt'>
+      <!-- <a-marker-camera preset='custom' type='pattern' url='/markers/qrcode.patt'> -->
+      <a-marker-camera preset="hiro"  >
         <a-obj-model src="#tree-obj" mtl="#tree-mtl"></a-obj-model>
       </a-marker-camera>
     </a-scene>
