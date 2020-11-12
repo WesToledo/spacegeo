@@ -49,22 +49,6 @@ function EstudosPage() {
                       />
                     </Table.Col>
                   </Table.Row>
-                  <Table.Row>
-                    <Table.Col className="w-9">
-                      <img
-                        alt=""
-                        src="https://tabler.github.io/tabler/demo/products/apple-macbook-pro.jpg"
-                        className="h-8"
-                      />
-                    </Table.Col>
-                    <Table.Col>
-                      Ponto, plano, reta plano e suas representações
-                      <Badge color="default"> New </Badge>
-                    </Table.Col>
-                    <Table.Col className="text-right">
-                      <strong>$1499</strong>
-                    </Table.Col>
-                  </Table.Row>
                 </Table.Body>
               </Table>
             </Card>

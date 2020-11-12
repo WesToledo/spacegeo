@@ -2,8 +2,8 @@ const UserSchema = require("../models/user");
 
 async function create(req, res) {
   try {
-    const { login } = req.body;
-    if (await UserSchema.findOne({ login })) {
+    const { email } = req.body;
+    if (await UserSchema.findOne({ email })) {
       return res.status(400).send({ error: "Login já existe" });
     }
     const user = await UserSchema.create(req.body);
