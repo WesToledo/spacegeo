@@ -10,9 +10,9 @@ function generateToken(params = {}) {
 
 async function login(req, res) {
   try {
-    const { login, password } = req.body;
+    const { email, password } = req.body;
 
-    var user = await UserSchema.findOne({ login })
+    var user = await UserSchema.findOne({ email })
       .select("password")
       .lean();
 
