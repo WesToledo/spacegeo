@@ -22,16 +22,16 @@ function LoginPage(props) {
   return (
     <Formik
       initialValues={{
-        login: "",
+        email: "",
         password: "",
       }}
       onSubmit={async (values, { setValues, setErrors }) => {
-        const { login, password } = values;
+        const { email, password } = values;
         setTextButton({ text: "Carregando..." });
 
         try {
           const response = await api.post("/login", {
-            login,
+            email,
             password,
           });
           setLoginCache(response.data.token, response.data.user._id);
@@ -56,7 +56,7 @@ function LoginPage(props) {
             onSubmit={handleSubmit}
           >
             <FormTextInput
-              name="login"
+              name="email"
               label={stringsForm.emailLabel}
               placeholder={stringsForm.emailPlaceholder}
               onChange={handleChange}

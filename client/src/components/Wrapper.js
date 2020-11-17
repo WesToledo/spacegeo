@@ -3,42 +3,7 @@
 import * as React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
-import {
-  Site,
-  Nav,
-  Grid,
-  List,
-  Button,
-  RouterContextProvider,
-} from "tabler-react";
-
-import type { NotificationProps } from "tabler-react";
-
-type Props = {|
-  +children: React.Node,
-|};
-
-type State = {|
-  notificationsObjects: Array<NotificationProps>,
-|};
-
-type subNavItem = {|
-  +value: string,
-  +to?: string,
-  +icon?: string,
-  +LinkComponent?: React.ElementType,
-  +useExact?: boolean,
-|};
-
-type navItem = {|
-  +value: string,
-  +to?: string,
-  +icon?: string,
-  +active?: boolean,
-  +LinkComponent?: React.ElementType,
-  +subItems?: Array<subNavItem>,
-  +useExact?: boolean,
-|};
+import { Site, RouterContextProvider } from "tabler-react";
 
 const navBarItems = [
   {
@@ -50,7 +15,7 @@ const navBarItems = [
   },
   {
     value: "Questões",
-    to: "/questoes",
+    to: "/questionarios",
     icon: "check-square",
     LinkComponent: withRouter(NavLink),
     useExact: true,
@@ -100,12 +65,7 @@ class SiteWrapper extends React.Component<Props, State> {
     ],
   };
 
-  render(): React.Node {
-    const notificationsObjects = this.state.notificationsObjects || [];
-    const unreadCount = this.state.notificationsObjects.reduce(
-      (a, v) => a || v.unread,
-      false
-    );
+  render() {
     return (
       <Site.Wrapper
         headerProps={{

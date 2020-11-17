@@ -16,6 +16,9 @@ import SignUpPage from "~/pages/SignUp";
 
 import EstudosPage from "~/pages/Studies";
 
+import QuestionPage from "~/pages/QuestionPage";
+import SubQuestionPage from "~/pages/QuestionPage/SubQuestionPage";
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -37,6 +40,9 @@ function App() {
         <Route exact path="/cadastro" component={SignUpPage} />
 
         <PrivateRoute exact path="/estudos" component={EstudosPage} />
+
+        <PrivateRoute exact path="/questionarios" component={QuestionPage} />
+        <PrivateRoute exact path="/sub-questionarios" component={SubQuestionPage} />
 
         <Route component={Error404} />
       </Switch>
