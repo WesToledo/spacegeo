@@ -11,7 +11,6 @@ rootRouter.post("/login", auth.login);
 
 // Users
 const userRouter = express.Router();
-userRouter.use(authMiddleware);
 userRouter.post("/create", user.create);
 userRouter.get("/", user.list);
 userRouter.get("/:id", user.index);
