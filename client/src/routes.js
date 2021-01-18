@@ -19,6 +19,8 @@ import EstudosPage from "~/pages/Studies";
 import QuestionPage from "~/pages/QuestionPage";
 import SubQuestionPage from "~/pages/QuestionPage/SubQuestionPage";
 
+import GeometriaPosicaoPage from "~/pages/Studies/GeometriaPosicao";
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -43,6 +45,9 @@ function App() {
 
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
         <PrivateRoute exact path="/sub-questionarios" component={SubQuestionPage} />
+
+        {/* GEOMETRIA DE POSIÇÃO */}
+        <PrivateRoute exact path="/estudos/geometria-posicao" component={GeometriaPosicaoPage} />
 
         <Route component={Error404} />
       </Switch>

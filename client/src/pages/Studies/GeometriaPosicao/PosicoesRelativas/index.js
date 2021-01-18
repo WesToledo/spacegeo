@@ -5,29 +5,32 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-function EstudosPage() {
+function PosicoesRelativasPage() {
   const rows = [
     {
-      name: "Introdução a Geometria Espacial",
-      link: "/estudos/geometria-posicao",
+      name: "Posição entre ponto e reta no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas",
     },
     {
-      name: "Sólidos Geométricos: Poliédros",
-      link: "/estudos/poliedros",
+      name: "Posição entre pontos no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas",
     },
     {
-      name: "Sólidos Geométricos: Corpos Redondos",
-      link: "/estudos/corpos-redondos",
+      name: "Posição entre retas no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas",
     },
     {
-      name: "Geometria Métrica Espacial",
-      link: "/estudos/geometria-metrica",
+      name: "Posição entre planos no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas",
+    },
+    {
+      name: "Posição entre retas e planos",
+      link: "/estudos/geometria-posicao/posicoes-relativas",
     },
   ];
-
   return (
     <Wrapper>
-      <Page.Content title="Estudos">
+      <Page.Content title="Geometria de Posição">
         <Grid.Row>
           {/* <Grid.Col lg={3}>
             <StoreCard
@@ -72,4 +75,4 @@ function EstudosPage() {
   );
 }
 
-export default EstudosPage;
+export default PosicoesRelativasPage;
