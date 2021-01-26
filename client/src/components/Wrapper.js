@@ -25,7 +25,9 @@ const navBarItems = [
 const accountDropdownProps = {
   avatarURL: "./demo/faces/female/25.jpg",
   name: "Aluno",
-  options: [{ icon: "log-out", value: "Sign out" }],
+  options: [{ icon: "log-out", value: "Sair", 
+  to: "/",
+  LinkComponent: withRouter(NavLink)}],
 };
 
 class SiteWrapper extends React.Component<Props, State> {
@@ -70,8 +72,7 @@ class SiteWrapper extends React.Component<Props, State> {
       <Site.Wrapper
         headerProps={{
           href: "/",
-          alt: "Tabler React",
-          imageURL: "/assets/tabler.png",
+          imageURL: "/assets/logo.png",
 
           accountDropdown: accountDropdownProps,
         }}

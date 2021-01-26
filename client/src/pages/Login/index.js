@@ -12,9 +12,9 @@ function LoginPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
 
   var stringsForm = {
-    title: "Entrar",
+    title: "",
     emailLabel: "Login",
-    emailPlaceholder: "Insira o login",
+    emailPlaceholder: "Insira o email",
     passwordLabel: "Senha",
     passwordPlaceholder: "Senha",
   };
