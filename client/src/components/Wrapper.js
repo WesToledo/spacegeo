@@ -14,7 +14,7 @@ const navBarItems = [
     useExact: true,
   },
   {
-    value: "Questões",
+    value: "Questionários",
     to: "/questionarios",
     icon: "check-square",
     LinkComponent: withRouter(NavLink),
