@@ -31,11 +31,6 @@ import Studies_GeometriaPosicao_PlanosParalelos from "~/pages/Studies/GeometriaP
 import Question_GeometriaPosicaoPage from "~/pages/Questions/GeometriaPosicao";
 import Question_GeometriaPosicao_PosicoesRelativasPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas";
 import Question_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco";
-import Question_GeometriaPosicao_PlanoPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PlanoPage";
-import Question_GeometriaPosicao_PosicoesRelativasPage2 from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas";
-import Question_GeometriaPosicao_PlanosCoincidentes from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas/PlanosCoincidentesPage";
-import Question_GeometriaPosicao_PlanosConcorrentes from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas/PlanosConcorrentesPage";
-import Question_GeometriaPosicao_PlanosParalelos from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas/PlanosParalelosPage";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -129,33 +124,6 @@ function App() {
           component={Question_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage}
         />
 
-        <PrivateRoute
-          exact
-          path="/questionarios/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/plano"
-          component={Question_GeometriaPosicao_PlanoPage}
-        />
-
-        <PrivateRoute
-          exact
-          path="/questionarios/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas"
-          component={Question_GeometriaPosicao_PosicoesRelativasPage2}
-        />
-
-        <PrivateRoute
-          exact
-          path="/questionarios/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas/planos-coincidentes"
-          component={Question_GeometriaPosicao_PlanosCoincidentes}
-        />
-        <PrivateRoute
-          exact
-          path="/questionarios/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas/planos-concorrentes"
-          component={Question_GeometriaPosicao_PlanosConcorrentes}
-        />
-        <PrivateRoute
-          exact
-          path="/questionarios/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas/planos-paralelos"
-          component={Question_GeometriaPosicao_PlanosParalelos}
-        />
 
         <Route component={Error404} />
       </Switch>
