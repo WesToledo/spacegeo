@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Image based tracking AR.js demo</title>
+    <title>Plano</title>
     <!-- import aframe and then ar.js with image tracking / location based features -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
@@ -21,7 +21,6 @@
 
           hammertime.on("pan", (ev) => {
             let rotation = model.getAttribute("rotation");
-            console.log(rotation);
             switch (ev.direction) {
               case 2: // left
                 rotation.y = rotation.y + 4;
@@ -100,14 +99,14 @@
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
     >
       <a-assets>
-        <a-asset-item id="tree-obj" src="/models/dodecaedro.obj"></a-asset-item>
-        <a-asset-item id="tree-mtl" src="/models/dodecaedro.mtl"></a-asset-item>
+        <a-asset-item id="tree-obj" src="../models/cubo_vazado_letras.obj"></a-asset-item>
+        <a-asset-item id="tree-mtl" src="../models/cubo_vazado_letras.mtl"></a-asset-item>
       </a-assets>
 
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
-      <a-marker preset="hiro">
+      <a-marker type="pattern" url="../markers/qrcode.patt">
         <!-- <a-entity
           position="0 -1 0"
           scale="0.05 0.05 0.05"
