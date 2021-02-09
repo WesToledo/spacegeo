@@ -33,7 +33,7 @@ function PlanoPage() {
                     icon="box"
                     color="primary"
                     RootComponent="a"
-                    href="/ar.html"
+                    href="/plano_alfa.html"
                     className="text-white"
                   >
                     Ver em RA

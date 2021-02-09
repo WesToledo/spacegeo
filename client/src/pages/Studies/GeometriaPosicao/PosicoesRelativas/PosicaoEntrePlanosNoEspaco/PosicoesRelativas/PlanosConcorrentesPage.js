@@ -33,7 +33,7 @@ function PlanosConcorrentesPage() {
                     icon="box"
                     color="primary"
                     RootComponent="a"
-                    href="/ar.html"
+                    href="/planos_concorrentes.html"
                     className="text-white"
                   >
                     Ver em RA

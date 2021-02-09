@@ -33,7 +33,7 @@ function PlanosCoincidentesPage() {
                     icon="box"
                     color="primary"
                     RootComponent="a"
-                    href="/ar.html"
+                    href="/planos_coincidentes.html"
                     className="text-white"
                   >
                     Ver em RA

@@ -33,7 +33,7 @@ function PlanosParalelosPage() {
                     icon="box"
                     color="primary"
                     RootComponent="a"
-                    href="/ar.html"
+                    href="/planos_e_cubo.html"
                     className="text-white"
                   >
                     Ver em RA

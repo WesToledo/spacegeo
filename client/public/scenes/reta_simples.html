@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Reta Simples</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script src="touch.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+      eruda.init();
+    </script>
+    <!-- style for the loader -->
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
+    <!-- <div class='arjs-loader'> <div>Loading, please wait...</div> </div> -->
+    <!-- a-frame scene -->
+    <a-scene
+      id="scene"
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    >
+      <a-assets>
+        <a-asset-item
+          id="tree-obj"
+          src="../models/reta_simples.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="tree-mtl"
+          src="../models/reta_simples.mtl"
+        ></a-asset-item>
+      </a-assets>
+      <!-- a-nft is the anchor that defines an Image Tracking entity -->
+      <!-- on 'url' use the path to the Image Descriptors created before. -->
+      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+      <a-marker type="pattern" url="../markers/qrcode.patt">
+        <!-- <a-entity position='0 -1 0' scale='0.05 0.05 0.05' gltf-model='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf' ></a-entity> -->
+        <a-obj-model
+          id="model"
+          position="0 0 0"
+          scale="0.05 0.05 0.05"
+          rotation="0 0 0"
+          src="#tree-obj"
+          mtl="#tree-mtl"
+        ></a-obj-model>
+      </a-marker>
+      <!-- static camera that moves according to the device movemenents -->
+      <a-entity enable-touch camera></a-entity>
+    </a-scene>
+  </body>
+</html>
