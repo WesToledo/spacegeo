@@ -8,7 +8,7 @@ import Wrapper from "~/components/Wrapper";
 function GeometriaPosicaoPage() {
   const rows = [
     {
-      name: "Introdução a Geometria Espacial",
+      name: "A Geometria",
       link: "/estudos/geometria-posicao",
     },
     {
@@ -20,7 +20,11 @@ function GeometriaPosicaoPage() {
       link: "/estudos/geometria-posicao/posicoes-relativas",
     },
     {
-      name: "Parelelismo de retas e planos ",
+      name: "Parelelismo entre retas e planos ",
+      link: "/estudos/geometria-posicao",
+    },
+    {
+      name: "Perpendicularismo entre retas e planos ",
       link: "/estudos/geometria-posicao",
     },
     {
