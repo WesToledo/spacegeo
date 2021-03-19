@@ -8,7 +8,7 @@ import Wrapper from "~/components/Wrapper";
 function EstudosPage() {
   const rows = [
     {
-      name: "Introdução a Geometria Espacial",
+      name: "Geometria de Posição",
       link: "/estudos/geometria-posicao",
     },
     {

@@ -44,20 +44,8 @@ function PosicoesRelativasPage() {
         <Grid.Row className="justify-content-center">
           <Grid.Col lg={6} md={6} xl={6}>
             <Card
-              title={"Posições Relativas    "}
-              options={
-                <>
-                  <Button
-                    icon="box"
-                    color="primary"
-                    RootComponent="a"
-                    href="/ar.html"
-                    className="text-white"
-                  >
-                    Ver em RA
-                  </Button>
-                </>
-              }
+              title={"Posições Relativas"}
+              options={<></>}
               body={
                 <>
                   <p>
