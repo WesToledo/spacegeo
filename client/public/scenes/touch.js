@@ -1,4 +1,3 @@
-<script type="text/javascript">
 AFRAME.registerComponent("enable-touch", {
   init: function () {
     var element = document.querySelector("body");
@@ -44,4 +43,3 @@ AFRAME.registerComponent("enable-touch", {
     });
   },
 });
-</script>

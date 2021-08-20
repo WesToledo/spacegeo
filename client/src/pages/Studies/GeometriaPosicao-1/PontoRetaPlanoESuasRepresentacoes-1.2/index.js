@@ -59,7 +59,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/planos_coincidentes.html"
+                      href="/scenes/2.1.html"
                       className="text-white"
                     >
                       Ver em RA
@@ -78,7 +78,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/planos_coincidentes.html"
+                      href="/scenes/2.2.html"
                       className="text-white"
                     >
                       Ver em RA
@@ -97,7 +97,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/planos_coincidentes.html"
+                      href="/scenes/2.3.html"
                       className="text-white"
                     >
                       Ver em RA
@@ -126,7 +126,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/planos_coincidentes.html"
+                      href="/scenes/2.4.html"
                       className="text-white"
                     >
                       Ver em RA
@@ -145,7 +145,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/planos_coincidentes.html"
+                      href="/scenes/2.5.html"
                       className="text-white"
                     >
                       Ver em RA
@@ -174,7 +174,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/planos_coincidentes.html"
+                      href="/scenes/planos_coincidentes.html"
                       className="text-white"
                     >
                       Ver em RA
@@ -197,7 +197,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/planos_coincidentes.html"
+                      href="/scenes/planos_coincidentes.html"
                       className="text-white"
                     >
                       Ver em RA
