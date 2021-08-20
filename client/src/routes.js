@@ -19,15 +19,26 @@ import EstudosPage from "~/pages/Studies";
 import QuestionPage from "~/pages/Questions";
 import SubQuestionPage from "~/pages/Questions/SubQuestionPage";
 
-import Studies_GeometriaPosicaoPage from "~/pages/Studies/GeometriaPosicao";
-import Studies_GeometriaPosicao_PosicoesRelativasPage from "~/pages/Studies/GeometriaPosicao/PosicoesRelativas";
-import Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage from "~/pages/Studies/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco";
-import Studies_GeometriaPosicao_PlanoPage from "~/pages/Studies/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PlanoPage";
-import Studies_GeometriaPosicao_PosicoesRelativasPage2 from "~/pages/Studies/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas";
-import Studies_GeometriaPosicao_PlanosCoincidentes from "~/pages/Studies/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas/PlanosCoincidentesPage";
-import Studies_GeometriaPosicao_PlanosConcorrentes from "~/pages/Studies/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas/PlanosConcorrentesPage";
-import Studies_GeometriaPosicao_PlanosParalelos from "~/pages/Studies/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco/PosicoesRelativas/PlanosParalelosPage";
+//level 1
+import Studies_GeometriaPosicaoList from "~/pages/Studies/GeometriaPosicao-1";
 
+//level 2
+import Studies_GeometriaPosicao_PosicoesRelativasEntrePontosRetasPlanosNoEspacoList from "~/pages/Studies/GeometriaPosicao-1/PosicoesRelativasEntrePontosRetasPlanosNoEspaco-1.3";
+import Studies_GeometriaPosicao_A_GeometriaPage from "~/pages/Studies/GeometriaPosicao-1/AGeometria-1.1";
+import Studies_PontoRetaPlanoESuasRepresentacoes from "~/pages/Studies/GeometriaPosicao-1/PontoRetaPlanoESuasRepresentacoes-1.2";
+//level 3
+import Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoList from "~/pages/Studies/GeometriaPosicao-1/PosicoesRelativasEntrePontosRetasPlanosNoEspaco-1.3/PosicaoEntrePlanosNoEspaco-1.3.4";
+
+//level 4
+import Studies_GeometriaPosicao_PlanoPage from "~/pages/Studies/GeometriaPosicao-1/PosicoesRelativasEntrePontosRetasPlanosNoEspaco-1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PlanoPage";
+import Studies_GeometriaPosicao_PosicoesRelativasList from "~/pages/Studies/GeometriaPosicao-1/PosicoesRelativasEntrePontosRetasPlanosNoEspaco-1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2";
+
+//level 5
+import Studies_GeometriaPosicao_PlanosCoincidentes from "~/pages/Studies/GeometriaPosicao-1/PosicoesRelativasEntrePontosRetasPlanosNoEspaco-1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosCoincidentesPage";
+import Studies_GeometriaPosicao_PlanosConcorrentes from "~/pages/Studies/GeometriaPosicao-1/PosicoesRelativasEntrePontosRetasPlanosNoEspaco-1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosConcorrentesPage";
+import Studies_GeometriaPosicao_PlanosParalelos from "~/pages/Studies/GeometriaPosicao-1/PosicoesRelativasEntrePontosRetasPlanosNoEspaco-1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosParalelosPage";
+
+// QUESTIONS
 import Question_GeometriaPosicaoPage from "~/pages/Questions/GeometriaPosicao";
 import Question_GeometriaPosicao_PosicoesRelativasPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas";
 import Question_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco";
@@ -62,47 +73,72 @@ function App() {
         />
 
         {/* GEOMETRIA DE POSIÇÃO */}
+        {/* LEVEL 1 */}
+        {/* 1 */}
         <PrivateRoute
           exact
           path="/estudos/geometria-posicao"
-          component={Studies_GeometriaPosicaoPage}
+          component={Studies_GeometriaPosicaoList}
         />
+        {/* A GEOMETRIA */}
+        {/* 1.1 */}
         <PrivateRoute
           exact
-          path="/estudos/geometria-posicao/posicoes-relativas"
-          component={Studies_GeometriaPosicao_PosicoesRelativasPage}
+          path="/estudos/geometria-posicao/a-geometria"
+          component={Studies_GeometriaPosicao_A_GeometriaPage}
         />
+        {/*  PONTOS RETAS PLANOS  E SUAS REPRESENTACOES */}
+        {/* 1.2 */}
         <PrivateRoute
           exact
-          path="/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco"
-          component={Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage}
+          path="/estudos/geometria-posicao/pontos-retas-planos-e-suas-representacoes"
+          component={Studies_PontoRetaPlanoESuasRepresentacoes}
         />
 
+        {/* POSIÇÕES RELATIVAS ENTRE PONTOS RETAS PLANOS NO ESPACO  */}
+        {/* 1.3 */}
         <PrivateRoute
           exact
-          path="/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/plano"
+          path="/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco"
+          component={
+            Studies_GeometriaPosicao_PosicoesRelativasEntrePontosRetasPlanosNoEspacoList
+          }
+        />
+        {/* 1.3.4 */}
+        <PrivateRoute
+          exact
+          path="/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco"
+          component={Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoList}
+        />
+
+        {/* 1.3.4.1 */}
+        <PrivateRoute
+          exact
+          path="/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/plano"
           component={Studies_GeometriaPosicao_PlanoPage}
         />
-
+        {/* 1.3.4.2 */}
         <PrivateRoute
           exact
-          path="/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas"
-          component={Studies_GeometriaPosicao_PosicoesRelativasPage2}
+          path="/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/posicoes-relativas"
+          component={Studies_GeometriaPosicao_PosicoesRelativasList}
         />
-
+        {/* 1.3.4.2.1 */}
         <PrivateRoute
           exact
-          path="/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas/planos-coincidentes"
+          path="/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/posicoes-relativas/planos-coincidentes"
           component={Studies_GeometriaPosicao_PlanosCoincidentes}
         />
+        {/* 1.3.4.2.2 */}
         <PrivateRoute
           exact
-          path="/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas/planos-concorrentes"
+          path="planos-concorrentes"
           component={Studies_GeometriaPosicao_PlanosConcorrentes}
         />
+        {/* 1.3.4.2.3 */}
         <PrivateRoute
           exact
-          path="/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas/planos-paralelos"
+          path="/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/posicoes-relativas/planos-paralelos"
           component={Studies_GeometriaPosicao_PlanosParalelos}
         />
 
@@ -123,7 +159,6 @@ function App() {
           path="/questionarios/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco"
           component={Question_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage}
         />
-
 
         <Route component={Error404} />
       </Switch>

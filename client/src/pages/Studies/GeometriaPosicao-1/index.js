@@ -5,39 +5,46 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-function PosicaoEntrePlanosNoEspacoPage() {
+function GeometriaPosicaoPage() {
   const rows = [
     {
-      name: "Plano",
-      link:
-        "/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/plano",
+      name: "A Geometria",
+      link: "/estudos/geometria-posicao/a-geometria",
     },
     {
-      name: "Posições Relativas",
-      link:
-        "/estudos/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco/posicoes-relativas",
+      name: "Ponto, reta, plano e suas representações",
+      link: "/estudos/geometria-posicao/pontos-retas-planos-e-suas-representacoes",
+    },
+    {
+      name: "Posições relativas entre pontos, retas e planos no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
+    },
+    {
+      name: "Parelelismo entre retas e planos ",
+      link: "/estudos/geometria-posicao",
+    },
+    {
+      name: "Perpendicularismo entre retas e planos ",
+      link: "/estudos/geometria-posicao",
+    },
+    {
+      name: "Projeções Ortogonais ",
+      link: "/estudos/geometria-posicao",
+    },
+    {
+      name: "Distâncias no espaço",
+      link: "/estudos/geometria-posicao",
+    },
+    {
+      name: "Ângulos ",
+      link: "/estudos/geometria-posicao",
     },
   ];
-
   return (
     <Wrapper>
-      <Page.Content
-        title="Geometria de Posição"
-        subTitle={
-          <h2
-            style={{
-              fontSize: "1rem",
-              color: "#6e7687",
-              marginLeft: "0",
-              marginBottom: 0,
-            }}
-          >
-            Posição entre planos no espaço
-          </h2>
-        }
-      >
+      <Page.Content title="Geometria de Posição">
         <Grid.Row>
-          {/* <Grid.fontSize: "0.3"}>
+          {/* <Grid.Col lg={3}>
             <StoreCard
               title="Apple iPhone 7 Plus 256GB Red Special Edition"
               subtitle="Apple"
@@ -80,4 +87,4 @@ function PosicaoEntrePlanosNoEspacoPage() {
   );
 }
 
-export default PosicaoEntrePlanosNoEspacoPage;
+export default GeometriaPosicaoPage;

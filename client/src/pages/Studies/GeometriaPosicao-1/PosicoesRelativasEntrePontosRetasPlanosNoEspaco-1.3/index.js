@@ -5,46 +5,46 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-function GeometriaPosicaoPage() {
+function PosicaoEntrePlanosNoEspaco() {
   const rows = [
     {
-      name: "A Geometria",
-      link: "/estudos/geometria-posicao",
+      name: "Posição entre ponto e reta no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
     },
     {
-      name: "Ponto, reta, plano e suas representações",
-      link: "/estudos/geometria-posicao/",
+      name: "Posição entre pontos no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
     },
     {
-      name: "Posições relativas entre pontos, retas e planos no espaço",
-      link: "/estudos/geometria-posicao/posicoes-relativas",
+      name: "Posição entre retas no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
     },
     {
-      name: "Parelelismo entre retas e planos ",
-      link: "/estudos/geometria-posicao",
+      name: "Posição entre planos no espaço",
+      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco",
     },
     {
-      name: "Perpendicularismo entre retas e planos ",
-      link: "/estudos/geometria-posicao",
-    },
-    {
-      name: "Projeções Ortogonais ",
-      link: "/estudos/geometria-posicao",
-    },
-    {
-      name: "Distâncias no espaço",
-      link: "/estudos/geometria-posicao",
-    },
-    {
-      name: "Ângulos ",
-      link: "/estudos/geometria-posicao",
+      name: "Posição entre retas e planos",
+      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
     },
   ];
+
+  // font-size: 0.8125rem;
+  //   color: #6e7687;
+  //   margin-left: 2rem;
+
   return (
     <Wrapper>
-      <Page.Content title="Geometria de Posição">
+      <Page.Content
+        title="Geometria de Posição"
+        subTitle={
+          <h2 style={{ fontSize: "1rem", color: '#6e7687', marginLeft: '0', marginBottom: 0 }}>
+            Posições relativas entre pontos, retas e planos no espaço
+          </h2>
+        }
+      >
         <Grid.Row>
-          {/* <Grid.Col lg={3}>
+          {/* <Grid.fontSize: "0.3"}>
             <StoreCard
               title="Apple iPhone 7 Plus 256GB Red Special Edition"
               subtitle="Apple"
@@ -87,4 +87,4 @@ function GeometriaPosicaoPage() {
   );
 }
 
-export default GeometriaPosicaoPage;
+export default PosicaoEntrePlanosNoEspaco;
