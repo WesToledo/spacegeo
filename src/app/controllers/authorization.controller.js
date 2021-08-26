@@ -14,6 +14,9 @@ async function login(req, res) {
 
     var user = await UserSchema.findOne({ email })
       .select("password")
+      .select("name")
+      .select("email")
+      .select("institution")
       .lean();
 
     if (!user)

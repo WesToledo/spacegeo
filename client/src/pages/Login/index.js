@@ -3,13 +3,15 @@ import { Formik } from "formik";
 import { Link, withRouter } from "react-router-dom";
 
 import api from "~/services/api";
-import { login as setLoginCache } from "~/services/auth";
+import useStore from "~/store";
 
 import { StandaloneFormPage, FormCard, FormTextInput } from "tabler-react";
 import logoImg from "~/assets/img/tabler.png";
 
 function LoginPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
+
+  const { addUser } = useStore();
 
   var stringsForm = {
     title: "",
@@ -34,7 +36,9 @@ function LoginPage(props) {
             email,
             password,
           });
-          setLoginCache(response.data.token, response.data.user._id);
+
+          addUser({ ...response.data.user, token: response.data.token });
+
           props.history.push("/estudos");
         } catch (err) {
           setTextButton({ text: "Entrar" });

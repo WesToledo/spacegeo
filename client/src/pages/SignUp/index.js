@@ -5,12 +5,14 @@ import { Link, withRouter } from "react-router-dom";
 import { Container, FormCard, Form, Grid } from "tabler-react";
 
 import api from "~/services/api";
-import { login as setLoginCache } from "~/services/auth";
+import useStore from "~/store";
 
 import logoImg from "~/assets/img/tabler.png";
 
 function SignUpPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
+
+  const { addUser } = useStore();
 
   var stringsForm = {
     title: "Cadastrar",
@@ -32,7 +34,6 @@ function SignUpPage(props) {
         confirm_password: "",
       }}
       onSubmit={async (values, { setValues, setErrors }) => {
-
         setTextButton({ text: "Carregando..." });
 
         const { password, confirm_password } = values;
@@ -47,11 +48,10 @@ function SignUpPage(props) {
           const response = await api.post("/user/create", {
             ...values,
           });
-
-          setLoginCache(response.data.token, response.data.user._id);
+          addUser({ ...response.data.user, token: response.data.token });
           props.history.push("/estudos");
         } catch (err) {
-          console.log(err.response.data.error)
+          console.log(err.response.data.error);
           setTextButton({ text: "Entrar" });
           setErrors({ email: "Erro ao tentar logar" });
         }

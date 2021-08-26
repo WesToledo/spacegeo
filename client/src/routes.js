@@ -7,9 +7,14 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import useStore from "~/store";
+
 import { isAuthenticated } from "~/services/auth";
 
 import Error404 from "./pages/NotFound/404.react";
+
+//PROFESSOR PAGES
+import ClassesPage from "./pages/Classes";
 
 import LoginPage from "~/pages/Login";
 import SignUpPage from "~/pages/SignUp";
@@ -43,18 +48,21 @@ import Question_GeometriaPosicaoPage from "~/pages/Questions/GeometriaPosicao";
 import Question_GeometriaPosicao_PosicoesRelativasPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas";
 import Question_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-      )
-    }
-  />
-);
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const { token } = useStore((state) => state.user);
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated(token) ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
+      }
+    />
+  );
+};
 
 function App() {
   return (
@@ -62,6 +70,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/cadastro" component={SignUpPage} />
+
+        {/* PROFESSOR */}
+        <PrivateRoute exact path="/turmas" component={ClassesPage} />
 
         <PrivateRoute exact path="/estudos" component={EstudosPage} />
 

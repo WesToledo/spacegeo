@@ -1,5 +1,5 @@
-export const TOKEN_KEY = 'user_token';
-export const USER_ID = 'user_id';
+export const TOKEN_KEY = "user_token";
+export const USER_ID = "user_id";
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
 
@@ -13,5 +13,6 @@ export const logout = () => {
   localStorage.removeItem(USER_ID);
 };
 
-export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
-
+export const isAuthenticated = (token) => {
+  return token !== null;
+};

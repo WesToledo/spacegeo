@@ -1,4 +1,12 @@
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const authConfig = require("../../config/auth.json");
+
 const UserSchema = require("../models/user");
+
+function generateToken(params = {}) {
+  return jwt.sign({ params }, authConfig.secret);
+}
 
 async function create(req, res) {
   try {
@@ -9,7 +17,12 @@ async function create(req, res) {
     const user = await UserSchema.create(req.body);
     user.password = undefined;
 
-    return res.send({ user });
+    return res.send({
+      user,
+      token: generateToken({
+        id: user._id,
+      }),
+    });
   } catch (err) {
     return res
       .status(400)
