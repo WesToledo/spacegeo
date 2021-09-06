@@ -25,14 +25,17 @@ function SiteWrapper(props) {
       LinkComponent: withRouter(NavLink),
       useExact: true,
     },
-    {
+  ];
+
+  if (user.type == "teacher") {
+    navBarItems.push({
       value: "Turmas",
       to: "/turmas",
       icon: "check-square",
       LinkComponent: withRouter(NavLink),
       useExact: true,
-    },
-  ];
+    });
+  }
 
   const accountDropdownProps = {
     avatarURL: "./demo/faces/female/25.jpg",

@@ -15,6 +15,7 @@ const store = (set, get) => ({
     email: null,
     institution: null,
     token: null,
+    linked: null,
   },
   addUser: (user) =>
     set(
@@ -22,9 +23,16 @@ const store = (set, get) => ({
         oldState.user._id = user._id;
         oldState.user.name = user.name;
         oldState.user.type = user.type;
+        oldState.user.linked = user.linked;
         oldState.user.email = user.email;
         oldState.user.institution = user.institution;
         oldState.user.token = user.token;
+      })
+    ),
+  linkUser: () =>
+    set(
+      produce((oldState) => {
+        oldState.user.linked = true;
       })
     ),
 });

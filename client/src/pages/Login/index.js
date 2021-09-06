@@ -36,14 +36,15 @@ function LoginPage(props) {
             email,
             password,
           });
+          console.log(response.data);
 
           addUser({ ...response.data.user, token: response.data.token });
 
-          if(response.data.user.linked){
-            
+          if (response.data.user.linked) {
+            props.history.push("/estudos");
+          } else {
+            props.history.push("/vincular-turma");
           }
-
-          props.history.push("/estudos");
         } catch (err) {
           setTextButton({ text: "Entrar" });
           setErrors({ email: "Erro ao tentar logar" + err.message });

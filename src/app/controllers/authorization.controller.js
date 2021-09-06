@@ -17,6 +17,8 @@ async function login(req, res) {
       .select("name")
       .select("email")
       .select("institution")
+      .select("linked")
+      .select("type")
       .lean();
 
     if (!user)

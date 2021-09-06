@@ -6,10 +6,12 @@ import { Page, Grid, Text, Icon, Button, Card } from "tabler-react";
 import api from "~/services/api";
 import Wrapper from "~/components/Wrapper";
 import SimpleDialogDemo from "./Modal";
+import useStore from "~/store";
 
 function ClassesPage(props) {
   const [open, setOpen] = useState(false);
   const [classes, setClasses] = useState([]);
+  const { _id } = useStore((state) => state.user);
 
   function handleOnCreateNewClass() {
     setOpen(true);
@@ -17,7 +19,7 @@ function ClassesPage(props) {
 
   async function getClasses() {
     try {
-      const response = await api.get("/class/");
+      const response = await api.get("/class/list/" + _id);
       setClasses(response.data.classes);
     } catch (err) {
       console.log(err);

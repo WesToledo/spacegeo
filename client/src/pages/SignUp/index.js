@@ -29,7 +29,7 @@ function SignUpPage(props) {
         email: "",
         birthday: "",
         institution: "",
-        type: "aluno",
+        type: "student",
         password: "",
         confirm_password: "",
       }}
@@ -49,7 +49,9 @@ function SignUpPage(props) {
             ...values,
           });
           addUser({ ...response.data.user, token: response.data.token });
-          props.history.push("/estudos");
+          if (response.data.user.type == "teacher")
+            props.history.push("/estudos");
+          else props.history.push("/vincular-turma");
         } catch (err) {
           console.log(err.response.data.error);
           setTextButton({ text: "Entrar" });
@@ -143,20 +145,20 @@ function SignUpPage(props) {
                             isInline
                             label="Aluno"
                             name="type"
-                            value="aluno"
+                            value="student"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            checked={values && values.type === "aluno"}
+                            checked={values && values.type === "student"}
                             error={errors && errors.type}
                           />
                           <Form.Radio
                             isInline
                             label="Professor"
                             name="type"
-                            value="professor"
+                            value="teacher"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            checked={values && values.type === "professor"}
+                            checked={values && values.type === "teacher"}
                             error={errors && errors.type}
                           />
                         </Form.Group>

@@ -7,17 +7,20 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import api from "~/services/api";
+import useStore from "~/store";
 
 export default function FormDialog({ open, setOpen, getClasses }) {
   const handleClose = () => {
     setOpen(false);
   };
   const [name, setName] = useState("");
+  const { _id } = useStore((state) => state.user);
 
   async function onSubmit() {
     try {
       await api.post("/class/create", {
         name: name,
+        teacher: _id,
       });
       handleClose();
       getClasses();

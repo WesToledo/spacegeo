@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const authConfig = require("../../config/auth.json");
 
 const ClassSchema = require("../models/class");
+const UserSchema = require("../models/user");
 
 async function create(req, res) {
   try {
@@ -12,7 +13,8 @@ async function create(req, res) {
     );
     const classe = await ClassSchema.create({
       name: req.body.name,
-      hash: hash.substr(39, 60),
+      teacher: req.body.teacher,
+      hash: hash.substr(40, 60),
     });
 
     return res.send({
@@ -36,7 +38,7 @@ async function index(req, res) {
 
 async function list(req, res) {
   try {
-    const classes = await ClassSchema.find();
+    const classes = await ClassSchema.find({ teacher: req.params.idTeacher });
     res.send({ classes });
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar turmas" });
@@ -61,4 +63,22 @@ async function remove(req, res) {
   }
 }
 
-module.exports = { create, index, list, update, remove };
+async function join(req, res) {
+  console.log(req.body);
+  const { _id, key } = req.body;
+  try {
+    let classe = await ClassSchema.findOne({ hash: key }).populate("students");
+    const user = await UserSchema.findOne({ _id });
+    if (!classe) return res.status(400).send({ error: "Turma não encontrada" });
+
+    classe.students.push(user);
+    await classe.save();
+
+    return res.send();
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send({ error: "Erro ao editar classe" });
+  }
+}
+
+module.exports = { create, index, list, update, remove, join };

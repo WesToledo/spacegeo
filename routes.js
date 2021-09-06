@@ -21,9 +21,10 @@ userRouter.delete("/remove/:id", user.remove);
 // Class
 const classRouter = express.Router();
 classRouter.post("/create", classe.create);
-classRouter.get("/", classe.list);
+classRouter.get("/list/:idTeacher", classe.list);
 classRouter.get("/:id", classe.index);
 classRouter.put("/update/:id", classe.update);
+classRouter.put("/join", classe.join);
 classRouter.delete("/remove/:id", classe.remove);
 
 module.exports = {

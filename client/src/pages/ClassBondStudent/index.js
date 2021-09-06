@@ -10,39 +10,34 @@ import logoImg from "~/assets/img/tabler.png";
 
 function ClassBondPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
-
-  const { addUser } = useStore();
+  const { user, linkUser } = useStore();
 
   var stringsForm = {
-    title: "",
-    emailLabel: "Email",
-    emailPlaceholder: "Insira o email",
-    passwordLabel: "Senha",
-    passwordPlaceholder: "Senha",
+    title: "Juntar-se a turma",
+    keyLabel: "Código da turma",
+    keyPlaceholder: "Insira o código",
   };
 
   return (
     <Formik
       initialValues={{
-        email: "",
-        password: "",
+        key: "",
       }}
       onSubmit={async (values, { setValues, setErrors }) => {
-        const { email, password } = values;
+        const { key } = values;
         setTextButton({ text: "Carregando..." });
 
         try {
-          const response = await api.post("/login", {
-            email,
-            password,
+          await api.put("/class/join", {
+            key,
+            _id: user._id,
           });
-
-          addUser({ ...response.data.user, token: response.data.token });
+          linkUser();
 
           props.history.push("/estudos");
         } catch (err) {
           setTextButton({ text: "Entrar" });
-          setErrors({ email: "Erro ao tentar logar" + err.message });
+          setErrors({ key: err.response.data.error });
         }
       }}
       render={({
@@ -60,27 +55,14 @@ function ClassBondPage(props) {
             onSubmit={handleSubmit}
           >
             <FormTextInput
-              name="email"
-              label={stringsForm.emailLabel}
-              placeholder={stringsForm.emailPlaceholder}
+              name="key"
+              label={stringsForm.keyLabel}
+              placeholder={stringsForm.keyPlaceholder}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values && values.email}
-              error={errors && errors.email}
+              value={values && values.key}
+              error={errors && errors.key}
             />
-            <FormTextInput
-              name="password"
-              label={stringsForm.passwordLabel}
-              type="password"
-              placeholder={stringsForm.passwordLabel}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values && values.password}
-              error={errors && errors.password}
-            />
-            <p>
-              Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link>
-            </p>
           </FormCard>
         </StandaloneFormPage>
       )}
