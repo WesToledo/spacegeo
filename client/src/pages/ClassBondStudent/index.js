@@ -8,7 +8,7 @@ import useStore from "~/store";
 import { StandaloneFormPage, FormCard, FormTextInput } from "tabler-react";
 import logoImg from "~/assets/img/tabler.png";
 
-function LoginPage(props) {
+function ClassBondPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
 
   const { addUser } = useStore();
@@ -38,10 +38,6 @@ function LoginPage(props) {
           });
 
           addUser({ ...response.data.user, token: response.data.token });
-
-          if(response.data.user.linked){
-            
-          }
 
           props.history.push("/estudos");
         } catch (err) {
@@ -92,4 +88,4 @@ function LoginPage(props) {
   );
 }
 
-export default withRouter(LoginPage);
+export default withRouter(ClassBondPage);

@@ -28,6 +28,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
+  linked: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 UserSchema.pre("save", async function (next) {

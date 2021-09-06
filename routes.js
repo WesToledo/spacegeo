@@ -3,6 +3,7 @@ const express = require("express");
 const authMiddleware = require("./src/app/middleware/auth");
 
 const user = require("./src/app/controllers/user.controller");
+const classe = require("./src/app/controllers/class.controller");
 const auth = require("./src/app/controllers/authorization.controller");
 
 //Auth
@@ -17,7 +18,16 @@ userRouter.get("/:id", user.index);
 userRouter.put("/update/:id", user.update);
 userRouter.delete("/remove/:id", user.remove);
 
+// Class
+const classRouter = express.Router();
+classRouter.post("/create", classe.create);
+classRouter.get("/", classe.list);
+classRouter.get("/:id", classe.index);
+classRouter.put("/update/:id", classe.update);
+classRouter.delete("/remove/:id", classe.remove);
+
 module.exports = {
   rootRouter,
   userRouter,
+  classRouter,
 };

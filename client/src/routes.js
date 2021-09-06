@@ -12,9 +12,11 @@ import useStore from "~/store";
 import { isAuthenticated } from "~/services/auth";
 
 import Error404 from "./pages/NotFound/404.react";
+import ClassBondStudent from "./pages/ClassBondStudent";
 
 //PROFESSOR PAGES
 import ClassesPage from "./pages/Classes";
+import StudentsPage from "./pages/Classes/Students";
 
 import LoginPage from "~/pages/Login";
 import SignUpPage from "~/pages/SignUp";
@@ -70,9 +72,15 @@ function App() {
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/cadastro" component={SignUpPage} />
+        <PrivateRoute
+          exact
+          path="/vincular-turma"
+          component={ClassBondStudent}
+        />
 
         {/* PROFESSOR */}
         <PrivateRoute exact path="/turmas" component={ClassesPage} />
+        <PrivateRoute exact path="/turmas/:id" component={StudentsPage} />
 
         <PrivateRoute exact path="/estudos" component={EstudosPage} />
 

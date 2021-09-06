@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 
-const { rootRouter, userRouter } = require("./routes");
+const { rootRouter, userRouter, classRouter } = require("./routes");
 
 const app = express();
 
@@ -14,6 +14,7 @@ app.use(cors());
 // Routers
 app.use("/api", rootRouter);
 app.use("/api/user", userRouter);
+app.use("/api/class", classRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
