@@ -17,6 +17,8 @@ import ClassBondStudent from "./pages/ClassBondStudent";
 //PROFESSOR PAGES
 import ClassesPage from "./pages/Classes";
 import StudentsPage from "./pages/Classes/Students";
+import MyQuestionsPage from "./pages/MyQuestions";
+import SubMyQuestionsPage from "./pages/MyQuestions/Questions";
 
 import LoginPage from "~/pages/Login";
 import SignUpPage from "~/pages/SignUp";
@@ -85,6 +87,17 @@ function App() {
         <PrivateRoute exact path="/estudos" component={EstudosPage} />
 
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
+        <PrivateRoute
+          exact
+          path="/meus-questionarios"
+          component={MyQuestionsPage}
+        />
+        <PrivateRoute
+          exact
+          path="/meus-questionarios/:id"
+          component={SubMyQuestionsPage}
+        />
+
         <PrivateRoute
           exact
           path="/sub-questionarios"

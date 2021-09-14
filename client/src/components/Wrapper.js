@@ -16,25 +16,46 @@ function SiteWrapper(props) {
       to: "/estudos",
       icon: "book-open",
       LinkComponent: withRouter(NavLink),
-      useExact: true,
+      useExact: false,
     },
     {
-      value: "Questionários",
+      value: "Questionários Padrão",
       to: "/questionarios",
       icon: "check-square",
       LinkComponent: withRouter(NavLink),
-      useExact: true,
+      useExact: false,
     },
   ];
 
+  if (user.type == "student") {
+    navBarItems.push([
+      {
+        value: "Meus Questionários",
+        to: "/meus-questionarios",
+        icon: "check-square",
+        LinkComponent: withRouter(NavLink),
+        useExact: false,
+      },
+    ]);
+  }
+
   if (user.type == "teacher") {
-    navBarItems.push({
-      value: "Turmas",
-      to: "/turmas",
-      icon: "check-square",
-      LinkComponent: withRouter(NavLink),
-      useExact: true,
-    });
+    navBarItems.push(
+      {
+        value: "Turmas",
+        to: "/turmas",
+        icon: "check-square",
+        LinkComponent: withRouter(NavLink),
+        useExact: true,
+      },
+      {
+        value: "Meus Questionários",
+        to: "/meus-questionarios",
+        icon: "check-square",
+        LinkComponent: withRouter(NavLink),
+        useExact: false,
+      }
+    );
   }
 
   const accountDropdownProps = {

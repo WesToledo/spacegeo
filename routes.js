@@ -5,6 +5,7 @@ const authMiddleware = require("./src/app/middleware/auth");
 const user = require("./src/app/controllers/user.controller");
 const classe = require("./src/app/controllers/class.controller");
 const auth = require("./src/app/controllers/authorization.controller");
+const questionary = require("./src/app/controllers/questionary.controller");
 
 //Auth
 const rootRouter = express.Router();
@@ -27,8 +28,18 @@ classRouter.put("/update/:id", classe.update);
 classRouter.put("/join", classe.join);
 classRouter.delete("/remove/:id", classe.remove);
 
+// Questionary
+const questionaryRouter = express.Router();
+questionaryRouter.post("/create", questionary.create);
+questionaryRouter.get("/list/:idTeacher", questionary.list);
+questionaryRouter.get("/:id", questionary.index);
+questionaryRouter.put("/update/:id", questionary.update);
+questionaryRouter.put("/join", questionary.join);
+questionaryRouter.delete("/remove/:id", questionary.remove);
+
 module.exports = {
   rootRouter,
   userRouter,
   classRouter,
+  questionaryRouter,
 };
