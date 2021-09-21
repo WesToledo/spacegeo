@@ -48,37 +48,41 @@ export default function FormDialog({
   setOpen,
   getQuestionary,
   idQuestionary,
+  selectedQuestion,
 }) {
   const { _id } = useStore((state) => state.user);
-  const [alternatives, setAlternatives] = useState([
-    {
-      text: "",
-      index: 1,
-    },
-  ]);
 
-  const [form, setForm] = useState({
-    title: "",
-    rightOne: 1,
-    teacher: _id,
-  });
+  const [question, setQuestion] = useState(selectedQuestion);
+
+  useEffect(() => {
+    setQuestion(selectedQuestion);
+  }, [selectedQuestion]);
+
+  useEffect(() => {
+    console.log(question);
+  }, [question]);
 
   const addNewAlternative = () => {
-    setAlternatives([
-      ...alternatives,
-      {
-        text: "",
-        index: alternatives.length + 1,
-      },
-    ]);
+    setQuestion({
+      ...question,
+      alternatives: [
+        ...question.alternatives,
+        {
+          _id: Math.floor(Math.random() * (20 - 0 + 1)) + 0,
+          text: "",
+          index: question.alternatives.length + 1,
+        },
+      ],
+    });
   };
 
   const handleOnChangeTextAlternative = (e) => {
     const { name, value } = e.target;
 
-    const newAlternatives = alternatives.map((alternative) => {
-      if (alternative.index == name) {
+    const newAlternatives = question.alternatives.map((alternative) => {
+      if (alternative._id == name) {
         return {
+          _id: name,
           index: alternative.index,
           text: value,
         };
@@ -87,29 +91,28 @@ export default function FormDialog({
       }
     });
 
-    setAlternatives(newAlternatives);
+    setQuestion({ ...question, alternatives: newAlternatives });
   };
 
   const handleDeleteAlternative = (index) => {
-    const NewAlternatives = alternatives.filter(
+    const NewAlternatives = question.alternatives.filter(
       (alternative) => alternative.index != index
     );
 
-    console.log(index, NewAlternatives);
-
-    setAlternatives(
-      NewAlternatives.map((alternative, index) => {
+    setQuestion({
+      ...question,
+      alternatives: NewAlternatives.map((alternative, index) => {
         return {
           text: alternative.text,
           index: index + 1,
         };
-      })
-    );
+      }),
+    });
   };
 
   const handleOnChangeRadio = (index) => {
-    setForm({
-      ...form,
+    setQuestion({
+      ...question,
       rightOne: index,
     });
   };
@@ -119,13 +122,15 @@ export default function FormDialog({
   };
 
   async function onSubmit() {
+    console.log(question);
     try {
-      await api.post("/questionary/question/add", {
-        title: form.title,
+      await api.put("/questionary/question/update", {
+        _id: question._id,
+        title: question.title,
         teacher: _id,
         questionary: idQuestionary,
-        alternatives: alternatives,
-        rightOne: form.rightOne,
+        alternatives: question.alternatives,
+        rightOne: question.rightOne,
       });
       handleClose();
       getQuestionary();
@@ -144,13 +149,13 @@ export default function FormDialog({
         maxWidth="sm"
         fullWidth={true}
       >
-        <DialogTitle id="form-dialog-title">Criar nova questão</DialogTitle>
+        <DialogTitle id="form-dialog-title">Editar questão</DialogTitle>
         <DialogContent>
           <Grid.Row>
             <Grid.Col width={12}>
               <Form.Group
                 label={
-                  <Form.Label aside={`${form.title.length}/200`}>
+                  <Form.Label aside={`${question.title.length}/200`}>
                     Enunciado da questão
                   </Form.Label>
                 }
@@ -159,9 +164,10 @@ export default function FormDialog({
                   name="title"
                   placeholder="Digite aqui o enunciado..."
                   rows={4}
+                  value={question.title}
                   onChange={(e) => {
-                    setForm({
-                      ...form,
+                    setQuestion({
+                      ...question,
                       title: e.target.value,
                     });
                   }}
@@ -191,7 +197,7 @@ export default function FormDialog({
                   </Button>
                 </Grid.Col>
               </Grid.Row>
-              {alternatives.map((alternative, index) => (
+              {question.alternatives.map((alternative, index) => (
                 <Grid.Row alignItems="center" className="mb-2">
                   <Grid.Col width={1}>
                     <Form.StaticText>{`${letters[index]})`}</Form.StaticText>
@@ -202,7 +208,7 @@ export default function FormDialog({
                       placeholder="Digite aqui o texto da alternativa..."
                     /> */}
                     <Form.Textarea
-                      name={alternative.index}
+                      name={alternative._id}
                       placeholder="Digite aqui o texto da alternativa..."
                       rows={2}
                       onChange={handleOnChangeTextAlternative}
@@ -219,7 +225,7 @@ export default function FormDialog({
                         <input
                           className="custom-radio"
                           type="radio"
-                          checked={form.rightOne == alternative.index}
+                          checked={question.rightOne == alternative.index}
                           onChange={() =>
                             handleOnChangeRadio(alternative.index)
                           }
@@ -251,7 +257,7 @@ export default function FormDialog({
             Cancelar
           </Button>
           <Button onClick={onSubmit} color="primary" icon="save">
-            Criar Questão
+            Salvar Alteração
           </Button>
         </DialogActions>
       </Dialog>

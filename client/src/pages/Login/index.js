@@ -40,6 +40,10 @@ function LoginPage(props) {
 
           addUser({ ...response.data.user, token: response.data.token });
 
+          if (response.data.user.type === "teacher") {
+            props.history.push("/estudos");
+          }
+
           if (response.data.user.linked) {
             props.history.push("/estudos");
           } else {

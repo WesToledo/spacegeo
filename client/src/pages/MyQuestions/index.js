@@ -20,6 +20,7 @@ function MyQuestionsPage(props) {
   async function getQuestionarys() {
     try {
       const response = await api.get("/questionary/list/" + _id);
+      console.log(response.data.questionarys);
       setQuestionarys(response.data.questionarys);
     } catch (err) {
       console.log(err);
@@ -81,7 +82,9 @@ function MyQuestionsPage(props) {
                           size="sm"
                           color="primary"
                           onClick={() =>
-                            props.history.push(`/meus-questionarios/${questionary._id}`)
+                            props.history.push(
+                              `/meus-questionarios/${questionary._id}`
+                            )
                           }
                         >
                           Editar questionário

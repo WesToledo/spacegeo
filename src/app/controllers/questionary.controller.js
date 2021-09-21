@@ -22,45 +22,25 @@ async function create(req, res) {
   }
 }
 
-async function addQuestion(req, res) {
-  try {
-    const {
-      title,
-      questionary: questionaryId,
-      alternatives,
-      rightOne,
-      teacher,
-    } = req.body;
-
-    const questionary = await QuestionarySchema.findOne({ _id: questionaryId });
-
-    const question = await QuestionSchema.create({
-      title,
-      alternatives,
-      rightOne,
-      teacher,
-    });
-
-    questionary.questions.push(question);
-
-    await questionary.save();
-
-    return res.send({
-      questionary,
-    });
-  } catch (err) {
-    return res
-      .status(400)
-      .send({ error: "Erro ao cadastrar questão", message: err });
-  }
-}
-
 async function index(req, res) {
   try {
-    const questionary = await QuestionarySchema.findById(req.params.id);
+    const questionary = await QuestionarySchema.findById(
+      req.params.id
+    ).populate("questions");
     return res.send({ questionary });
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar turma" });
+  }
+}
+
+async function getClasses(req, res) {
+  try {
+    const questionary = await QuestionarySchema.findById(
+      req.params.id
+    ).populate("classes");
+    return res.send({ questionary });
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao buscar turmas" });
   }
 }
 
@@ -68,7 +48,7 @@ async function list(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
       teacher: req.params.idTeacher,
-    }).populate("questions");
+    });
     res.send({ questionarys });
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar questionários" });
@@ -117,4 +97,75 @@ async function join(req, res) {
   }
 }
 
-module.exports = { create, index, list, update, remove, join, addQuestion };
+async function addQuestion(req, res) {
+  try {
+    const {
+      title,
+      questionary: questionaryId,
+      alternatives,
+      rightOne,
+      teacher,
+    } = req.body;
+
+    const questionary = await QuestionarySchema.findOne({ _id: questionaryId });
+
+    const question = await QuestionSchema.create({
+      title,
+      alternatives,
+      rightOne,
+      teacher,
+    });
+
+    questionary.questions.push(question);
+
+    await questionary.save();
+
+    return res.send({
+      questionary,
+    });
+  } catch (err) {
+    return res
+      .status(400)
+      .send({ error: "Erro ao cadastrar questão", message: err });
+  }
+}
+
+async function updateQuestion(req, res) {
+  try {
+    const { title, alternatives, rightOne } = req.body;
+    const question = await QuestionSchema.findOne({ _id: req.body._id });
+
+    question.alternatives = alternatives.map((alternative) => {
+      return { ...alternative, _id: undefined };
+    });
+    question.title = title;
+    question.rightOne = rightOne;
+
+    await question.save();
+    return res.send();
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao editar questão" });
+  }
+}
+
+async function removeQuestion(req, res) {
+  try {
+    await QuestionSchema.findByIdAndRemove(req.params.id);
+    return res.status(200).send();
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao deletar turma", err });
+  }
+}
+
+module.exports = {
+  create,
+  index,
+  list,
+  update,
+  remove,
+  join,
+  addQuestion,
+  updateQuestion,
+  removeQuestion,
+  getClasses,
+};

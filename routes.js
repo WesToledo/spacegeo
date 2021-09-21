@@ -33,9 +33,14 @@ const questionaryRouter = express.Router();
 questionaryRouter.post("/create", questionary.create);
 questionaryRouter.get("/list/:idTeacher", questionary.list);
 questionaryRouter.get("/:id", questionary.index);
+questionaryRouter.get("/classes/:id", questionary.getClasses);
 questionaryRouter.put("/update/:id", questionary.update);
 questionaryRouter.put("/join", questionary.join);
 questionaryRouter.delete("/remove/:id", questionary.remove);
+
+questionaryRouter.post("/question/add", questionary.addQuestion);
+questionaryRouter.put("/question/update", questionary.updateQuestion);
+questionaryRouter.delete("/question/remove/:id", questionary.removeQuestion);
 
 module.exports = {
   rootRouter,
