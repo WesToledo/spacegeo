@@ -17,8 +17,12 @@ import ClassBondStudent from "./pages/ClassBondStudent";
 //PROFESSOR PAGES
 import ClassesPage from "./pages/Classes";
 import StudentsPage from "./pages/Classes/Students";
-import MyQuestionsPage from "./pages/MyQuestions";
-import SubMyQuestionsPage from "./pages/MyQuestions/Questions";
+import MyQuestionsTeacherPage from "./pages/MyQuestionsTeacher";
+import SubMyQuestionsTeacherPage from "./pages/MyQuestionsTeacher/Questions";
+
+//STUDENT PAGES
+import MyQuestionsStudentPage from "./pages/MyQuestionsStudent";
+import SubMyQuestionsStudentPage from "./pages/MyQuestionsStudent/Questions";
 
 import LoginPage from "~/pages/Login";
 import SignUpPage from "~/pages/SignUp";
@@ -69,6 +73,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 function App() {
+  const { type } = useStore((state) => state.user);
   return (
     <Router>
       <Switch>
@@ -87,22 +92,45 @@ function App() {
         <PrivateRoute exact path="/estudos" component={EstudosPage} />
 
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
-        <PrivateRoute
-          exact
-          path="/meus-questionarios"
-          component={MyQuestionsPage}
-        />
-        <PrivateRoute
-          exact
-          path="/meus-questionarios/:id"
-          component={SubMyQuestionsPage}
-        />
+        {type == "teacher" ? (
+          <>
+            <PrivateRoute
+              exact
+              path="/meus-questionarios"
+              component={MyQuestionsTeacherPage}
+            />
+            <PrivateRoute
+              exact
+              path="/meus-questionarios/:id"
+              component={SubMyQuestionsTeacherPage}
+            />
 
-        <PrivateRoute
-          exact
-          path="/sub-questionarios"
-          component={SubQuestionPage}
-        />
+            <PrivateRoute
+              exact
+              path="/sub-questionarios"
+              component={SubQuestionPage}
+            />
+          </>
+        ) : (
+          <>
+            <PrivateRoute
+              exact
+              path="/meus-questionarios"
+              component={MyQuestionsStudentPage}
+            />
+            <PrivateRoute
+              exact
+              path="/meus-questionarios/:id"
+              component={SubMyQuestionsStudentPage}
+            />
+
+            <PrivateRoute
+              exact
+              path="/sub-questionarios"
+              component={SubQuestionPage}
+            />
+          </>
+        )}
 
         {/* GEOMETRIA DE POSIÇÃO */}
         {/* LEVEL 1 */}

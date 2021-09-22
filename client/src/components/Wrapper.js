@@ -10,6 +10,8 @@ import useStore from "~/store";
 function SiteWrapper(props) {
   const { user } = useStore();
 
+  console.log("user type", user);
+
   const navBarItems = [
     {
       value: "Estudos",
@@ -28,25 +30,23 @@ function SiteWrapper(props) {
   ];
 
   if (user.type == "student") {
-    navBarItems.push([
-      {
-        value: "Meus Questionários",
-        to: "/meus-questionarios",
-        icon: "check-square",
-        LinkComponent: withRouter(NavLink),
-        useExact: false,
-      },
-    ]);
+    navBarItems.push({
+      value: "Meus Questionários",
+      to: "/meus-questionarios",
+      icon: "check-square",
+      LinkComponent: withRouter(NavLink),
+      useExact: false,
+    });
   }
 
-  if (user.type == "teacher") {
+  if (user.type === "teacher") {
     navBarItems.push(
       {
         value: "Turmas",
         to: "/turmas",
         icon: "check-square",
         LinkComponent: withRouter(NavLink),
-        useExact: true,
+        useExact: false,
       },
       {
         value: "Meus Questionários",

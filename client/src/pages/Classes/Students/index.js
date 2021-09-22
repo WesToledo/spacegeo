@@ -33,7 +33,7 @@ function StudentsPage(props) {
             <Card.Options></Card.Options>
           </Card.Header> */}
             <Card.Body>
-              <DataTable students={classe.students} />
+              {classe && <DataTable students={classe.students} />}
             </Card.Body>
             {/* <Card.Footer>This is standard card footer</Card.Footer> */}
           </Card>

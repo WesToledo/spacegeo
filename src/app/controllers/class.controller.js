@@ -29,7 +29,9 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    const classe = await ClassSchema.findById(req.params.id);
+    const classe = await ClassSchema.findById(req.params.id).populate(
+      "students"
+    );
     return res.send({ classe });
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar turma" });
@@ -38,7 +40,9 @@ async function index(req, res) {
 
 async function list(req, res) {
   try {
-    const classes = await ClassSchema.find({ teacher: req.params.idTeacher });
+    const classes = await ClassSchema.find({
+      teacher: req.params.idTeacher,
+    });
     res.send({ classes });
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar turmas" });
@@ -71,6 +75,8 @@ async function join(req, res) {
     const user = await UserSchema.findOne({ _id });
     if (!classe) return res.status(400).send({ error: "Turma não encontrada" });
 
+    user.linked = true;
+    await user.save();
     classe.students.push(user);
     await classe.save();
 
