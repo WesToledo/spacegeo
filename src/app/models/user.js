@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
+  classe: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Class",
+  },
 });
 
 UserSchema.pre("save", async function (next) {

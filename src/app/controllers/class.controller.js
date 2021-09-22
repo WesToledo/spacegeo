@@ -72,11 +72,17 @@ async function join(req, res) {
   const { _id, key } = req.body;
   try {
     let classe = await ClassSchema.findOne({ hash: key }).populate("students");
-    const user = await UserSchema.findOne({ _id });
+    let user = await UserSchema.findOne({ _id });
     if (!classe) return res.status(400).send({ error: "Turma não encontrada" });
 
-    user.linked = true;
-    await user.save();
+    await UserSchema.updateOne(
+      { _id: user._id },
+      {
+        linked: true,
+        classe: classe._id,
+      }
+    );
+    
     classe.students.push(user);
     await classe.save();
 

@@ -48,6 +48,7 @@ function SignUpPage(props) {
           const response = await api.post("/user/create", {
             ...values,
             type: values.type,
+            linked: values.type == "teacher",
           });
           addUser({ ...response.data.user, token: response.data.token });
           if (response.data.user.type == "teacher")

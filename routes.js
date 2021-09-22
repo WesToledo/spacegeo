@@ -38,6 +38,9 @@ questionaryRouter.put("/update/:id", questionary.update);
 questionaryRouter.put("/join", questionary.join);
 questionaryRouter.delete("/remove/:id", questionary.remove);
 
+//STUDENT
+questionaryRouter.get("/classes/student/:id", questionary.getQuestionarys);
+
 questionaryRouter.post("/question/add", questionary.addQuestion);
 questionaryRouter.put("/question/update", questionary.updateQuestion);
 questionaryRouter.delete("/question/remove/:id", questionary.removeQuestion);

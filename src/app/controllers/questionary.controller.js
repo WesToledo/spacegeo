@@ -97,6 +97,7 @@ async function join(req, res) {
   }
 }
 
+// QUESTIONS
 async function addQuestion(req, res) {
   try {
     const {
@@ -157,6 +158,19 @@ async function removeQuestion(req, res) {
   }
 }
 
+//STUDENTS
+
+async function getQuestionarys(req, res) {
+  try {
+    const questionarys = await QuestionarySchema.find({
+      "student._id": req.params.id,
+    }).populate("classes");
+    return res.send({ questionarys });
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao buscar turmas" });
+  }
+}
+
 module.exports = {
   create,
   index,
@@ -168,4 +182,5 @@ module.exports = {
   updateQuestion,
   removeQuestion,
   getClasses,
+  getQuestionarys
 };
