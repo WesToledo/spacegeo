@@ -20,6 +20,16 @@ const QuestionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  hasObject: {
+    type: Boolean,
+    default: false,
+  },
+  path: {
+    type: String,
+  },
+  objName: {
+    type: String,
+  },
 });
 
 const Question = mongoose.model("Question", QuestionSchema);

@@ -6,7 +6,7 @@ import { Page, Grid, Form, Icon, Button, Card } from "tabler-react";
 import api from "~/services/api";
 import Wrapper from "~/components/Wrapper";
 import useStore from "~/store";
-import ModalCreateQuestion from "./Modal";
+import ModalCreateQuestion from "./NewQuestionModal";
 import ModalEditQuestion from "./EditModal";
 import ClassesModal from "./ClassesModal";
 
@@ -60,7 +60,7 @@ function QuestionsPage(props) {
   function handleOnCreateNewQuestionClick() {
     setOpenCreate(true);
   }
-  function handleOpenClassesModal(){
+  function handleOpenClassesModal() {
     setOpenClasses(true);
   }
 

@@ -106,6 +106,9 @@ async function addQuestion(req, res) {
       alternatives,
       rightOne,
       teacher,
+      hasObject,
+      path,
+      objName,
     } = req.body;
 
     const questionary = await QuestionarySchema.findOne({ _id: questionaryId });
@@ -115,6 +118,9 @@ async function addQuestion(req, res) {
       alternatives,
       rightOne,
       teacher,
+      hasObject,
+      path,
+      objName,
     });
 
     questionary.questions.push(question);
@@ -174,14 +180,14 @@ async function getQuestionarys(req, res) {
 
 async function addClasseToQuestionary(req, res) {
   const { classes, idQuestionary } = req.body;
+  console.log(req.body);
   try {
-    let questionary = await QuestionarySchema.find({
-      _id: idQuestionary,
-    });
-
-    questionary.classes = classes;
-    await questionary.save();
-
+    await QuestionarySchema.updateOne(
+      { _id: idQuestionary },
+      {
+        classes: classes.map((classe) => classe._id),
+      }
+    );
     res.send();
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar questionários" });

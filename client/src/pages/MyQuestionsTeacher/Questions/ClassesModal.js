@@ -26,17 +26,19 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
     setOpen(false);
   };
 
-  //   async function onSubmit() {
-  //     console.log(question);
-  //     try {
-  //       await api.post("/questionary/add-class", {});
-  //       handleClose();
-  //       getQuestionary();
-  //     } catch (err) {
-  //       console.log(err);
-  //       handleClose();
-  //     }
-  //   }
+  async function onSubmit() {
+    console.log("aksdhiasudh");
+    try {
+      await api.post("/questionary/add-classes", {
+        classes: questionaryClasses,
+        idQuestionary,
+      });
+      handleClose();
+    } catch (err) {
+      console.log(err);
+      handleClose();
+    }
+  }
 
   async function getQuestionaryClasses() {
     try {
@@ -101,7 +103,7 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
           <Grid.Row alignItems="center" justifyContent="flex-start">
             <Grid.Col width={9}>
               <Form.Select
-                value={selectedClasse ? selectedClasse : null}
+                // value={selectedClasse ? selectedClasse : null}
                 onClick={(e) => {
                   setSelectedClasse(e.target.value);
                 }}
@@ -151,7 +153,7 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
           <Button onClick={handleClose} color="default" icon="x">
             Cancelar
           </Button>
-          <Button color="primary" icon="save">
+          <Button color="primary" icon="save" onClick={onSubmit}>
             Salvar Alteração
           </Button>
         </DialogActions>

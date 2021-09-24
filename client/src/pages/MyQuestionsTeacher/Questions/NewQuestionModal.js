@@ -6,6 +6,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
+import { OBJModel } from "react-3d-viewer";
+import { DAEModel, DirectionLight } from "react-3d-viewer";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -13,6 +15,9 @@ import { Grid, Text, Form, Button } from "tabler-react";
 
 import api from "~/services/api";
 import useStore from "~/store";
+import List3DCards from "./List3DCards";
+
+// const obj = require("../../../assets/models/")
 
 const letters = [
   "a",
@@ -43,12 +48,31 @@ const letters = [
   "z",
 ];
 
-export default function FormDialog({
+const objects = [
+  {
+    name: "Planos Paralelos",
+    path: "/models/planos_paralelos",
+    obj: "planos_paralelos",
+  },
+  {
+    name: "Planos e Cubos",
+    path: "/models/planos_e_cubos",
+    obj: "planos_e_cubos",
+  },
+  {
+    name: "Planos e Cubos",
+    path: "/models/planos_e_cubos",
+    obj: "planos_e_cubos2",
+  },
+];
+
+export default function NewQuestionModal({
   open,
   setOpen,
   getQuestionary,
   idQuestionary,
 }) {
+  const [selected, setSelected] = useState(null);
   const { _id } = useStore((state) => state.user);
   const [alternatives, setAlternatives] = useState([
     {
@@ -126,6 +150,9 @@ export default function FormDialog({
         questionary: idQuestionary,
         alternatives: alternatives,
         rightOne: form.rightOne,
+        hasObject: selected != null,
+        path: selected.path,
+        objName: selected.obj,
       });
       handleClose();
       getQuestionary();
@@ -245,6 +272,16 @@ export default function FormDialog({
               ))}
             </Grid.Col>
           </Grid.Row>
+
+          {/* OBJECTS */}
+
+          <div className={"justify-content-between"}>
+            <List3DCards
+              objects={objects}
+              setSelected={setSelected}
+              selected={selected}
+            />
+          </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="default" icon="x">

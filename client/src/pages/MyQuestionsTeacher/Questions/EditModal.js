@@ -13,6 +13,7 @@ import { Grid, Text, Form, Button } from "tabler-react";
 
 import api from "~/services/api";
 import useStore from "~/store";
+import List3DCards from "./List3DCards";
 
 const letters = [
   "a",
@@ -43,7 +44,24 @@ const letters = [
   "z",
 ];
 
-export default function FormDialog({
+const objects = [
+  {
+    name: "Planos Paralelos",
+    path: "/models/planos_paralelos",
+    obj: "planos_paralelos",
+  },
+  {
+    name: "Planos e Cubos",
+    path: "/models/planos_e_cubos",
+    obj: "planos_e_cubos",
+  },
+  {
+    name: "Planos e Cubos",
+    path: "/models/planos_e_cubos",
+    obj: "planos_e_cubos2",
+  },
+];
+export default function EditModal({
   open,
   setOpen,
   getQuestionary,
@@ -52,10 +70,16 @@ export default function FormDialog({
 }) {
   const { _id } = useStore((state) => state.user);
 
+  const [selected, setSelected] = useState(null);
   const [question, setQuestion] = useState(selectedQuestion);
 
   useEffect(() => {
     setQuestion(selectedQuestion);
+    setSelected({
+      name: selectedQuestion.name,
+      path: selectedQuestion.path,
+      obj: selectedQuestion.obj,
+    });
   }, [selectedQuestion]);
 
   useEffect(() => {
@@ -251,6 +275,13 @@ export default function FormDialog({
               ))}
             </Grid.Col>
           </Grid.Row>
+          <div className={"justify-content-between"}>
+            <List3DCards
+              objects={objects}
+              setSelected={setSelected}
+              selected={selected}
+            />
+          </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="default" icon="x">
