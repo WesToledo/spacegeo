@@ -5,9 +5,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import AddIcon from "@material-ui/icons/Add";
-
-import DeleteIcon from "@material-ui/icons/Delete";
 
 import { Grid, Badge, Form, Button, Text } from "tabler-react";
 import { Chip } from "@material-ui/core";
@@ -26,16 +23,19 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
     setOpen(false);
   };
 
-  // async function onSubmit() {
-  //   try {
-  //     await api.post("/questionary/add-class", {});
-  //     handleClose();
-  //     getQuestionary();
-  //   } catch (err) {
-  //     console.log(err);
-  //     handleClose();
-  //   }
-  // }
+  async function onSubmit() {
+    console.log("aksdhiasudh");
+    try {
+      await api.post("/questionary/add-classes", {
+        classes: questionaryClasses,
+        idQuestionary,
+      });
+      handleClose();
+    } catch (err) {
+      console.log(err);
+      handleClose();
+    }
+  }
 
   async function getQuestionaryClasses() {
     try {
@@ -100,7 +100,7 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
           <Grid.Row alignItems="center" justifyContent="flex-start">
             <Grid.Col width={9}>
               <Form.Select
-                value={selectedClasse ? selectedClasse : null}
+                // value={selectedClasse ? selectedClasse : null}
                 onClick={(e) => {
                   setSelectedClasse(e.target.value);
                 }}
@@ -134,7 +134,7 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
           </Grid.Row>
           <Grid.Row cards>
             <Grid.Col width={12}>
-              <Text className="m-2">Turmas vinculadas</Text>
+              <Text className="m-2">Turmas vinculadas ??</Text>
             </Grid.Col>
             {questionaryClasses.map(({ _id, name }) => (
               <Chip
@@ -147,9 +147,9 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
           </Grid.Row>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="default" icon="x">
+          {/* <Button onClick={handleClose} color="default" icon="x">
             Cancelar
-          </Button>
+          </Button> */}
           <Button color="primary" icon="save">
             Salvar Alteração
           </Button>

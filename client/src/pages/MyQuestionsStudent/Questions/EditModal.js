@@ -155,7 +155,7 @@ export default function FormDialog({
             <Grid.Col width={12}>
               <Form.Group
                 label={
-                  <Form.Label aside={`${question.title.length}/200`}>
+                  <Form.Label aside={`${question.title.length}/500`}>
                     Enunciado da questão
                   </Form.Label>
                 }

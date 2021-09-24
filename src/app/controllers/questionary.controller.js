@@ -172,12 +172,17 @@ async function getQuestionarys(req, res) {
 
 //CLASSES
 
-async function addClasseToQuestionary(req,res){
+async function addClasseToQuestionary(req, res) {
+  const { classes, idQuestionary } = req.body;
   try {
-    const questionary = await QuestionarySchema.find({
-      _id: req.params.idTeacher,
+    let questionary = await QuestionarySchema.find({
+      _id: idQuestionary,
     });
-    res.send({ questionarys });
+
+    questionary.classes = classes;
+    await questionary.save();
+
+    res.send();
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar questionários" });
   }
@@ -194,5 +199,6 @@ module.exports = {
   updateQuestion,
   removeQuestion,
   getClasses,
-  getQuestionarys
+  getQuestionarys,
+  addClasseToQuestionary,
 };
