@@ -93,43 +93,44 @@ function App() {
 
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
         {type == "teacher" ? (
-          <>
-            <PrivateRoute
-              exact
-              path="/meus-questionarios"
-              component={MyQuestionsTeacherPage}
-            />
-            <PrivateRoute
-              exact
-              path="/meus-questionarios/:id"
-              component={SubMyQuestionsTeacherPage}
-            />
-
-            <PrivateRoute
-              exact
-              path="/sub-questionarios"
-              component={SubQuestionPage}
-            />
-          </>
+          <PrivateRoute
+            exact
+            path="/meus-questionarios"
+            component={MyQuestionsTeacherPage}
+          />
         ) : (
-          <>
-            <PrivateRoute
-              exact
-              path="/meus-questionarios"
-              component={MyQuestionsStudentPage}
-            />
-            <PrivateRoute
-              exact
-              path="/meus-questionarios/:id"
-              component={SubMyQuestionsStudentPage}
-            />
+          <PrivateRoute
+            exact
+            path="/meus-questionarios"
+            component={MyQuestionsStudentPage}
+          />
+        )}
+        {type == "teacher" ? (
+          <PrivateRoute
+            exact
+            path="/meus-questionarios/:id"
+            component={SubMyQuestionsTeacherPage}
+          />
+        ) : (
+          <PrivateRoute
+            exact
+            path="/meus-questionarios/:id"
+            component={SubMyQuestionsStudentPage}
+          />
+        )}
 
-            <PrivateRoute
-              exact
-              path="/sub-questionarios"
-              component={SubQuestionPage}
-            />
-          </>
+        {type == "teacher" ? (
+          <PrivateRoute
+            exact
+            path="/sub-questionarios"
+            component={SubQuestionPage}
+          />
+        ) : (
+          <PrivateRoute
+            exact
+            path="/sub-questionarios"
+            component={SubQuestionPage}
+          />
         )}
 
         {/* GEOMETRIA DE POSIÇÃO */}

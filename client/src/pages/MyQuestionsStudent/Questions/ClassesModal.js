@@ -26,17 +26,16 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
     setOpen(false);
   };
 
-  //   async function onSubmit() {
-  //     console.log(question);
-  //     try {
-  //       await api.post("/questionary/add-class", {});
-  //       handleClose();
-  //       getQuestionary();
-  //     } catch (err) {
-  //       console.log(err);
-  //       handleClose();
-  //     }
+  // async function onSubmit() {
+  //   try {
+  //     await api.post("/questionary/add-class", {});
+  //     handleClose();
+  //     getQuestionary();
+  //   } catch (err) {
+  //     console.log(err);
+  //     handleClose();
   //   }
+  // }
 
   async function getQuestionaryClasses() {
     try {
