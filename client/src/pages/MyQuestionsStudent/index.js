@@ -11,7 +11,7 @@ import useStore from "~/store";
 function MyQuestionsPage(props) {
   const [open, setOpen] = useState(false);
   const [questionarys, setQuestionarys] = useState([]);
-  const { _id } = useStore((state) => state.user);
+  const { classe } = useStore((state) => state.user);
 
   function handleOnCreateNewClassClick() {
     setOpen(true);
@@ -19,7 +19,7 @@ function MyQuestionsPage(props) {
 
   async function getQuestionarys() {
     try {
-      const response = await api.get("/questionary/list/" + _id);
+      const response = await api.get("/questionary/student/list/" + classe);
       console.log(response.data.questionarys);
       setQuestionarys(response.data.questionarys);
     } catch (err) {
@@ -59,15 +59,37 @@ function MyQuestionsPage(props) {
                       <div
                         style={{
                           display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                          justifyContent: "flex-start",
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          justifyContent: "center",
                         }}
                       >
-                        <Icon prefix="fe" name="users" className="m-2" />
-                        <Text
-                          style={{ minWidth: 120, margin: 5 }}
-                        >{`Turmas: ${questionary.classes.length}`}</Text>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          <Icon prefix="fe" name="users" className="m-2" />
+                          <Text
+                            style={{ minWidth: 120, margin: 5 }}
+                          >{`Questões: ${questionary.questions.length}`}</Text>{" "}
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          <Icon prefix="fe" name="users" className="m-2" />
+                          <Text
+                            style={{ minWidth: 120, margin: 5 }}
+                          >{`Turmas: ${questionary.classes.length}`}</Text>{" "}
+                        </div>
                       </div>
                     </Card.Body>
                     <Card.Footer>
@@ -87,7 +109,7 @@ function MyQuestionsPage(props) {
                             )
                           }
                         >
-                          Editar questionário
+                          Responder Questionário
                         </Button>
                       </div>
                     </Card.Footer>

@@ -10,7 +10,7 @@ import logoImg from "~/assets/img/tabler.png";
 
 function ClassBondPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
-  const { user, linkUser } = useStore();
+  const { user, linkUser, addClasse } = useStore();
 
   var stringsForm = {
     title: "Juntar-se a turma",
@@ -28,13 +28,15 @@ function ClassBondPage(props) {
         setTextButton({ text: "Carregando..." });
 
         try {
-          await api.put("/class/join", {
+          const { data } = await api.put("/class/join", {
             key,
             _id: user._id,
           });
-          linkUser();
 
-          props.history.push("/estudos");
+          linkUser();
+          addClasse(data.classe._id);
+
+          props.history.push("/topicos");
         } catch (err) {
           setTextButton({ text: "Entrar" });
           setErrors({ key: err.response.data.error });

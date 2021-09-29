@@ -5,46 +5,31 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-function PosicaoEntrePlanosNoEspaco() {
+function TopicosPage() {
   const rows = [
     {
-      name: "Posição entre ponto e reta no espaço",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
+      name: "Geometria de Posição",
+      link: "/topicos/geometria-posicao",
     },
     {
-      name: "Posição entre pontos no espaço",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
+      name: "Sólidos Geométricos: Poliédros",
+      link: "/topicos/poliedros",
     },
     {
-      name: "Posição entre retas no espaço",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
+      name: "Sólidos Geométricos: Corpos Redondos",
+      link: "/topicos/corpos-redondos",
     },
     {
-      name: "Posição entre planos no espaço",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco",
-    },
-    {
-      name: "Posição entre retas e planos",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco",
+      name: "Geometria Métrica Espacial",
+      link: "/topicos/geometria-metrica",
     },
   ];
 
-  // font-size: 0.8125rem;
-  //   color: #6e7687;
-  //   margin-left: 2rem;
-
   return (
     <Wrapper>
-      <Page.Content
-        title="Geometria de Posição"
-        subTitle={
-          <h2 style={{ fontSize: "1rem", color: '#6e7687', marginLeft: '0', marginBottom: 0 }}>
-            Posições relativas entre pontos, retas e planos no espaço
-          </h2>
-        }
-      >
+      <Page.Content title="Tópicos">
         <Grid.Row>
-          {/* <Grid.fontSize: "0.3"}>
+          {/* <Grid.Col lg={3}>
             <StoreCard
               title="Apple iPhone 7 Plus 256GB Red Special Edition"
               subtitle="Apple"
@@ -87,4 +72,4 @@ function PosicaoEntrePlanosNoEspaco() {
   );
 }
 
-export default PosicaoEntrePlanosNoEspaco;
+export default TopicosPage;

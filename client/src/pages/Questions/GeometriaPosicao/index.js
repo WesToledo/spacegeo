@@ -9,11 +9,11 @@ function GeometriaPosicaoPage() {
   const rows = [
     {
       name: "Introdução a Geometria Espacial",
-      link: "/estudos/geometria-posicao",
+      link: "/topicos/geometria-posicao",
     },
     {
       name: "Ponto, reta, plano e suas representações",
-      link: "/estudos/geometria-posicao/",
+      link: "/topicos/geometria-posicao/",
     },
     {
       name: "Posições relativas entre pontos, retas e planos no espaço",

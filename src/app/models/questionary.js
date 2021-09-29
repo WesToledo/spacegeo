@@ -22,6 +22,16 @@ const QuestionarySchema = new mongoose.Schema({
       ref: "Class",
     },
   ],
+  publish: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  grade: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
 });
 
 const Questionary = mongoose.model("Questionary", QuestionarySchema);

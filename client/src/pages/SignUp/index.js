@@ -52,7 +52,7 @@ function SignUpPage(props) {
           });
           addUser({ ...response.data.user, token: response.data.token });
           if (response.data.user.type == "teacher")
-            props.history.push("/estudos");
+            props.history.push("/topicos");
           else props.history.push("/vincular-turma");
         } catch (err) {
           console.log(err.response.data.error);

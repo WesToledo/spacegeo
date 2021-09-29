@@ -82,11 +82,11 @@ async function join(req, res) {
         classe: classe._id,
       }
     );
-    
+
     classe.students.push(user);
     await classe.save();
 
-    return res.send();
+    return res.send({ classe });
   } catch (err) {
     console.log(err);
     return res.status(400).send({ error: "Erro ao editar classe" });

@@ -14,6 +14,7 @@ async function login(req, res) {
 
     var user = await UserSchema.findOne({ email })
       .select("password")
+      .select("classe")
       .select("name")
       .select("email")
       .select("institution")

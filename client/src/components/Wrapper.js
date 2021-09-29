@@ -14,8 +14,8 @@ function SiteWrapper(props) {
 
   const navBarItems = [
     {
-      value: "Estudos",
-      to: "/estudos",
+      value: "Tópicos",
+      to: "/topicos",
       icon: "book-open",
       LinkComponent: withRouter(NavLink),
       useExact: false,

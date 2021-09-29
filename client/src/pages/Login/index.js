@@ -36,16 +36,16 @@ function LoginPage(props) {
             email,
             password,
           });
-          console.log(response.data);
+          console.log("USER->", response.data);
 
           addUser({ ...response.data.user, token: response.data.token });
 
           if (response.data.user.type === "teacher") {
-            props.history.push("/estudos");
+            props.history.push("/topicos");
           }
 
           if (response.data.user.linked) {
-            props.history.push("/estudos");
+            props.history.push("/topicos");
           } else {
             props.history.push("/vincular-turma");
           }

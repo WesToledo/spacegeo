@@ -9,15 +9,15 @@ function PosicoesRelativasPage() {
   const rows = [
     {
       name: "Planos Coincidentes",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/posicoes-relativas/planos-coincidentes",
+      link: "/topicos/geometria-posicao/aula-3/posicao-planos-no-espaco/posicoes-relativas/planos-coincidentes",
     },
     {
       name: "Planos Concorrentes",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/posicoes-relativas/planos-concorrentes",
+      link: "/topicos/geometria-posicao/aula-3/posicao-planos-no-espaco/posicoes-relativas/planos-concorrentes",
     },
     {
       name: "Planos Paralelos",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/posicoes-relativas/planos-paralelos",
+      link: "/topicos/geometria-posicao/aula-3/posicao-planos-no-espaco/posicoes-relativas/planos-paralelos",
     },
   ];
 

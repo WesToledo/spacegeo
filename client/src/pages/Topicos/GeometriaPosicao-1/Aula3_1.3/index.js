@@ -5,31 +5,46 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-function EstudosPage() {
+function PosicaoEntrePlanosNoEspaco() {
   const rows = [
     {
-      name: "Geometria de Posição",
-      link: "/estudos/geometria-posicao",
+      name: "Posição entre ponto e reta no espaço",
+      link: "/topicos/geometria-posicao/aula-3",
     },
     {
-      name: "Sólidos Geométricos: Poliédros",
-      link: "/estudos/poliedros",
+      name: "Posição entre pontos no espaço",
+      link: "/topicos/geometria-posicao/aula-3",
     },
     {
-      name: "Sólidos Geométricos: Corpos Redondos",
-      link: "/estudos/corpos-redondos",
+      name: "Posição entre retas no espaço",
+      link: "/topicos/geometria-posicao/aula-3",
     },
     {
-      name: "Geometria Métrica Espacial",
-      link: "/estudos/geometria-metrica",
+      name: "Posição entre planos no espaço",
+      link: "/topicos/geometria-posicao/aula-3/posicao-planos-no-espaco",
+    },
+    {
+      name: "Posição entre retas e planos",
+      link: "/topicos/geometria-posicao/aula-3",
     },
   ];
 
+  // font-size: 0.8125rem;
+  //   color: #6e7687;
+  //   margin-left: 2rem;
+
   return (
     <Wrapper>
-      <Page.Content title="Estudos">
+      <Page.Content
+        title="Geometria de Posição"
+        subTitle={
+          <h2 style={{ fontSize: "1rem", color: '#6e7687', marginLeft: '0', marginBottom: 0 }}>
+            Posições relativas entre pontos, retas e planos no espaço
+          </h2>
+        }
+      >
         <Grid.Row>
-          {/* <Grid.Col lg={3}>
+          {/* <Grid.fontSize: "0.3"}>
             <StoreCard
               title="Apple iPhone 7 Plus 256GB Red Special Edition"
               subtitle="Apple"
@@ -72,4 +87,4 @@ function EstudosPage() {
   );
 }
 
-export default EstudosPage;
+export default PosicaoEntrePlanosNoEspaco;

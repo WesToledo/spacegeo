@@ -5,37 +5,30 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-function PosicaoEntrePlanosNoEspacoPage() {
+function GeometriaPosicaoPage() {
   const rows = [
     {
-      name: "Plano",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/plano",
+      name: "Aula 1 (Geometria do Espaço)",
+      link: "/topicos/geometria-posicao/aula-1",
     },
     {
-      name: "Posições Relativas",
-      link: "/estudos/geometria-posicao/posicoes-relativas-entre-pontos-retas-planos-no-espaco/posicao-planos-no-espaco/posicoes-relativas",
+      name: "Aula 2 (Paralelismo e Perpendicularidade)",
+      link: "/topicos/geometria-posicao/aula-2",
+    },
+    {
+      name: "Aula 3 (Projeções Ortogonais)",
+      link: "/topicos/geometria-posicao/aula-3",
+    },
+    {
+      name: "Aula 4 (Distância no Espaço)",
+      link: "/topicos/geometria-posicao/aula-4",
     },
   ];
-
   return (
     <Wrapper>
-      <Page.Content
-        title="Geometria de Posição"
-        subTitle={
-          <h2
-            style={{
-              fontSize: "1rem",
-              color: "#6e7687",
-              marginLeft: "0",
-              marginBottom: 0,
-            }}
-          >
-            Posição entre planos no espaço
-          </h2>
-        }
-      >
+      <Page.Content title="Geometria de Posição">
         <Grid.Row>
-          {/* <Grid.fontSize: "0.3"}>
+          {/* <Grid.Col lg={3}>
             <StoreCard
               title="Apple iPhone 7 Plus 256GB Red Special Edition"
               subtitle="Apple"
@@ -78,4 +71,4 @@ function PosicaoEntrePlanosNoEspacoPage() {
   );
 }
 
-export default PosicaoEntrePlanosNoEspacoPage;
+export default GeometriaPosicaoPage;

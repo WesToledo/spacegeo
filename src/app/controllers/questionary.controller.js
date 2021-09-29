@@ -163,16 +163,17 @@ async function removeQuestion(req, res) {
     return res.status(400).send({ error: "Erro ao deletar turma", err });
   }
 }
+
 //STUDENTS
 
 async function getQuestionarys(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
-      "student._id": req.params.id,
-    }).populate("classes");
+      classes: req.params.idClasse,
+    });
     return res.send({ questionarys });
   } catch (err) {
-    return res.status(400).send({ error: "Erro ao buscar turmas" });
+    return res.status(400).send({ error: "Erro ao buscar questionários" });
   }
 }
 

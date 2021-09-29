@@ -103,16 +103,9 @@ function QuestionsPage(props) {
             </Card.Options>
           </Card.Header>
           <Card.Body>
-            <Grid.Row cards>
+            <Grid.Row cards deck>
               {questionary?.questions?.map((question, indexQuestion) => (
-                <Grid.Col
-                  xl={6}
-                  lg={6}
-                  md={6}
-                  sm={6}
-                  xs={12}
-                  key={indexQuestion}
-                >
+                <Grid.Col lg={6} md={12} sm={12} xs={12} key={indexQuestion}>
                   <Card>
                     <Card.Header>
                       <Card.Title>{`${indexQuestion + 1}) ${
@@ -186,7 +179,7 @@ function QuestionsPage(props) {
                           className="mx-1"
                           icon="trash"
                           size="sm"
-                          color="primary"
+                          color="link"
                           onClick={() => {
                             handleOnDeleteQuestion(question._id);
                           }}
