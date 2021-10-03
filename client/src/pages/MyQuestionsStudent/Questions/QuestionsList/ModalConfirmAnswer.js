@@ -16,6 +16,7 @@ export default function ModalConfirmAnswer({
   questions,
   idQuestionary,
   setAlreadyAnswered,
+  grade,
 }) {
   const handleClose = () => {
     setOpen(false);
@@ -23,6 +24,18 @@ export default function ModalConfirmAnswer({
   const { _id, classe } = useStore((state) => state.user);
 
   async function onSubmit() {
+    const gradePerQuestion = grade / questions.length;
+    var myGrade = 0;
+
+    questions.forEach((question) => {
+      const alternative = question.alternatives.filter(
+        (alternative) => alternative.selected
+      )[0];
+      if (alternative.index == question.rightOne) {
+        myGrade += gradePerQuestion;
+      }
+    });
+
     try {
       await api.post("/answer/answer", {
         questionary: idQuestionary,
@@ -40,7 +53,7 @@ export default function ModalConfirmAnswer({
         }),
         timeBegin: new Date(),
         timeEnd: new Date(),
-        grade: 0,
+        grade: myGrade,
       });
       setAlreadyAnswered(true);
       handleClose();

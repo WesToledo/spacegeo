@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <title>Image based tracking AR.js demo</title>
     <!-- import aframe and then ar.js with image tracking / location based features -->
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
     <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
 
     <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
@@ -95,19 +96,14 @@
     <!-- a-frame scene -->
     <a-scene
       id="scene"
+      embedded
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
     >
       <a-assets>
-        <a-asset-item
-          id="obj"
-          src="/models/ob2.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="mtl"
-          src="/models/ob2.mtl"
-        ></a-asset-item>
+        <a-asset-item id="obj"></a-asset-item>
+        <a-asset-item id="mtl"></a-asset-item>
       </a-assets>
 
       <a-marker preset="hiro">
@@ -120,10 +116,9 @@
         <a-obj-model
           id="model"
           position="0 0 0"
-          scale="0.05 0.05 0.05"
+          scale="1 1 1"
           rotation="0 0 0"
           src="#obj"
-          mtl="#mtl"
         ></a-obj-model>
       </a-marker>
       <!-- static camera that moves according to the device movemenents -->
@@ -147,9 +142,7 @@
       obj.setAttribute("src", "/models/" + params.obj + ".obj");
       mtl.setAttribute("src", "/models/" + params.obj + ".mtl");
 
-    console
-
-
+      console;
     </script>
   </body>
 </html>

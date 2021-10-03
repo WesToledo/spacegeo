@@ -207,7 +207,7 @@ async function getClasseQuestionarys(req, res) {
 
     const questionarysArray = await Promise.all(
       questionarys.map(async (questionary) => {
-        const answer = await AnswerSchema.find({
+        const answer = await AnswerSchema.findOne({
           questionary: questionary._id,
           student: req.params.idStudent,
           classe: req.params.idClasse,
@@ -216,6 +216,7 @@ async function getClasseQuestionarys(req, res) {
           return {
             ...questionary,
             alreadyAnswered: true,
+            myGrade: answer.grade,
           };
         } else {
           return {

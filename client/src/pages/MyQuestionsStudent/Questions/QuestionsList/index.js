@@ -236,6 +236,7 @@ function QuestionCard({ questionary }) {
         questions={questions}
         idQuestionary={questionary._id}
         setAlreadyAnswered={setAlreadyAnswered}
+        grade={questionary.grade}
       />
     </Page.Content>
   );
