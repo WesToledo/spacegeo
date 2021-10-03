@@ -3,94 +3,45 @@ import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 
 import { Page, Grid, Button, Card, GalleryCard } from "tabler-react";
 
+import ModalConfirmAnswer from "./ModalConfirmAnswer";
+
 import api from "~/services/api";
 import Wrapper from "~/components/Wrapper";
 import useStore from "~/store";
 
-function QuestionCard(props) {
-  const [questionary, setQuestionary] = useState(null);
-  const [questions, setQuestions] = useState([
-    {
-      num: 1,
-      question: "Dois planos (α e β) são paralelos se α e β:",
-      confirmed: false,
-      alternatives: [
-        {
-          enum: "Não tem ponto em comum",
-          correct: true,
-          selected: false,
-        },
-        {
-          enum: "Apresentam um ponto em comum",
-          correct: false,
-          selected: false,
-        },
-        {
-          enum: "Apresentam infinitos pontos em comum",
-          correct: false,
-          selected: false,
-        },
-        {
-          enum: "Apresentam 2 pontos em comum",
-          correct: false,
-          selected: false,
-        },
-      ],
-      hasImage: false,
-      imgURL: "",
-    },
-    {
-      num: 2,
-      question: "Observando o cubo, quais são os pares de planos paralelos?",
-      confirmed: false,
-      alternatives: [
-        {
-          enum: "ABC e ADG, ABE e CDG, GHE e ABE",
-          correct: false,
-          selected: false,
-        },
-        {
-          enum: "ABC e ADG, GHE e ABE, ABE e CDG",
-          correct: false,
-          selected: false,
-        },
-        {
-          enum: "ABC e EFG, ABE e CDG, ADG e BCF",
-          correct: true,
-          selected: false,
-        },
-        {
-          enum: "Não existem pares de planos paralelos",
-          correct: false,
-          selected: false,
-        },
-      ],
-      hasImage: true,
-      imgURL: "/assets/img/questions/cubo.jpg",
-    },
-  ]);
+function QuestionCard({ questionary }) {
+  const [modalOpen, setModalOpen] = useState(false);
 
-  async function getQuestionary() {
-    try {
-      const response = await api.get("/questionary/" + props.match.params.id);
-      console.log(response.data.questionary);
-      setQuestionary(response.data.questionary);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const [questions, setQuestions] = useState(
+    questionary.questions.map((question, index) => {
+      return {
+        _id: question._id,
+        num: index + 1,
+        title: question.title,
+        confirmed: false,
+        rightOne: question.rightOne,
 
-  useEffect(() => {
-    getQuestionary();
-  }, []);
+        hasObject: question.hasObject,
+        objName: question.hasObject && question.objName,
+        path: question.hasObject && question.path,
 
+        alternatives: question.alternatives.map(({ _id, text, index }) => {
+          return {
+            _id,
+            enum: text,
+            index,
+            correct: question.rightOne == index,
+            selected: false,
+          };
+        }),
+      };
+    })
+  );
+
+  const [alreadyAnswered, setAlreadyAnswered] = useState(
+    questionary.alreadyAnswered
+  );
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
-  const [alternatives, setAlternatives] = useState([]);
-
-  useEffect(() => {
-    setAlternatives(questions[currentQuestion].alternatives);
-  }, [currentQuestion]);
 
   const handleNextQuestion = () => {
     setCurrentQuestion(currentQuestion + 1);
@@ -100,20 +51,33 @@ function QuestionCard(props) {
     setCurrentQuestion(currentQuestion - 1);
   };
 
-  const handleAnswer = () => {
-    setQuestions(
-      questions.map((question, index) => {
-        if (index === currentQuestion) {
+  const handleSubmitQuestionary = () => {
+    setModalOpen(true);
+  };
+
+  useEffect(() => {
+    if (alreadyAnswered) {
+      setCurrentQuestion(0);
+      setQuestions(
+        questions.map((question, index) => {
           return {
             ...question,
+            alternatives: questionary.alreadyAnswered
+              ? question.alternatives.map((alternative) => {
+                  return {
+                    ...alternative,
+                    selected: questionary.answers.find(
+                      (answer) => answer.alternative == alternative._id
+                    ),
+                  };
+                })
+              : question.alternatives,
             confirmed: true,
           };
-        } else {
-          return question;
-        }
-      })
-    );
-  };
+        })
+      );
+    }
+  }, [alreadyAnswered]);
 
   const handleSelected = (e) => {
     const selectedAlternative = e.target.value;
@@ -147,6 +111,10 @@ function QuestionCard(props) {
       return "danger";
     }
 
+    if (questions[currentQuestion].confirmed && correct) {
+      return "success";
+    }
+
     return selected ? "primary" : "secondary";
   };
   useEffect(() => {
@@ -154,26 +122,28 @@ function QuestionCard(props) {
   }, [questions]);
 
   return (
-    <Page.Content title="Questionário">
+    <Page.Content title={questionary.title}>
       <Grid.Row className="justify-content-center">
         <Grid.Col lg={6} md={6} xl={6}>
           <Card
             title={
               questions[currentQuestion].num +
               ". " +
-              questions[currentQuestion].question
+              questions[currentQuestion].title
             }
             options={
               <>
-                <Button
-                  icon="box"
-                  color="primary"
-                  RootComponent="a"
-                  href="/ar.html"
-                  className="text-white"
-                >
-                  Ver em RA
-                </Button>
+                {questions[currentQuestion].hasObject && (
+                  <Button
+                    icon="box"
+                    color="primary"
+                    RootComponent="a"
+                    href={`/ra.html?obj=${questions[currentQuestion].objName}`}
+                    className="text-white"
+                  >
+                    Ver em RA
+                  </Button>
+                )}
               </>
             }
             body={
@@ -191,7 +161,8 @@ function QuestionCard(props) {
                             )}
                             value={index}
                             onClick={handleSelected}
-                            disabled={questions[currentQuestion].confirmed}
+                            disabled={alreadyAnswered}
+                            // disabled={questions[currentQuestion].confirmed}
                           >
                             {alternative.enum}
                           </Button>
@@ -230,22 +201,28 @@ function QuestionCard(props) {
                 </Grid.Col>
 
                 <Grid.Col sm={4} className="text-center">
-                  <Button
-                    color="primary"
-                    onClick={handleAnswer}
-                    disabled={questions[currentQuestion].confirmed}
-                  >
-                    Confirmar alternativa
-                  </Button>
-                </Grid.Col>
-
-                <Grid.Col sm={4} className="text-center">
                   {currentQuestion < questions.length - 1 ? (
                     <Button color="secondary" onClick={handleNextQuestion}>
                       Próxima
                     </Button>
                   ) : (
-                    <></>
+                    questions.filter(
+                      (question) =>
+                        question.alternatives.filter(
+                          (alternative) => alternative.selected == true
+                        ).length > 0
+                    ).length == questions.length && (
+                      <Grid.Col sm={4} className="text-center">
+                        {!alreadyAnswered && (
+                          <Button
+                            color="primary"
+                            onClick={handleSubmitQuestionary}
+                          >
+                            Terminar Questionário
+                          </Button>
+                        )}
+                      </Grid.Col>
+                    )
                   )}
                 </Grid.Col>
               </Grid.Row>
@@ -253,6 +230,13 @@ function QuestionCard(props) {
           />
         </Grid.Col>
       </Grid.Row>
+      <ModalConfirmAnswer
+        open={modalOpen}
+        setOpen={setModalOpen}
+        questions={questions}
+        idQuestionary={questionary._id}
+        setAlreadyAnswered={setAlreadyAnswered}
+      />
     </Page.Content>
   );
 }

@@ -6,6 +6,7 @@ const user = require("./src/app/controllers/user.controller");
 const classe = require("./src/app/controllers/class.controller");
 const auth = require("./src/app/controllers/authorization.controller");
 const questionary = require("./src/app/controllers/questionary.controller");
+const answer = require("./src/app/controllers/answer.controller");
 
 //Auth
 const rootRouter = express.Router();
@@ -32,25 +33,31 @@ classRouter.delete("/remove/:id", classe.remove);
 const questionaryRouter = express.Router();
 questionaryRouter.post("/create", questionary.create);
 questionaryRouter.get("/list/:idTeacher", questionary.list);
-questionaryRouter.get("/:id", questionary.index);
+questionaryRouter.get("/:idQuestionary/:idStudent", questionary.index);
 questionaryRouter.get("/classes/:id", questionary.getClasses);
 questionaryRouter.put("/update/:id", questionary.update);
 questionaryRouter.put("/join", questionary.join);
+questionaryRouter.put("/publish/:id", questionary.publish);
 questionaryRouter.delete("/remove/:id", questionary.remove);
 
 // CLASSES
 questionaryRouter.post("/add-classes", questionary.addClasseToQuestionary);
 
 //STUDENT
-questionaryRouter.get("/student/list/:idClasse", questionary.getQuestionarys);
+questionaryRouter.get("/student/list/:idClasse/:idStudent", questionary.getQuestionarys);
 
 questionaryRouter.post("/question/add", questionary.addQuestion);
 questionaryRouter.put("/question/update", questionary.updateQuestion);
 questionaryRouter.delete("/question/remove/:id", questionary.removeQuestion);
+
+// Questionary
+const answerRouter = express.Router();
+answerRouter.post("/answer", answer.create);
 
 module.exports = {
   rootRouter,
   userRouter,
   classRouter,
   questionaryRouter,
+  answerRouter
 };

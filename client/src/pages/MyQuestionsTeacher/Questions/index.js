@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Page, Grid, Form, Icon, Button, Card } from "tabler-react";
+import { Page, Grid, Form, Icon, Button, Card, FormToggle } from "tabler-react";
 
 import api from "~/services/api";
 import Wrapper from "~/components/Wrapper";
@@ -99,7 +99,9 @@ function QuestionsPage(props) {
                 >
                   Criar Questão
                 </Button>
-              </Button.List>
+              </Button.List>  
+
+              <Form.Switch className={"m-2"} label="Publicar Questionário" />
             </Card.Options>
           </Card.Header>
           <Card.Body>

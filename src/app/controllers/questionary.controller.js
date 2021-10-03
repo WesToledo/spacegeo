@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 
 const QuestionarySchema = require("../models/questionary");
 const QuestionSchema = require("../models/question");
+const AnswerSchema = require("../models/answer");
 
 async function create(req, res) {
   try {
@@ -25,10 +26,26 @@ async function create(req, res) {
 async function index(req, res) {
   try {
     const questionary = await QuestionarySchema.findById(
-      req.params.id
-    ).populate("questions");
+      req.params.idQuestionary
+    )
+      .populate("questions")
+      .lean();
+
+    const answer = await AnswerSchema.findOne({
+      questionary: questionary._id,
+      student: req.params.idStudent,
+    });
+
+    if (answer) {
+      questionary.alreadyAnswered = true;
+      questionary.answers = answer.answers;
+    } else {
+      questionary.alreadyAnswered = false;
+    }
+
     return res.send({ questionary });
   } catch (err) {
+    console.log(err);
     return res.status(400).send({ error: "Erro ao buscar turma" });
   }
 }
@@ -94,6 +111,20 @@ async function join(req, res) {
   } catch (err) {
     console.log(err);
     return res.status(400).send({ error: "Erro ao editar questionary" });
+  }
+}
+
+async function publish(req, res) {
+  try {
+    await QuestionarySchema.updateOne(
+      { _id: req.params.id },
+      {
+        publish: true,
+      }
+    );
+    return res.send();
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao publicar questionário" });
   }
 }
 
@@ -166,12 +197,36 @@ async function removeQuestion(req, res) {
 
 //STUDENTS
 
-async function getQuestionarys(req, res) {
+async function getClasseQuestionarys(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
       classes: req.params.idClasse,
-    });
-    return res.send({ questionarys });
+
+      // publish: true,
+    }).lean();
+
+    const questionarysArray = await Promise.all(
+      questionarys.map(async (questionary) => {
+        const answer = await AnswerSchema.find({
+          questionary: questionary._id,
+          student: req.params.idStudent,
+          classe: req.params.idClasse,
+        });
+        if (answer) {
+          return {
+            ...questionary,
+            alreadyAnswered: true,
+          };
+        } else {
+          return {
+            ...questionary,
+            alreadyAnswered: false,
+          };
+        }
+      })
+    );
+
+    return res.send({ questionarys: questionarysArray });
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar questionários" });
   }
@@ -202,10 +257,11 @@ module.exports = {
   update,
   remove,
   join,
+  publish,
   addQuestion,
   updateQuestion,
   removeQuestion,
   getClasses,
-  getQuestionarys,
+  getQuestionarys: getClasseQuestionarys,
   addClasseToQuestionary,
 };

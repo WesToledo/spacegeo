@@ -5,19 +5,30 @@ const AnswerSchema = new mongoose.Schema({
   questionary: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Questionary",
+    required: true,
   },
   student: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+    required: true,
   },
   classe: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Class",
+    required: true,
   },
   answers: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      question: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Question",
+        required: true,
+      },
+      alternative: {
+        type: String,
+        required: true,
+      },
+      index: Number,
     },
   ],
   timeBegin: {

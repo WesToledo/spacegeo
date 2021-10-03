@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Image based tracking AR.js demo</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+
+    <script type="text/javascript">
+      AFRAME.registerComponent("enable-touch", {
+        init: function () {
+          var element = document.querySelector("body");
+          this.marker = document.querySelector("a-marker");
+          var model = document.querySelector("a-obj-model");
+          var hammertime = new Hammer(element);
+          var pinch = new Hammer.Pinch(); // Pinch is not by default in the recognisers
+          hammertime.add(pinch); // add it to the Manager instance
+
+          hammertime.on("pan", (ev) => {
+            let rotation = model.getAttribute("rotation");
+            console.log(rotation);
+            switch (ev.direction) {
+              case 2: // left
+                rotation.y = rotation.y + 4;
+                break;
+              case 4: //right
+                rotation.y = rotation.y - 4;
+                break;
+              case 8: // up
+                rotation.x = rotation.x - 4;
+                break;
+              case 16: // down
+                rotation.x = rotation.x + 4;
+                break;
+              default:
+                break;
+            }
+
+            model.setAttribute("rotation", rotation);
+          });
+
+          hammertime.on("pinch", function (ev) {
+            if (!model) return;
+
+            const curr = model.getAttribute("scale");
+            const scale = (ev.scale - 1) * 0.01;
+
+            model.setAttribute("scale", {
+              x: curr.x + scale,
+              y: curr.y + scale,
+              z: curr.z + scale,
+            });
+          });
+        },
+      });
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+      eruda.init();
+    </script>
+
+    <!-- style for the loader -->
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
+    <!-- <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div> -->
+
+    <!-- a-frame scene -->
+    <a-scene
+      id="scene"
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    >
+      <a-assets>
+        <a-asset-item
+          id="obj"
+          src="/models/ob2.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mtl"
+          src="/models/ob2.mtl"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-marker preset="hiro">
+        <!-- <a-entity
+          position="0 -1 0"
+          scale="0.05 0.05 0.05"
+          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+        ></a-entity> -->
+
+        <a-obj-model
+          id="model"
+          position="0 0 0"
+          scale="0.05 0.05 0.05"
+          rotation="0 0 0"
+          src="#obj"
+          mtl="#mtl"
+        ></a-obj-model>
+      </a-marker>
+      <!-- static camera that moves according to the device movemenents -->
+      <a-entity enable-touch camera></a-entity>
+    </a-scene>
+
+    <script>
+      var params = {};
+      location.search
+        .slice(1)
+        .split("&")
+        .forEach(function (pair) {
+          pair = pair.split("=");
+          params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        });
+      console.log("params", params);
+
+      var obj = document.getElementById("obj");
+      var mtl = document.getElementById("mtl");
+
+      obj.setAttribute("src", "/models/" + params.obj + ".obj");
+      mtl.setAttribute("src", "/models/" + params.obj + ".mtl");
+
+    console
+
+
+    </script>
+  </body>
+</html>

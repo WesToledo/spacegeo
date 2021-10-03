@@ -11,7 +11,7 @@ import useStore from "~/store";
 function MyQuestionsPage(props) {
   const [open, setOpen] = useState(false);
   const [questionarys, setQuestionarys] = useState([]);
-  const { classe } = useStore((state) => state.user);
+  const { _id, classe } = useStore((state) => state.user);
 
   function handleOnCreateNewClassClick() {
     setOpen(true);
@@ -19,7 +19,9 @@ function MyQuestionsPage(props) {
 
   async function getQuestionarys() {
     try {
-      const response = await api.get("/questionary/student/list/" + classe);
+      const response = await api.get(
+        "/questionary/student/list/" + classe + "/" + _id
+      );
       console.log(response.data.questionarys);
       setQuestionarys(response.data.questionarys);
     } catch (err) {
@@ -75,7 +77,7 @@ function MyQuestionsPage(props) {
                           <Icon prefix="fe" name="users" className="m-2" />
                           <Text
                             style={{ minWidth: 120, margin: 5 }}
-                          >{`Questões: ${questionary.questions.length}`}</Text>{" "}
+                          >{`Questões: ${questionary.questions.length}`}</Text>
                         </div>
                         <div
                           style={{
@@ -88,7 +90,7 @@ function MyQuestionsPage(props) {
                           <Icon prefix="fe" name="users" className="m-2" />
                           <Text
                             style={{ minWidth: 120, margin: 5 }}
-                          >{`Turmas: ${questionary.classes.length}`}</Text>{" "}
+                          >{`Valor: ${questionary.grade}`}</Text>
                         </div>
                       </div>
                     </Card.Body>
@@ -109,7 +111,9 @@ function MyQuestionsPage(props) {
                             )
                           }
                         >
-                          Responder Questionário
+                          {questionary.alreadyAnswered
+                            ? "Ver respostas"
+                            : "Responder Questionário"}
                         </Button>
                       </div>
                     </Card.Footer>

@@ -16,6 +16,7 @@ app.use("/api", routes.rootRouter);
 app.use("/api/user", routes.userRouter);
 app.use("/api/class", routes.classRouter);
 app.use("/api/questionary", routes.questionaryRouter);
+app.use("/api/answer", routes.answerRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
