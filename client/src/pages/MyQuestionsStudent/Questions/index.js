@@ -20,14 +20,14 @@ function SubQuestionPage(props) {
       console.log(err);
     }
   }
-
+  
   useEffect(() => {
     getQuestionary();
   }, []);
 
   return (
     <Wrapper>
-      <QuestionCard />
+      <QuestionCard questions={questions} />
     </Wrapper>
   );
 }
