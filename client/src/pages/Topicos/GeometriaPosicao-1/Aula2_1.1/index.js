@@ -70,7 +70,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob2.1_reta_secante_ao_plano"
                       className="text-white"
                     >
                       Ver em RA
@@ -106,7 +106,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob2.1_reta_contida_no_plano"
                       className="text-white"
                     >
                       Ver em RA
@@ -141,7 +141,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob2.1_reta_paralela_ao_plano"
                       className="text-white"
                     >
                       Ver em RA
@@ -177,7 +177,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob2.2_secantes"
                       className="text-white"
                     >
                       Ver em RA
@@ -221,7 +221,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob2.2_paralelos_distintos"
                       className="text-white"
                     >
                       Ver em RA
@@ -254,7 +254,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob2.2_paralelos_coincidentes"
                       className="text-white"
                     >
                       Ver em RA
@@ -292,7 +292,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob2.3_reta_e_plano_perpendiculares"
                       className="text-white"
                     >
                       Ver em RA
@@ -331,7 +331,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=obj2.4_planos_perpendiculares"
                       className="text-white"
                     >
                       Ver em RA

@@ -68,7 +68,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.1_reta"
                       className="text-white"
                     >
                       Ver em RA
@@ -89,7 +89,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.1_plano"
                       className="text-white"
                     >
                       Ver em RA
@@ -139,7 +139,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.2_paralelas_distintas"
                       className="text-white"
                     >
                       Ver em RA
@@ -167,7 +167,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.2_paralelas_coincidentes"
                       className="text-white"
                     >
                       Ver em RA
@@ -209,7 +209,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.2_concorrentes"
                       className="text-white"
                     >
                       Ver em RA
@@ -262,7 +262,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.2_reversas"
                       className="text-white"
                     >
                       Ver em RA
@@ -306,7 +306,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.3_retas_perpendiculares"
                       className="text-white"
                     >
                       Ver em RA
@@ -342,7 +342,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     <p style={{ margin: 0 }}>(r U s = {"P"})</p>
 
                     <img
-                      src={perpendiculares}
+                      src={ortogonais}
                       width="50%"
                       style={{ margin: "20px" }}
                     />
@@ -350,7 +350,51 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/scenes/2.2.html"
+                      href="/ra.html?obj=ob1.3_retas_ortogonais"
+                      className="text-white"
+                    >
+                      Ver em RA
+                    </Button>
+                  </li>
+
+                  <h4>
+                    <strong>1.5 RETAS OBLÍQUAS</strong>
+                  </h4>
+
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0 }}>
+                      Duas retas são ochamdas oblíquas quando são concorrentes e
+                      não são perpendiculares
+                    </p>
+                  </li>
+
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
+
+                    <img
+                      src={obliquas}
+                      width="50%"
+                      style={{ margin: "20px" }}
+                    />
+                    <Button
+                      icon="box"
+                      color="primary"
+                      RootComponent="a"
+                      href="/ra.html?obj=ob1.3_retas_obliquas"
                       className="text-white"
                     >
                       Ver em RA
