@@ -37,8 +37,9 @@ import Studies_GeometriaPosicaoList from "~/pages/Topicos/GeometriaPosicao-1";
 
 //level 2
 import Studies_GeometriaPosicao_PosicoesRelativasEntrePontosRetasPlanosNoEspacoList from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3";
-import Studies_GeometriaPosicao_A_GeometriaPage from "~/pages/Topicos/GeometriaPosicao-1/Aula1_1.1";
-import Studies_PontoRetaPlanoESuasRepresentacoes from "~/pages/Topicos/GeometriaPosicao-1/Aula2_1.2";
+import Studies_GeometriaPosicao_Aula_1 from "~/pages/Topicos/GeometriaPosicao-1/Aula1_1.1";
+import Studies_GeometriaPosicao_Aula_2 from "~/pages/Topicos/GeometriaPosicao-1/Aula2_1.1";
+
 //level 3
 import Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoList from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3/PosicaoEntrePlanosNoEspaco-1.3.4";
 
@@ -141,19 +142,21 @@ function App() {
           path="/topicos/geometria-posicao"
           component={Studies_GeometriaPosicaoList}
         />
-        {/* A GEOMETRIA */}
+        {/* A GEOMETRIA DO ESPAÇO*/}
+
         {/* 1.1 */}
         <PrivateRoute
           exact
           path="/topicos/geometria-posicao/aula-1"
-          component={Studies_GeometriaPosicao_A_GeometriaPage}
+          component={Studies_GeometriaPosicao_Aula_1}
         />
-        {/*  PONTOS RETAS PLANOS  E SUAS REPRESENTACOES */}
+
+        {/* PARELELISMO E PERPENDICULARISMO */}
         {/* 1.2 */}
         <PrivateRoute
           exact
           path="/topicos/geometria-posicao/aula-2"
-          component={Studies_PontoRetaPlanoESuasRepresentacoes}
+          component={Studies_GeometriaPosicao_Aula_2}
         />
 
         {/* POSIÇÕES RELATIVAS ENTRE PONTOS RETAS PLANOS NO ESPACO  */}

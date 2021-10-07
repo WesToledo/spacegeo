@@ -5,16 +5,14 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-const ponto = require("./assets/ponto.png");
-const reta = require("./assets/reta.png");
-const plano = require("./assets/plano.png");
-const distintas = require("./assets/distintas.png");
 const coincidentes = require("./assets/coincidentes.png");
-const concorrentes = require("./assets/concorrentes.png");
-const reversas = require("./assets/reversas.png");
-const perpendiculares = require("./assets/perpendiculares.png");
-const ortogonais = require("./assets/ortogonais.png");
-const obliquas = require("./assets/obliquas.png");
+const distintos = require("./assets/distintos.png");
+const planos_perpendiculares = require("./assets/planos_perpendiculares.png");
+const reta_contida_no_plano = require("./assets/reta_contida_no_plano.png");
+const reta_e_plano_perpendiculares = require("./assets/reta_e_plano_perpendiculares.png");
+const reta_paralela_ao_plano = require("./assets/reta_paralela_ao_plano.png");
+const secante_ao_plano = require("./assets/secante_ao_plano.png");
+const secantes = require("./assets/secantes.png");
 
 function PontoRetaPlanoESuasRepresentacoesPage() {
   return (
@@ -30,18 +28,18 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
               marginBottom: 0,
             }}
           >
-            Aula 1
+            Aula 2
           </h2>
         }
       >
         <Grid.Row className="justify-content-center">
           <Grid.Col lg={6} md={6} xl={6}>
             <Card
-              title={"Aula 1: Geometria do Espaço"}
+              title={"Aula 2: Paralelismo e Perpendicularidade"}
               body={
                 <>
                   <h4>
-                    <strong>1.1 NOÇÕES PRIMITIVAS</strong>
+                    <strong>2.1 POSIÇÕES RELATIVAS ENTRE E PLANO</strong>
                   </h4>
                   <li
                     style={{
@@ -51,8 +49,9 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>Ponto:</p>
-                    <img src={ponto} width="20%" style={{ margin: "20px" }} />
+                    <p style={{ margin: 0 }}>
+                      Reta <i>secante</i> ao plano
+                    </p>
                   </li>
                   <li
                     style={{
@@ -62,76 +61,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>Reta:</p>
-                    <img src={reta} width="40%" style={{ margin: "20px" }} />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/scenes/2.2.html"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
-                  </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>Plano:</p>
-                    <img src={plano} width="50%" style={{ margin: "20px" }} />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/scenes/2.2.html"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
-                  </li>
-
-                  <h4>
-                    <strong>
-                      1.2 POSIÇÕES RELATIVAS DE DUAS RETAS DO ESPAÇO
-                    </strong>
-                  </h4>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h5 style={{ margin: 0 }}>
-                      <strong>Paralelas</strong>
-                      <span style={{ fontWeight: "normal" }}>
-                        -> Coplanares
-                      </span>
-                    </h5>
-                  </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div>
-                      <p style={{ margin: 0 }}>Distintas:</p>
-                      <p style={{ margin: 0 }}>(r // s)</p>
-                    </div>
                     <img
-                      src={distintas}
+                      src={secante_ao_plano}
                       width="50%"
                       style={{ margin: "20px" }}
                     />
@@ -145,7 +76,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       Ver em RA
                     </Button>
                   </li>
-
+                  {/* 2.2 */}
                   <li
                     style={{
                       display: "flex",
@@ -154,10 +85,166 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <div>
-                      <p style={{ margin: 0 }}>Coincidentes:</p>
-                      <p style={{ margin: 0 }}>(r // s)</p>
-                    </div>
+                    <p style={{ margin: 0 }}>
+                      Reta <i>contida</i> no plano
+                    </p>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={reta_contida_no_plano}
+                      width="50%"
+                      style={{ margin: "20px" }}
+                    />
+                    <Button
+                      icon="box"
+                      color="primary"
+                      RootComponent="a"
+                      href="/scenes/2.2.html"
+                      className="text-white"
+                    >
+                      Ver em RA
+                    </Button>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0 }}>
+                      Reta <i>paralela</i> ao plano
+                    </p>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={reta_paralela_ao_plano}
+                      width="60%"
+                      style={{ margin: "20px" }}
+                    />
+                    <Button
+                      icon="box"
+                      color="primary"
+                      RootComponent="a"
+                      href="/scenes/2.2.html"
+                      className="text-white"
+                    >
+                      Ver em RA
+                    </Button>
+                  </li>
+                  <h4>
+                    <strong>2.2 POSIÇÕES RELATIVAS ENTRE DOIS PLANOS</strong>
+                  </h4>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0 }}>Secantes</p>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={secantes}
+                      width="50%"
+                      style={{ margin: "20px" }}
+                    />
+                    <Button
+                      icon="box"
+                      color="primary"
+                      RootComponent="a"
+                      href="/scenes/2.2.html"
+                      className="text-white"
+                    >
+                      Ver em RA
+                    </Button>
+                  </li>
+                  {/* 2.2 */}
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0 }}>Paralelos</p>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0 }}>a) Distintos (α ∩ β = ∅)</p>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={distintos}
+                      width="50%"
+                      style={{ margin: "20px" }}
+                    />
+                    <Button
+                      icon="box"
+                      color="primary"
+                      RootComponent="a"
+                      href="/scenes/2.2.html"
+                      className="text-white"
+                    >
+                      Ver em RA
+                    </Button>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p style={{ margin: 0 }}>b) Coincidentes (α = β)</p>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
                     <img
                       src={coincidentes}
                       width="50%"
@@ -173,77 +260,10 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       Ver em RA
                     </Button>
                   </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h5 style={{ margin: 0 }}>
-                      <strong>Concorrentes</strong>
-                      <span style={{ fontWeight: "normal" }}>
-                        -> Coplanares
-                      </span>
-                    </h5>
-                  </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
-
-                    <img
-                      src={concorrentes}
-                      width="50%"
-                      style={{ margin: "20px" }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/scenes/2.2.html"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
-                  </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h5 style={{ margin: 0 }}>
-                      <strong>Reversas</strong>
-                      <span style={{ fontWeight: "normal" }}>
-                        -> Não Coplanares
-                      </span>
-                    </h5>
-                  </li>
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>
-                      Duas retas são reversas se, e somente se, não existe plano
-                      que as contém
-                    </p>
-                  </li>
+                  {/* 2.3 */}
+                  <h4>
+                    <strong>2.3 RETA E PLANO PERPENDICULARES</strong>
+                  </h4>
 
                   <li
                     style={{
@@ -254,10 +274,20 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <img
-                      src={reversas}
-                      width="50%"
+                      src={reta_e_plano_perpendiculares}
+                      width="100%"
                       style={{ margin: "20px" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginBottom: "20px",
+                    }}
+                  >
                     <Button
                       icon="box"
                       color="primary"
@@ -270,7 +300,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   </li>
 
                   <h4>
-                    <strong>1.3 RETAS PERPENDICULARES</strong>
+                    <strong>2.4 PLANOS PERPENDICULARES</strong>
                   </h4>
 
                   <li
@@ -281,71 +311,22 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>
-                      Uma reta é perpendicular a outra, e somente se, são
-                      concorrentes e formam ângulo reto
-                    </p>
-                  </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
-
                     <img
-                      src={perpendiculares}
-                      width="50%"
+                      src={planos_perpendiculares}
+                      width="100%"
                       style={{ margin: "20px" }}
                     />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/scenes/2.2.html"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
                   </li>
-
-                  <h4>
-                    <strong>1.4 RETAS ORTOGONAIS</strong>
-                  </h4>
-
                   <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
+
+                      marginBottom: "20px",
                     }}
                   >
-                    <p style={{ margin: 0 }}>
-                      Uma reta é ortogonal a outra, se e somente se, são
-                      reversas e formam ângulo reto
-                    </p>
-                  </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
-
-                    <img
-                      src={perpendiculares}
-                      width="50%"
-                      style={{ margin: "20px" }}
-                    />
                     <Button
                       icon="box"
                       color="primary"
