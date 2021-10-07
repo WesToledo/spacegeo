@@ -23,7 +23,7 @@ async function create(req, res) {
   }
 }
 
-async function index(req, res) {
+async function indexStudent(req, res) {
   try {
     const questionary = await QuestionarySchema.findById(
       req.params.idQuestionary
@@ -46,18 +46,34 @@ async function index(req, res) {
     return res.send({ questionary });
   } catch (err) {
     console.log(err);
-    return res.status(400).send({ error: "Erro ao buscar turma" });
+    return res.status(400).send({ error: "Erro ao buscar questionário" });
+  }
+}
+
+async function indexTeacher(req, res) {
+  try {
+    const questionary = await QuestionarySchema.findById(
+      req.params.idQuestionary
+    )
+      .populate("questions")
+      .lean();
+
+    return res.send({ questionary });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send({ error: "Erro ao buscar questionário" });
   }
 }
 
 async function getClasses(req, res) {
+  var myId = JSON.parse(req.params.id);
   try {
-    const questionary = await QuestionarySchema.findById(
-      req.params.id
-    ).populate("classes");
+    const questionary = await QuestionarySchema.findOne({
+      _id: ObjectID(myId),
+    }).populate("classes");
     return res.send({ questionary });
   } catch (err) {
-    return res.status(400).send({ error: "Erro ao buscar turmas" });
+    return res.status(400).send({ error: "Erro ao buscar classes!!!" });
   }
 }
 
@@ -253,7 +269,8 @@ async function addClasseToQuestionary(req, res) {
 
 module.exports = {
   create,
-  index,
+  indexStudent,
+  indexTeacher,
   list,
   update,
   remove,

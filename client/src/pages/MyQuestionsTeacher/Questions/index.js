@@ -99,7 +99,7 @@ function QuestionsPage(props) {
                 >
                   Criar Questão
                 </Button>
-              </Button.List>  
+              </Button.List>
 
               <Form.Switch className={"m-2"} label="Publicar Questionário" />
             </Card.Options>

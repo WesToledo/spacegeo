@@ -33,7 +33,8 @@ classRouter.delete("/remove/:id", classe.remove);
 const questionaryRouter = express.Router();
 questionaryRouter.post("/create", questionary.create);
 questionaryRouter.get("/list/:idTeacher", questionary.list);
-questionaryRouter.get("/:idQuestionary/:idStudent", questionary.index);
+questionaryRouter.get("/:idQuestionary/:idStudent", questionary.indexStudent);
+questionaryRouter.get("/:idQuestionary", questionary.indexTeacher);
 questionaryRouter.get("/classes/:id", questionary.getClasses);
 questionaryRouter.put("/update/:id", questionary.update);
 questionaryRouter.put("/join", questionary.join);
@@ -44,7 +45,10 @@ questionaryRouter.delete("/remove/:id", questionary.remove);
 questionaryRouter.post("/add-classes", questionary.addClasseToQuestionary);
 
 //STUDENT
-questionaryRouter.get("/student/list/:idClasse/:idStudent", questionary.getQuestionarys);
+questionaryRouter.get(
+  "/student/list/:idClasse/:idStudent",
+  questionary.getQuestionarys
+);
 
 questionaryRouter.post("/question/add", questionary.addQuestion);
 questionaryRouter.put("/question/update", questionary.updateQuestion);
@@ -59,5 +63,5 @@ module.exports = {
   userRouter,
   classRouter,
   questionaryRouter,
-  answerRouter
+  answerRouter,
 };
