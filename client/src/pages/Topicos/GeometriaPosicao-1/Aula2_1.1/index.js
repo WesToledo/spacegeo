@@ -5,14 +5,14 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-const coincidentes = require("./assets/coincidentes.png");
+const coincidentes = require("./assets/2-2coincidentes.bmp");
 const distintos = require("./assets/distintos.png");
-const planos_perpendiculares = require("./assets/planos_perpendiculares.png");
-const reta_contida_no_plano = require("./assets/reta_contida_no_plano.png");
-const reta_e_plano_perpendiculares = require("./assets/reta_e_plano_perpendiculares.png");
-const reta_paralela_ao_plano = require("./assets/reta_paralela_ao_plano.png");
-const secante_ao_plano = require("./assets/secante_ao_plano.png");
-const secantes = require("./assets/secantes.png");
+const planos_perpendiculares = require("./assets/2-4.bmp");
+const reta_contida_no_plano = require("./assets/2-1reta-contida-no-plano.bmp");
+const reta_e_plano_perpendiculares = require("./assets/2-3.bmp");
+const reta_paralela_ao_plano = require("./assets/2-1reta-paralela-ao-plano.bmp");
+const secante_ao_plano = require("./assets/2-1reta-secante-ao-plano.bmp");
+const secantes = require("./assets/2-2secantes.bmp");
 
 function PontoRetaPlanoESuasRepresentacoesPage() {
   return (
@@ -63,8 +63,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={secante_ao_plano}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -99,8 +99,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={reta_contida_no_plano}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -134,8 +134,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={reta_paralela_ao_plano}
-                      width="60%"
-                      style={{ margin: "20px" }}
+                      width="50%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -170,8 +170,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={secantes}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -214,8 +214,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={distintos}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -247,8 +247,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={coincidentes}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -275,8 +275,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={reta_e_plano_perpendiculares}
-                      width="100%"
-                      style={{ margin: "20px" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                   </li>
                   <li
@@ -313,8 +313,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={planos_perpendiculares}
-                      width="100%"
-                      style={{ margin: "20px" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                   </li>
                   <li

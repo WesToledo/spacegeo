@@ -8,19 +8,19 @@ import Wrapper from "~/components/Wrapper";
 function GeometriaPosicaoPage() {
   const rows = [
     {
-      name: "Aula 1 (Geometria do Espaço)",
+      name: "Aula 1: Geometria do Espaço",
       link: "/topicos/geometria-posicao/aula-1",
     },
     {
-      name: "Aula 2 (Paralelismo e Perpendicularidade)",
+      name: "Aula 2: Paralelismo e Perpendicularidade",
       link: "/topicos/geometria-posicao/aula-2",
     },
     {
-      name: "Aula 3 (Projeções Ortogonais)",
+      name: "Aula 3: Projeções Ortogonais",
       link: "/topicos/geometria-posicao/aula-3",
     },
     {
-      name: "Aula 4 (Distância no Espaço)",
+      name: "Aula 4: Distância no Espaço",
       link: "/topicos/geometria-posicao/aula-4",
     },
   ];

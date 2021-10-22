@@ -5,16 +5,16 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-const ponto = require("./assets/ponto.png");
-const reta = require("./assets/reta.png");
-const plano = require("./assets/plano.png");
-const distintas = require("./assets/distintas.png");
-const coincidentes = require("./assets/coincidentes.png");
-const concorrentes = require("./assets/concorrentes.png");
-const reversas = require("./assets/reversas.png");
-const perpendiculares = require("./assets/perpendiculares.png");
-const ortogonais = require("./assets/ortogonais.png");
-const obliquas = require("./assets/obliquas.png");
+const ponto = require("./assets/1-1ponto.bmp");
+const reta = require("./assets/1-1reta.bmp");
+const plano = require("./assets/1-1plano.bmp");
+const distintas = require("./assets/1-2distintas.bmp");
+const coincidentes = require("./assets/1-2coincidentes.bmp");
+const concorrentes = require("./assets/1-2concorrentes.bmp");
+const reversas = require("./assets/1-2reversas.bmp");
+const perpendiculares = require("./assets/1-3perpendiculares.bmp");
+const ortogonais = require("./assets/1-4ortogonais.bmp");
+const obliquas = require("./assets/1-5.bmp");
 
 function PontoRetaPlanoESuasRepresentacoesPage() {
   return (
@@ -51,8 +51,21 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
+                    <audio controls>
+                      <source src="" type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
                     <p style={{ margin: 0 }}>Ponto:</p>
-                    <img src={ponto} width="20%" style={{ margin: "20px" }} />
+                    <img src={ponto} width="10%" style={{ margin: "1.8rem" }} />
                   </li>
                   <li
                     style={{
@@ -63,7 +76,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <p style={{ margin: 0 }}>Reta:</p>
-                    <img src={reta} width="40%" style={{ margin: "20px" }} />
+                    <img src={reta} width="40%" style={{ margin: "1.8rem" }} />
                     <Button
                       icon="box"
                       color="primary"
@@ -84,7 +97,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <p style={{ margin: 0 }}>Plano:</p>
-                    <img src={plano} width="50%" style={{ margin: "20px" }} />
+                    <img src={plano} width="40%" style={{ margin: "1.8rem" }} />
                     <Button
                       icon="box"
                       color="primary"
@@ -111,10 +124,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <h5 style={{ margin: 0 }}>
-                      <strong>Paralelas</strong>
-                      <span style={{ fontWeight: "normal" }}>
-                        -> Coplanares
-                      </span>
+                      <strong>Paralelas </strong>
+                      <span style={{ fontWeight: "normal" }}>⇒ Coplanares</span>
                     </h5>
                   </li>
 
@@ -127,13 +138,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <div>
-                      <p style={{ margin: 0 }}>Distintas:</p>
-                      <p style={{ margin: 0 }}>(r // s)</p>
+                      <p style={{ margin: 0 }}>a) Distintas:</p>
                     </div>
                     <img
                       src={distintas}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -155,13 +165,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <div>
-                      <p style={{ margin: 0 }}>Coincidentes:</p>
-                      <p style={{ margin: 0 }}>(r // s)</p>
+                      <p style={{ margin: 0 }}>b) Coincidentes:</p>
                     </div>
                     <img
                       src={coincidentes}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -183,10 +192,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <h5 style={{ margin: 0 }}>
-                      <strong>Concorrentes</strong>
-                      <span style={{ fontWeight: "normal" }}>
-                        -> Coplanares
-                      </span>
+                      <strong>Concorrentes </strong>
+                      <span style={{ fontWeight: "normal" }}>⇒ Coplanares</span>
                     </h5>
                   </li>
 
@@ -198,12 +205,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
+                    <p style={{ margin: 0 }}></p>
 
                     <img
                       src={concorrentes}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -225,9 +232,9 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <h5 style={{ margin: 0 }}>
-                      <strong>Reversas</strong>
+                      <strong>Reversas </strong>
                       <span style={{ fontWeight: "normal" }}>
-                        -> Não Coplanares
+                        ⇒ Não Coplanares
                       </span>
                     </h5>
                   </li>
@@ -255,8 +262,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <img
                       src={reversas}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -295,12 +302,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
+                    <p style={{ margin: 0 }}></p>
 
                     <img
                       src={perpendiculares}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -339,12 +346,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
+                    <p style={{ margin: 0 }}></p>
 
                     <img
                       src={ortogonais}
                       width="50%"
-                      style={{ margin: "20px" }}
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
@@ -383,12 +390,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>(r U s = {"P"})</p>
+                    <p style={{ margin: 0 }}></p>
 
                     <img
                       src={obliquas}
-                      width="50%"
-                      style={{ margin: "20px" }}
+                      width="40%"
+                      style={{ margin: "1.8rem" }}
                     />
                     <Button
                       icon="box"
