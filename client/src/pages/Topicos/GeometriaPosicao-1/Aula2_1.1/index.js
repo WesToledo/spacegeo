@@ -6,7 +6,7 @@ import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 import Wrapper from "~/components/Wrapper";
 
 const coincidentes = require("./assets/2-2coincidentes.bmp");
-const distintos = require("./assets/distintos.png");
+const paralelos = require("./assets/2-2paralelos.bmp");
 const planos_perpendiculares = require("./assets/2-4.bmp");
 const reta_contida_no_plano = require("./assets/2-1reta-contida-no-plano.bmp");
 const reta_e_plano_perpendiculares = require("./assets/2-3.bmp");
@@ -213,8 +213,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     }}
                   >
                     <img
-                      src={distintos}
-                      width="60%"
+                      src={paralelos}
+                      width="50%"
                       style={{ margin: "1.8rem" }}
                     />
                     <Button

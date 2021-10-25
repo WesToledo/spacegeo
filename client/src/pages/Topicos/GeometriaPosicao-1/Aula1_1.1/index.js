@@ -1,22 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Page, Grid, Table, Badge, Button, Card } from "tabler-react";
 
 import Wrapper from "~/components/Wrapper";
 
-const ponto = require("./assets/1-1ponto.bmp");
-const reta = require("./assets/1-1reta.bmp");
-const plano = require("./assets/1-1plano.bmp");
-const distintas = require("./assets/1-2distintas.bmp");
-const coincidentes = require("./assets/1-2coincidentes.bmp");
-const concorrentes = require("./assets/1-2concorrentes.bmp");
-const reversas = require("./assets/1-2reversas.bmp");
-const perpendiculares = require("./assets/1-3perpendiculares.bmp");
-const ortogonais = require("./assets/1-4ortogonais.bmp");
-const obliquas = require("./assets/1-5.bmp");
+import Dialog from "./Dialog";
+import LibrasButton from "~/components/LibrasButton";
+
+const ponto = require("./assets/img/1-1ponto.bmp");
+const reta = require("./assets/img/1-1reta.bmp");
+const plano = require("./assets/img/1-1plano.bmp");
+const distintas = require("./assets/img/1-2distintas.bmp");
+const coincidentes = require("./assets/img/1-2coincidentes.bmp");
+const concorrentes = require("./assets/img/1-2concorrentes.bmp");
+const reversas = require("./assets/img/1-2reversas.bmp");
+const perpendiculares = require("./assets/img/1-3perpendiculares.bmp");
+const ortogonais = require("./assets/img/1-4ortogonais.bmp");
+const obliquas = require("./assets/img/1-5.bmp");
+
+const audio = require("./assets/audios/audio.mp3");
+
+const pontoA = require("./assets/audios/aula1.1_ponto.mp3");
+const retaA = require("./assets/audios/aula1.1_reta.mp3");
+const planoA = require("./assets/audios/aula1.1_plano.mp3");
+const distintasA = require("./assets/audios/aula1.2_paralelas_distintas.mp3");
+const coincidentesA = require("./assets/audios/aula1.2_coincidentes.mp3");
+const concorrentesA = require("./assets/audios/aula1.2_concorrentes.mp3");
+const reversasA = require("./assets/audios/aula1.2_reversas.mp3");
+const perpendicularesA = require("./assets/audios/aula1.3_retas_perpendiculares.mp3");
+const ortogonaisA = require("./assets/audios/aula1.4_retas_ortogonais.mp3");
+const obliquasA = require("./assets/audios/aula1.5_retas_obliquas.mp3");
+
+const planoV = require("./assets/videos/AULA1.1_PLANO.mp4");
+const pontoV = require("./assets/videos/AULA1.1_PONTO.mp4");
+const retaV = require("./assets/videos/AULA1.1_RETA.mp4");
+const coincidentesV = require("./assets/videos/AULA1.2_COINCIDENTES.mp4");
+const concorrentesV = require("./assets/videos/AULA1.2_CONCORRENTES.mp4");
+const paralelasV = require("./assets/videos/AULA1.2_PARALELAS_DISTINTAS.mp4");
+const reversasV = require("./assets/videos/AULA1.2_REVERSAS.mp4");
+const perpendiculaesV = require("./assets/videos/AULA1.3_RETAS_PERPENDICULARES.mp4");
+const ortogonaisV = require("./assets/videos/AULA1.4_RETAS_ORTOGONAIS.mp4");
+const obliquasV = require("./assets/videos/AULA1.5_RETAS_OBLIQUAS.mp4");
 
 function PontoRetaPlanoESuasRepresentacoesPage() {
+  const [open, setOpen] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState();
+
   return (
     <Wrapper>
       <Page.Content
@@ -51,10 +81,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls>
-                      <source src="" type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
+                    <p style={{ margin: 0 }}>Ponto:</p>
+                    <img src={ponto} width="10%" style={{ margin: "1.8rem" }} />
                   </li>
                   <li
                     style={{
@@ -64,8 +92,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}>Ponto:</p>
-                    <img src={ponto} width="10%" style={{ margin: "1.8rem" }} />
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={pontoA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton />
                   </li>
                   <li
                     style={{
@@ -83,9 +115,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       RootComponent="a"
                       href="/ra.html?obj=ob1.1_reta"
                       className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                    ></Button>
                   </li>
 
                   <li
@@ -412,6 +442,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
             />
           </Grid.Col>
         </Grid.Row>
+
+        <Dialog currentVideo={currentVideo} open={open} setOpen={setOpen} />
       </Page.Content>
     </Wrapper>
   );

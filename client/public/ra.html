@@ -99,30 +99,38 @@
       embedded
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
-      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+      arjs="trackingMethod: best; debugUIEnabled: false;"
     >
-      <a-assets>
-        <a-asset-item id="obj"></a-asset-item>
-        <a-asset-item id="mtl"></a-asset-item>
-      </a-assets>
+      <!-- <a-assets> -->
+      <!-- <a-asset-item id="obj"></a-asset-item> -->
+      <!-- <a-asset-item id="mtl"></a-asset-item> -->
+      <!-- </a-assets> -->
 
-      <a-marker preset="hiro">
-        <!-- <a-entity
+      <!-- <a-marker preset="hiro"> -->
+      <!-- <a-entity
           position="0 -1 0"
           scale="0.05 0.05 0.05"
           gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
         ></a-entity> -->
 
-        <a-obj-model
+      <!-- <a-obj-model
           id="model"
           position="0 0 0"
           scale="1 1 1"
           rotation="0 0 0"
           src="#obj"
         ></a-obj-model>
-      </a-marker>
+      </a-marker> -->
       <!-- static camera that moves according to the device movemenents -->
-      <a-entity enable-touch camera></a-entity>
+      <!-- <a-entity enable-touch camera></a-entity> -->
+      <a-marker-camera preset="hiro">
+        <!-- <a-obj-model src="#obj" mtl="#mtl"></a-obj-model> -->
+        <a-entity
+          id="model"
+          gltf-model=""
+          animation-mixer
+        ></a-entity>
+      </a-marker-camera>
     </a-scene>
 
     <script>
@@ -137,10 +145,10 @@
       console.log("params", params);
 
       var obj = document.getElementById("obj");
-      var mtl = document.getElementById("mtl");
+      // var mtl = document.getElementById("mtl");
 
-      obj.setAttribute("src", "/models/" + params.obj + ".obj");
-      mtl.setAttribute("src", "/models/" + params.obj + ".mtl");
+      obj.setAttribute("gltf-model", "url(/models/" + params.obj + ".glb)");
+      // mtl.setAttribute("src", "/models/" + params.obj + ".mtl");
 
       console;
     </script>
