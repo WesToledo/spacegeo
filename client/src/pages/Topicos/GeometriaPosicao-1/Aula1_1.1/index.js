@@ -37,9 +37,9 @@ const pontoV = require("./assets/videos/AULA1.1_PONTO.mp4");
 const retaV = require("./assets/videos/AULA1.1_RETA.mp4");
 const coincidentesV = require("./assets/videos/AULA1.2_COINCIDENTES.mp4");
 const concorrentesV = require("./assets/videos/AULA1.2_CONCORRENTES.mp4");
-const paralelasV = require("./assets/videos/AULA1.2_PARALELAS_DISTINTAS.mp4");
+const distintasV = require("./assets/videos/AULA1.2_PARALELAS_DISTINTAS.mp4");
 const reversasV = require("./assets/videos/AULA1.2_REVERSAS.mp4");
-const perpendiculaesV = require("./assets/videos/AULA1.3_RETAS_PERPENDICULARES.mp4");
+const perpendicularesV = require("./assets/videos/AULA1.3_RETAS_PERPENDICULARES.mp4");
 const ortogonaisV = require("./assets/videos/AULA1.4_RETAS_ORTOGONAIS.mp4");
 const obliquasV = require("./assets/videos/AULA1.5_RETAS_OBLIQUAS.mp4");
 
@@ -97,7 +97,12 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       Your browser does not support the audio element.
                     </audio>
 
-                    <LibrasButton />
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(pontoV);
+                      }}
+                    />
                   </li>
                   <li
                     style={{
@@ -117,6 +122,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       className="text-white"
                     ></Button>
                   </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={retaA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(retaV);
+                      }}
+                    />
+                    <Button
+                      icon="box"
+                      color="primary"
+                      RootComponent="a"
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
+                  </li>
 
                   <li
                     style={{
@@ -128,15 +160,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <p style={{ margin: 0 }}>Plano:</p>
                     <img src={plano} width="40%" style={{ margin: "1.8rem" }} />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={planoA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(planoV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
                       href="/ra.html?obj=ob1.1_plano"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      className="text-white m-1"
+                    />
                   </li>
 
                   <h4>
@@ -175,15 +225,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       width="40%"
                       style={{ margin: "1.8rem" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={distintasA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(distintasV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.2_paralelas_distintas"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
                   </li>
 
                   <li
@@ -202,15 +270,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       width="40%"
                       style={{ margin: "1.8rem" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={coincidentesA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(coincidentesV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.2_paralelas_coincidentes"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
                   </li>
 
                   <li
@@ -242,15 +328,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       width="40%"
                       style={{ margin: "1.8rem" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={concorrentesA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(concorrentesV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.2_concorrentes"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
                   </li>
 
                   <li
@@ -295,15 +399,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       width="40%"
                       style={{ margin: "1.8rem" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={reversasA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(reversasV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.2_reversas"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
                   </li>
 
                   <h4>
@@ -339,15 +461,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       width="40%"
                       style={{ margin: "1.8rem" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={perpendicularesA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(perpendicularesV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.3_retas_perpendiculares"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
                   </li>
 
                   <h4>
@@ -383,15 +523,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       width="50%"
                       style={{ margin: "1.8rem" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={ortogonaisA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(ortogonaisV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.3_retas_ortogonais"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
                   </li>
 
                   <h4>
@@ -427,15 +585,33 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       width="40%"
                       style={{ margin: "1.8rem" }}
                     />
+                  </li>
+                  <li
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <audio controls style={{ width: "13rem", height: "30px" }}>
+                      <source src={obliquasA} type="audio/mp3" />
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <LibrasButton
+                      onClick={() => {
+                        setOpen(true);
+                        setCurrentVideo(obliquasV);
+                      }}
+                    />
                     <Button
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.3_retas_obliquas"
-                      className="text-white"
-                    >
-                      Ver em RA
-                    </Button>
+                      href="/ra.html?obj=ob1.1_plano"
+                      className="text-white m-1"
+                    />
                   </li>
                 </>
               }
