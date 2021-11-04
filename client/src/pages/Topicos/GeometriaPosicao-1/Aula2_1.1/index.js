@@ -99,10 +99,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={reta_secante_ao_planoA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
 
                     <LibrasButton
                       onClick={() => {
@@ -153,11 +149,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={reta_contida_planoA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -206,10 +197,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={reta_paralela_planoA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
 
                     <LibrasButton
                       onClick={() => {
@@ -260,10 +247,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={planos_secantesA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
 
                     <LibrasButton
                       onClick={() => {

@@ -92,11 +92,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={pontoA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -130,11 +125,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={retaA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -169,11 +159,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={planoA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -234,11 +219,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={distintasA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -279,11 +259,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={coincidentesA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -337,11 +312,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={concorrentesA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -408,11 +378,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={reversasA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -470,11 +435,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={perpendicularesA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -532,11 +492,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={ortogonaisA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -594,11 +549,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={obliquasA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
