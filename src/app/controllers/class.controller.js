@@ -45,6 +45,7 @@ async function list(req, res) {
     });
     res.send({ classes });
   } catch (err) {
+    console.log(err)
     return res.status(400).send({ error: "Erro ao buscar turmas" });
   }
 }

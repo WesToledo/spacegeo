@@ -14,8 +14,8 @@
       AFRAME.registerComponent("enable-touch", {
         init: function () {
           var element = document.querySelector("body");
-          this.marker = document.querySelector("a-marker");
-          var model = document.querySelector("a-obj-model");
+          this.marker = document.querySelector("a-marker-camera");
+          var model = document.querySelector("a-entity");
           var hammertime = new Hammer(element);
           var pinch = new Hammer.Pinch(); // Pinch is not by default in the recognisers
           hammertime.add(pinch); // add it to the Manager instance
@@ -122,14 +122,21 @@
         ></a-obj-model>
       </a-marker> -->
       <!-- static camera that moves according to the device movemenents -->
-      <!-- <a-entity enable-touch camera></a-entity> -->
-      <a-marker-camera preset="hiro">
-        <!-- <a-obj-model src="#obj" mtl="#mtl"></a-obj-model> -->
-        <a-entity
+
+      <a-assets>
+        <a-asset-item
           id="obj"
           src=""
-          animation-mixer
-        ></a-entity>
+          enable-touch
+          position="0 0 0"
+          scale="0.05 0.05 0.05"
+          rotation="0 0 0"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-marker-camera preset="hiro" enable-touch>
+        <a-entity gltf-model="#obj" enable-touch></a-entity>
+        <!-- <a-obj-model src="#obj" mtl="#mtl"></a-obj-model> -->
       </a-marker-camera>
     </a-scene>
 

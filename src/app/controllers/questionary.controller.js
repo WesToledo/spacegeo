@@ -214,7 +214,7 @@ async function removeQuestion(req, res) {
 async function getClasseQuestionarys(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
-      classes: req.params.idClasse,
+      classes: ObjectID(req.params.idClasse),
 
       // publish: true,
     }).lean();
