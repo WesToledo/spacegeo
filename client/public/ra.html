@@ -126,8 +126,8 @@
       <a-marker-camera preset="hiro">
         <!-- <a-obj-model src="#obj" mtl="#mtl"></a-obj-model> -->
         <a-entity
-          id="model"
-          gltf-model=""
+          id="obj"
+          src=""
           animation-mixer
         ></a-entity>
       </a-marker-camera>
@@ -147,7 +147,7 @@
       var obj = document.getElementById("obj");
       // var mtl = document.getElementById("mtl");
 
-      obj.setAttribute("gltf-model", "url(/models/" + params.obj + ".wrl.glb)");
+      obj.setAttribute("src", "/models/" + params.obj + ".wrl.glb");
       // mtl.setAttribute("src", "/models/" + params.obj + ".mtl");
 
       console;

@@ -20,13 +20,13 @@ function SiteWrapper(props) {
       LinkComponent: withRouter(NavLink),
       useExact: false,
     },
-    {
-      value: "Questionários Padrão",
-      to: "/questionarios",
-      icon: "check-square",
-      LinkComponent: withRouter(NavLink),
-      useExact: false,
-    },
+    // {
+    //   value: "Questionários Padrão",
+    //   to: "/questionarios",
+    //   icon: "check-square",
+    //   LinkComponent: withRouter(NavLink),
+    //   useExact: false,
+    // },
   ];
 
   if (user.type == "student") {

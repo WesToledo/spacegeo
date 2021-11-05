@@ -46,6 +46,7 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
       setQuestionaryClasses(response.data.questionary.classes);
       console.log(response.data.questionary.classes);
     } catch (err) {
+        
       console.log(err);
     }
   }

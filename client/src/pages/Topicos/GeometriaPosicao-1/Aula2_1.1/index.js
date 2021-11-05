@@ -99,7 +99,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -110,7 +109,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.1_reta_secante_ao_plano"
                       className="text-white m-1"
                     />
                   </li>
@@ -159,7 +158,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.1_reta_contida_ao_plano"
                       className="text-white m-1"
                     />
                   </li>
@@ -197,7 +196,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -208,7 +206,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.1_reta_paralela_ao_plano"
                       className="text-white m-1"
                     />
                   </li>
@@ -247,7 +245,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -258,7 +255,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.2_secantes"
                       className="text-white m-1"
                     />
                   </li>
@@ -305,14 +302,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source
-                        src={plano_paraalelos_distintosA}
-                        type="audio/mp3"
-                      />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -323,7 +312,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.2_paralelos_distintos"
                       className="text-white m-1"
                     />
                   </li>
@@ -359,11 +348,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={paralelos_coincidentesA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -374,7 +358,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.2_paralelos_coincidentes"
                       className="text-white m-1"
                     />
                   </li>
@@ -414,14 +398,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source
-                        src={reta_plano_perpendicularesA}
-                        type="audio/mp3"
-                      />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -432,7 +408,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.3_reta_e_plano_perpendiculares"
                       className="text-white m-1"
                     />
                   </li>
@@ -473,11 +449,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       alignItems: "center",
                     }}
                   >
-                    <audio controls style={{ width: "13rem", height: "30px" }}>
-                      <source src={planos_perpendicularesA} type="audio/mp3" />
-                      Your browser does not support the audio element.
-                    </audio>
-
                     <LibrasButton
                       onClick={() => {
                         setOpen(true);
@@ -488,7 +459,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob2.3_planos_perpendiculares"
                       className="text-white m-1"
                     />
                   </li>

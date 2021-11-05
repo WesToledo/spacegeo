@@ -46,7 +46,7 @@ async function indexStudent(req, res) {
     return res.send({ questionary });
   } catch (err) {
     console.log(err);
-    return res.status(400).send({ error: "Erro ao buscar questionário" });
+    return res.status(400).send({ error: "Erro ao buscar questionário!" });
   }
 }
 
@@ -61,19 +61,17 @@ async function indexTeacher(req, res) {
     return res.send({ questionary });
   } catch (err) {
     console.log(err);
-    return res.status(400).send({ error: "Erro ao buscar questionário" });
+    return res.status(400).send({ error: "Erro ao buscar questionário!" });
   }
 }
 
 async function getClasses(req, res) {
-  var myId = JSON.parse(req.params.id);
+  var idQuestionary = req.params.idQuestionary;
   try {
-    const questionary = await QuestionarySchema.findOne({
-      _id: ObjectID(myId),
-    }).populate("classes");
+    const questionary = await QuestionarySchema.findById(idQuestionary);
     return res.send({ questionary });
   } catch (err) {
-    return res.status(400).send({ error: "Erro ao buscar classes!!!" });
+    return res.status(400).send({ error: "Erro ao buscar classes!" });
   }
 }
 
@@ -258,7 +256,7 @@ async function addClasseToQuestionary(req, res) {
     await QuestionarySchema.updateOne(
       { _id: idQuestionary },
       {
-        classes: classes.map((classe) => classe._id),
+        classes: classes.map((classe) => ObjectID(classe._id)),
       }
     );
     res.send();

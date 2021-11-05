@@ -109,13 +109,6 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                   >
                     <p style={{ margin: 0 }}>Reta:</p>
                     <img src={reta} width="40%" style={{ margin: "1.8rem" }} />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.1_reta"
-                      className="text-white"
-                    ></Button>
                   </li>
                   <li
                     style={{
@@ -135,7 +128,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.1_reta"
                       className="text-white m-1"
                     />
                   </li>
@@ -229,7 +222,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.2_paralelas_distintas"
                       className="text-white m-1"
                     />
                   </li>
@@ -269,7 +262,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.2_paralelas_coincidentes"
                       className="text-white m-1"
                     />
                   </li>
@@ -322,7 +315,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.2_concorrentes"
                       className="text-white m-1"
                     />
                   </li>
@@ -388,7 +381,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.2_reversas"
                       className="text-white m-1"
                     />
                   </li>
@@ -445,7 +438,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.3_retas_perpendiculares"
                       className="text-white m-1"
                     />
                   </li>
@@ -502,7 +495,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.4_retas_ortogonais"
                       className="text-white m-1"
                     />
                   </li>
@@ -559,7 +552,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       icon="box"
                       color="primary"
                       RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
+                      href="/ra.html?obj=ob1.5_retas_obliquas"
                       className="text-white m-1"
                     />
                   </li>
