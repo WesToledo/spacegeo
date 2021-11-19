@@ -7,6 +7,7 @@ import Wrapper from "~/components/Wrapper";
 
 import LibrasButton from "~/components/LibrasButton";
 import Dialog from "./Dialog";
+import ButtonList from "~/components/ButtonList";
 
 const coincidentes = require("./assets/img/2-2coincidentes.bmp");
 const paralelos = require("./assets/img/2-2paralelos.bmp");
@@ -35,7 +36,7 @@ const planos_secantesV = require("./assets/videos/AULA2.2_PLANOS_SECANTES.mp4");
 const reta_plano_perpendicularesV = require("./assets/videos/AULA2.3_RETA_PLANO_PERPENDICULARES.mp4");
 const planos_perpendicularesV = require("./assets/videos/AULA2.4_PLANOS_PERPENDICULARES.mp4");
 
-function PontoRetaPlanoESuasRepresentacoesPage() {
+function Aula_2() {
   const [open, setOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState();
 
@@ -91,7 +92,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -112,7 +113,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.1_reta_secante_ao_plano"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+
+                  <ButtonList
+                    video={reta_secante_ao_planoV}
+                    objName="ob2.1_reta_secante_ao_plano"
+                    audio={reta_secante_ao_planoA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
                   {/* 2.2 */}
                   <li
                     style={{
@@ -140,7 +149,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -161,7 +170,14 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.1_reta_contida_ao_plano"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={reta_contida_planoV}
+                    objName="ob2.1_reta_contida_ao_plano"
+                    audio={reta_contida_planoA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
                   <li
                     style={{
                       display: "flex",
@@ -188,7 +204,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -209,7 +225,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.1_reta_paralela_ao_plano"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+
+                  <ButtonList
+                    video={reta_paralela_planoV}
+                    objName="ob2.1_reta_paralela_ao_plano"
+                    audio={reta_paralela_planoA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
                   <h4>
                     <strong>2.2 POSIÇÕES RELATIVAS ENTRE DOIS PLANOS</strong>
                   </h4>
@@ -237,7 +261,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -258,7 +282,14 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.2_secantes"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={planos_secantesV}
+                    objName="ob2.2_secantes"
+                    audio={planos_secantesA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
                   {/* 2.2 */}
                   <li
                     style={{
@@ -294,7 +325,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -315,7 +346,14 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.2_paralelos_distintos"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={plano_paraalelos_distintosV}
+                    objName="ob2.2_paralelos_distintos"
+                    audio={plano_paraalelos_distintosA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
                   <li
                     style={{
                       display: "flex",
@@ -340,7 +378,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -361,7 +399,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.2_paralelos_coincidentes"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={paralelos_coincidentesV}
+                    objName="ob2.2_paralelos_coincidentes"
+                    audio={paralelos_coincidentesA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
+
                   {/* 2.3 */}
                   <h4>
                     <strong>2.3 RETA E PLANO PERPENDICULARES</strong>
@@ -390,7 +436,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       marginBottom: "20px",
                     }}
                   ></li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -411,7 +457,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.3_reta_e_plano_perpendiculares"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+
+                  <ButtonList
+                    video={reta_plano_perpendicularesV}
+                    objName="ob2.3_reta_e_plano_perpendiculares"
+                    audio={reta_plano_perpendicularesA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <h4>
                     <strong>2.4 PLANOS PERPENDICULARES</strong>
@@ -441,7 +495,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       marginBottom: "20px",
                     }}
                   ></li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -462,8 +516,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob2.3_planos_perpendiculares"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
 
+                  <ButtonList
+                    video={planos_perpendicularesV}
+                    objName="ob2.3_planos_perpendiculares"
+                    audio={planos_perpendicularesV}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
                   <Dialog
                     currentVideo={currentVideo}
                     open={open}
@@ -479,4 +540,4 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
   );
 }
 
-export default PontoRetaPlanoESuasRepresentacoesPage;
+export default Aula_2;

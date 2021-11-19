@@ -33,7 +33,7 @@ function MyQuestionsPage(props) {
 
   return (
     <Wrapper>
-      <Page.Content title="Questionários">
+      <Page.Content title="Meus Questionários">
         <Card>
           <Card.Header>
             <Card.Options>

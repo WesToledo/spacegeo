@@ -7,6 +7,7 @@ import Wrapper from "~/components/Wrapper";
 
 import Dialog from "./Dialog";
 import LibrasButton from "~/components/LibrasButton";
+import ButtonList from "~/components/ButtonList";
 
 const ponto = require("./assets/img/1-1ponto.bmp");
 const reta = require("./assets/img/1-1reta.bmp");
@@ -43,7 +44,7 @@ const perpendicularesV = require("./assets/videos/AULA1.3_RETAS_PERPENDICULARES.
 const ortogonaisV = require("./assets/videos/AULA1.4_RETAS_ORTOGONAIS.mp4");
 const obliquasV = require("./assets/videos/AULA1.5_RETAS_OBLIQUAS.mp4");
 
-function PontoRetaPlanoESuasRepresentacoesPage() {
+function Aula_1() {
   const [open, setOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState();
 
@@ -84,7 +85,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     <p style={{ margin: 0 }}>Ponto:</p>
                     <img src={ponto} width="10%" style={{ margin: "1.8rem" }} />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -98,7 +99,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                         setCurrentVideo(pontoV);
                       }}
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={pontoV}
+                    objName="ob1.1_reta"
+                    audio={pontoA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                    shouldDisplayRA={false}
+                  />
                   <li
                     style={{
                       display: "flex",
@@ -110,28 +119,36 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     <p style={{ margin: 0 }}>Reta:</p>
                     <img src={reta} width="40%" style={{ margin: "1.8rem" }} />
                   </li>
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(retaV);
+                  {/* <li
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "flex-start",
+                        alignItems: "center",
                       }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.1_reta"
-                      className="text-white m-1"
-                    />
-                  </li>
+                    >
+                      <LibrasButton
+                        onClick={() => {
+                          setOpen(true);
+                          setCurrentVideo(retaV);
+                        }}
+                      />
+                      <Button
+                        icon="box"
+                        color="primary"
+                        RootComponent="a"
+                        href="/ra.html?obj=ob1.1_reta"
+                        className="text-white m-1"
+                      />
+                    </li> */}
+
+                  <ButtonList
+                    video={retaV}
+                    objName="ob1.1_reta"
+                    audio={retaA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <li
                     style={{
@@ -144,7 +161,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                     <p style={{ margin: 0 }}>Plano:</p>
                     <img src={plano} width="40%" style={{ margin: "1.8rem" }} />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -165,7 +182,14 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.1_plano"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={planoV}
+                    objName="ob1.1_plano"
+                    audio={planoA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <h4>
                     <strong>
@@ -204,7 +228,8 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -225,7 +250,14 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.2_paralelas_distintas"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={distintasV}
+                    objName="ob1.2_paralelas_distintas"
+                    audio={distintasA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <li
                     style={{
@@ -244,7 +276,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -265,7 +297,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.2_paralelas_coincidentes"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+
+                  <ButtonList
+                    video={coincidentesV}
+                    objName="ob1.2_paralelas_coincidentes"
+                    audio={coincidentesA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <li
                     style={{
@@ -297,7 +337,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -318,7 +358,14 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.2_concorrentes"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={concorrentesV}
+                    objName="ob1.2_concorrentes"
+                    audio={concorrentesA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <li
                     style={{
@@ -363,7 +410,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -384,7 +431,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.2_reversas"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+
+                  <ButtonList
+                    video={reversasV}
+                    objName="ob1.2_reversas"
+                    audio={reversasA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <h4>
                     <strong>1.3 RETAS PERPENDICULARES</strong>
@@ -420,7 +475,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -441,7 +496,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.3_retas_perpendiculares"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+
+                  <ButtonList
+                    video={perpendicularesV}
+                    objName="ob1.3_retas_perpendiculares"
+                    audio={perpendicularesA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <h4>
                     <strong>1.4 RETAS ORTOGONAIS</strong>
@@ -477,7 +540,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -498,7 +561,15 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.4_retas_ortogonais"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+
+                  <ButtonList
+                    video={ortogonaisV}
+                    objName="ob1.4_retas_ortogonais"
+                    audio={ortogonaisA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
 
                   <h4>
                     <strong>1.5 RETAS OBLÍQUAS</strong>
@@ -534,7 +605,7 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  <li
+                  {/* <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -555,7 +626,14 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
                       href="/ra.html?obj=ob1.5_retas_obliquas"
                       className="text-white m-1"
                     />
-                  </li>
+                  </li> */}
+                  <ButtonList
+                    video={obliquasV}
+                    objName="ob1.5_retas_obliquas"
+                    audio={obliquasA}
+                    setCurrentVideo={setCurrentVideo}
+                    setOpen={setOpen}
+                  />
                 </>
               }
             />
@@ -568,4 +646,4 @@ function PontoRetaPlanoESuasRepresentacoesPage() {
   );
 }
 
-export default PontoRetaPlanoESuasRepresentacoesPage;
+export default Aula_1;

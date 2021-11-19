@@ -14,6 +14,13 @@ function SiteWrapper(props) {
 
   const navBarItems = [
     {
+      value: "Instruções",
+      to: "/instruções",
+      icon: "book-open",
+      LinkComponent: withRouter(NavLink),
+      useExact: false,
+    },
+    {
       value: "Tópicos",
       to: "/topicos",
       icon: "book-open",
@@ -31,11 +38,23 @@ function SiteWrapper(props) {
 
   if (user.type == "student") {
     navBarItems.push({
-      value: "Meus Questionários",
-      to: "/meus-questionarios",
+      value: "Questionários",
       icon: "check-square",
-      LinkComponent: withRouter(NavLink),
       useExact: false,
+      subItems: [
+        {
+          value: "Padrão",
+          to: "/questionarios-padrao",
+          LinkComponent: withRouter(NavLink),
+          useExact: false,
+        },
+        {
+          value: "Meus questionários",
+          to: "/meus-questionarios",
+          LinkComponent: withRouter(NavLink),
+          useExact: false,
+        },
+      ],
     });
   }
 
@@ -49,11 +68,23 @@ function SiteWrapper(props) {
         useExact: false,
       },
       {
-        value: "Meus Questionários",
-        to: "/meus-questionarios",
+        value: "Questionários",
         icon: "check-square",
-        LinkComponent: withRouter(NavLink),
         useExact: false,
+        subItems: [
+          {
+            value: "Padrão",
+            to: "/questionarios-padrao",
+            LinkComponent: withRouter(NavLink),
+            useExact: false,
+          },
+          {
+            value: "Meus questionários",
+            to: "/meus-questionarios",
+            LinkComponent: withRouter(NavLink),
+            useExact: false,
+          },
+        ],
       }
     );
   }

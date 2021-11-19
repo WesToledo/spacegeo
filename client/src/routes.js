@@ -36,21 +36,23 @@ import SubQuestionPage from "~/pages/Questions/SubQuestionPage";
 import Studies_GeometriaPosicaoList from "~/pages/Topicos/GeometriaPosicao-1";
 
 //level 2
-import Studies_GeometriaPosicao_PosicoesRelativasEntrePontosRetasPlanosNoEspacoList from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3";
+// import Studies_GeometriaPosicao_PosicoesRelativasEntrePontosRetasPlanosNoEspacoList from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3";
 import Studies_GeometriaPosicao_Aula_1 from "~/pages/Topicos/GeometriaPosicao-1/Aula1_1.1";
 import Studies_GeometriaPosicao_Aula_2 from "~/pages/Topicos/GeometriaPosicao-1/Aula2_1.1";
+import Studies_GeometriaPosicao_Aula_3 from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.1";
+import Studies_GeometriaPosicao_Aula_4 from "~/pages/Topicos/GeometriaPosicao-1/Aula4_1.1";
 
 //level 3
-import Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoList from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3/PosicaoEntrePlanosNoEspaco-1.3.4";
+import Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoList from "~/pages/Topicos/GeometriaPosicao-1/OldPages/PosicaoEntrePlanosNoEspaco-1.3.4";
 
 //level 4
-import Studies_GeometriaPosicao_PlanoPage from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PlanoPage";
-import Studies_GeometriaPosicao_PosicoesRelativasList from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2";
+import Studies_GeometriaPosicao_PlanoPage from "~/pages/Topicos/GeometriaPosicao-1/OldPages/PosicaoEntrePlanosNoEspaco-1.3.4/PlanoPage";
+import Studies_GeometriaPosicao_PosicoesRelativasList from "~/pages/Topicos/GeometriaPosicao-1/OldPages/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2";
 
 //level 5
-import Studies_GeometriaPosicao_PlanosCoincidentes from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosCoincidentesPage";
-import Studies_GeometriaPosicao_PlanosConcorrentes from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosConcorrentesPage";
-import Studies_GeometriaPosicao_PlanosParalelos from "~/pages/Topicos/GeometriaPosicao-1/Aula3_1.3/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosParalelosPage";
+import Studies_GeometriaPosicao_PlanosCoincidentes from "~/pages/Topicos/GeometriaPosicao-1/OldPages/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosCoincidentesPage";
+import Studies_GeometriaPosicao_PlanosConcorrentes from "~/pages/Topicos/GeometriaPosicao-1/OldPages/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosConcorrentesPage";
+import Studies_GeometriaPosicao_PlanosParalelos from "~/pages/Topicos/GeometriaPosicao-1/OldPages/PosicaoEntrePlanosNoEspaco-1.3.4/PosicoesRelativas-1.3.4.2/PlanosParalelosPage";
 
 // QUESTIONS
 import Question_GeometriaPosicaoPage from "~/pages/Questions/GeometriaPosicao";
@@ -85,13 +87,10 @@ function App() {
           path="/vincular-turma"
           component={ClassBondStudent}
         />
-
         {/* PROFESSOR */}
         <PrivateRoute exact path="/turmas" component={ClassesPage} />
         <PrivateRoute exact path="/turmas/:id" component={StudentsPage} />
-
         <PrivateRoute exact path="/topicos" component={TopicosPage} />
-
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
         {type == "teacher" ? (
           <PrivateRoute
@@ -119,7 +118,6 @@ function App() {
             component={SubMyQuestionsStudentPage}
           />
         )}
-
         {type == "teacher" ? (
           <PrivateRoute
             exact
@@ -133,7 +131,6 @@ function App() {
             component={SubQuestionPage}
           />
         )}
-
         {/* GEOMETRIA DE POSIÇÃO */}
         {/* LEVEL 1 */}
         {/* 1 */}
@@ -143,14 +140,12 @@ function App() {
           component={Studies_GeometriaPosicaoList}
         />
         {/* A GEOMETRIA DO ESPAÇO*/}
-
         {/* 1.1 */}
         <PrivateRoute
           exact
           path="/topicos/geometria-posicao/aula-1"
           component={Studies_GeometriaPosicao_Aula_1}
         />
-
         {/* PARELELISMO E PERPENDICULARISMO */}
         {/* 1.2 */}
         <PrivateRoute
@@ -158,15 +153,18 @@ function App() {
           path="/topicos/geometria-posicao/aula-2"
           component={Studies_GeometriaPosicao_Aula_2}
         />
-
         {/* POSIÇÕES RELATIVAS ENTRE PONTOS RETAS PLANOS NO ESPACO  */}
         {/* 1.3 */}
         <PrivateRoute
           exact
           path="/topicos/geometria-posicao/aula-3"
-          component={
-            Studies_GeometriaPosicao_PosicoesRelativasEntrePontosRetasPlanosNoEspacoList
-          }
+          component={Studies_GeometriaPosicao_Aula_3}
+        />
+        {/* 1.4 */}
+        <PrivateRoute
+          exact
+          path="/topicos/geometria-posicao/aula-4"
+          component={Studies_GeometriaPosicao_Aula_4}
         />
         {/* 1.3.4 */}
         <PrivateRoute
@@ -174,7 +172,6 @@ function App() {
           path="/topicos/geometria-posicao/aula-3/posicao-planos-no-espaco"
           component={Studies_GeometriaPosicao_PosicaoEntrePlanosNoEspacoList}
         />
-
         {/* 1.3.4.1 */}
         <PrivateRoute
           exact
@@ -205,7 +202,6 @@ function App() {
           path="/topicos/geometria-posicao/aula-3/posicao-planos-no-espaco/posicoes-relativas/planos-paralelos"
           component={Studies_GeometriaPosicao_PlanosParalelos}
         />
-
         {/* QUESTION */}
         {/* GEOMETRIA DE POSIÇÃO */}
         <PrivateRoute
@@ -223,7 +219,6 @@ function App() {
           path="/questionarios/geometria-posicao/posicoes-relativas/posicao-planos-no-espaco"
           component={Question_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage}
         />
-
         <Route component={Error404} />
       </Switch>
     </Router>
