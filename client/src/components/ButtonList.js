@@ -60,13 +60,11 @@ function ButtonList(
       {shouldDisplayRA && (
         <Button
           icon="box"
-          color="primary"
+          color="warning"
           RootComponent="a"
           href={`/ra.html?obj=${objName}`}
           className="text-white m-1"
-        >
-          Ver em RA
-        </Button>
+        ></Button>
       )}
     </li>
   );
