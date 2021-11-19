@@ -12,15 +12,8 @@ async function login(req, res) {
   try {
     const { email, password } = req.body;
 
-    var user = await UserSchema.findOne({ email })
-      .select("password")
-      .select("classe")
-      .select("name")
-      .select("email")
-      .select("institution")
-      .select("linked")
-      .select("type")
-      .lean();
+    const user = await UserSchema.findOne({ email }).select("+password");
+    console.warn("USER", user);
 
     if (!user)
       return res.status(400).send({ error: "Incorret user or password" });
@@ -37,6 +30,7 @@ async function login(req, res) {
       }),
     });
   } catch (err) {
+    console.log(err);
     return res.status(400).send({ error: "Error on login" });
   }
 }

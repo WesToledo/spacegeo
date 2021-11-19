@@ -27,10 +27,10 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
   };
 
   async function onSubmit() {
-    console.log("aksdhiasudh");
+    console.log(questionaryClasses.map((question) => question._id));
     try {
       await api.post("/questionary/add-classes", {
-        classes: questionaryClasses,
+        classesIds: questionaryClasses.map((question) => question._id),
         idQuestionary,
       });
       handleClose();
@@ -46,7 +46,6 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
       setQuestionaryClasses(response.data.questionary.classes);
       console.log(response.data.questionary.classes);
     } catch (err) {
-        
       console.log(err);
     }
   }

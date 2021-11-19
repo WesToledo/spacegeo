@@ -45,7 +45,7 @@ async function list(req, res) {
     });
     res.send({ classes });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(400).send({ error: "Erro ao buscar turmas" });
   }
 }
@@ -73,7 +73,7 @@ async function join(req, res) {
   const { _id, key } = req.body;
   try {
     let classe = await ClassSchema.findOne({ hash: key }).populate("students");
-    let user = await UserSchema.findOne({ _id });
+    let user = await UserSchema.findOne({ _id: _id });
     if (!classe) return res.status(400).send({ error: "Turma não encontrada" });
 
     await UserSchema.updateOne(

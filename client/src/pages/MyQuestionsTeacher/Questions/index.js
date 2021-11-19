@@ -44,8 +44,11 @@ function QuestionsPage(props) {
   const [modalEdit, setOpenEdit] = useState(false);
   const [modalClasses, setOpenClasses] = useState(false);
 
+  const [publish, setPublish] = useState(false);
+
   const [questionary, setQuestionary] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+
   const { _id } = useStore((state) => state.user);
 
   async function getQuestionary() {
@@ -63,7 +66,6 @@ function QuestionsPage(props) {
   function handleOpenClassesModal() {
     setOpenClasses(true);
   }
-
   async function handleOnDeleteQuestion(_id) {
     console.log(_id);
     try {

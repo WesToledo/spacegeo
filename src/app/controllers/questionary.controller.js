@@ -6,11 +6,12 @@ const AnswerSchema = require("../models/answer");
 
 async function create(req, res) {
   try {
-    const { title, teacher } = req.body;
+    const { title, teacher, grade } = req.body;
 
     const questionary = await QuestionarySchema.create({
       title,
       teacher,
+      grade,
     });
 
     return res.send({
@@ -66,16 +67,21 @@ async function indexTeacher(req, res) {
 }
 
 async function getClasses(req, res) {
-  var idQuestionary = req.params.idQuestionary;
+  const idQuestionary = req.params.idQuestionary;
+
+  console.log("QUESTIONARIOS", idQuestionary);
   try {
     const questionary = await QuestionarySchema.findById(idQuestionary);
+
     return res.send({ questionary });
   } catch (err) {
+    console.log("FUCKKKKKKKKKKKKKKKK", err);
     return res.status(400).send({ error: "Erro ao buscar classes!" });
   }
 }
 
 async function list(req, res) {
+  console.log("LIST");
   try {
     const questionarys = await QuestionarySchema.find({
       teacher: req.params.idTeacher,
@@ -88,10 +94,7 @@ async function list(req, res) {
 
 async function update(req, res) {
   try {
-    const questionary = await QuestionarySchema.findByIdAndUpdate(
-      req.params.id,
-      req.body
-    );
+    await QuestionarySchema.findByIdAndUpdate(req.params.id, req.body);
     return res.send();
   } catch (err) {
     return res.status(400).send({ error: "Erro ao editar questionary" });
@@ -214,7 +217,7 @@ async function removeQuestion(req, res) {
 async function getClasseQuestionarys(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
-      classes: ObjectID(req.params.idClasse),
+      classes: req.params.idClasse,
 
       // publish: true,
     }).lean();
@@ -250,15 +253,18 @@ async function getClasseQuestionarys(req, res) {
 //CLASSES
 
 async function addClasseToQuestionary(req, res) {
-  const { classes, idQuestionary } = req.body;
+  const { classesIds, idQuestionary } = req.body;
   console.log(req.body);
   try {
-    await QuestionarySchema.updateOne(
-      { _id: idQuestionary },
-      {
-        classes: classes.map((classe) => ObjectID(classe._id)),
-      }
-    );
+    const questionary = await QuestionarySchema.findOne({ _id: idQuestionary });
+
+    if (questionary) {
+      questionary.classes = classesIds;
+      await questionary.save();
+    } else {
+      res.status(400).send();
+    }
+
     res.send();
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar questionários" });

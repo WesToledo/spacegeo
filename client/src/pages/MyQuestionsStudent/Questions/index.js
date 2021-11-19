@@ -30,7 +30,9 @@ function SubQuestionPage(props) {
 
   return (
     <Wrapper>
-      {questionary && <QuestionList questionary={questionary} />}
+      {questionary  && (
+        <QuestionList questionary={questionary} />
+      )}
     </Wrapper>
   );
 }

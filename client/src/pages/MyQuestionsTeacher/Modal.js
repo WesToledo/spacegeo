@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -8,12 +7,14 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import api from "~/services/api";
 import useStore from "~/store";
+import { Button } from "tabler-react";
 
 export default function FormDialog({ open, setOpen, getQuestionarys }) {
   const handleClose = () => {
     setOpen(false);
   };
   const [name, setName] = useState("");
+  const [grade, setGrade] = useState(0);
   const { _id } = useStore((state) => state.user);
 
   async function onSubmit() {
@@ -21,6 +22,7 @@ export default function FormDialog({ open, setOpen, getQuestionarys }) {
       await api.post("/questionary/create", {
         title: name,
         teacher: _id,
+        grade: grade,
       });
       handleClose();
       getQuestionarys();
@@ -54,6 +56,16 @@ export default function FormDialog({ open, setOpen, getQuestionarys }) {
             fullWidth
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="grade"
+            label="Valor do questionário"
+            type="number"
+            fullWidth
+            value={grade}
+            onChange={(e) => setGrade(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
