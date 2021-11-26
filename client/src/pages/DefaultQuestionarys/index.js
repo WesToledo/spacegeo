@@ -17,7 +17,7 @@ function MyQuestionsPage(props) {
     setLoading(true);
     try {
       const response = await api.get(
-        "/questionary/student/list/" + classe + "/" + _id
+        "/questionary/student/list/default/" + classe + "/" + _id
       );
       console.log(response.data.questionarys);
       setQuestionarys(response.data.questionarys);

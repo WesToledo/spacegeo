@@ -30,6 +30,13 @@ const QuestionSchema = new mongoose.Schema({
   objName: {
     type: String,
   },
+  hasImg: {
+    type: Boolean,
+    default: false,
+  },
+  imgURL: {
+    type: String,
+  },
 });
 
 const Question = mongoose.model("Question", QuestionSchema);

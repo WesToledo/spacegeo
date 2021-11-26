@@ -24,6 +24,9 @@ function QuestionCard({ questionary }) {
         hasObject: question.hasObject,
         objName: question.hasObject && question.objName,
         path: question.hasObject && question.path,
+        
+        hasImage: question.hasImage && question.hasImage,
+        imgURL: question.imgURL && question.imgURL,
 
         alternatives: question.alternatives.map(({ _id, text, index }) => {
           return {

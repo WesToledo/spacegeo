@@ -49,6 +49,11 @@ questionaryRouter.post("/add-classes", questionary.addClasseToQuestionary);
 questionaryRouter.get(
   "/student/list/:idClasse/:idStudent",
   questionary.getQuestionarys
+); //STUDENT
+
+questionaryRouter.get(
+  "/student/list/default/:idClasse/:idStudent",
+  questionary.getDefaultQuestionarys
 );
 
 questionaryRouter.post("/question/add", questionary.addQuestion);

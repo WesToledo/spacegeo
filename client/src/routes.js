@@ -26,6 +26,9 @@ import InstructionsTeacherPage from "./pages/InstructionsTeacher";
 //STUDENT PAGES
 import MyQuestionsStudentPage from "./pages/MyQuestionsStudent";
 import SubMyQuestionsStudentPage from "./pages/MyQuestionsStudent/Questions";
+
+import DefaultQuestionaryPage from "./pages/DefaultQuestionarys";
+import SubDefaultQuestionaryPage from "./pages/DefaultQuestionarys/Questions";
 import InstructionsStudentPage from "./pages/InstructionsStudent";
 
 import LoginPage from "~/pages/Login";
@@ -98,6 +101,23 @@ function App() {
         <PrivateRoute exact path="/turmas/notas/:id" component={GradesPage} />
         <PrivateRoute exact path="/topicos" component={TopicosPage} />
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
+
+        {type == "student" && (
+          <PrivateRoute
+            exact
+            path="/questionarios-padrao"
+            component={DefaultQuestionaryPage}
+          />
+        )}
+
+        {type == "student" && (
+          <PrivateRoute
+            exact
+            path="/questionarios-padrao/:id"
+            component={SubDefaultQuestionaryPage}
+          />
+        )}
+
         {type == "teacher" ? (
           <PrivateRoute
             exact
@@ -111,6 +131,7 @@ function App() {
             component={MyQuestionsStudentPage}
           />
         )}
+
         {type == "teacher" ? (
           <PrivateRoute
             exact
@@ -124,6 +145,7 @@ function App() {
             component={SubMyQuestionsStudentPage}
           />
         )}
+
         {type == "teacher" ? (
           <PrivateRoute
             exact

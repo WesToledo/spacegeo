@@ -36,4 +36,4 @@ const DefaultQuestionary = mongoose.model(
   DefaultQuestionarySchema
 );
 
-module.exports = Questionary;
+module.exports = DefaultQuestionary;

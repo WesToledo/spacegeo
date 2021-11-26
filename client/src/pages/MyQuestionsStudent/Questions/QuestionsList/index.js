@@ -25,6 +25,9 @@ function QuestionCard({ questionary }) {
         objName: question.hasObject && question.objName,
         path: question.hasObject && question.path,
 
+        hasImage: question.hasImage && question.hasImage,
+        imgURL: question.imgURL && question.imgURL,
+
         alternatives: question.alternatives.map(({ _id, text, index }) => {
           return {
             _id,
@@ -148,6 +151,21 @@ function QuestionCard({ questionary }) {
             }
             body={
               <>
+                {questions[currentQuestion].hasImage ? (
+                  <Grid.Row className="row-cards ">
+                    <Grid.Col width={2}></Grid.Col>
+                    <Grid.Col width={8}>
+                      <GalleryCard>
+                        <GalleryCard.Image
+                          src={questions[currentQuestion].imgURL}
+                        />
+                      </GalleryCard>
+                    </Grid.Col>
+                    <Grid.Col width={2}></Grid.Col>
+                  </Grid.Row>
+                ) : (
+                  <></>
+                )}
                 <Button.List>
                   {questions[currentQuestion].alternatives.length > 0
                     ? questions[currentQuestion].alternatives.map(
@@ -170,22 +188,6 @@ function QuestionCard({ questionary }) {
                       )
                     : "Carregando..."}
                 </Button.List>
-
-                {questions[currentQuestion].hasImage ? (
-                  <Grid.Row className="row-cards ">
-                    <Grid.Col width={2}></Grid.Col>
-                    <Grid.Col width={8}>
-                      <GalleryCard>
-                        <GalleryCard.Image
-                          src={questions[currentQuestion].imgURL}
-                        />
-                      </GalleryCard>
-                    </Grid.Col>
-                    <Grid.Col width={2}></Grid.Col>
-                  </Grid.Row>
-                ) : (
-                  <></>
-                )}
               </>
             }
             footer={

@@ -32,6 +32,11 @@ const QuestionarySchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+  type: {
+    type: String,
+    required: true,
+    default: "",
+  },
 });
 
 const Questionary = mongoose.model("Questionary", QuestionarySchema);

@@ -6,12 +6,13 @@ const AnswerSchema = require("../models/answer");
 
 async function create(req, res) {
   try {
-    const { title, teacher, grade } = req.body;
+    const { title, teacher, grade, type } = req.body;
 
     const questionary = await QuestionarySchema.create({
       title,
       teacher,
       grade,
+      type,
     });
 
     return res.send({
@@ -251,6 +252,42 @@ async function getClasseQuestionarys(req, res) {
   }
 }
 
+async function getDefaultQuestionarys(req, res) {
+  try {
+    const questionarys = await QuestionarySchema.find({
+      classes: req.params.idClasse,
+      type: "default",
+      // publish: true,
+    }).lean();
+
+    const questionarysArray = await Promise.all(
+      questionarys.map(async (questionary) => {
+        const answer = await AnswerSchema.findOne({
+          questionary: questionary._id,
+          student: req.params.idStudent,
+          classe: req.params.idClasse,
+        });
+        if (answer) {
+          return {
+            ...questionary,
+            alreadyAnswered: true,
+            myGrade: answer.grade,
+          };
+        } else {
+          return {
+            ...questionary,
+            alreadyAnswered: false,
+          };
+        }
+      })
+    );
+
+    return res.send({ questionarys: questionarysArray });
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao buscar questionários" });
+  }
+}
+
 //CLASSES
 
 async function addClasseToQuestionary(req, res) {
@@ -286,5 +323,6 @@ module.exports = {
   removeQuestion,
   getClasses,
   getQuestionarys: getClasseQuestionarys,
+  getDefaultQuestionarys,
   addClasseToQuestionary,
 };
