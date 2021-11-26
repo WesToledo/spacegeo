@@ -169,7 +169,7 @@ function App() {
         ) : (
           <PrivateRoute
             exact
-            path="/sub-questionarios"
+            path="/instrucoes"
             component={InstructionsStudentPage}
           />
         )}
