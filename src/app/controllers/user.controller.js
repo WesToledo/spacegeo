@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authConfig = require("../../config/auth.json");
 
+const AnswerSchema = require("../models/answer");
 const UserSchema = require("../models/user");
 
 function generateToken(params = {}) {
@@ -68,4 +69,16 @@ async function remove(req, res) {
   }
 }
 
-module.exports = { create, index, list, update, remove };
+async function getGrades(req, res) {
+  try {
+    const answers = await AnswerSchema.find({
+      student: req.params.id,
+    }).populate("questionary").populate("student");
+
+    res.send({ answers });
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao buscar usuários" });
+  }
+}
+
+module.exports = { create, index, list, update, remove, getGrades };

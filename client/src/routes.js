@@ -17,6 +17,8 @@ import ClassBondStudent from "./pages/ClassBondStudent";
 //PROFESSOR PAGES
 import ClassesPage from "./pages/Classes";
 import StudentsPage from "./pages/Classes/Students";
+import GradePage from "./pages/Classes/Students/Grades";
+
 import MyQuestionsTeacherPage from "./pages/MyQuestionsTeacher";
 import SubMyQuestionsTeacherPage from "./pages/MyQuestionsTeacher/Questions";
 import InstructionsTeacherPage from "./pages/InstructionsTeacher";
@@ -60,6 +62,7 @@ import Studies_GeometriaPosicao_PlanosParalelos from "~/pages/Topicos/GeometriaP
 import Question_GeometriaPosicaoPage from "~/pages/Questions/GeometriaPosicao";
 import Question_GeometriaPosicao_PosicoesRelativasPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas";
 import Question_GeometriaPosicao_PosicaoEntrePlanosNoEspacoPage from "~/pages/Questions/GeometriaPosicao/PosicoesRelativas/PosicaoEntrePlanosNoEspaco";
+import GradesPage from "./pages/Classes/Students/Grades/index";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { token } = useStore((state) => state.user);
@@ -92,6 +95,7 @@ function App() {
         {/* PROFESSOR */}
         <PrivateRoute exact path="/turmas" component={ClassesPage} />
         <PrivateRoute exact path="/turmas/:id" component={StudentsPage} />
+        <PrivateRoute exact path="/turmas/notas/:id" component={GradesPage} />
         <PrivateRoute exact path="/topicos" component={TopicosPage} />
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
         {type == "teacher" ? (

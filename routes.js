@@ -19,6 +19,7 @@ userRouter.get("/", user.list);
 userRouter.get("/:id", user.index);
 userRouter.put("/update/:id", user.update);
 userRouter.delete("/remove/:id", user.remove);
+userRouter.get("/grades/:id", user.getGrades);
 
 // Class
 const classRouter = express.Router();

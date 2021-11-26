@@ -5,7 +5,7 @@ import { Button } from "tabler-react";
 
 import api from "~/services/api";
 
-export default function DataTable({ students }) {
+export default function DataTable({ answers }) {
   const [data, setData] = useState([]);
 
   const columns = [
@@ -17,28 +17,28 @@ export default function DataTable({ students }) {
       },
     },
     {
-      name: "email",
-      label: "Email",
+      name: "value",
+      label: "Valor",
       options: {
         display: true,
       },
     },
     {
-      name: "birthday",
-      label: "Data de nascimento",
+      name: "grade",
+      label: "Nota",
       options: {
         display: true,
       },
     },
-    {
-      name: "actions",
-      label: "Mais informações",
-      options: {
-        display: true,
-        filter: false,
-        viewColumns: false,
-      },
-    },
+    // {
+    //   name: "actions",
+    //   label: "Mais informações",
+    //   options: {
+    //     display: true,
+    //     filter: false,
+    //     viewColumns: false,
+    //   },
+    // },
   ];
 
   const options = {
@@ -48,21 +48,22 @@ export default function DataTable({ students }) {
 
   function refreshDataTable() {
     var rows = [];
-    students.map((student) => {
+    answers.map((answer) => {
       rows.push({
-        name: student.name,
-        email: student.email,
-        birthday: student.birthday,
-        actions: (
-          <Button
-            color="secondary"
-            icon="arrow-right"
-            RootComponent="a"
-            href={"/turmas/notas/" + student._id}
-          >
-            Ver notas
-          </Button>
-        ),
+        name: answer.questionary.title,
+        value: answer.questionary.grade,
+        grade: answer.grade,
+        
+        // actions: (
+        //   <Button
+        //     color="secondary"
+        //     icon="arrow-right"
+        //     RootComponent="a"
+        //     href="#"
+        //   >
+        //     Ver notas
+        //   </Button>
+        // ),
       });
     });
     setData(rows);
@@ -74,7 +75,7 @@ export default function DataTable({ students }) {
 
   return (
     <MUIDataTable
-      title={"Alunos"}
+      title={""}
       data={data}
       columns={columns}
       options={options}
