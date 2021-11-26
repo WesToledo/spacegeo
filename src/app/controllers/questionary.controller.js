@@ -255,7 +255,6 @@ async function getClasseQuestionarys(req, res) {
 async function getDefaultQuestionarys(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
-      classes: req.params.idClasse,
       type: "default",
       // publish: true,
     }).lean();
