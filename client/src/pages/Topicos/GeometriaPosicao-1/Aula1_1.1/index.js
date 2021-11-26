@@ -83,7 +83,7 @@ function Aula_1() {
                     }}
                   >
                     <p style={{ margin: 0 }}>Ponto:</p>
-                    <img src={ponto} width="10%" style={{ margin: "1.8rem" }} />
+                    <img src={ponto} width="10%" style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }} />
                   </li>
                   {/* <li
                     style={{
@@ -117,7 +117,7 @@ function Aula_1() {
                     }}
                   >
                     <p style={{ margin: 0 }}>Reta:</p>
-                    <img src={reta} width="40%" style={{ margin: "1.8rem" }} />
+                    <img src={reta} width="50%" style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }} />
                   </li>
                   {/* <li
                       style={{
@@ -159,7 +159,7 @@ function Aula_1() {
                     }}
                   >
                     <p style={{ margin: 0 }}>Plano:</p>
-                    <img src={plano} width="40%" style={{ margin: "1.8rem" }} />
+                    <img src={plano} width="50%" style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }} />
                   </li>
                   {/* <li
                     style={{
@@ -191,7 +191,7 @@ function Aula_1() {
                     setOpen={setOpen}
                   />
 
-                  <h4>
+                  <h4 style={{ marginTop: "1rem" }}>
                     <strong>
                       1.2 POSIÇÕES RELATIVAS DE DUAS RETAS DO ESPAÇO
                     </strong>
@@ -224,8 +224,8 @@ function Aula_1() {
                     </div>
                     <img
                       src={distintas}
-                      width="40%"
-                      style={{ margin: "1.8rem" }}
+                      width="50%"
+                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
                     />
                   </li>
 
@@ -272,8 +272,8 @@ function Aula_1() {
                     </div>
                     <img
                       src={coincidentes}
-                      width="40%"
-                      style={{ margin: "1.8rem" }}
+                      width="50%"
+                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
                     />
                   </li>
                   {/* <li
@@ -333,8 +333,8 @@ function Aula_1() {
 
                     <img
                       src={concorrentes}
-                      width="40%"
-                      style={{ margin: "1.8rem" }}
+                      width="50%"
+                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
                     />
                   </li>
                   {/* <li
@@ -406,8 +406,8 @@ function Aula_1() {
                   >
                     <img
                       src={reversas}
-                      width="40%"
-                      style={{ margin: "1.8rem" }}
+                      width="50%"
+                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
                     />
                   </li>
                   {/* <li
@@ -471,8 +471,8 @@ function Aula_1() {
 
                     <img
                       src={perpendiculares}
-                      width="40%"
-                      style={{ margin: "1.8rem" }}
+                      width="50%"
+                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
                     />
                   </li>
                   {/* <li
@@ -537,7 +537,7 @@ function Aula_1() {
                     <img
                       src={ortogonais}
                       width="50%"
-                      style={{ margin: "1.8rem" }}
+                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
                     />
                   </li>
                   {/* <li
@@ -584,7 +584,7 @@ function Aula_1() {
                     }}
                   >
                     <p style={{ margin: 0 }}>
-                      Duas retas são ochamdas oblíquas quando são concorrentes e
+                      Duas retas são chamadas oblíquas quando são concorrentes e
                       não são perpendiculares
                     </p>
                   </li>
@@ -601,8 +601,8 @@ function Aula_1() {
 
                     <img
                       src={obliquas}
-                      width="40%"
-                      style={{ margin: "1.8rem" }}
+                      width="50%"
+                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
                     />
                   </li>
                   {/* <li

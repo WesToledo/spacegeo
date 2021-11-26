@@ -20,7 +20,7 @@ function GeometriaPosicaoPage() {
       link: "/topicos/geometria-posicao/aula-3",
     },
     {
-      name: "Aula 4: Distância no Espaço",
+      name: "Aula 4: Distâncias no Espaço",
       link: "/topicos/geometria-posicao/aula-4",
     },
   ];

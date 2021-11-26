@@ -64,7 +64,7 @@ function Aula_2() {
               body={
                 <>
                   <h4>
-                    <strong>2.1 POSIÇÕES RELATIVAS ENTRE E PLANO</strong>
+                    <strong>2.1 POSIÇÕES RELATIVAS ENTRE RETA E PLANO</strong>
                   </h4>
                   <li
                     style={{

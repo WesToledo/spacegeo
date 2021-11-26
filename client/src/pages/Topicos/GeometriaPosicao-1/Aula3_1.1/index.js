@@ -119,9 +119,7 @@ function Aula_3() {
                       <p style={{ margin: 0 }}>
                         A projeção ortogonal da figura F sobre o plano α é o
                         conjunto F’ das projeções ortogonais de todos os pontos
-                        de F’ sobre α <br />A projeção ortogonal de F sobre α é
-                        o conjunto de pontos formado pelas projeções ortogonais
-                        de todos os pontos de A sobre α, resultando em F’
+                        de F’ sobre α
                       </p>
                     </li>
                     <li
@@ -260,7 +258,7 @@ function Aula_3() {
                       }}
                     >
                       <p style={{ margin: 0 }}>
-                        a) Seguimento de reta ortogonal
+                        a) Segsmento de reta ortogonal
                       </p>
                     </li>
                     <li

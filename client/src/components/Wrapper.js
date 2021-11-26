@@ -15,7 +15,7 @@ function SiteWrapper(props) {
   const navBarItems = [
     {
       value: "Instruções",
-      to: "/instruções",
+      to: "/instrucoes",
       icon: "book-open",
       LinkComponent: withRouter(NavLink),
       useExact: false,
@@ -90,7 +90,6 @@ function SiteWrapper(props) {
   }
 
   const accountDropdownProps = {
-    avatarURL: "./demo/faces/female/25.jpg",
     name: user.name,
     options: [
       {

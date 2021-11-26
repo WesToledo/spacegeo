@@ -49,21 +49,36 @@ const letters = [
 ];
 
 const objects = [
+  { img: "1-1reta.bmp", obj: "ob1.1_reta.wrl" },
+  { img: "1-1plano.bmp", obj: "ob1.1_plano.wrl" },
+  { img: "1-2distintas.bmp", obj: "ob1.2_paralelas_distintas.wrl" },
+  { img: "1-2coincidentes.bmp", obj: "ob1.2_paralelas_coincidentes.wrl" },
+  { img: "1-2concorrentes.bmp", obj: "ob1.2_concorrentes.wrl" },
+  { img: "1-2reversas.bmp", obj: "ob1.2_reversas.wrl" },
   {
-    name: "Planos Paralelos",
-    path: "/models/planos_paralelos",
-    obj: "planos_paralelos",
+    img: "1-3perpendiculares.bmp",
+    obj: "ob1.3_retas_perpendiculares.wrl",
+  },
+  { img: "1-4ortogonais.bmp", obj: "ob1.4_retas_ortogonais.wrl" },
+  { img: "1-5.bmp", obj: "ob1.5_retas_obliquas.wrl" },
+  // 2
+  {
+    img: "2-1reta-secante-ao-plano.bmp",
+    obj: "ob2.1_reta_secante_ao_plano.wrl",
   },
   {
-    name: "Planos e Cubos",
-    path: "/models/planos_e_cubos",
-    obj: "planos_e_cubos",
+    img: "2-1reta-contida-no-plano.bmp",
+    obj: "ob2.1_reta_contida_no_plano.wrl",
   },
   {
-    name: "Planos e Cubos",
-    path: "/models/planos_e_cubos",
-    obj: "planos_e_cubos2",
+    img: "2-1reta-paralela-ao-plano.bmp",
+    obj: "ob2.1_reta_paralela_ao_plano.wrl",
   },
+  { img: "2-2secantes.bmp", obj: "ob2.2_secantes.wrl" },
+  { img: "2-2paralelos.bmp", obj: "ob2.2_paralelos_distintos.wrl" },
+  { img: "2-2coincidentes.bmp", obj: "ob2.2_paralelos_coincidentes.wrl" },
+  { img: "2-3.bmp", obj: "ob2.3_reta_e_plano_perpendiculares.wrl" },
+  { img: "2-4.bmp", obj: "ob2.4_planos_perpendiculares.wrl" },
 ];
 
 export default function NewQuestionModal({
@@ -151,7 +166,7 @@ export default function NewQuestionModal({
         alternatives: alternatives,
         rightOne: form.rightOne,
         hasObject: selected != null,
-        path: selected.path,
+        path: "none",
         objName: selected.obj,
       });
       handleClose();

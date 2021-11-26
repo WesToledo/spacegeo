@@ -6,7 +6,7 @@ import { Grid, Text, Form, Button } from "tabler-react";
 import api from "~/services/api";
 import useStore from "~/store";
 
-export default function List3DCards({ objects, setSelected, selected }) {
+export default function List3DCards({ objects, setSelected, type, selected }) {
   const ref = useRef(null);
   const [elementsWidth, setElementsWidths] = useState(null);
 
@@ -15,9 +15,9 @@ export default function List3DCards({ objects, setSelected, selected }) {
     console.log(elementsWidth);
   }, [ref.current]);
 
-  function handleSelectObject(e) {
-    console.log(objects.find((obj) => obj.obj == e.target.value));
-    setSelected(objects.find((obj) => obj.obj == e.target.value));
+  function handleSelectObject(glb) {
+    console.log(objects.find((obj) => obj.obj == glb));
+    setSelected(objects.find((obj) => obj.obj == glb));
   }
 
   return (
@@ -43,21 +43,44 @@ export default function List3DCards({ objects, setSelected, selected }) {
               margin: "5px",
             }}
           >
-            <Form.Radio
-              checked={selected && selected.obj == obj.obj}
-              label={obj.name}
-              name="model"
-              value={obj.obj}
-              onChange={handleSelectObject}
-            />
-            {elementsWidth && (
-              <MTLModel
-                enableZoom={true}
-                mtl={`${obj.path}.mtl`}
-                src={`${obj.path}.obj`}
-                width={elementsWidth / 3 - 40}
-                height={elementsWidth / 3 - 40}
+            {type !== "edit" ? (
+              <Form.Radio
+                // checked={selected && selected == obj.obj}
+                label={" "}
+                key={index}
+                name="model"
+                value={obj.obj}
+                onChange={() => {
+                  handleSelectObject(obj.obj);
+                }}
               />
+            ) : (
+              <Form.Radio
+                key={index}
+                checked={selected && selected.obj === obj.obj}
+                label={" "}
+                name="model"
+                onChange={() => {
+                  handleSelectObject(obj.obj);
+                }}
+              />
+            )}
+
+            {elementsWidth && (
+              // <MTLModel
+              //   enableZoom={true}
+              // mtl={`${obj.obj}.mtl`}
+              // src={`${obj.obj}.obj`}
+              // width={elementsWidth / 3 - 40}
+              // height={elementsWidth / 3 - 40}
+              // />
+              <img
+                src={`http://localhost:3000/assets/img/${obj.img}`}
+                width={elementsWidth / 3 - 40}
+                style={{ padding: "1rem" }}
+              />
+
+              // <OBJModel src={obj.obj} texPath=""/>
             )}
           </div>
         ))}

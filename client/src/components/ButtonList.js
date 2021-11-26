@@ -26,6 +26,8 @@ function ButtonList(
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
+        marginTop: "0.5rem",
+        marginBottom: "1.8rem",
       }}
     >
       <input

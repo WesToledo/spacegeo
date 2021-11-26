@@ -15,6 +15,12 @@ const img4_3 = require("./assets/img/4.3.png");
 const img4_4 = require("./assets/img/4.4.png");
 const img4_5 = require("./assets/img/4.5.png");
 
+const audio4_1 = require("./assets/img/4.1.png");
+const audio4_2 = require("./assets/img/4.2.png");
+const audio4_3 = require("./assets/img/4.3.png");
+const audio4_4 = require("./assets/img/4.4.png");
+const audio4_5 = require("./assets/img/4.5.png");
+
 const reta_contida_planoA = require("./assets/audios/aula2.1_reta_contida_plano.mp3");
 
 const reta_contida_planoV = require("./assets/videos/AULA2.1_RETA_CONTIDA_PLANO.mp4");
@@ -36,7 +42,7 @@ function Aula_4() {
               marginBottom: 0,
             }}
           >
-            Aula 3
+            Aula 4
           </h2>
         }
       >
@@ -81,7 +87,7 @@ function Aula_4() {
                   <ButtonList
                     video={reta_contida_planoV}
                     objName="4.1"
-                    audio={reta_contida_planoA}
+                    audio={audio4_1}
                     setCurrentVideo={setCurrentVideo}
                     setOpen={setOpen}
                   />
@@ -126,7 +132,7 @@ function Aula_4() {
                     <ButtonList
                       video={reta_contida_planoV}
                       objName="4.2"
-                      audio={reta_contida_planoA}
+                      audio={audio4_2}
                       setCurrentVideo={setCurrentVideo}
                       setOpen={setOpen}
                     />
@@ -172,7 +178,7 @@ function Aula_4() {
                     <ButtonList
                       video={reta_contida_planoV}
                       objName="4.3"
-                      audio={reta_contida_planoA}
+                      audio={audio4_3}
                       setCurrentVideo={setCurrentVideo}
                       setOpen={setOpen}
                     />
@@ -222,7 +228,7 @@ function Aula_4() {
                     <ButtonList
                       video={reta_contida_planoV}
                       objName="4.4"
-                      audio={reta_contida_planoA}
+                      audio={audio4_4}
                       setCurrentVideo={setCurrentVideo}
                       setOpen={setOpen}
                     />
@@ -269,7 +275,7 @@ function Aula_4() {
                     <ButtonList
                       video={reta_contida_planoV}
                       objName="4.5"
-                      audio={reta_contida_planoA}
+                      audio={audio4_5}
                       setCurrentVideo={setCurrentVideo}
                       setOpen={setOpen}
                     />

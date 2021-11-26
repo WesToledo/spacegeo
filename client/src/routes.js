@@ -19,10 +19,12 @@ import ClassesPage from "./pages/Classes";
 import StudentsPage from "./pages/Classes/Students";
 import MyQuestionsTeacherPage from "./pages/MyQuestionsTeacher";
 import SubMyQuestionsTeacherPage from "./pages/MyQuestionsTeacher/Questions";
+import InstructionsTeacherPage from "./pages/InstructionsTeacher";
 
 //STUDENT PAGES
 import MyQuestionsStudentPage from "./pages/MyQuestionsStudent";
 import SubMyQuestionsStudentPage from "./pages/MyQuestionsStudent/Questions";
+import InstructionsStudentPage from "./pages/InstructionsStudent";
 
 import LoginPage from "~/pages/Login";
 import SignUpPage from "~/pages/SignUp";
@@ -131,6 +133,21 @@ function App() {
             component={SubQuestionPage}
           />
         )}
+
+        {type == "teacher" ? (
+          <PrivateRoute
+            exact
+            path="/instrucoes"
+            component={InstructionsTeacherPage}
+          />
+        ) : (
+          <PrivateRoute
+            exact
+            path="/sub-questionarios"
+            component={InstructionsStudentPage}
+          />
+        )}
+
         {/* GEOMETRIA DE POSIÇÃO */}
         {/* LEVEL 1 */}
         {/* 1 */}

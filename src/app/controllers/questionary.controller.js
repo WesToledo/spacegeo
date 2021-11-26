@@ -85,7 +85,7 @@ async function list(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
       teacher: req.params.idTeacher,
-    });
+    }).populate("classes");
     res.send({ questionarys });
   } catch (err) {
     return res.status(400).send({ error: "Erro ao buscar questionários" });
@@ -187,7 +187,7 @@ async function addQuestion(req, res) {
 
 async function updateQuestion(req, res) {
   try {
-    const { title, alternatives, rightOne } = req.body;
+    const { title, alternatives, rightOne, objName } = req.body;
     const question = await QuestionSchema.findOne({ _id: req.body._id });
 
     question.alternatives = alternatives.map((alternative) => {
@@ -195,6 +195,7 @@ async function updateQuestion(req, res) {
     });
     question.title = title;
     question.rightOne = rightOne;
+    question.objName = objName;
 
     await question.save();
     return res.send();

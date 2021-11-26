@@ -67,7 +67,9 @@ function MyQuestionsPage(props) {
                         <Icon prefix="fe" name="users" className="m-2" />
                         <Text
                           style={{ minWidth: 120, margin: 5 }}
-                        >{`Turmas: ${questionary.classes.length}`}</Text>
+                        >{`Turmas: ${questionary.classes
+                          .map((classe) => classe.name)
+                          .join(", ")}`}</Text>
                       </div>
                     </Card.Body>
                     <Card.Footer>
