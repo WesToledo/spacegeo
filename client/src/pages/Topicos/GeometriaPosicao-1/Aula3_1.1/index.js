@@ -258,7 +258,7 @@ function Aula_3() {
                       }}
                     >
                       <p style={{ margin: 0 }}>
-                        a) Segsmento de reta ortogonal
+                        a) Segmento de reta ortogonal
                       </p>
                     </li>
                     <li
