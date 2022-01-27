@@ -24,10 +24,12 @@ function ButtonList(
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "flex-start",
+        justifyContent: "flex-end",
         alignItems: "center",
         marginTop: "0.5rem",
         marginBottom: "1.8rem",
+        padding: "1rem",
+        borderBottom: "1px solid #ccc",
       }}
     >
       <input
