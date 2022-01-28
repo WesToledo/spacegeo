@@ -15,15 +15,17 @@ const img4_3 = require("./assets/img/4.3.png");
 const img4_4 = require("./assets/img/4.4.png");
 const img4_5 = require("./assets/img/4.5.png");
 
-const audio4_1 = require("./assets/img/4.1.png");
-const audio4_2 = require("./assets/img/4.2.png");
-const audio4_3 = require("./assets/img/4.3.png");
-const audio4_4 = require("./assets/img/4.4.png");
-const audio4_5 = require("./assets/img/4.5.png");
+const audio4_1 = require("./assets/audios/4.1.mp3");
+const audio4_2 = require("./assets/audios/4.2.mp3");
+const audio4_3 = require("./assets/audios/4.3.mp3");
+const audio4_4 = require("./assets/audios/4.4.mp3");
+const audio4_5 = require("./assets/audios/4.5.mp3");
 
-const reta_contida_planoA = require("./assets/audios/aula2.1_reta_contida_plano.mp3");
-
-const reta_contida_planoV = require("./assets/videos/AULA2.1_RETA_CONTIDA_PLANO.mp4");
+const video4_1 = require("./assets/videos/4.1.mp4");
+const video4_2 = require("./assets/videos/4.2.mp4");
+const video4_3 = require("./assets/videos/4.3.mp4");
+const video4_4 = require("./assets/videos/4.4.mp4");
+const video4_5 = require("./assets/videos/4.5.mp4");
 
 function Aula_4() {
   const [open, setOpen] = useState(false);
@@ -85,7 +87,7 @@ function Aula_4() {
                   </li>
 
                   <ButtonList
-                    video={reta_contida_planoV}
+                    video={video4_1}
                     objName="4.1"
                     audio={audio4_1}
                     setCurrentVideo={setCurrentVideo}
@@ -130,7 +132,7 @@ function Aula_4() {
                     </li>
 
                     <ButtonList
-                      video={reta_contida_planoV}
+                      video={video4_2}
                       objName="4.2"
                       audio={audio4_2}
                       setCurrentVideo={setCurrentVideo}
@@ -176,7 +178,7 @@ function Aula_4() {
                     </li>
 
                     <ButtonList
-                      video={reta_contida_planoV}
+                      video={video4_3}
                       objName="4.3"
                       audio={audio4_3}
                       setCurrentVideo={setCurrentVideo}
@@ -226,7 +228,7 @@ function Aula_4() {
                     </li>
 
                     <ButtonList
-                      video={reta_contida_planoV}
+                      video={video4_4}
                       objName="4.4"
                       audio={audio4_4}
                       setCurrentVideo={setCurrentVideo}
@@ -273,7 +275,7 @@ function Aula_4() {
                     </li>
 
                     <ButtonList
-                      video={reta_contida_planoV}
+                      video={video4_5}
                       objName="4.5"
                       audio={audio4_5}
                       setCurrentVideo={setCurrentVideo}
