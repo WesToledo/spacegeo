@@ -1,15 +1,15 @@
-import * as THREE from "../libs/three/three.module.js";
-import { GLTFLoader } from "../libs/three/jsm/GLTFLoader.js";
-import { CanvasUI } from "../libs/CanvasUI.js";
-import { ARButton } from "../libs/ARButton.js";
-import { LoadingBar } from "../libs/LoadingBar.js";
-import { Player } from "../libs/Player.js";
-import { RGBELoader } from "../libs/three/jsm/RGBELoader.js";
-import { XRGestures } from "../libs/XRGestures.js";
+import * as THREE from "./libs/three/three.module.js";
+import { GLTFLoader } from "./libs/three/jsm/GLTFLoader.js";
+import { CanvasUI } from "./libs/CanvasUI.js";
+import { ARButton } from "./libs/ARButton.js";
+import { LoadingBar } from "./libs/LoadingBar.js";
+import { Player } from "./libs/Player.js";
+import { RGBELoader } from "./libs/three/jsm/RGBELoader.js";
+import { XRGestures } from "./libs/XRGestures.js";
 
+const params = {};
 class App {
   constructor() {
-    var params = {};
     location.search
       .slice(1)
       .split("&")
@@ -17,7 +17,7 @@ class App {
         pair = pair.split("=");
         params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
       });
-    console.log("params", this.params);
+    console.log("params", params);
 
     const container = document.createElement("div");
     document.body.appendChild(container);
@@ -67,7 +67,7 @@ class App {
     const self = this;
 
     loader.load(
-      "../assets/venice_sunset_1k.hdr",
+      "./assets/venice_sunset_1k.hdr",
       (texture) => {
         const envMap = pmremGenerator.fromEquirectangular(texture).texture;
         pmremGenerator.dispose();
@@ -84,14 +84,14 @@ class App {
   initScene() {
     this.loadingBar = new LoadingBar();
 
-    this.assetsPath = "../assets/";
+    this.assetsPath = "./assets/";
     const loader = new GLTFLoader().setPath(this.assetsPath);
     const self = this;
 
     // Load a GLTF resource
     loader.load(
       // resource URL
-      "/models/" + this.params.obj + ".wrl.glb",
+      "./models/" + params.obj + ".wrl.glb",
       // called when the resource is loaded
       function (gltf) {
         const object = gltf.scene;
