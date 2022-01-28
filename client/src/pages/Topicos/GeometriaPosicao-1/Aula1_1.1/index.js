@@ -71,55 +71,112 @@ function Aula_1() {
               title={"Aula 1: Geometria do Espaço"}
               body={
                 <>
-                  <h4>
-                    <strong>1.1 NOÇÕES PRIMITIVAS</strong>
-                  </h4>
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
+                  <>
+                    <h4>
+                      <strong>1.1 NOÇÕES PRIMITIVAS</strong>
+                    </h4>
+
                     <p style={{ margin: 0 }}>Ponto:</p>
-                    <img src={ponto} width="10%" style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }} />
-                  </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(pontoV);
+
+                    <p style={{ margin: 0 }}>
+                      O ponto é um objeto da geometria espacial adimensional.
+                      Não possui comprimento, nem largura, nem altura.
+                    </p>
+
+                    <li
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
+                    >
+                      <img
+                        src={ponto}
+                        width="10%"
+                        style={{ margin: "1.8rem" }}
+                      />
+                    </li>
+
+                    <ButtonList
+                      video={pontoV}
+                      objName="ob1.1_reta"
+                      audio={pontoA}
+                      setCurrentVideo={setCurrentVideo}
+                      setOpen={setOpen}
+                      shouldDisplayRA={false}
                     />
-                  </li> */}
-                  <ButtonList
-                    video={pontoV}
-                    objName="ob1.1_reta"
-                    audio={pontoA}
-                    setCurrentVideo={setCurrentVideo}
-                    setOpen={setOpen}
-                    shouldDisplayRA={false}
-                  />
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>Reta:</p>
-                    <img src={reta} width="50%" style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }} />
-                  </li>
-                  {/* <li
+                  </>
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+                  <>
+                    <p style={{ margin: 0 }}>Reta</p>
+                    <p style={{ margin: 0 }}>
+                      A reta é um objeto unidimensional e possui apenas
+                      comprimento.
+                    </p>
+                    <li
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <img
+                        src={reta}
+                        width="60%"
+                        style={{ margin: "1.8rem" }}
+                      />
+                    </li>
+                    <ButtonList
+                      video={retaV}
+                      objName="ob1.1_reta"
+                      audio={retaA}
+                      setCurrentVideo={setCurrentVideo}
+                      setOpen={setOpen}
+                    />
+                  </>
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+                  <>
+                    <p style={{ margin: 0 }}>Plano</p>
+                    <p style={{ margin: 0 }}>
+                      O plano é um objeto bidimensional e possui comprimento e
+                      largura.
+                    </p>
+                    <li
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <img
+                        src={plano}
+                        width="60%"
+                        style={{ margin: "1.8rem" }}
+                      />
+                    </li>
+                    <ButtonList
+                      video={planoV}
+                      objName="ob1.1_plano"
+                      audio={planoA}
+                      setCurrentVideo={setCurrentVideo}
+                      setOpen={setOpen}
+                    />
+                  </>
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+
+                  <>
+                    <h4>
+                      <strong>
+                        1.2 POSIÇÕES RELATIVAS DE DUAS RETAS DO ESPAÇO
+                      </strong>
+                    </h4>
+                    <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
@@ -127,185 +184,72 @@ function Aula_1() {
                         alignItems: "center",
                       }}
                     >
-                      <LibrasButton
-                        onClick={() => {
-                          setOpen(true);
-                          setCurrentVideo(retaV);
-                        }}
+                      <h5 style={{ margin: 0 }}>
+                        <strong>Paralelas </strong>
+                        <span style={{ fontWeight: "normal" }}>
+                          ⇒ Coplanares
+                        </span>
+                      </h5>
+                    </li>
+                    <p style={{ margin: 0 }}>
+                      Duas retas paralelas no espaço estão contidas no mesmo
+                      plano e não possuem pontos em comum.
+                    </p>
+                    <p style={{ margin: 0 }}>a) Distintas:</p>
+                    <li
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <img
+                        src={distintas}
+                        width="60%"
+                        style={{ margin: "1.8rem" }}
                       />
-                      <Button
-                        icon="box"
-                        color="primary"
-                        RootComponent="a"
-                        href="/ra.html?obj=ob1.1_reta"
-                        className="text-white m-1"
+                    </li>
+                    <ButtonList
+                      video={distintasV}
+                      objName="ob1.1_reta"
+                      audio={distintasA}
+                      setCurrentVideo={setCurrentVideo}
+                      setOpen={setOpen}
+                      shouldDisplayRA={false}
+                    />
+                  </>
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+                  {/* ------------------------------------------------------------------------------------------------------------------------ */}
+
+                  <>
+                    <p style={{ margin: 0 }}>b) Coincidentes:</p>
+                    <p>
+                      Duas retas coincidentes no espaço são coplanares e possuem
+                      todos os pontos em comum.
+                    </p>
+                    <li
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <img
+                        src={coincidentes}
+                        width="60%"
+                        style={{ margin: "1.8rem" }}
                       />
-                    </li> */}
-
-                  <ButtonList
-                    video={retaV}
-                    objName="ob1.1_reta"
-                    audio={retaA}
-                    setCurrentVideo={setCurrentVideo}
-                    setOpen={setOpen}
-                  />
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>Plano:</p>
-                    <img src={plano} width="50%" style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }} />
-                  </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(planoV);
-                      }}
+                    </li>
+                    <ButtonList
+                      video={coincidentesV}
+                      objName="ob1.2_paralelas_coincidentes"
+                      audio={coincidentesA}
+                      setCurrentVideo={setCurrentVideo}
+                      setOpen={setOpen}
                     />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.1_plano"
-                      className="text-white m-1"
-                    />
-                  </li> */}
-                  <ButtonList
-                    video={planoV}
-                    objName="ob1.1_plano"
-                    audio={planoA}
-                    setCurrentVideo={setCurrentVideo}
-                    setOpen={setOpen}
-                  />
-
-                  <h4 style={{ marginTop: "1rem" }}>
-                    <strong>
-                      1.2 POSIÇÕES RELATIVAS DE DUAS RETAS DO ESPAÇO
-                    </strong>
-                  </h4>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h5 style={{ margin: 0 }}>
-                      <strong>Paralelas </strong>
-                      <span style={{ fontWeight: "normal" }}>⇒ Coplanares</span>
-                    </h5>
-                  </li>
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div>
-                      <p style={{ margin: 0 }}>a) Distintas:</p>
-                    </div>
-                    <img
-                      src={distintas}
-                      width="50%"
-                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
-                    />
-                  </li>
-
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(distintasV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.2_paralelas_distintas"
-                      className="text-white m-1"
-                    />
-                  </li> */}
-                  <ButtonList
-                    video={distintasV}
-                    objName="ob1.2_paralelas_distintas"
-                    audio={distintasA}
-                    setCurrentVideo={setCurrentVideo}
-                    setOpen={setOpen}
-                  />
-
-                  <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div>
-                      <p style={{ margin: 0 }}>b) Coincidentes:</p>
-                    </div>
-                    <img
-                      src={coincidentes}
-                      width="50%"
-                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
-                    />
-                  </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(coincidentesV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.2_paralelas_coincidentes"
-                      className="text-white m-1"
-                    />
-                  </li> */}
-
-                  <ButtonList
-                    video={coincidentesV}
-                    objName="ob1.2_paralelas_coincidentes"
-                    audio={coincidentesA}
-                    setCurrentVideo={setCurrentVideo}
-                    setOpen={setOpen}
-                  />
+                  </>
 
                   <li
                     style={{
@@ -321,44 +265,26 @@ function Aula_1() {
                     </h5>
                   </li>
 
+                  <p>
+                    Duas retas concorrentes são coplanares e possuem um único
+                    ponto em comum.
+                  </p>
+
                   <li
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}></p>
-
                     <img
                       src={concorrentes}
-                      width="50%"
-                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(concorrentesV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.2_concorrentes"
-                      className="text-white m-1"
-                    />
-                  </li> */}
+
                   <ButtonList
                     video={concorrentesV}
                     objName="ob1.2_concorrentes"
@@ -386,13 +312,14 @@ function Aula_1() {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
                     <p style={{ margin: 0 }}>
-                      Duas retas são reversas se, e somente se, não existe plano
-                      que as contém
+                      Duas retas são reversas quando não são coplanares. Duas
+                      retas são reversas se, e somente se, não existe um plano
+                      que as contém.
                     </p>
                   </li>
 
@@ -400,14 +327,14 @@ function Aula_1() {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
                     <img
                       src={reversas}
-                      width="50%"
-                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                   </li>
                   {/* <li
@@ -454,8 +381,8 @@ function Aula_1() {
                     }}
                   >
                     <p style={{ margin: 0 }}>
-                      Uma reta é perpendicular a outra, e somente se, são
-                      concorrentes e formam ângulo reto
+                      Uma reta é perpendicular a outra se, e somente se, são
+                      concorrentes e formam um ângulo de 90º.
                     </p>
                   </li>
 
@@ -463,7 +390,7 @@ function Aula_1() {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
@@ -471,32 +398,10 @@ function Aula_1() {
 
                     <img
                       src={perpendiculares}
-                      width="50%"
-                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(perpendicularesV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.3_retas_perpendiculares"
-                      className="text-white m-1"
-                    />
-                  </li> */}
 
                   <ButtonList
                     video={perpendicularesV}
@@ -519,8 +424,9 @@ function Aula_1() {
                     }}
                   >
                     <p style={{ margin: 0 }}>
-                      Uma reta é ortogonal a outra, se e somente se, são
-                      reversas e formam ângulo reto
+                      Uma reta é ortogonal a outra se, e somente se, são
+                      reversas, ou seja, não possuem um plano que as contém, mas
+                      forma um ângulo de 90º.
                     </p>
                   </li>
 
@@ -528,40 +434,16 @@ function Aula_1() {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}></p>
-
                     <img
                       src={ortogonais}
-                      width="50%"
-                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(ortogonaisV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.4_retas_ortogonais"
-                      className="text-white m-1"
-                    />
-                  </li> */}
 
                   <ButtonList
                     video={ortogonaisV}
@@ -585,7 +467,7 @@ function Aula_1() {
                   >
                     <p style={{ margin: 0 }}>
                       Duas retas são chamadas oblíquas quando são concorrentes e
-                      não são perpendiculares
+                      não são perpendiculares.
                     </p>
                   </li>
 
@@ -593,40 +475,17 @@ function Aula_1() {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
-                    <p style={{ margin: 0 }}></p>
-
                     <img
                       src={obliquas}
-                      width="50%"
-                      style={{ marginLeft: "1.8rem", marginTop: "0.5rem" }}
+                      width="60%"
+                      style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(obliquasV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob1.5_retas_obliquas"
-                      className="text-white m-1"
-                    />
-                  </li> */}
+
                   <ButtonList
                     video={obliquasV}
                     objName="ob1.5_retas_obliquas"

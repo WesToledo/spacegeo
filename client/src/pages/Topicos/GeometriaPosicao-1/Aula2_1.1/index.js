@@ -69,51 +69,33 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p style={{ margin: 0 }}>
                       Reta <i>secante</i> ao plano
                     </p>
+                    <p>
+                      Uma reta secante ao plano possui com o plano um único
+                      ponto em comum.
+                    </p>
                   </li>
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
                   >
                     <img
                       src={secante_ao_plano}
-                      width="40%"
+                      width="60%"
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(reta_secante_ao_planoV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob2.1_reta_secante_ao_plano"
-                      className="text-white m-1"
-                    />
-                  </li> */}
 
                   <ButtonList
                     video={reta_secante_ao_planoV}
@@ -126,51 +108,34 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p style={{ margin: 0 }}>
                       Reta <i>contida</i> no plano
                     </p>
+                    <p>
+                      Uma reta contida no plano possui todos os pontos em comum
+                      com o plano.
+                    </p>
                   </li>
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
                   >
                     <img
                       src={reta_contida_no_plano}
-                      width="40%"
+                      width="60%"
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(reta_contida_planoV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob2.1_reta_contida_ao_plano"
-                      className="text-white m-1"
-                    />
-                  </li> */}
+
                   <ButtonList
                     video={reta_contida_planoV}
                     objName="ob2.1_reta_contida_ao_plano"
@@ -178,22 +143,27 @@ function Aula_2() {
                     setCurrentVideo={setCurrentVideo}
                     setOpen={setOpen}
                   />
+
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p style={{ margin: 0 }}>
                       Reta <i>paralela</i> ao plano
                     </p>
+                    <p>
+                      Uma reta paralela ao plano não possui com o plano nenhum
+                      ponto em comum.
+                    </p>
                   </li>
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
@@ -204,28 +174,6 @@ function Aula_2() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(reta_paralela_planoV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob2.1_reta_paralela_ao_plano"
-                      className="text-white m-1"
-                    />
-                  </li> */}
 
                   <ButtonList
                     video={reta_paralela_planoV}
@@ -240,49 +188,31 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p style={{ margin: 0 }}>Secantes</p>
+                    <p>
+                      Dois planos são secantes quando possuem uma reta em comum.
+                    </p>
                   </li>
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
                   >
                     <img
                       src={secantes}
-                      width="40%"
+                      width="60%"
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(planos_secantesV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob2.2_secantes"
-                      className="text-white m-1"
-                    />
-                  </li> */}
+
                   <ButtonList
                     video={planos_secantesV}
                     objName="ob2.2_secantes"
@@ -294,19 +224,23 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p style={{ margin: 0 }}>Paralelos</p>
+                    <p>
+                      Dois planos paralelos e distintos não possuem nenhum plano
+                      em comum.
+                    </p>
                   </li>
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p style={{ margin: 0 }}>a) Distintos (α ∩ β = ∅)</p>
@@ -314,7 +248,7 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
@@ -325,28 +259,7 @@ function Aula_2() {
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(plano_paraalelos_distintosV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob2.2_paralelos_distintos"
-                      className="text-white m-1"
-                    />
-                  </li> */}
+
                   <ButtonList
                     video={plano_paraalelos_distintosV}
                     objName="ob2.2_paralelos_distintos"
@@ -354,12 +267,13 @@ function Aula_2() {
                     setCurrentVideo={setCurrentVideo}
                     setOpen={setOpen}
                   />
+
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p style={{ margin: 0 }}>b) Coincidentes (α = β)</p>
@@ -367,39 +281,18 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
                   >
                     <img
                       src={coincidentes}
-                      width="40%"
+                      width="60%"
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(paralelos_coincidentesV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob2.2_paralelos_coincidentes"
-                      className="text-white m-1"
-                    />
-                  </li> */}
+
                   <ButtonList
                     video={paralelos_coincidentesV}
                     objName="ob2.2_paralelos_coincidentes"
@@ -413,10 +306,15 @@ function Aula_2() {
                     <strong>2.3 RETA E PLANO PERPENDICULARES</strong>
                   </h4>
 
+                  <p>
+                    Uma reta que é perpendicular ao plano forma ângulo reto com
+                    qualquer reta desse plano.
+                  </p>
+
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
@@ -430,34 +328,12 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "center",
-                      alignItems: "center",
+                      flexDirection: "column",
+                      justifyContent: "flex-start",
+                      alignItems: "flex-start",
                       marginBottom: "20px",
                     }}
                   ></li>
-                  {/* <li
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LibrasButton
-                      onClick={() => {
-                        setOpen(true);
-                        setCurrentVideo(reta_plano_perpendicularesV);
-                      }}
-                    />
-                    <Button
-                      icon="box"
-                      color="primary"
-                      RootComponent="a"
-                      href="/ra.html?obj=ob2.3_reta_e_plano_perpendiculares"
-                      className="text-white m-1"
-                    />
-                  </li> */}
 
                   <ButtonList
                     video={reta_plano_perpendicularesV}
@@ -470,11 +346,15 @@ function Aula_2() {
                   <h4>
                     <strong>2.4 PLANOS PERPENDICULARES</strong>
                   </h4>
+                  <p>
+                    Dois planos são perpendiculares entre si quando eles são
+                    secantes e um deles contém uma reta perpendicular ao outro.
+                  </p>
 
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                     }}
@@ -488,9 +368,9 @@ function Aula_2() {
                   <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "center",
-                      alignItems: "center",
+                      flexDirection: "column",
+                      justifyContent: "flex-start",
+                      alignItems: "flex-start",
 
                       marginBottom: "20px",
                     }}
@@ -498,9 +378,9 @@ function Aula_2() {
                   {/* <li
                     style={{
                       display: "flex",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       justifyContent: "flex-start",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <LibrasButton

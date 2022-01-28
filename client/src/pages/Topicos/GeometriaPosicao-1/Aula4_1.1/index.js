@@ -65,7 +65,7 @@ function Aula_4() {
                   >
                     <p style={{ margin: 0 }}>
                       A distância entre os pontos P e Q é a medida do segmento
-                      PQ em alguma unidade de medida
+                      PQ em alguma unidade de medida.
                     </p>
                   </li>
 
@@ -73,7 +73,7 @@ function Aula_4() {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
@@ -111,14 +111,14 @@ function Aula_4() {
                     >
                       <p style={{ margin: 0 }}>
                         A distância entre uma reta A é igual à distância entre A
-                        e A’, sendo A’ a projeção ortogonal de A em S
+                        e A’, sendo A’ a projeção ortogonal de A em S.
                       </p>
                     </li>
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
@@ -157,14 +157,14 @@ function Aula_4() {
                     >
                       <p style={{ margin: 0 }}>
                         É a distância entre o ponto A e a sua projeção ortogonal
-                        sobre o plano α (A’)
+                        sobre o plano α (A’).
                       </p>
                     </li>
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
@@ -207,14 +207,14 @@ function Aula_4() {
                     >
                       <p style={{ margin: 0 }}>
                         É a distância entre um ponto qualquer da reta A e sua
-                        projeção ortogonal (A’) sobre o plano α
+                        projeção ortogonal (A’) sobre o plano α.
                       </p>
                     </li>
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
@@ -254,14 +254,14 @@ function Aula_4() {
                     >
                       <p style={{ margin: 0 }}>
                         É a distância entre dois pontos, um em cada plano, em
-                        uma mesma perpendicular
+                        uma mesma perpendicular.
                       </p>
                     </li>
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >

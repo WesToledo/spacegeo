@@ -70,7 +70,7 @@ function Aula_3() {
                   >
                     <p style={{ margin: 0 }}>
                       A projeção ortogonal de um ponto A sobre o plano α também
-                      será um ponto (A’)
+                      será um ponto (A’).
                     </p>
                   </li>
 
@@ -78,13 +78,13 @@ function Aula_3() {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
                     <img
                       src={img3_1}
-                      width="50%"
+                      width="60%"
                       style={{ margin: "1.8rem" }}
                     />
                   </li>
@@ -119,20 +119,20 @@ function Aula_3() {
                       <p style={{ margin: 0 }}>
                         A projeção ortogonal da figura F sobre o plano α é o
                         conjunto F’ das projeções ortogonais de todos os pontos
-                        de F’ sobre α
+                        de F’ sobre α.
                       </p>
                     </li>
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
                       <img
                         src={img3_2}
-                        width="50%"
+                        width="60%"
                         style={{ margin: "1.8rem" }}
                       />
                     </li>
@@ -154,6 +154,10 @@ function Aula_3() {
                     >
                       <strong>3.3 PROJEÇÃO ORTOGONAL ENTRE RETA E PLANO</strong>
                     </h4>
+                    <p>
+                      Sendo a reta r ortogonal ao plano α, a sua projeção sobre
+                      esse plano é apenas o ponto P.
+                    </p>
 
                     <li
                       style={{
@@ -169,13 +173,13 @@ function Aula_3() {
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
                       <img
                         src={img3_3a}
-                        width="50%"
+                        width="60%"
                         style={{ margin: "1.8rem" }}
                       />
                     </li>
@@ -209,20 +213,21 @@ function Aula_3() {
                     >
                       <p style={{ margin: 0 }}>
                         A figura formada pela projeção ortogonal de uma reta r
-                        sobre o plano α é outra reta r’
+                        sobre o plano α é outra reta (r’); r’ é a projeção
+                        ortogonal de r sobre α.
                       </p>
                     </li>
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
                       <img
                         src={img3_3b}
-                        width="50%"
+                        width="60%"
                         style={{ margin: "1.8rem" }}
                       />
                     </li>
@@ -257,21 +262,23 @@ function Aula_3() {
                         alignItems: "center",
                       }}
                     >
-                      <p style={{ margin: 0 }}>
-                        a) Segmento de reta ortogonal
-                      </p>
+                      <p style={{ margin: 0 }}>a) Segmento de reta ortogonal</p>
                     </li>
+                    <p>
+                      Sendo o segmento de reta AB ortogonal ao plano α, a sua
+                      projeção sobre esse plano é apenas o ponto P.
+                    </p>
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
                       <img
                         src={img3_4a}
-                        width="50%"
+                        width="60%"
                         style={{ margin: "1.8rem" }}
                       />
                     </li>
@@ -295,18 +302,22 @@ function Aula_3() {
                         b) Segmento de reta não ortogonal
                       </p>
                     </li>
+                    <p>
+                      A figura formada pela projeção ortogonal de um segmento de
+                      reta sobre o plano α é outro segmento de reta (A’B’).
+                    </p>
 
                     <li
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "flex-start",
+                        justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
                       <img
                         src={img3_4b}
-                        width="50%"
+                        width="60%"
                         style={{ margin: "1.8rem" }}
                       />
                     </li>
