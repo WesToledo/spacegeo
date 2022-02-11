@@ -91,7 +91,7 @@ class App {
     // Load a GLTF resource
     loader.load(
       // resource URL
-      "./models/" + params.obj + ".wrl.glb",
+      "./models/" + params.obj + ".glb",
       // called when the resource is loaded
       function (gltf) {
         const object = gltf.scene;
@@ -173,7 +173,10 @@ class App {
       self.ui.updateElement("info", "");
       if (!self.knight.object.visible) {
         self.knight.object.visible = true;
-        self.knight.object.position.set(0, -0.3, -0.5).add(ev.position);
+
+        // here set de initial position of the object
+        self.knight.object.position.set(0, 0, 0).add(ev.position);
+
         self.scene.add(self.knight.object);
       }
     });
