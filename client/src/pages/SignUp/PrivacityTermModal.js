@@ -1,24 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button, Form } from "tabler-react";
+import { makeStyles } from "@material-ui/core/styles";
+
+import IframeResizer from "iframe-resizer-react";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import api from "~/services/api";
-import useStore from "~/store";
 
-export default function PrivacityTermModal({ open, setOpen, setSentToServer }) {
+const useStyles = makeStyles((theme) => ({
+  theme: {
+    [theme.breakpoints.up("md")]: {
+      height: "2000px",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "2500px",
+    },
+  },
+}));
+
+export default function ModalAcceptTerms({ open, setOpen, openNextModal }) {
+  const classes = useStyles();
   const handleClose = () => {
     setOpen(false);
   };
-  const { _id } = useStore((state) => state.user);
 
-  async function onSubmit() {
+  function onSubmit() {
     setOpen(false);
-    setSentToServer(true);
+    openNextModal();
   }
+
+  const iframeRef = useRef(null);
 
   return (
     <div>
@@ -26,23 +39,28 @@ export default function PrivacityTermModal({ open, setOpen, setSentToServer }) {
         fullWidth
         open={open}
         onClose={handleClose}
-        maxWidth="md"
+        maxWidth="lg"
         scroll="body"
       >
-        <DialogTitle id="form-dialog-title">
-          Política de Privacidade do APP
-        </DialogTitle>
+        <DialogTitle>Termos de Uso do APP</DialogTitle>
         <DialogContent>
-          {/* <Form.Textarea
-            defaultValue=""
-            rows={6}
-          /> */}
-          <iframe
+          <IframeResizer
+            forwardRef={iframeRef}
+            heightCalculationMethod="bodyOffset"
+            inPageLinks
+            log
+            scrolling="yes"
+            src={process.env.REACT_APP_URL + "/POLITICA_PRIVACIDADE.html"}
+            style={{ width: "1px", minWidth: "100%" }}
+            className={classes.theme}
+          />
+          {/* <iframe
+            conten
             scrolling="no"
-            id="frame"
-            style={{ width: "100%", height: "3000px" }}
-            src="https://docs.google.com/document/d/e/2PACX-1vRjiit6K5nsDcm77vwnBp69XgrOgmcb0wz3yYE-UcmGSv2BWp5MSmFZDjgoFhe_5g/pub?embedded=true"
-          ></iframe>
+            width="100%"
+            height="3000px"
+            src="https://docs.google.com/document/d/e/2PACX-1vSK7kM1QTr8GMKBGiTENGgrioLk9jcuz9B9sS_tbwKjIWj4NZJqAEDo5l_7-Hzu9g/pub?embedded=true"
+          ></iframe> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="default">

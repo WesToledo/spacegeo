@@ -1,15 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button, Form } from "tabler-react";
+import { makeStyles } from "@material-ui/core/styles";
+
+import IframeResizer from "iframe-resizer-react";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import api from "~/services/api";
-import useStore from "~/store";
+
+const useStyles = makeStyles((theme) => ({
+  theme: {
+    [theme.breakpoints.up("md")]: {
+      height: "2000px",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "2500px",
+    },
+  },
+}));
 
 export default function ModalAcceptTerms({ open, setOpen, openNextModal }) {
+  const classes = useStyles();
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -19,23 +32,35 @@ export default function ModalAcceptTerms({ open, setOpen, openNextModal }) {
     openNextModal();
   }
 
+  const iframeRef = useRef(null);
+
   return (
     <div>
       <Dialog
         fullWidth
         open={open}
         onClose={handleClose}
-        maxWidth="md"
+        maxWidth="lg"
         scroll="body"
       >
-        <DialogTitle id="form-dialog-title">Termos de Uso do APP</DialogTitle>
+        <DialogTitle>Termos de Uso do APP</DialogTitle>
         <DialogContent>
-          <iframe
+          <IframeResizer
+            forwardRef={iframeRef}
+            inPageLinks
+            scrolling='yes'
+            log
+            src={process.env.REACT_APP_URL + "/TERMO_DE_USO.html"}
+            style={{ width: "1px", minWidth: "100%" }}
+            className={classes.theme}
+          />
+          {/* <iframe
+            conten
             scrolling="no"
-            id="frame"
-            style={{ width: "100%", height: "3000px" }}
+            width="100%"
+            height="3000px"
             src="https://docs.google.com/document/d/e/2PACX-1vSK7kM1QTr8GMKBGiTENGgrioLk9jcuz9B9sS_tbwKjIWj4NZJqAEDo5l_7-Hzu9g/pub?embedded=true"
-          ></iframe>
+          ></iframe> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="default">
