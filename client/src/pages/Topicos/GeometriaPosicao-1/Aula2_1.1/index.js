@@ -138,7 +138,7 @@ function Aula_2() {
 
                   <ButtonList
                     video={reta_contida_planoV}
-                    objName="ob2.1_reta_contida_ao_plano"
+                    objName="ob2.1_reta_contida_no_plano"
                     audio={reta_contida_planoA}
                     setCurrentVideo={setCurrentVideo}
                     setOpen={setOpen}
@@ -405,7 +405,7 @@ function Aula_2() {
 
                   <ButtonList
                     video={planos_perpendicularesV}
-                    objName="ob2.3_planos_perpendiculares"
+                    objName="ob2.4_planos_perpendiculares"
                     audio={planos_perpendicularesV}
                     setCurrentVideo={setCurrentVideo}
                     setOpen={setOpen}

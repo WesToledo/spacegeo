@@ -13,7 +13,7 @@ const img3_1 = require("./assets/img/3.1.png");
 const img3_2 = require("./assets/img/3.2.png");
 const img3_3a = require("./assets/img/3.3a_nova.png");
 const img3_3b = require("./assets/img/3.3b_nova.png");
-const img3_4a = require("./assets/img/3.4a.png");
+const img3_4a = require("./assets/img/3.4a_nova.png");
 const img3_4b = require("./assets/img/3.4b.png");
 
 const audio3_1 = require("./assets/audios/3.1.mp3");
