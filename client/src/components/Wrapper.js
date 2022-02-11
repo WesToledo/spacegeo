@@ -99,7 +99,7 @@ function SiteWrapper(props) {
     <Site.Wrapper
       headerProps={{
         href: "/",
-        imageURL: "/assets/logo.png",
+        imageURL: "/assets/logo_novo.png",
 
         accountDropdown: accountDropdownProps,
       }}

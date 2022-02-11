@@ -40,7 +40,7 @@ const letters = [
 ];
 
 function QuestionsPage(props) {
-  const [modalCreate, setOpenCreate] = useState(false);
+  const [modalCreate, setOpenCreate] = useState(true);
   const [modalEdit, setOpenEdit] = useState(false);
   const [modalClasses, setOpenClasses] = useState(false);
 
@@ -107,6 +107,9 @@ function QuestionsPage(props) {
             </Card.Options>
           </Card.Header>
           <Card.Body>
+            {questionary?.questions.length == 0 && (
+              <p>Nenhuma questão encontrada</p>
+            )}
             <Grid.Row cards deck>
               {questionary?.questions?.map((question, indexQuestion) => (
                 <Grid.Col lg={6} md={12} sm={12} xs={12} key={indexQuestion}>

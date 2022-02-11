@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
+
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -7,7 +7,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import api from "~/services/api";
 import useStore from "~/store";
-import { Button } from "tabler-react";
+import { Button, Form } from "tabler-react";
 
 export default function FormDialog({ open, setOpen, getQuestionarys }) {
   const handleClose = () => {
@@ -26,7 +26,7 @@ export default function FormDialog({ open, setOpen, getQuestionarys }) {
         type: "default",
       });
       handleClose();
-      console.log("akhsbdasjkdb")
+      console.log("akhsbdasjkdb");
       getQuestionarys();
     } catch (err) {
       console.log(err);
@@ -46,10 +46,10 @@ export default function FormDialog({ open, setOpen, getQuestionarys }) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Crie um novo questionário, adicione questões, e depois vincule as
-            turmas para avaliar seus alunos
+            Crie um novo questionário, crie questões, e depois vincule às turmas
+            para avaliar seus alunos
           </DialogContentText>
-          <TextField
+          <Form.Input
             autoFocus
             margin="dense"
             id="name"
@@ -59,13 +59,12 @@ export default function FormDialog({ open, setOpen, getQuestionarys }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <TextField
+          <Form.Input
             autoFocus
             margin="dense"
             id="grade"
             label="Valor do questionário"
             type="number"
-            fullWidth
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           />

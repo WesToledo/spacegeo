@@ -1,4 +1,10 @@
 const express = require("express");
+const multer = require("multer");
+
+require("dotenv").config();
+
+const multerConfig = require("./src/config/multer");
+const uploadMiddleware = multer(multerConfig);
 
 const authMiddleware = require("./src/app/middleware/auth");
 
@@ -56,7 +62,21 @@ questionaryRouter.get(
   questionary.getDefaultQuestionarys
 );
 
-questionaryRouter.post("/question/add", questionary.addQuestion);
+questionaryRouter.post(
+  "/question/add",
+  uploadMiddleware.single("file"),
+  questionary.addQuestion
+);
+
+// uploadRouter.post(
+//   "/podcast",
+//   uploadMiddleware.fields([
+//     { name: "thumb", maxCount: 1 },
+//     { name: "audio", maxCount: 1 },
+//   ]),
+//   podcast.upload
+// );
+
 questionaryRouter.put("/question/update", questionary.updateQuestion);
 questionaryRouter.delete("/question/remove/:id", questionary.removeQuestion);
 

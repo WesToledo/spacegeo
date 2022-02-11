@@ -8,19 +8,53 @@ import api from "~/services/api";
 import useStore from "~/store";
 
 import logoImg from "~/assets/img/tabler.png";
+import ModalAcceptTerms from "./UseTermModal";
+import PrivacityTermModal from "./PrivacityTermModal";
 
 function SignUpPage(props) {
-  const [textButton, setTextButton] = useState({ text: "Entrar" });
+  const [textButton, setTextButton] = useState({ text: "Criar conta" });
+
+  const [openUseTermModal, setOpenUseTermModal] = useState(false);
+  const [openPrivacityModal, setOpenPrivacityModal] = useState(false);
+
+  const [sentToServer, setSentToServer] = useState(false);
 
   const { addUser } = useStore();
 
   var stringsForm = {
-    title: "Cadastrar",
+    title: "Criar conta",
     emailLabel: "Login",
     emailPlaceholder: "Insira o login",
     passwordLabel: "Senha",
     passwordPlaceholder: "Senha",
   };
+
+  async function handleSubmit(values, setValues, setErrors) {
+    setTextButton({ text: "Carregando..." });
+
+    const { password, confirm_password } = values;
+
+    if (password !== confirm_password) {
+      setErrors({ confirm_password: "Senhas não coincidentes" });
+      setTextButton({ text: "Criar conta" });
+      return;
+    }
+
+    try {
+      const response = await api.post("/user/create", {
+        ...values,
+        type: values.type,
+        linked: values.type == "teacher",
+      });
+      addUser({ ...response.data.user, token: response.data.token });
+      if (response.data.user.type == "teacher") props.history.push("/topicos");
+      else props.history.push("/vincular-turma");
+    } catch (err) {
+      console.log(err.response.data.error);
+      setTextButton({ text: "Criar conta" });
+      setErrors({ email: "Erro ao tentar logar" });
+    }
+  }
 
   return (
     <Formik
@@ -34,30 +68,10 @@ function SignUpPage(props) {
         confirm_password: "",
       }}
       onSubmit={async (values, { setValues, setErrors }) => {
-        setTextButton({ text: "Carregando..." });
-
-        const { password, confirm_password } = values;
-
-        if (password !== confirm_password) {
-          setErrors({ confirm_password: "Senhas não coincidentes" });
-          setTextButton({ text: "Entrar" });
-          return;
-        }
-
-        try {
-          const response = await api.post("/user/create", {
-            ...values,
-            type: values.type,
-            linked: values.type == "teacher",
-          });
-          addUser({ ...response.data.user, token: response.data.token });
-          if (response.data.user.type == "teacher")
-            props.history.push("/topicos");
-          else props.history.push("/vincular-turma");
-        } catch (err) {
-          console.log(err.response.data.error);
-          setTextButton({ text: "Entrar" });
-          setErrors({ email: "Erro ao tentar logar" });
+        if (sentToServer) {
+          handleSubmit(values, setValues, setErrors);
+        } else {
+          setOpenUseTermModal(true);
         }
       }}
       render={({
@@ -91,7 +105,7 @@ function SignUpPage(props) {
                             required
                             requi
                             type="text"
-                            placeholder="Nome"
+                            placeholder="Digite seu nome completo"
                             name="name"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -106,7 +120,7 @@ function SignUpPage(props) {
                           <Form.Input
                             required
                             type="email"
-                            placeholder="Email"
+                            placeholder="Digite seu email"
                             name="email"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -122,6 +136,7 @@ function SignUpPage(props) {
                         <Form.Group label="Data de Nascimento">
                           <Form.MaskedInput
                             name="birthday"
+                            placeholder="Qual sua data de nascimento ?"
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values && values.birthday}
@@ -174,7 +189,7 @@ function SignUpPage(props) {
                           <Form.Input
                             required
                             type="text"
-                            placeholder="Instutição"
+                            placeholder="Informe qual instituição de ensino faz parte"
                             name="institution"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -192,7 +207,7 @@ function SignUpPage(props) {
                           <Form.Input
                             required
                             type="password"
-                            placeholder="Senha"
+                            placeholder="Digite a senha"
                             name="password"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -210,7 +225,7 @@ function SignUpPage(props) {
                           <Form.Input
                             required
                             type="password"
-                            placeholder="Confirme a senha"
+                            placeholder="Digite novamente a senha"
                             name="confirm_password"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -225,6 +240,16 @@ function SignUpPage(props) {
               </Grid.Row>
             </Container>
           </div>
+          <ModalAcceptTerms
+            open={openUseTermModal}
+            setOpen={setOpenUseTermModal}
+            openNextModal={() => setOpenPrivacityModal(true)}
+          />
+          <PrivacityTermModal
+            open={openPrivacityModal}
+            setOpen={setOpenPrivacityModal}
+            setSentToServer={setSentToServer}
+          />
         </div>
       )}
     />

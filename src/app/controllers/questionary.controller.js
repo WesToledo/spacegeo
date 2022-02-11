@@ -1,5 +1,3 @@
-const bcrypt = require("bcryptjs");
-
 const QuestionarySchema = require("../models/questionary");
 const QuestionSchema = require("../models/question");
 const AnswerSchema = require("../models/answer");
@@ -158,27 +156,54 @@ async function addQuestion(req, res) {
       hasObject,
       path,
       objName,
+      hasImg,
     } = req.body;
 
-    const questionary = await QuestionarySchema.findOne({ _id: questionaryId });
-
-    const question = await QuestionSchema.create({
-      title,
-      alternatives,
-      rightOne,
-      teacher,
-      hasObject,
-      path,
-      objName,
+    const questionary = await QuestionarySchema.findOne({
+      _id: questionaryId,
     });
 
-    questionary.questions.push(question);
+    if (hasImg) {
+      const { filename: key, location } = req.file;
 
-    await questionary.save();
+      const question = await QuestionSchema.create({
+        title,
+        alternatives,
+        rightOne,
+        teacher,
+        hasObject,
+        path,
+        objName,
+        imgKey: key,
+        imgURL: location,
+      });
 
-    return res.send({
-      questionary,
-    });
+      questionary.questions.push(question);
+
+      await questionary.save();
+
+      return res.send({
+        questionary,
+      });
+    } else {
+      const question = await QuestionSchema.create({
+        title,
+        alternatives,
+        rightOne,
+        teacher,
+        hasObject,
+        path,
+        objName,
+      });
+
+      questionary.questions.push(question);
+
+      await questionary.save();
+
+      return res.send({
+        questionary,
+      });
+    }
   } catch (err) {
     return res
       .status(400)

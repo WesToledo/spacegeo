@@ -11,8 +11,8 @@ import ButtonList from "~/components/ButtonList";
 
 const img3_1 = require("./assets/img/3.1.png");
 const img3_2 = require("./assets/img/3.2.png");
-const img3_3a = require("./assets/img/3.3a.png");
-const img3_3b = require("./assets/img/3.3b.png");
+const img3_3a = require("./assets/img/3.3a_nova.png");
+const img3_3b = require("./assets/img/3.3b_nova.png");
 const img3_4a = require("./assets/img/3.4a.png");
 const img3_4b = require("./assets/img/3.4b.png");
 
@@ -336,6 +336,23 @@ function Aula_3() {
                     open={open}
                     setOpen={setOpen}
                   />
+
+                  <Button.List align="right">
+                    <Button
+                      color="secondary"
+                      RootComponent="a"
+                      href="/topicos/geometria-posicao"
+                    >
+                      Voltar
+                    </Button>
+                    <Button
+                      color="primary"
+                      RootComponent="a"
+                      href="/topicos/geometria-posicao/aula-3"
+                    >
+                      Próxima aula
+                    </Button>
+                  </Button.List>
                 </>
               }
             />

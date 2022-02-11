@@ -20,21 +20,26 @@ const QuestionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+
   hasObject: {
     type: Boolean,
     default: false,
   },
-  path: {
-    type: String,
-  },
   objName: {
     type: String,
   },
+  path: {
+    type: String,
+  },
+
   hasImg: {
     type: Boolean,
     default: false,
   },
   imgURL: {
+    type: String,
+  },
+  imgKey: {
     type: String,
   },
 });

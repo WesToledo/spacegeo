@@ -5,6 +5,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { FormControlLabel, Switch } from "@material-ui/core";
+
 import AddIcon from "@material-ui/icons/Add";
 import { OBJModel } from "react-3d-viewer";
 import { DAEModel, DirectionLight } from "react-3d-viewer";
@@ -101,6 +103,9 @@ export default function NewQuestionModal({
     rightOne: 1,
     teacher: _id,
   });
+
+  const [hasObj, setHasObj] = useState(false);
+  const [hasImg, setHasImg] = useState(false);
 
   const addNewAlternative = () => {
     setAlternatives([
@@ -215,12 +220,12 @@ export default function NewQuestionModal({
                 justifyContent="between"
                 className="mb-2"
               >
-                <Grid.Col width={9}>
+                <Grid.Col width={8}>
                   {/* <Form.Group label="Alternativas"></Form.Group> */}
 
                   <Form.StaticText>Alternativas</Form.StaticText>
                 </Grid.Col>
-                <Grid.Col width={3}>
+                <Grid.Col width={4}>
                   {/* <IconButton color="primary">
                     <AddIcon />
                   </IconButton> */}
@@ -229,7 +234,7 @@ export default function NewQuestionModal({
                     icon="plus"
                     onClick={addNewAlternative}
                   >
-                    Adicionar
+                    Adicionar alternativa
                   </Button>
                 </Grid.Col>
               </Grid.Row>
@@ -287,16 +292,45 @@ export default function NewQuestionModal({
               ))}
             </Grid.Col>
           </Grid.Row>
+          <Grid.Row>
+            <Grid.Col>
+              <FormControlLabel
+                control={
+                  <Switch
+                    value={hasObj}
+                    onChange={(e) => setHasObj(e.target.checked)}
+                  />
+                }
+                label="Vincular objeto 3D a questão ? "
+              />
+            </Grid.Col>
+          </Grid.Row>
 
           {/* OBJECTS */}
+          {hasObj && (
+            <div className={"justify-content-between"}>
+              <List3DCards
+                objects={objects}
+                setSelected={setSelected}
+                selected={selected}
+              />
+            </div>
+          )}
 
-          <div className={"justify-content-between"}>
-            <List3DCards
-              objects={objects}
-              setSelected={setSelected}
-              selected={selected}
-            />
-          </div>
+          <Grid.Row>
+            <Grid.Col>
+              <FormControlLabel
+                control={
+                  <Switch
+                    value={hasImg}
+                    onChange={(e) => setHasImg(e.target.checked)}
+                    color="default"
+                  />
+                }
+                label="Vincular imagem a questão ? "
+              />
+            </Grid.Col>
+          </Grid.Row>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="default" icon="x">

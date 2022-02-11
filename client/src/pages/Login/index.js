@@ -6,7 +6,7 @@ import api from "~/services/api";
 import useStore from "~/store";
 
 import { StandaloneFormPage, FormCard, FormTextInput } from "tabler-react";
-import logoImg from "~/assets/img/tabler.png";
+import logoImg from "~/assets/img/logo_novo.png";
 
 function LoginPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
@@ -36,7 +36,6 @@ function LoginPage(props) {
             email,
             password,
           });
-          console.log("USER->", response.data);
 
           addUser({ ...response.data.user, token: response.data.token });
 

@@ -493,6 +493,23 @@ function Aula_1() {
                     setCurrentVideo={setCurrentVideo}
                     setOpen={setOpen}
                   />
+
+                  <Button.List align="right">
+                    <Button
+                      color="secondary"
+                      RootComponent="a"
+                      href="/topicos/geometria-posicao"
+                    >
+                      Voltar
+                    </Button>
+                    <Button
+                      color="primary"
+                      RootComponent="a"
+                      href="/topicos/geometria-posicao/aula-2"
+                    >
+                      Próxima aula
+                    </Button>
+                  </Button.List>
                 </>
               }
             />
