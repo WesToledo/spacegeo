@@ -6,11 +6,12 @@ import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { FormControlLabel, Switch } from "@material-ui/core";
-import Dropzone, { useDropzone } from "react-dropzone";
 
 import AddIcon from "@material-ui/icons/Add";
 import { OBJModel } from "react-3d-viewer";
 import { DAEModel, DirectionLight } from "react-3d-viewer";
+
+import Dropzone from "./DropBox";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -331,24 +332,7 @@ export default function NewQuestionModal({
                   }
                   label="Vincular imagem a questão ? "
                 />
-
-                {hasImg && (
-                  <Dropzone
-                    onDrop={(acceptedFiles) => console.log(acceptedFiles)}
-                  >
-                    {({ getRootProps, getInputProps }) => (
-                      <section>
-                        <div {...getRootProps()}>
-                          <input {...getInputProps()} />
-                          <p>
-                            Drag 'n' drop some files here, or click to select
-                            files
-                          </p>
-                        </div>
-                      </section>
-                    )}
-                  </Dropzone>
-                )}
+                <Dropzone />
               </>
             </Grid.Col>
           </Grid.Row>
