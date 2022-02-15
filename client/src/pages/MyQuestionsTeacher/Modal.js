@@ -46,8 +46,9 @@ export default function FormDialog({ open, setOpen, getQuestionarys }) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Crie um novo questionário, crie questões, e depois vincule às turmas
-            para avaliar seus alunos
+            Ao criar um novo questionário, você pode posteriormente
+            disponibilizar as suas turmas e avaliar seus alunos, incluindo
+            imagens e novos objetos 3D
           </DialogContentText>
           <Form.Input
             autoFocus

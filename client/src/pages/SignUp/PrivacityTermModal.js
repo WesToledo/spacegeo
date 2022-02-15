@@ -20,15 +20,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModalAcceptTerms({ open, setOpen, openNextModal }) {
+export default function ModalAcceptTerms({ open, setOpen, handleSubmit }) {
   const classes = useStyles();
   const handleClose = () => {
     setOpen(false);
   };
 
   function onSubmit() {
+    handleSubmit();
     setOpen(false);
-    openNextModal();
   }
 
   const iframeRef = useRef(null);

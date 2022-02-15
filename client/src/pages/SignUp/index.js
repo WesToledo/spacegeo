@@ -19,6 +19,8 @@ function SignUpPage(props) {
 
   const [sentToServer, setSentToServer] = useState(false);
 
+  const [form, setForm] = useState({});
+
   const { addUser } = useStore();
 
   var stringsForm = {
@@ -29,30 +31,15 @@ function SignUpPage(props) {
     passwordPlaceholder: "Senha",
   };
 
-  async function handleSubmit(values, setValues, setErrors) {
-    setTextButton({ text: "Carregando..." });
-
-    const { password, confirm_password } = values;
-
-    if (password !== confirm_password) {
-      setErrors({ confirm_password: "Senhas não coincidentes" });
-      setTextButton({ text: "Criar conta" });
-      return;
-    }
-
+  async function handleSubmitServer() {
     try {
-      const response = await api.post("/user/create", {
-        ...values,
-        type: values.type,
-        linked: values.type == "teacher",
-      });
+      const response = await api.post("/user/create", form);
       addUser({ ...response.data.user, token: response.data.token });
       if (response.data.user.type == "teacher") props.history.push("/topicos");
       else props.history.push("/vincular-turma");
     } catch (err) {
       console.log(err.response.data.error);
       setTextButton({ text: "Criar conta" });
-      setErrors({ email: "Erro ao tentar logar" });
     }
   }
 
@@ -68,19 +55,31 @@ function SignUpPage(props) {
         confirm_password: "",
       }}
       onSubmit={async (values, { setValues, setErrors }) => {
-        if (sentToServer) {
-          handleSubmit(values, setValues, setErrors);
-        } else {
-          setOpenUseTermModal(true);
+        setTextButton({ text: "Carregando..." });
+
+        const { password, confirm_password } = values;
+
+        if (password !== confirm_password) {
+          setErrors({ confirm_password: "Senhas não coincidentes" });
+          setTextButton({ text: "Criar conta" });
+          return;
         }
+
+        setForm({
+          ...values,
+          type: values.type,
+          linked: values.type == "teacher",
+        });
+
+        setOpenUseTermModal(true);
       }}
       render={({
         values,
         errors,
         handleChange,
         handleBlur,
-        handleSubmit,
         isSubmitting,
+        handleSubmit,
       }) => (
         <div className="page">
           <div className="page-single">
@@ -249,6 +248,7 @@ function SignUpPage(props) {
             open={openPrivacityModal}
             setOpen={setOpenPrivacityModal}
             setSentToServer={setSentToServer}
+            handleSubmit={handleSubmitServer}
           />
         </div>
       )}

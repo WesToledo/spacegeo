@@ -216,7 +216,6 @@ function Aula_1() {
                       audio={distintasA}
                       setCurrentVideo={setCurrentVideo}
                       setOpen={setOpen}
-                      shouldDisplayRA={false}
                     />
                   </>
                   {/* ------------------------------------------------------------------------------------------------------------------------ */}

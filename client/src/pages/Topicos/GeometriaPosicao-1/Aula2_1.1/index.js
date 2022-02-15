@@ -406,7 +406,7 @@ function Aula_2() {
                   <ButtonList
                     video={planos_perpendicularesV}
                     objName="ob2.4_planos_perpendiculares"
-                    audio={planos_perpendicularesV}
+                    audio={planos_perpendicularesA}
                     setCurrentVideo={setCurrentVideo}
                     setOpen={setOpen}
                   />

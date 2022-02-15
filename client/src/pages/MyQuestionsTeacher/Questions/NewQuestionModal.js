@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -6,6 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { FormControlLabel, Switch } from "@material-ui/core";
+import Dropzone, { useDropzone } from "react-dropzone";
 
 import AddIcon from "@material-ui/icons/Add";
 import { OBJModel } from "react-3d-viewer";
@@ -319,16 +320,36 @@ export default function NewQuestionModal({
 
           <Grid.Row>
             <Grid.Col>
-              <FormControlLabel
-                control={
-                  <Switch
-                    value={hasImg}
-                    onChange={(e) => setHasImg(e.target.checked)}
-                    color="default"
-                  />
-                }
-                label="Vincular imagem a questão ? "
-              />
+              <>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      value={hasImg}
+                      onChange={(e) => setHasImg(e.target.checked)}
+                      color="default"
+                    />
+                  }
+                  label="Vincular imagem a questão ? "
+                />
+
+                {hasImg && (
+                  <Dropzone
+                    onDrop={(acceptedFiles) => console.log(acceptedFiles)}
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                      <section>
+                        <div {...getRootProps()}>
+                          <input {...getInputProps()} />
+                          <p>
+                            Drag 'n' drop some files here, or click to select
+                            files
+                          </p>
+                        </div>
+                      </section>
+                    )}
+                  </Dropzone>
+                )}
+              </>
             </Grid.Col>
           </Grid.Row>
         </DialogContent>
