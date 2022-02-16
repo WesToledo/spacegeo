@@ -75,7 +75,7 @@ export default function List3DCards({ objects, setSelected, type, selected }) {
               // height={elementsWidth / 3 - 40}
               // />
               <img
-                src={`https://spacegeo.herokuapp.com/assets/img/${obj.img}`}
+                src={`${process.env.REACT_APP_URL}/assets/img/${obj.img}`}
                 width={elementsWidth / 3 - 40}
                 style={{ padding: "1rem" }}
               />

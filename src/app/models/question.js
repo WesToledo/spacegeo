@@ -31,7 +31,6 @@ const QuestionSchema = new mongoose.Schema({
   path: {
     type: String,
   },
-
   hasImg: {
     type: Boolean,
     default: false,

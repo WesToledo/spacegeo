@@ -118,6 +118,22 @@ function App() {
           />
         )}
 
+        {type == "teacher" && (
+          <PrivateRoute
+            exact
+            path="/questionarios-padrao"
+            component={DefaultQuestionaryPage}
+          />
+        )}
+
+        {type == "teacher" && (
+          <PrivateRoute
+            exact
+            path="/questionarios-padrao/:id"
+            component={SubDefaultQuestionaryPage}
+          />
+        )}
+
         {type == "teacher" ? (
           <PrivateRoute
             exact

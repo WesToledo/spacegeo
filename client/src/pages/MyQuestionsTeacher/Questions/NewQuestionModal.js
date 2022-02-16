@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -7,11 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { FormControlLabel, Switch } from "@material-ui/core";
 
-import AddIcon from "@material-ui/icons/Add";
-import { OBJModel } from "react-3d-viewer";
-import { DAEModel, DirectionLight } from "react-3d-viewer";
-
-import Dropzone from "./DropBox";
+import Dropzone from "./DropZone";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -53,36 +49,36 @@ const letters = [
 ];
 
 const objects = [
-  { img: "1-1reta.bmp", obj: "ob1.1_reta.wrl" },
-  { img: "1-1plano.bmp", obj: "ob1.1_plano.wrl" },
-  { img: "1-2distintas.bmp", obj: "ob1.2_paralelas_distintas.wrl" },
-  { img: "1-2coincidentes.bmp", obj: "ob1.2_paralelas_coincidentes.wrl" },
-  { img: "1-2concorrentes.bmp", obj: "ob1.2_concorrentes.wrl" },
-  { img: "1-2reversas.bmp", obj: "ob1.2_reversas.wrl" },
+  { img: "1-1reta.bmp", obj: "ob1.1_reta.glb" },
+  { img: "1-1plano.bmp", obj: "ob1.1_plano.glb" },
+  { img: "1-2distintas.bmp", obj: "ob1.2_paralelas_distintas.glb" },
+  { img: "1-2coincidentes.bmp", obj: "ob1.2_paralelas_coincidentes.glb" },
+  { img: "1-2concorrentes.bmp", obj: "ob1.2_concorrentes.glb" },
+  { img: "1-2reversas.bmp", obj: "ob1.2_reversas.glb" },
   {
     img: "1-3perpendiculares.bmp",
-    obj: "ob1.3_retas_perpendiculares.wrl",
+    obj: "ob1.3_retas_perpendiculares.glb",
   },
-  { img: "1-4ortogonais.bmp", obj: "ob1.4_retas_ortogonais.wrl" },
-  { img: "1-5.bmp", obj: "ob1.5_retas_obliquas.wrl" },
+  { img: "1-4ortogonais.bmp", obj: "ob1.4_retas_ortogonais.glb" },
+  { img: "1-5.bmp", obj: "ob1.5_retas_obliquas.glb" },
   // 2
   {
     img: "2-1reta-secante-ao-plano.bmp",
-    obj: "ob2.1_reta_secante_ao_plano.wrl",
+    obj: "ob2.1_reta_secante_ao_plano.glb",
   },
   {
     img: "2-1reta-contida-no-plano.bmp",
-    obj: "ob2.1_reta_contida_no_plano.wrl",
+    obj: "ob2.1_reta_contida_no_plano.glb",
   },
   {
     img: "2-1reta-paralela-ao-plano.bmp",
-    obj: "ob2.1_reta_paralela_ao_plano.wrl",
+    obj: "ob2.1_reta_paralela_ao_plano.glb",
   },
-  { img: "2-2secantes.bmp", obj: "ob2.2_secantes.wrl" },
-  { img: "2-2paralelos.bmp", obj: "ob2.2_paralelos_distintos.wrl" },
-  { img: "2-2coincidentes.bmp", obj: "ob2.2_paralelos_coincidentes.wrl" },
-  { img: "2-3.bmp", obj: "ob2.3_reta_e_plano_perpendiculares.wrl" },
-  { img: "2-4.bmp", obj: "ob2.4_planos_perpendiculares.wrl" },
+  { img: "2-2secantes.bmp", obj: "ob2.2_secantes.glb" },
+  { img: "2-2paralelos.bmp", obj: "ob2.2_paralelos_distintos.glb" },
+  { img: "2-2coincidentes.bmp", obj: "ob2.2_paralelos_coincidentes.glb" },
+  { img: "2-3.bmp", obj: "ob2.3_reta_e_plano_perpendiculares.glb" },
+  { img: "2-4.bmp", obj: "ob2.4_planos_perpendiculares.glb" },
 ];
 
 export default function NewQuestionModal({
@@ -91,7 +87,6 @@ export default function NewQuestionModal({
   getQuestionary,
   idQuestionary,
 }) {
-  const [selected, setSelected] = useState(null);
   const { _id } = useStore((state) => state.user);
   const [alternatives, setAlternatives] = useState([
     {
@@ -108,6 +103,21 @@ export default function NewQuestionModal({
 
   const [hasObj, setHasObj] = useState(false);
   const [hasImg, setHasImg] = useState(false);
+
+  const [selected3DObject, setSelected3DObject] = useState(null);
+  const [selectedImg, setSelectedImg] = useState(null);
+
+  useEffect(() => {
+    if (!hasObj) {
+      setSelected3DObject(null);
+    }
+  }, [hasObj]);
+
+  useEffect(() => {
+    if (!hasImg) {
+      setSelectedImg(null);
+    }
+  }, [hasImg]);
 
   const addNewAlternative = () => {
     setAlternatives([
@@ -164,22 +174,53 @@ export default function NewQuestionModal({
     setOpen(false);
   };
 
-  async function onSubmit() {
+  // async function onSubmit() {
+  //   try {
+  //     await api.post("/questionary/question/add", {
+  //       title: form.title,
+  //       teacher: _id,
+  //       questionary: idQuestionary,
+  //       alternatives: alternatives,
+  //       rightOne: form.rightOne,
+  //       hasObject: selected3DObject != null,
+  //       path: "none",
+  //       objName: selected3DObject.obj,
+  //     });
+  //     handleClose();
+  //     getQuestionary();
+  //   } catch (err) {
+  //     console.log(err);
+  //     handleClose();
+  //   }
+  // }
+
+  async function onSubmit(onUploadProgress) {
+    var formData = new FormData();
+
+    formData.append("teacher", _id);
+    formData.append("questionary", idQuestionary);
+    formData.append("alternatives", alternatives);
+    formData.append("rightOne", form.title);
+    formData.append("hasObject", form.title);
+    formData.append("path", form.title);
+
+    formData.append("objName", selected3DObject.obj);
+    formData.append("hasObj", hasObj);
+
+    formData.append("hasImg", hasImg);
+    formData.append("image", selectedImg);
+
     try {
-      await api.post("/questionary/question/add", {
-        title: form.title,
-        teacher: _id,
-        questionary: idQuestionary,
-        alternatives: alternatives,
-        rightOne: form.rightOne,
-        hasObject: selected != null,
-        path: "none",
-        objName: selected.obj,
+      await api.put("/questionary/question/add", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress: (e) => onUploadProgress(e),
       });
+
       handleClose();
       getQuestionary();
     } catch (err) {
-      console.log(err);
       handleClose();
     }
   }
@@ -313,8 +354,8 @@ export default function NewQuestionModal({
             <div className={"justify-content-between"}>
               <List3DCards
                 objects={objects}
-                setSelected={setSelected}
-                selected={selected}
+                setSelected={setSelected3DObject}
+                selected={selected3DObject}
               />
             </div>
           )}
@@ -327,12 +368,18 @@ export default function NewQuestionModal({
                     <Switch
                       value={hasImg}
                       onChange={(e) => setHasImg(e.target.checked)}
-                      color="default"
                     />
                   }
                   label="Vincular imagem a questão ? "
                 />
-                <Dropzone />
+
+                {hasImg && (
+                  <Grid.Row cards alignItems="center">
+                    <Grid.Col width={12}>
+                      <Dropzone />
+                    </Grid.Col>
+                  </Grid.Row>
+                )}
               </>
             </Grid.Col>
           </Grid.Row>

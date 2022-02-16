@@ -64,18 +64,18 @@ questionaryRouter.get(
 
 questionaryRouter.post(
   "/question/add",
-  uploadMiddleware.single("file"),
+  uploadMiddleware.fields([{ name: "image", maxCount: 1 }]),
   questionary.addQuestion
 );
 
-// uploadRouter.post(
-//   "/podcast",
-//   uploadMiddleware.fields([
-//     { name: "thumb", maxCount: 1 },
-//     { name: "audio", maxCount: 1 },
-//   ]),
-//   podcast.upload
-// );
+questionaryRouter.post(
+  "/question/add",
+  uploadMiddleware.fields([
+    { name: "thumb", maxCount: 1 },
+    { name: "audio", maxCount: 1 },
+  ]),
+  podcast.upload
+);
 
 questionaryRouter.put("/question/update", questionary.updateQuestion);
 questionaryRouter.delete("/question/remove/:id", questionary.removeQuestion);

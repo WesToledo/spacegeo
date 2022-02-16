@@ -146,7 +146,73 @@ async function publish(req, res) {
 
 // QUESTIONS
 async function addQuestion(req, res) {
+  // try {
+  //   const {
+  //     title,
+  //     questionary: questionaryId,
+  //     alternatives,
+  //     rightOne,
+  //     teacher,
+  //     hasObject,
+  //     path,
+  //     objName,
+  //     hasImg,
+  //   } = req.body;
+
+  //   const questionary = await QuestionarySchema.findOne({
+  //     _id: questionaryId,
+  //   });
+
+  //   if (hasImg) {
+  //     const { filename: key, location } = req.file;
+
+  //     const question = await QuestionSchema.create({
+  //       title,
+  //       alternatives,
+  //       rightOne,
+  //       teacher,
+  //       hasObject,
+  //       path,
+  //       objName,
+  //       imgKey: key,
+  //       imgURL: location,
+  //     });
+
+  //     questionary.questions.push(question);
+
+  //     await questionary.save();
+
+  //     return res.send({
+  //       questionary,
+  //     });
+  //   } else {
+  //     const question = await QuestionSchema.create({
+  //       title,
+  //       alternatives,
+  //       rightOne,
+  //       teacher,
+  //       hasObject,
+  //       path,
+  //       objName,
+  //     });
+
+  //     questionary.questions.push(question);
+
+  //     await questionary.save();
+
+  //     return res.send({
+  //       questionary,
+  //     });
+  //   }
+  // } catch (err) {
+  //   return res
+  //     .status(400)
+  //     .send({ error: "Erro ao cadastrar questão", message: err });
+  // }
+
   try {
+    const { location: locationImg, key: keyImage } = req.files["image"][0];
+
     const {
       title,
       questionary: questionaryId,
@@ -154,60 +220,38 @@ async function addQuestion(req, res) {
       rightOne,
       teacher,
       hasObject,
-      path,
       objName,
+      path,
       hasImg,
+      imgURL: locationImg,
+      imgKey: keyImage,
     } = req.body;
 
-    const questionary = await QuestionarySchema.findOne({
+    const question = await QuestionSchema.create({
+      title,
       _id: questionaryId,
+      alternatives,
+      rightOne,
+      teacher,
+
+      hasObject,
+      objName,
+      path,
+
+      hasImg,
+      imgURL,
+      imgKey,
     });
 
-    if (hasImg) {
-      const { filename: key, location } = req.file;
+    questionary.questions.push(question);
 
-      const question = await QuestionSchema.create({
-        title,
-        alternatives,
-        rightOne,
-        teacher,
-        hasObject,
-        path,
-        objName,
-        imgKey: key,
-        imgURL: location,
-      });
+    await questionary.save();
 
-      questionary.questions.push(question);
-
-      await questionary.save();
-
-      return res.send({
-        questionary,
-      });
-    } else {
-      const question = await QuestionSchema.create({
-        title,
-        alternatives,
-        rightOne,
-        teacher,
-        hasObject,
-        path,
-        objName,
-      });
-
-      questionary.questions.push(question);
-
-      await questionary.save();
-
-      return res.send({
-        questionary,
-      });
-    }
+    return res.send({
+      questionary,
+    });
   } catch (err) {
-    return res
-      .status(400)
-      .send({ error: "Erro ao cadastrar questão", message: err });
+    return res.status(400).send({ error: "Erro ao editar questão" });
   }
 }
 
