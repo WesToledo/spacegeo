@@ -211,7 +211,8 @@ async function addQuestion(req, res) {
   // }
 
   try {
-    const { location: locationImg, key: keyImage } = req.files["image"][0];
+    //     const { filename: key, location } = req.file;
+    const { location, key } = req.files["image"][0];
 
     const {
       title,
@@ -223,8 +224,6 @@ async function addQuestion(req, res) {
       objName,
       path,
       hasImg,
-      imgURL: locationImg,
-      imgKey: keyImage,
     } = req.body;
 
     const question = await QuestionSchema.create({
@@ -235,12 +234,12 @@ async function addQuestion(req, res) {
       teacher,
 
       hasObject,
-      objName,
-      path,
+      objName: hasObject ? objName : null,
+      path: hasObject ? path : null,
 
       hasImg,
-      imgURL,
-      imgKey,
+      imgURL: hasImg ? location : null,
+      imgKey: hasImg ? key : null,
     });
 
     questionary.questions.push(question);

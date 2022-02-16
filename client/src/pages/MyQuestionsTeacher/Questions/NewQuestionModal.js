@@ -264,9 +264,7 @@ export default function NewQuestionModal({
                 className="mb-2"
               >
                 <Grid.Col width={8}>
-                  {/* <Form.Group label="Alternativas"></Form.Group> */}
-
-                  <Form.StaticText>Alternativas</Form.StaticText>
+                  <Form.Group label="Alternativas"></Form.Group>
                 </Grid.Col>
                 <Grid.Col width={4}>
                   {/* <IconButton color="primary">
@@ -334,7 +332,18 @@ export default function NewQuestionModal({
                 </Grid.Row>
               ))}
             </Grid.Col>
+            <div
+              style={{
+                border: "1px solid #ddd",
+                height: "0px",
+                width: "100%",
+                margin: "10px",
+              }}
+            ></div>
           </Grid.Row>
+
+          <Form.Group label="Anexos"></Form.Group>
+
           <Grid.Row>
             <Grid.Col>
               <FormControlLabel
@@ -344,7 +353,7 @@ export default function NewQuestionModal({
                     onChange={(e) => setHasObj(e.target.checked)}
                   />
                 }
-                label="Vincular objeto 3D a questão ? "
+                label="Anexar Objeto 3D ?"
               />
             </Grid.Col>
           </Grid.Row>
@@ -370,7 +379,7 @@ export default function NewQuestionModal({
                       onChange={(e) => setHasImg(e.target.checked)}
                     />
                   }
-                  label="Vincular imagem a questão ? "
+                  label="Anexar imagem ?"
                 />
 
                 {hasImg && (
