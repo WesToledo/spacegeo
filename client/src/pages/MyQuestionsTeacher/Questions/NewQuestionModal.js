@@ -199,11 +199,10 @@ export default function NewQuestionModal({
 
     formData.append("title", form.title);
     formData.append("questionary", idQuestionary);
-    formData.append("alternatives", alternatives);
-    formData.append("rightOne", form.title);
+    formData.append("alternatives", JSON.stringify(alternatives));
+    formData.append("rightOne", form.rightOne);
     formData.append("teacher", _id);
-    formData.append("hasObject", form.title);
-    formData.append("path", form.title);
+    formData.append("path", form.path);
 
     formData.append("hasObject", hasObject);
     formData.append("objName", hasObject ? selected3DObject.obj : null);

@@ -148,7 +148,6 @@ async function publish(req, res) {
 async function addQuestion(req, res) {
   try {
     //     const { filename: key, location } = req.file;
-    const { location, filename } = req.file;
 
     const {
       title,
@@ -162,10 +161,25 @@ async function addQuestion(req, res) {
       hasImg,
     } = req.body;
 
+    const questionary = await QuestionarySchema.findOne({
+      _id: questionaryId,
+    }).populate("questions");
+
+    console.warn({
+      title,
+      questionary: questionaryId,
+      alternatives,
+      rightOne,
+      teacher,
+      hasObject,
+      objName,
+      path,
+      hasImg,
+    });
+
     const question = await QuestionSchema.create({
       title,
-      _id: questionaryId,
-      alternatives,
+      alternatives: JSON.parse(alternatives),
       rightOne,
       teacher,
 
@@ -174,9 +188,11 @@ async function addQuestion(req, res) {
       path: hasObject ? path : null,
 
       hasImg,
-      imgURL: hasImg ? location : null,
-      imgKey: hasImg ? filename : null,
+      imgURL: hasImg ? req.file.location : null,
+      imgKey: hasImg ? req.file.filename : null,
     });
+
+    console.log("question", questionary);
 
     questionary.questions.push(question);
 
