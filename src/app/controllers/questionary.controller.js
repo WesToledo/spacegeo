@@ -146,73 +146,9 @@ async function publish(req, res) {
 
 // QUESTIONS
 async function addQuestion(req, res) {
-  // try {
-  //   const {
-  //     title,
-  //     questionary: questionaryId,
-  //     alternatives,
-  //     rightOne,
-  //     teacher,
-  //     hasObject,
-  //     path,
-  //     objName,
-  //     hasImg,
-  //   } = req.body;
-
-  //   const questionary = await QuestionarySchema.findOne({
-  //     _id: questionaryId,
-  //   });
-
-  //   if (hasImg) {
-  //     const { filename: key, location } = req.file;
-
-  //     const question = await QuestionSchema.create({
-  //       title,
-  //       alternatives,
-  //       rightOne,
-  //       teacher,
-  //       hasObject,
-  //       path,
-  //       objName,
-  //       imgKey: key,
-  //       imgURL: location,
-  //     });
-
-  //     questionary.questions.push(question);
-
-  //     await questionary.save();
-
-  //     return res.send({
-  //       questionary,
-  //     });
-  //   } else {
-  //     const question = await QuestionSchema.create({
-  //       title,
-  //       alternatives,
-  //       rightOne,
-  //       teacher,
-  //       hasObject,
-  //       path,
-  //       objName,
-  //     });
-
-  //     questionary.questions.push(question);
-
-  //     await questionary.save();
-
-  //     return res.send({
-  //       questionary,
-  //     });
-  //   }
-  // } catch (err) {
-  //   return res
-  //     .status(400)
-  //     .send({ error: "Erro ao cadastrar questão", message: err });
-  // }
-
   try {
     //     const { filename: key, location } = req.file;
-    const { location, key } = req.files["image"][0];
+    const { location, filename } = req.file;
 
     const {
       title,
@@ -239,7 +175,7 @@ async function addQuestion(req, res) {
 
       hasImg,
       imgURL: hasImg ? location : null,
-      imgKey: hasImg ? key : null,
+      imgKey: hasImg ? filename : null,
     });
 
     questionary.questions.push(question);
@@ -250,6 +186,7 @@ async function addQuestion(req, res) {
       questionary,
     });
   } catch (err) {
+    console.log(err);
     return res.status(400).send({ error: "Erro ao editar questão" });
   }
 }

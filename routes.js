@@ -64,7 +64,7 @@ questionaryRouter.get(
 
 questionaryRouter.post(
   "/question/add",
-  uploadMiddleware.fields([{ name: "image", maxCount: 1 }]),
+  uploadMiddleware.single("file"),
   questionary.addQuestion
 );
 

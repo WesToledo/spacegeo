@@ -5,9 +5,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import { Grid } from "tabler-react";
 import { DropContainer, UploadMessage } from "./styles";
 
-export default function Upload() {
-  const [uploadedImage, setUploadedImage] = useState(null);
-
+export default function DropZone({ setSelectedImg, selectedImg }) {
   const renderDragMessage = (isDragActive, isDragReject) => {
     if (!isDragActive) {
       return <UploadMessage>Arraste e solte a imagem aqui...</UploadMessage>;
@@ -20,9 +18,24 @@ export default function Upload() {
     return <UploadMessage type="success">Imagem enviada</UploadMessage>;
   };
 
+  const [preview, setPreview] = useState(null);
+
+  function getBuffer(fileData) {
+    return function (resolve) {
+      var reader = new FileReader();
+      reader.readAsArrayBuffer(fileData);
+      reader.onload = function () {
+        var arrayBuffer = reader.result;
+        var bytes = new Uint8Array(arrayBuffer);
+        resolve(bytes);
+      };
+    };
+  }
+
   function onUpload(file) {
-    const preview = URL.createObjectURL(file[0]);
-    setUploadedImage(preview);
+    setSelectedImg({ file: file[0], name: file[0].name });
+    console.log(file[0]);
+    setPreview(URL.createObjectURL(file[0]));
   }
 
   return (
@@ -33,7 +46,7 @@ export default function Upload() {
         alignSelf: "center",
       }}
     >
-      {uploadedImage == null ? (
+      {preview == null ? (
         <Grid.Row>
           <Grid.Col>
             <Dropzone
@@ -60,7 +73,7 @@ export default function Upload() {
           </Grid.Col>
         </Grid.Row>
       ) : (
-        <img src={uploadedImage} />
+        <img src={preview} />
       )}
 
       {/* <CircularProgressbar

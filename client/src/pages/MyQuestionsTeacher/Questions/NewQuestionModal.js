@@ -101,17 +101,17 @@ export default function NewQuestionModal({
     teacher: _id,
   });
 
-  const [hasObj, setHasObj] = useState(false);
+  const [hasObject, setHasObject] = useState(false);
   const [hasImg, setHasImg] = useState(false);
 
   const [selected3DObject, setSelected3DObject] = useState(null);
   const [selectedImg, setSelectedImg] = useState(null);
 
   useEffect(() => {
-    if (!hasObj) {
+    if (!hasObject) {
       setSelected3DObject(null);
     }
-  }, [hasObj]);
+  }, [hasObject]);
 
   useEffect(() => {
     if (!hasImg) {
@@ -194,28 +194,31 @@ export default function NewQuestionModal({
   //   }
   // }
 
-  async function onSubmit(onUploadProgress) {
+  async function onSubmit() {
     var formData = new FormData();
 
-    formData.append("teacher", _id);
+    formData.append("title", form.title);
     formData.append("questionary", idQuestionary);
     formData.append("alternatives", alternatives);
     formData.append("rightOne", form.title);
+    formData.append("teacher", _id);
     formData.append("hasObject", form.title);
     formData.append("path", form.title);
 
-    formData.append("objName", selected3DObject.obj);
-    formData.append("hasObj", hasObj);
+    formData.append("hasObject", hasObject);
+    formData.append("objName", hasObject ? selected3DObject.obj : null);
 
     formData.append("hasImg", hasImg);
-    formData.append("image", selectedImg);
+    if (hasImg) {
+      formData.append("file", selectedImg.file, selectedImg.name);
+    }
 
     try {
-      await api.put("/questionary/question/add", formData, {
+      await api.post("/questionary/question/add", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        onUploadProgress: (e) => onUploadProgress(e),
+        onUploadProgress: (e) => console.log(e),
       });
 
       handleClose();
@@ -349,8 +352,8 @@ export default function NewQuestionModal({
               <FormControlLabel
                 control={
                   <Switch
-                    value={hasObj}
-                    onChange={(e) => setHasObj(e.target.checked)}
+                    value={hasObject}
+                    onChange={(e) => setHasObject(e.target.checked)}
                   />
                 }
                 label="Anexar Objeto 3D ?"
@@ -359,7 +362,7 @@ export default function NewQuestionModal({
           </Grid.Row>
 
           {/* OBJECTS */}
-          {hasObj && (
+          {hasObject && (
             <div className={"justify-content-between"}>
               <List3DCards
                 objects={objects}
@@ -385,7 +388,10 @@ export default function NewQuestionModal({
                 {hasImg && (
                   <Grid.Row cards alignItems="center">
                     <Grid.Col width={12}>
-                      <Dropzone />
+                      <Dropzone
+                        setSelectedImg={setSelectedImg}
+                        selectedImg={selectedImg}
+                      />
                     </Grid.Col>
                   </Grid.Row>
                 )}
