@@ -304,7 +304,7 @@ function Aula_3() {
                     </li>
                     <p>
                       A figura formada pela projeção ortogonal de um segmento de
-                      reta sobre o plano α é outro segmento de reta (A’B’).
+                      reta sobre o plano α é outro segmento de reta (P’Q’).
                     </p>
 
                     <li
@@ -348,7 +348,7 @@ function Aula_3() {
                     <Button
                       color="primary"
                       RootComponent="a"
-                      href="/topicos/geometria-posicao/aula-3"
+                      href="/topicos/geometria-posicao/aula-4"
                     >
                       Próxima aula
                     </Button>

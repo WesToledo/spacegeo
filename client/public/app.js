@@ -188,8 +188,9 @@ class App {
       //console.log( 'press' );
       self.ui.updateElement("info", "");
     });
+
     this.gestures.addEventListener("pan", (ev) => {
-      //console.log( ev );
+      console.log(ev);
       if (ev.initialise !== undefined) {
         self.startPosition = self.knight.object.position.clone();
       } else {

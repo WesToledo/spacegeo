@@ -114,7 +114,9 @@ function MyQuestionsPage(props) {
                               <Icon prefix="fe" name="tag" className="m-2" />
                               <Text
                                 style={{ minWidth: 120, margin: 5 }}
-                              >{`Minha nota: ${questionary.myGrade}`}</Text>
+                              >{`Minha nota: ${questionary.myGrade.toFixed(
+                                2
+                              )}`}</Text>
                             </div>
                           )}
                         </div>

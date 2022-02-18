@@ -51,9 +51,9 @@ export default function DataTable({ answers }) {
     answers.map((answer) => {
       rows.push({
         name: answer.questionary.title,
-        value: answer.questionary.grade,
+        value: answer.questionary.grade.toFixed(2),
         grade: answer.grade,
-        
+
         // actions: (
         //   <Button
         //     color="secondary"
@@ -74,11 +74,6 @@ export default function DataTable({ answers }) {
   }, []);
 
   return (
-    <MUIDataTable
-      title={""}
-      data={data}
-      columns={columns}
-      options={options}
-    />
+    <MUIDataTable title={""} data={data} columns={columns} options={options} />
   );
 }
