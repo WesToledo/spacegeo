@@ -230,7 +230,7 @@ async function getClasseQuestionarys(req, res) {
     const questionarys = await QuestionarySchema.find({
       classes: req.params.idClasse,
 
-      // publish: true,
+      type : "teacher",
     }).lean();
 
     const questionarysArray = await Promise.all(
