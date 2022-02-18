@@ -23,7 +23,7 @@ export default function FormDialog({ open, setOpen, getQuestionarys }) {
         title: name,
         teacher: _id,
         grade: grade,
-        type: "default",
+        type: "teacher",
       });
       handleClose();
       console.log("akhsbdasjkdb");

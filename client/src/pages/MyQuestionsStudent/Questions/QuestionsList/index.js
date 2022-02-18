@@ -25,7 +25,7 @@ function QuestionCard({ questionary }) {
         objName: question.hasObject && question.objName,
         path: question.hasObject && question.path,
 
-        hasImage: question.hasImage && question.hasImage,
+        hasImg: question.hasImg && question.hasImg,
         imgURL: question.imgURL && question.imgURL,
 
         alternatives: question.alternatives.map(({ _id, text, index }) => {
@@ -121,7 +121,7 @@ function QuestionCard({ questionary }) {
     return selected ? "primary" : "secondary";
   };
   useEffect(() => {
-    console.log(questions);
+    console.log("asDAAS", questions);
   }, [questions]);
 
   return (
@@ -151,7 +151,7 @@ function QuestionCard({ questionary }) {
             }
             body={
               <>
-                {questions[currentQuestion].hasImage ? (
+                {questions[currentQuestion].hasImg ? (
                   <Grid.Row className="row-cards ">
                     <Grid.Col width={2}></Grid.Col>
                     <Grid.Col width={8}>

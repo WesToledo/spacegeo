@@ -1,5 +1,4 @@
 const mongoose = require("../../database");
-const bcrypt = require("bcryptjs");
 
 const QuestionSchema = new mongoose.Schema({
   title: {
@@ -20,7 +19,6 @@ const QuestionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-
   hasObject: {
     type: Boolean,
     default: false,

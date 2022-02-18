@@ -165,18 +165,6 @@ async function addQuestion(req, res) {
       _id: questionaryId,
     }).populate("questions");
 
-    console.warn({
-      title,
-      questionary: questionaryId,
-      alternatives,
-      rightOne,
-      teacher,
-      hasObject,
-      objName,
-      path,
-      hasImg,
-    });
-
     const question = await QuestionSchema.create({
       title,
       alternatives: JSON.parse(alternatives),
@@ -184,12 +172,12 @@ async function addQuestion(req, res) {
       teacher,
 
       hasObject,
-      objName: hasObject ? objName : null,
-      path: hasObject ? path : null,
+      objName: hasObject === "true" ? objName : null,
+      path: hasObject === "true" ? path : null,
 
       hasImg,
-      imgURL: hasImg ? req.file.location : null,
-      imgKey: hasImg ? req.file.filename : null,
+      imgURL: hasImg === "true" ? req.file.location : null,
+      imgKey: hasImg === "true" ? req.file.filename : null,
     });
 
     console.log("question", questionary);

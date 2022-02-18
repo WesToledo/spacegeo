@@ -33,7 +33,7 @@ function SubQuestionPage() {
           selected: false,
         },
       ],
-      hasImage: false,
+      hasImg: false,
       imgURL: "",
     },
     {
@@ -62,7 +62,7 @@ function SubQuestionPage() {
           selected: false,
         },
       ],
-      hasImage: true,
+      hasImg: true,
       imgURL: "/assets/img/questions/cubo.jpg",
     },
   ]);
@@ -184,7 +184,7 @@ function SubQuestionPage() {
                       : "Carregando..."}
                   </Button.List>
 
-                  {questions[currentQuestion].hasImage ? (
+                  {questions[currentQuestion].hasImg ? (
                     <Grid.Row className="row-cards ">
                       <Grid.Col width={2}></Grid.Col>
                       <Grid.Col width={8}>

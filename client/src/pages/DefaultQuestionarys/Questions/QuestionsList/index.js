@@ -5,10 +5,6 @@ import { Page, Grid, Button, Card, GalleryCard } from "tabler-react";
 
 import ModalConfirmAnswer from "./ModalConfirmAnswer";
 
-import api from "~/services/api";
-import Wrapper from "~/components/Wrapper";
-import useStore from "~/store";
-
 function QuestionCard({ questionary }) {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -24,8 +20,8 @@ function QuestionCard({ questionary }) {
         hasObject: question.hasObject,
         objName: question.hasObject && question.objName,
         path: question.hasObject && question.path,
-        
-        hasImage: question.hasImage && question.hasImage,
+
+        hasImg: question.hasImg && question.hasImg,
         imgURL: question.imgURL && question.imgURL,
 
         alternatives: question.alternatives.map(({ _id, text, index }) => {
@@ -174,7 +170,7 @@ function QuestionCard({ questionary }) {
                     : "Carregando..."}
                 </Button.List>
 
-                {questions[currentQuestion].hasImage ? (
+                {questions[currentQuestion].hasImg ? (
                   <Grid.Row className="row-cards ">
                     <Grid.Col width={2}></Grid.Col>
                     <Grid.Col width={8}>
