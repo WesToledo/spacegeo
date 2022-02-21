@@ -6,6 +6,8 @@ async function create(req, res) {
   try {
     const { title, teacher, grade, type } = req.body;
 
+    console.log(req.body);
+
     const questionary = await QuestionarySchema.create({
       title,
       teacher,
@@ -83,7 +85,6 @@ async function list(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
       teacher: req.params.idTeacher,
-      publish: true,
       type: "teacher",
     }).populate("classes");
     res.send({ questionarys });

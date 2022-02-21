@@ -484,6 +484,10 @@
   height: 9rem !important;
 }
 
-.white-space button{
+.white-space button {
   white-space: initial;
+}
+
+.text-area-indent {
+  white-space: break-spaces;
 }

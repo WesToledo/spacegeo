@@ -149,12 +149,24 @@ function QuestionsPage(props) {
                   <Grid.Col lg={6} md={12} sm={12} xs={12} key={indexQuestion}>
                     <Card>
                       <Card.Header>
-                        <Card.Title>{`${indexQuestion + 1}) ${
-                          question.title
-                        }`}</Card.Title>
+                        <Card.Title className="text-area-indent">{`${
+                          indexQuestion + 1
+                        }) ${question.title}`}</Card.Title>
                         <Card.Options></Card.Options>
                       </Card.Header>
                       <Card.Body>
+                        {question.hasImg && (
+                          <Grid.Row
+                            alignItems="center"
+                            className="mb-8"
+                            justifyContent="center"
+                            key={indexQuestion}
+                          >
+                            <Grid.Col width={6}>
+                              <img src={question.imgURL} />
+                            </Grid.Col>
+                          </Grid.Row>
+                        )}
                         {question.alternatives.map((alternative, index) => (
                           <Grid.Row
                             alignItems="center"
@@ -205,31 +217,33 @@ function QuestionsPage(props) {
                         ))}
                       </Card.Body>
                       <Card.Footer>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row-reverse",
-                          }}
-                        >
-                          <Button
-                            icon="edit"
-                            size="sm"
-                            color="primary"
-                            onClick={() => {
-                              setSelectedQuestion(question);
-                              setOpenEdit(true);
+                        {questionary?.type != "default" && (
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "row-reverse",
                             }}
-                          />
-                          <Button
-                            className="mx-1"
-                            icon="trash"
-                            size="sm"
-                            color="link"
-                            onClick={() => {
-                              handleOnDeleteQuestion(question._id);
-                            }}
-                          />
-                        </div>
+                          >
+                            <Button
+                              icon="edit"
+                              size="sm"
+                              color="primary"
+                              onClick={() => {
+                                setSelectedQuestion(question);
+                                setOpenEdit(true);
+                              }}
+                            />
+                            <Button
+                              className="mx-1"
+                              icon="trash"
+                              size="sm"
+                              color="link"
+                              onClick={() => {
+                                handleOnDeleteQuestion(question._id);
+                              }}
+                            />
+                          </div>
+                        )}
                       </Card.Footer>
                     </Card>
                   </Grid.Col>

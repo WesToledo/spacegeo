@@ -129,6 +129,7 @@ function QuestionCard({ questionary }) {
       <Grid.Row className="justify-content-center">
         <Grid.Col lg={6} md={6} xl={6}>
           <Card
+            className="text-area-indent"
             title={
               questions[currentQuestion].num +
               ". " +

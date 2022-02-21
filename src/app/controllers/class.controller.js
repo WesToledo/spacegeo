@@ -14,7 +14,7 @@ async function create(req, res) {
     const classe = await ClassSchema.create({
       name: req.body.name,
       teacher: req.body.teacher,
-      hash: hash.substr(40, 60),
+      hash: hash.substr(40, 45),
     });
 
     return res.send({

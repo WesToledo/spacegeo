@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-import { Page, Grid, Text, Icon, Button, Card } from "tabler-react";
+import { Page, Card } from "tabler-react";
 
-import api from "~/services/api";
 import Wrapper from "~/components/Wrapper";
-import useStore from "~/store";
 
 function InstructionsTeacherPage(props) {
+  // window.addEventListener("beforeunload", function (e) {
+  //   // Cancel the event
+  //   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+  //   // Chrome requires returnValue to be set
+  //   e.returnValue = "";
+  // });
+
   return (
     <Wrapper>
       <Page.Content title="Space Geo">

@@ -13,12 +13,23 @@ function GradesPage(props) {
   async function getAnswers() {
     try {
       const response = await api.get("/user/grades/" + props.match.params.id);
-      console.log(response.data.answers)
+      console.log(response.data.answers);
       setAnswer(response.data.answers);
     } catch (err) {
       console.log(err);
     }
   }
+
+  // const today = new Date();
+  // const endDate = new Date(startDate.setDate(startDate.getDate() + 7));
+  // const days = parseInt((endDate - today) / (1000 * 60 * 60 * 24));
+  // const hours = parseInt((Math.abs(endDate - today) / (1000 * 60 * 60)) % 24);
+  // const minutes = parseInt(
+  //   (Math.abs(endDate.getTime() - today.getTime()) / (1000 * 60)) % 60
+  // );
+  // const seconds = parseInt(
+  //   (Math.abs(endDate.getTime() - today.getTime()) / 1000) % 60
+  // );
 
   useEffect(() => {
     getAnswers();
@@ -32,9 +43,7 @@ function GradesPage(props) {
             {/* <Card.Header>
             <Card.Options></Card.Options>
           </Card.Header> */}
-            <Card.Body>
-              {answers && <DataTable answers={answers} />}
-            </Card.Body>
+            <Card.Body>{answers && <DataTable answers={answers} />}</Card.Body>
             {/* <Card.Footer>This is standard card footer</Card.Footer> */}
           </Card>
         </Page.Content>
