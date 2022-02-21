@@ -40,7 +40,7 @@ const letters = [
 ];
 
 function QuestionsPage(props) {
-  const [modalCreate, setOpenCreate] = useState(true);
+  const [modalCreate, setOpenCreate] = useState(false);
   const [modalEdit, setOpenEdit] = useState(false);
   const [modalClasses, setOpenClasses] = useState(false);
 

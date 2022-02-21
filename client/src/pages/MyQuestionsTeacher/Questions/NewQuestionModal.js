@@ -129,6 +129,11 @@ export default function NewQuestionModal({
     ]);
   };
 
+  useEffect(() => {
+    console.log("selectedImg", selectedImg);
+    console.log("selectedObject", selected3DObject);
+  }, []);
+
   const handleOnChangeTextAlternative = (e) => {
     const { name, value } = e.target;
 
@@ -171,6 +176,21 @@ export default function NewQuestionModal({
   };
 
   const handleClose = () => {
+    setAlternatives([
+      {
+        text: "",
+        index: 1,
+      },
+    ]);
+
+    setForm({
+      title: "",
+      rightOne: 1,
+      teacher: _id,
+    });
+
+    setHasObject(false);
+    setHasImg(false);
     setOpen(false);
   };
 
@@ -221,6 +241,7 @@ export default function NewQuestionModal({
       });
 
       handleClose();
+
       getQuestionary();
     } catch (err) {
       handleClose();

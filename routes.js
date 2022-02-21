@@ -68,7 +68,11 @@ questionaryRouter.post(
   questionary.addQuestion
 );
 
-questionaryRouter.put("/question/update", questionary.updateQuestion);
+questionaryRouter.put(
+  "/question/update",
+  uploadMiddleware.single("file"),
+  questionary.updateQuestion
+);
 questionaryRouter.delete("/question/remove/:id", questionary.removeQuestion);
 
 // Questionary

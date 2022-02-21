@@ -157,9 +157,10 @@ async function addQuestion(req, res) {
       teacher,
       hasObject,
       objName,
-      path,
       hasImg,
     } = req.body;
+
+    console.log("create question", req.body);
 
     const questionary = await QuestionarySchema.findOne({
       _id: questionaryId,
@@ -173,7 +174,6 @@ async function addQuestion(req, res) {
 
       hasObject,
       objName: hasObject === "true" ? objName : null,
-      path: hasObject === "true" ? path : null,
 
       hasImg,
       imgURL: hasImg === "true" ? req.file.location : null,
@@ -197,15 +197,27 @@ async function addQuestion(req, res) {
 
 async function updateQuestion(req, res) {
   try {
-    const { title, alternatives, rightOne, objName } = req.body;
-    const question = await QuestionSchema.findOne({ _id: req.body._id });
+    const { _id, title, alternatives, rightOne, objName, isImgChange, hasImg } =
+      req.body;
 
-    question.alternatives = alternatives.map((alternative) => {
+    console.log("body", req.body);
+    console.log("file", req.file);
+
+    const question = await QuestionSchema.findOne({ _id: _id });
+
+    const aux = JSON.parse(alternatives);
+
+    question.alternatives = aux.map((alternative) => {
       return { ...alternative, _id: undefined };
     });
+
     question.title = title;
     question.rightOne = rightOne;
     question.objName = objName;
+    question.hasImg = hasImg;
+
+    question.imgURL = isImgChange === "true" && req.file.location;
+    question.imgKey = isImgChange === "true" && req.file.filename;
 
     await question.save();
     return res.send();
@@ -230,7 +242,7 @@ async function getClasseQuestionarys(req, res) {
     const questionarys = await QuestionarySchema.find({
       classes: req.params.idClasse,
 
-      type : "teacher",
+      type: "teacher",
     }).lean();
 
     const questionarysArray = await Promise.all(
@@ -313,6 +325,7 @@ async function addClasseToQuestionary(req, res) {
 
     res.send();
   } catch (err) {
+    console.log(err);
     return res.status(400).send({ error: "Erro ao buscar questionários" });
   }
 }

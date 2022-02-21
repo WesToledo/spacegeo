@@ -184,13 +184,8 @@ class App {
       //console.log( 'doubletap');
       self.ui.updateElement("info", "");
     });
-    this.gestures.addEventListener("press", (ev) => {
-      //console.log( 'press' );
-      self.ui.updateElement("info", "");
-    });
 
-    this.gestures.addEventListener("pan", (ev) => {
-      console.log(ev);
+    this.gestures.addEventListener("press", (ev) => {
       if (ev.initialise !== undefined) {
         self.startPosition = self.knight.object.position.clone();
       } else {
@@ -198,15 +193,32 @@ class App {
         self.knight.object.position.copy(pos);
         self.ui.updateElement("info", "");
       }
-    });
-    this.gestures.addEventListener("swipe", (ev) => {
-      //console.log( ev );
       self.ui.updateElement("info", "");
-      if (self.knight.object.visible) {
-        self.knight.object.visible = false;
-        self.scene.remove(self.knight.object);
-      }
     });
+
+    this.gestures.addEventListener("pan", (ev) => {
+      // console.warn(ev);
+      const dist = ev.startPosition - ev.currentPosition;
+      console.log(dist);
+      self.knight.object.rotateX(dist);
+    });
+
+    // this.gestures.addEventListener("pan", (ev) => {
+    //   console.warn("move", ev.target);
+    //   console.warn("drag", ev.target);
+
+    //   // self.knight.object.quaternion.copy(self.startQuaternion);
+
+    //   // self.knight.object.rotateX(ev.theta);
+    //   // self.ui.updateElement("info", "");
+    // });
+
+    this.gestures.addEventListener("swipe", (ev) => {
+      // console.log("swipe", ev);
+      // self.knight.object.rotateX(ev.theta);
+      self.ui.updateElement("info", "");
+    });
+
     this.gestures.addEventListener("pinch", (ev) => {
       //console.log( ev );
       if (ev.initialise !== undefined) {
@@ -217,13 +229,14 @@ class App {
         self.ui.updateElement("info", "");
       }
     });
+
     this.gestures.addEventListener("rotate", (ev) => {
-      //      sconsole.log( ev );
+      console.log("EV", ev.target);
       if (ev.initialise !== undefined) {
         self.startQuaternion = self.knight.object.quaternion.clone();
       } else {
         self.knight.object.quaternion.copy(self.startQuaternion);
-        self.knight.object.rotateY(ev.theta);
+        self.knight.object.rotateX(ev.theta);
         self.ui.updateElement("info", "");
       }
     });

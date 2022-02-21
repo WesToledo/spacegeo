@@ -10,6 +10,8 @@ export default function List3DCards({ objects, setSelected, type, selected }) {
   const ref = useRef(null);
   const [elementsWidth, setElementsWidths] = useState(null);
 
+  console.log("selected received obj", selected);
+
   useEffect(() => {
     setElementsWidths(ref.current ? ref.current.offsetWidth : 0);
     console.log(elementsWidth);
@@ -43,28 +45,15 @@ export default function List3DCards({ objects, setSelected, type, selected }) {
               margin: "5px",
             }}
           >
-            {type !== "edit" ? (
-              <Form.Radio
-                // checked={selected && selected == obj.obj}
-                label={" "}
-                key={index}
-                name="model"
-                value={obj.obj}
-                onChange={() => {
-                  handleSelectObject(obj.obj);
-                }}
-              />
-            ) : (
-              <Form.Radio
-                key={index}
-                checked={selected && selected.obj === obj.obj}
-                label={" "}
-                name="model"
-                onChange={() => {
-                  handleSelectObject(obj.obj);
-                }}
-              />
-            )}
+            <Form.Radio
+              key={index}
+              checked={selected && selected.obj === obj.obj}
+              label={" "}
+              name="model"
+              onChange={() => {
+                handleSelectObject(obj.obj);
+              }}
+            />
 
             {elementsWidth && (
               // <MTLModel

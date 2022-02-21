@@ -6,8 +6,11 @@ import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
+import { FormControlLabel, Switch } from "@material-ui/core";
 
 import DeleteIcon from "@material-ui/icons/Delete";
+
+import Dropzone from "./DropZone";
 
 import { Grid, Text, Form, Button } from "tabler-react";
 
@@ -45,36 +48,36 @@ const letters = [
 ];
 
 const objects = [
-  { img: "1-1reta.bmp", obj: "ob1.1_reta.wrl" },
-  { img: "1-1plano.bmp", obj: "ob1.1_plano.wrl" },
-  { img: "1-2distintas.bmp", obj: "ob1.2_paralelas_distintas.wrl" },
-  { img: "1-2coincidentes.bmp", obj: "ob1.2_paralelas_coincidentes.wrl" },
-  { img: "1-2concorrentes.bmp", obj: "ob1.2_concorrentes.wrl" },
-  { img: "1-2reversas.bmp", obj: "ob1.2_reversas.wrl" },
+  { img: "1-1reta.bmp", obj: "ob1.1_reta.glb" },
+  { img: "1-1plano.bmp", obj: "ob1.1_plano.glb" },
+  { img: "1-2distintas.bmp", obj: "ob1.2_paralelas_distintas.glb" },
+  { img: "1-2coincidentes.bmp", obj: "ob1.2_paralelas_coincidentes.glb" },
+  { img: "1-2concorrentes.bmp", obj: "ob1.2_concorrentes.glb" },
+  { img: "1-2reversas.bmp", obj: "ob1.2_reversas.glb" },
   {
     img: "1-3perpendiculares.bmp",
-    obj: "ob1.3_retas_perpendiculares.wrl",
+    obj: "ob1.3_retas_perpendiculares.glb",
   },
-  { img: "1-4ortogonais.bmp", obj: "ob1.4_retas_ortogonais.wrl" },
-  { img: "1-5.bmp", obj: "ob1.5_retas_obliquas.wrl" },
+  { img: "1-4ortogonais.bmp", obj: "ob1.4_retas_ortogonais.glb" },
+  { img: "1-5.bmp", obj: "ob1.5_retas_obliquas.glb" },
   // 2
   {
     img: "2-1reta-secante-ao-plano.bmp",
-    obj: "ob2.1_reta_secante_ao_plano.wrl",
+    obj: "ob2.1_reta_secante_ao_plano.glb",
   },
   {
     img: "2-1reta-contida-no-plano.bmp",
-    obj: "ob2.1_reta_contida_no_plano.wrl",
+    obj: "ob2.1_reta_contida_no_plano.glb",
   },
   {
     img: "2-1reta-paralela-ao-plano.bmp",
-    obj: "ob2.1_reta_paralela_ao_plano.wrl",
+    obj: "ob2.1_reta_paralela_ao_plano.glb",
   },
-  { img: "2-2secantes.bmp", obj: "ob2.2_secantes.wrl" },
-  { img: "2-2paralelos.bmp", obj: "ob2.2_paralelos_distintos.wrl" },
-  { img: "2-2coincidentes.bmp", obj: "ob2.2_paralelos_coincidentes.wrl" },
-  { img: "2-3.bmp", obj: "ob2.3_reta_e_plano_perpendiculares.wrl" },
-  { img: "2-4.bmp", obj: "ob2.4_planos_perpendiculares.wrl" },
+  { img: "2-2secantes.bmp", obj: "ob2.2_secantes.glb" },
+  { img: "2-2paralelos.bmp", obj: "ob2.2_paralelos_distintos.glb" },
+  { img: "2-2coincidentes.bmp", obj: "ob2.2_paralelos_coincidentes.glb" },
+  { img: "2-3.bmp", obj: "ob2.3_reta_e_plano_perpendiculares.glb" },
+  { img: "2-4.bmp", obj: "ob2.4_planos_perpendiculares.glb" },
 ];
 
 export default function EditModal({
@@ -89,14 +92,31 @@ export default function EditModal({
   const [selected, setSelected] = useState(null);
   const [question, setQuestion] = useState(selectedQuestion);
 
+  const [hasObject, setHasObject] = useState(selectedQuestion.hasObject);
+  const [hasImg, setHasImg] = useState(selectedQuestion.hasImg);
+
+  const [isImgChange, setIsImgChange] = useState(false);
+
+  const [selected3DObject, setSelected3DObject] = useState({
+    obj: selectedQuestion.objName,
+  });
+  const [selectedImg, setSelectedImg] = useState(selectedQuestion.imgURL);
+
   useEffect(() => {
-    console.log("swsef", selectedQuestion.objName);
     setQuestion(selectedQuestion);
+    console.log("Selected: ", selectedQuestion);
+
     setSelected({
       name: selectedQuestion.objName,
       obj: selectedQuestion.objName,
     });
   }, [selectedQuestion]);
+
+  useEffect(() => {
+    console.log("selectedImg", selectedImg);
+    console.log("selectedObject", selected3DObject);
+    console.log(hasObject);
+  }, []);
 
   useEffect(() => {
     console.log(question);
@@ -158,39 +178,97 @@ export default function EditModal({
   };
 
   const handleClose = () => {
+    setIsImgChange(false);
+    setSelectedImg(null);
     setOpen(false);
   };
 
+  // async function onSubmit() {
+  //   console.log({
+  //     _id: question._id,
+  //     title: question.title,
+  //     teacher: _id,
+  //     questionary: idQuestionary,
+  //     alternatives: question.alternatives,
+  //     rightOne: question.rightOne,
+  //     hasObject: true,
+  //     path: "none",
+  //     objName: selected.obj,
+  //   });
+
+  //   try {
+  //     await api.put("/questionary/question/update", {
+  //       _id: question._id,
+  //       title: question.title,
+  //       teacher: _id,
+  //       questionary: idQuestionary,
+  //       alternatives: question.alternatives,
+  //       rightOne: question.rightOne,
+  //       hasObject: true,
+  //       path: "none",
+  //       objName: selected.obj,
+  //     });
+  //     handleClose();
+  //     getQuestionary();
+  //   } catch (err) {
+  //     console.log(err);
+  //     handleClose();
+  //   }
+  // }
+
   async function onSubmit() {
-    console.log({
-      _id: question._id,
-      title: question.title,
-      teacher: _id,
-      questionary: idQuestionary,
-      alternatives: question.alternatives,
-      rightOne: question.rightOne,
-      hasObject: true,
-      path: "none",
-      objName: selected.obj,
-    });
+    var formData = new FormData();
+
+    formData.append("_id", question._id);
+    formData.append("title", question.title);
+    formData.append("questionary", idQuestionary);
+    formData.append("alternatives", JSON.stringify(question.alternatives));
+    formData.append("rightOne", question.rightOne);
+    formData.append("teacher", _id);
+    // formData.append("path", form.path);
+
+    formData.append("hasObject", hasObject);
+    formData.append("objName", hasObject ? selected3DObject.obj : null);
+
+    formData.append("hasImg", hasImg);
+    formData.append("isImgChange", isImgChange);
+
+    if (hasImg && isImgChange) {
+      formData.append("file", selectedImg.file, selectedImg.name);
+    }
+
     try {
-      await api.put("/questionary/question/update", {
-        _id: question._id,
-        title: question.title,
-        teacher: _id,
-        questionary: idQuestionary,
-        alternatives: question.alternatives,
-        rightOne: question.rightOne,
-        hasObject: true,
-        path: "none",
-        objName: selected.obj,
+      await api.put("/questionary/question/update", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress: (e) => console.log(e),
       });
+
       handleClose();
+
       getQuestionary();
     } catch (err) {
-      console.log(err);
       handleClose();
     }
+    // try {
+    //   await api.put("/questionary/question/update", {
+    //     _id: question._id,
+    //     title: question.title,
+    //     teacher: _id,
+    //     questionary: idQuestionary,
+    //     alternatives: question.alternatives,
+    //     rightOne: question.rightOne,
+    //     hasObject: hasObject,
+    //     path: "none",
+    //     objName: hasObject ? selected.obj : null,
+    //   });
+    //   handleClose();
+    //   getQuestionary();
+    // } catch (err) {
+    //   console.log(err);
+    //   handleClose();
+    // }
   }
 
   return (
@@ -304,14 +382,65 @@ export default function EditModal({
               ))}
             </Grid.Col>
           </Grid.Row>
-          <div className={"justify-content-between"}>
-            <List3DCards
-              objects={objects}
-              setSelected={setSelected}
-              selected={selected}
-              type={"edit"}
-            />
-          </div>
+
+          <Form.Group label="Anexos"></Form.Group>
+
+          <Grid.Row>
+            <Grid.Col>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={hasObject}
+                    onChange={(e) => setHasObject(e.target.checked)}
+                  />
+                }
+                label="Anexar Objeto 3D ?"
+              />
+            </Grid.Col>
+          </Grid.Row>
+          {/* OBJECTS */}
+          {hasObject && (
+            <div className={"justify-content-between"}>
+              <List3DCards
+                objects={objects}
+                setSelected={setSelected3DObject}
+                selected={selected3DObject}
+              />
+            </div>
+          )}
+
+          <Grid.Row>
+            <Grid.Col>
+              <>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={hasImg}
+                      onChange={(e) => {
+                        setHasImg(e.target.checked);
+                        setIsImgChange(true);
+                        if (!e.target.checked) {
+                          setSelectedImg(null);
+                        }
+                      }}
+                    />
+                  }
+                  label="Anexar imagem ?"
+                />
+
+                {hasImg && (
+                  <Grid.Row cards alignItems="center">
+                    <Grid.Col width={12}>
+                      <Dropzone
+                        setSelectedImg={setSelectedImg}
+                        selectedImg={selectedImg}
+                      />
+                    </Grid.Col>
+                  </Grid.Row>
+                )}
+              </>
+            </Grid.Col>
+          </Grid.Row>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="default" icon="x">

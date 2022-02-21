@@ -18,19 +18,9 @@ export default function DropZone({ setSelectedImg, selectedImg }) {
     return <UploadMessage type="success">Imagem enviada</UploadMessage>;
   };
 
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState(selectedImg);
 
-  function getBuffer(fileData) {
-    return function (resolve) {
-      var reader = new FileReader();
-      reader.readAsArrayBuffer(fileData);
-      reader.onload = function () {
-        var arrayBuffer = reader.result;
-        var bytes = new Uint8Array(arrayBuffer);
-        resolve(bytes);
-      };
-    };
-  }
+  console.log("dropzone img received", selectedImg);
 
   function onUpload(file) {
     setSelectedImg({ file: file[0], name: file[0].name });
