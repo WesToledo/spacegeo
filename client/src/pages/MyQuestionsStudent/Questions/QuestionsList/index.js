@@ -5,10 +5,6 @@ import { Page, Grid, Button, Card, GalleryCard } from "tabler-react";
 
 import ModalConfirmAnswer from "./ModalConfirmAnswer";
 
-import api from "~/services/api";
-import Wrapper from "~/components/Wrapper";
-import useStore from "~/store";
-
 function QuestionCard({ questionary }) {
   const [modalOpen, setModalOpen] = useState(false);
 

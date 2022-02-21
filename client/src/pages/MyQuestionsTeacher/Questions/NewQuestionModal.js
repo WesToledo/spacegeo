@@ -49,36 +49,36 @@ const letters = [
 ];
 
 const objects = [
-  { img: "1-1reta.bmp", obj: "ob1.1_reta.glb" },
-  { img: "1-1plano.bmp", obj: "ob1.1_plano.glb" },
-  { img: "1-2distintas.bmp", obj: "ob1.2_paralelas_distintas.glb" },
-  { img: "1-2coincidentes.bmp", obj: "ob1.2_paralelas_coincidentes.glb" },
-  { img: "1-2concorrentes.bmp", obj: "ob1.2_concorrentes.glb" },
-  { img: "1-2reversas.bmp", obj: "ob1.2_reversas.glb" },
+  { img: "1-1reta.bmp", obj: "ob1.1_reta" },
+  { img: "1-1plano.bmp", obj: "ob1.1_plano" },
+  { img: "1-2distintas.bmp", obj: "ob1.2_paralelas_distintas" },
+  { img: "1-2coincidentes.bmp", obj: "ob1.2_paralelas_coincidentes" },
+  { img: "1-2concorrentes.bmp", obj: "ob1.2_concorrentes" },
+  { img: "1-2reversas.bmp", obj: "ob1.2_reversas" },
   {
     img: "1-3perpendiculares.bmp",
-    obj: "ob1.3_retas_perpendiculares.glb",
+    obj: "ob1.3_retas_perpendiculares",
   },
-  { img: "1-4ortogonais.bmp", obj: "ob1.4_retas_ortogonais.glb" },
-  { img: "1-5.bmp", obj: "ob1.5_retas_obliquas.glb" },
+  { img: "1-4ortogonais.bmp", obj: "ob1.4_retas_ortogonais" },
+  { img: "1-5.bmp", obj: "ob1.5_retas_obliquas" },
   // 2
   {
     img: "2-1reta-secante-ao-plano.bmp",
-    obj: "ob2.1_reta_secante_ao_plano.glb",
+    obj: "ob2.1_reta_secante_ao_plano",
   },
   {
     img: "2-1reta-contida-no-plano.bmp",
-    obj: "ob2.1_reta_contida_no_plano.glb",
+    obj: "ob2.1_reta_contida_no_plano",
   },
   {
     img: "2-1reta-paralela-ao-plano.bmp",
-    obj: "ob2.1_reta_paralela_ao_plano.glb",
+    obj: "ob2.1_reta_paralela_ao_plano",
   },
-  { img: "2-2secantes.bmp", obj: "ob2.2_secantes.glb" },
-  { img: "2-2paralelos.bmp", obj: "ob2.2_paralelos_distintos.glb" },
-  { img: "2-2coincidentes.bmp", obj: "ob2.2_paralelos_coincidentes.glb" },
-  { img: "2-3.bmp", obj: "ob2.3_reta_e_plano_perpendiculares.glb" },
-  { img: "2-4.bmp", obj: "ob2.4_planos_perpendiculares.glb" },
+  { img: "2-2secantes.bmp", obj: "ob2.2_secantes" },
+  { img: "2-2paralelos.bmp", obj: "ob2.2_paralelos_distintos" },
+  { img: "2-2coincidentes.bmp", obj: "ob2.2_paralelos_coincidentes" },
+  { img: "2-3.bmp", obj: "ob2.3_reta_e_plano_perpendiculares" },
+  { img: "2-4.bmp", obj: "ob2.4_planos_perpendiculares" },
 ];
 
 export default function NewQuestionModal({
