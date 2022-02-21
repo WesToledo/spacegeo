@@ -166,7 +166,7 @@ function QuestionCard({ questionary }) {
                 ) : (
                   <></>
                 )}
-                <Button.List>
+                <Button.List className="white-space">
                   {questions[currentQuestion].alternatives.length > 0
                     ? questions[currentQuestion].alternatives.map(
                         (alternative, index) => (

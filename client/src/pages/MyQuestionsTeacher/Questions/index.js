@@ -81,18 +81,17 @@ function QuestionsPage(props) {
     getQuestionary();
   }, []);
 
-  useEffect(() => {
-    async function updatePublishState() {
-      try {
-        await api.put("/questionary/publish/" + questionary?._id, { publish });
-        console.log("publish", publish);
-      } catch (err) {
-        setPublish(!publish);
-        console.log(err);
-      }
+  async function handlePublish(e) {
+    const publish = e.target.checked
+    try {
+      await api.put("/questionary/publish/" + questionary?._id, {
+        publish,
+      });
+      setPublish(publish);
+    } catch (err) {
+      console.log(err);
     }
-    updatePublishState();
-  }, [publish]);
+  }
 
   return (
     <Wrapper>
@@ -101,13 +100,17 @@ function QuestionsPage(props) {
           <Card.Header>
             <Card.Options>
               <Button.List>
-                <Button
-                  icon="users"
-                  color="primary"
-                  onClick={handleOpenClassesModal}
-                >
-                  Vincular Turmas
-                </Button>
+                {questionary?.type != "default" ? (
+                  <Button
+                    icon="users"
+                    color="primary"
+                    onClick={handleOpenClassesModal}
+                  >
+                    Vincular Turmas
+                  </Button>
+                ) : (
+                  <></>
+                )}
                 <Button
                   icon="plus"
                   color="success"
@@ -123,7 +126,7 @@ function QuestionsPage(props) {
                   publish ? "Questionário Publicado" : "Publicar Questionário"
                 }
                 checked={publish}
-                onChange={(e) => setPublish(e.target.checked)}
+                onChange={handlePublish}
               />
             </Card.Options>
           </Card.Header>
@@ -143,7 +146,11 @@ function QuestionsPage(props) {
                     </Card.Header>
                     <Card.Body>
                       {question.alternatives.map((alternative, index) => (
-                        <Grid.Row alignItems="center" className="mb-2">
+                        <Grid.Row
+                          alignItems="center"
+                          className="mb-2"
+                          key={index}
+                        >
                           <Grid.Col width={2}>
                             <Form.StaticText>{`${letters[index]})`}</Form.StaticText>
                           </Grid.Col>
