@@ -44,10 +44,10 @@ function QuestionsPage(props) {
   const [modalEdit, setOpenEdit] = useState(false);
   const [modalClasses, setOpenClasses] = useState(false);
 
-  const [publish, setPublish] = useState(false);
-
   const [questionary, setQuestionary] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+
+  const [publish, setPublish] = useState(false);
 
   const { _id } = useStore((state) => state.user);
 
@@ -56,6 +56,7 @@ function QuestionsPage(props) {
       const response = await api.get("/questionary/" + props.match.params.id);
       console.log(response.data.questionary);
       setQuestionary(response.data.questionary);
+      setPublish(response.data.questionary.publish);
     } catch (err) {
       console.log(err);
     }
@@ -80,6 +81,19 @@ function QuestionsPage(props) {
     getQuestionary();
   }, []);
 
+  useEffect(() => {
+    async function updatePublishState() {
+      try {
+        await api.put("/questionary/publish/" + questionary?._id, { publish });
+        console.log("publish", publish);
+      } catch (err) {
+        setPublish(!publish);
+        console.log(err);
+      }
+    }
+    updatePublishState();
+  }, [publish]);
+
   return (
     <Wrapper>
       <Page.Content title={`Questionário: ${questionary?.title}`}>
@@ -103,7 +117,14 @@ function QuestionsPage(props) {
                 </Button>
               </Button.List>
 
-              <Form.Switch className={"m-2"} label="Publicar Questionário" />
+              <Form.Switch
+                className={"m-2"}
+                label={
+                  publish ? "Questionário Publicado" : "Publicar Questionário"
+                }
+                checked={publish}
+                onChange={(e) => setPublish(e.target.checked)}
+              />
             </Card.Options>
           </Card.Header>
           <Card.Body>

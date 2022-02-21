@@ -80,7 +80,6 @@ async function getClasses(req, res) {
 }
 
 async function list(req, res) {
-  console.log("LIST");
   try {
     const questionarys = await QuestionarySchema.find({
       teacher: req.params.idTeacher,
@@ -131,11 +130,12 @@ async function join(req, res) {
 }
 
 async function publish(req, res) {
+  console.log(req.body);
   try {
     await QuestionarySchema.updateOne(
       { _id: req.params.id },
       {
-        publish: true,
+        publish: req.body.publish,
       }
     );
     return res.send();
@@ -241,7 +241,7 @@ async function getClasseQuestionarys(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
       classes: req.params.idClasse,
-
+      publish: true,
       type: "teacher",
     }).lean();
 
