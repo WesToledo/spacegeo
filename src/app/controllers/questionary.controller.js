@@ -83,6 +83,19 @@ async function list(req, res) {
   try {
     const questionarys = await QuestionarySchema.find({
       teacher: req.params.idTeacher,
+      publish: true,
+      type: "teacher",
+    }).populate("classes");
+    res.send({ questionarys });
+  } catch (err) {
+    return res.status(400).send({ error: "Erro ao buscar questionários" });
+  }
+}
+async function listDefaults(req, res) {
+  try {
+    const questionarys = await QuestionarySchema.find({
+      publish: true,
+      type: "default",
     }).populate("classes");
     res.send({ questionarys });
   } catch (err) {
@@ -335,6 +348,7 @@ module.exports = {
   indexStudent,
   indexTeacher,
   list,
+  listDefaults,
   update,
   remove,
   join,

@@ -73,6 +73,12 @@ function SiteWrapper(props) {
         useExact: false,
         subItems: [
           {
+            value: "Padrão",
+            to: "/questionarios-padrao",
+            LinkComponent: withRouter(NavLink),
+            useExact: false,
+          },
+          {
             value: "Meus questionários",
             to: "/meus-questionarios",
             LinkComponent: withRouter(NavLink),

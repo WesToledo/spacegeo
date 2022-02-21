@@ -27,8 +27,12 @@ import InstructionsTeacherPage from "./pages/InstructionsTeacher";
 import MyQuestionsStudentPage from "./pages/MyQuestionsStudent";
 import SubMyQuestionsStudentPage from "./pages/MyQuestionsStudent/Questions";
 
-import DefaultQuestionaryPage from "./pages/DefaultQuestionarys";
-import SubDefaultQuestionaryPage from "./pages/DefaultQuestionarys/Questions";
+import DefaultQuestionaryStudentPage from "./pages/DefaultQuestionarysStudent";
+import SubDefaultQuestionaryStudentPage from "./pages/DefaultQuestionarysStudent/Questions";
+
+import DefaultQuestionaryTeacherPage from "./pages/DefaultQuestionarysTeacher";
+import SubDefaultQuestionaryTeacherPage from "./pages/DefaultQuestionarysTeacher/Questions";
+
 import InstructionsStudentPage from "./pages/InstructionsStudent";
 
 import LoginPage from "~/pages/Login";
@@ -106,7 +110,7 @@ function App() {
           <PrivateRoute
             exact
             path="/questionarios-padrao"
-            component={DefaultQuestionaryPage}
+            component={DefaultQuestionaryStudentPage}
           />
         )}
 
@@ -114,7 +118,7 @@ function App() {
           <PrivateRoute
             exact
             path="/questionarios-padrao/:id"
-            component={SubDefaultQuestionaryPage}
+            component={SubDefaultQuestionaryStudentPage}
           />
         )}
 
@@ -122,7 +126,7 @@ function App() {
           <PrivateRoute
             exact
             path="/questionarios-padrao"
-            component={DefaultQuestionaryPage}
+            component={DefaultQuestionaryTeacherPage}
           />
         )}
 
@@ -130,7 +134,7 @@ function App() {
           <PrivateRoute
             exact
             path="/questionarios-padrao/:id"
-            component={SubDefaultQuestionaryPage}
+            component={SubDefaultQuestionaryTeacherPage}
           />
         )}
 

@@ -18,6 +18,19 @@ const store = (set, get) => ({
     linked: null,
     classe: null,
   },
+  isLoading: false,
+  startLoading: () =>
+    set(
+      produce((oldState) => {
+        oldState.isLoading = true;
+      })
+    ),
+  stopLoading: () =>
+    set(
+      produce((oldState) => {
+        oldState.isLoading = false;
+      })
+    ),
   addUser: (user) =>
     set(
       produce((oldState) => {

@@ -62,6 +62,8 @@ questionaryRouter.get(
   questionary.getDefaultQuestionarys
 );
 
+questionaryRouter.get("/student/list/default", questionary.listDefaults);
+
 questionaryRouter.post(
   "/question/add",
   uploadMiddleware.single("file"),
