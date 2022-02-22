@@ -14,22 +14,24 @@ function InstructionsTeacherPage(props) {
         <Card>
           <Card.Header>Instruções de uso</Card.Header>
           <Card.Body>
-            Clique no link abaixo para acessar todas as instruções de uso do
-            SpaceGeo_AR.
+            Clique em um dos links abaixo para acessar todas as instruções de
+            uso do SpaceGeo_AR
             <br />
             <a
               href={
                 "https://drive.google.com/drive/folders/1gPljNWXyik6TBFkh0xhW4S88np-eaTNa?usp=sharing"
               }
             >
-              Clique aqui
+              TEXTO
             </a>
             <br />
-            É preciso que o seu dispositivo (celular ou tablet) seja capaz de
-            abrir arquivos do tipo PDF. Se não tiver esse recurso, baixe
-            gratuitamente esse recurso em:
+            VÍDEO
             <br />
-            <a href={"https://get.adobe.com/br/reader/?promoid=TTGWL47M  "}>
+            <a
+              href={
+                "https://drive.google.com/drive/folders/1-pld8L-03Lksc4Lr5uNsZr1aJzPqZh5e?usp=sharing"
+              }
+            >
               Clique aqui
             </a>
           </Card.Body>

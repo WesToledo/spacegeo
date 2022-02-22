@@ -41,6 +41,22 @@ const letters = [
 ];
 
 function QuestionsPage(props) {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [setWidth]);
+
   const [modalCreate, setOpenCreate] = useState(false);
   const [modalEdit, setOpenEdit] = useState(false);
   const [modalClasses, setOpenClasses] = useState(false);
@@ -104,26 +120,34 @@ function QuestionsPage(props) {
         <Page.Content title={`Questionário: ${questionary?.title}`}>
           <Card>
             <Card.Header>
-              <Card.Options>
-                {questionary?.type != "default" ? (
-                  <>
-                    <Button.List>
-                      <Button
-                        icon="users"
-                        color="primary"
-                        onClick={handleOpenClassesModal}
-                      >
-                        Vincular Turmas
-                      </Button>
-
-                      <Button
-                        icon="plus"
-                        color="success"
-                        onClick={handleOnCreateNewQuestionClick}
-                      >
-                        Criar Questão
-                      </Button>
-                    </Button.List>
+              {/* <Card.Options> */}
+              {questionary?.type != "default" ? (
+                <Grid.Row
+                  alignItems="center"
+                  justifyContent="flex-end"
+                  className="w-100"
+                >
+                  <Grid.Col md={2} sm={12} className={"m-2"}>
+                    <Button
+                      block
+                      icon="users"
+                      color="primary"
+                      onClick={handleOpenClassesModal}
+                    >
+                      Vincular Turmas
+                    </Button>
+                  </Grid.Col>
+                  <Grid.Col md={2} sm={12} className={"m-2"}>
+                    <Button
+                      block
+                      icon="plus"
+                      color="success"
+                      onClick={handleOnCreateNewQuestionClick}
+                    >
+                      Criar Questão
+                    </Button>
+                  </Grid.Col>
+                  <Grid.Col>
                     <Form.Switch
                       className={"m-2"}
                       label={
@@ -134,11 +158,12 @@ function QuestionsPage(props) {
                       checked={publish}
                       onChange={handlePublish}
                     />
-                  </>
-                ) : (
-                  <></>
-                )}
-              </Card.Options>
+                  </Grid.Col>
+                </Grid.Row>
+              ) : (
+                <></>
+              )}
+              {/* </Card.Options> */}
             </Card.Header>
             <Card.Body>
               {questionary?.questions.length == 0 && (
@@ -146,7 +171,7 @@ function QuestionsPage(props) {
               )}
               <Grid.Row cards deck>
                 {questionary?.questions?.map((question, indexQuestion) => (
-                  <Grid.Col lg={6} md={12} sm={12} xs={12} key={indexQuestion}>
+                  <Grid.Col width={width < 768 ? 12 : 6} key={indexQuestion}>
                     <Card>
                       <Card.Header>
                         <Card.Title className="text-area-indent">{`${

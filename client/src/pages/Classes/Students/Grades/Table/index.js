@@ -52,7 +52,7 @@ export default function DataTable({ answers }) {
       rows.push({
         name: answer.questionary.title,
         value: answer.questionary.grade.toFixed(2),
-        grade: answer.grade,
+        grade: answer.grade.toFixed(2),
 
         // actions: (
         //   <Button

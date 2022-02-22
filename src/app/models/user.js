@@ -42,6 +42,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
+  login_with: {
+    type: String,
+    required: true,
+    default: "default_form",
+  },
 });
 
 UserSchema.pre("save", async function (next) {

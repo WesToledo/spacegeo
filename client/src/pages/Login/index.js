@@ -69,6 +69,15 @@ function LoginPage(props) {
     }
   }
 
+  const handleLogin = async (googleData) => {
+    const res = await api.post("/login", {
+      token: googleData.tokenId,
+      type: "google_api",
+    });
+
+    console.log(res.data);
+  };
+
   return (
     <>
       <StandaloneFormPage imageURL={logoImg}>
@@ -94,8 +103,8 @@ function LoginPage(props) {
           />
           <GoogleLogin
             clientId="887032542043-b0ojvgrlv7hd7ol0n45bs9svvdubab07.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={responseGoogle}
+            buttonText="Criar Conta pelo Google"
+            onSuccess={handleLogin}
             onFailure={responseGoogle}
             cookiePolicy={"single_host_origin"}
           />
