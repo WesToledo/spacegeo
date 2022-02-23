@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 
 import GoogleLogin from "react-google-login";
 // or
@@ -8,11 +8,18 @@ import GoogleLogin from "react-google-login";
 import api from "~/services/api";
 import useStore from "~/store";
 
-import { StandaloneFormPage, FormCard, FormTextInput } from "tabler-react";
+import {
+  StandaloneFormPage,
+  FormCard,
+  FormTextInput,
+  Grid,
+} from "tabler-react";
 import logoImg from "~/assets/img/logo_novo.png";
 
 function LoginPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
+  const { setLoginData } = useStore();
+  const history = useHistory();
 
   const { addUser } = useStore();
   const [values, setValues] = useState({
@@ -39,7 +46,7 @@ function LoginPage(props) {
     });
   }
 
-  async function handleSubmit(e) {
+  async function handleSubmitLogin(e) {
     e.preventDefault();
     const { email, password } = values;
     setTextButton({ text: "Carregando..." });
@@ -50,6 +57,7 @@ function LoginPage(props) {
       const response = await api.post("/login", {
         email,
         password,
+        login_with: "default_form",
       });
 
       addUser({ ...response.data.user, token: response.data.token });
@@ -69,13 +77,31 @@ function LoginPage(props) {
     }
   }
 
-  const handleLogin = async (googleData) => {
-    const res = await api.post("/login", {
+  const handleCreateAccountGoogle = async (googleData) => {
+    const response = await api.post("/login", {
       token: googleData.tokenId,
-      type: "google_api",
+      login_with: "google_api",
     });
 
-    console.log(res.data);
+    console.log(response.data)
+
+    setLoginData(response.data);
+
+    if (response.data.completed_profile) {
+      addUser({ ...response.data.user, token: response.data.token });
+
+      if (response.data.user.type === "teacher") {
+        props.history.push("/topicos");
+      }
+
+      if (response.data.user.linked) {
+        props.history.push("/topicos");
+      } else {
+        props.history.push("/vincular-turma");
+      }
+    } else {
+      history.push("/cadastro");
+    }
   };
 
   return (
@@ -84,7 +110,7 @@ function LoginPage(props) {
         <FormCard
           title={stringsForm.title}
           buttonText={textButton.text}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitLogin}
         >
           <FormTextInput
             onChange={handleOnChange}
@@ -101,16 +127,20 @@ function LoginPage(props) {
             placeholder={stringsForm.passwordLabel}
             value={values && values.password}
           />
-          <GoogleLogin
-            clientId="887032542043-b0ojvgrlv7hd7ol0n45bs9svvdubab07.apps.googleusercontent.com"
-            buttonText="Criar Conta pelo Google"
-            onSuccess={handleLogin}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
-          />
+
           <p>
             Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
+          <div className="m-5">
+            <GoogleLogin
+              className="w-100 justify-content-center"
+              clientId="887032542043-b0ojvgrlv7hd7ol0n45bs9svvdubab07.apps.googleusercontent.com"
+              buttonText="Fazer login com Google"
+              onSuccess={handleCreateAccountGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
+          </div>
         </FormCard>
       </StandaloneFormPage>
     </>

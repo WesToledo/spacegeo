@@ -17,11 +17,9 @@ function SignUpPage(props) {
   const [openUseTermModal, setOpenUseTermModal] = useState(false);
   const [openPrivacityModal, setOpenPrivacityModal] = useState(false);
 
-  const [sentToServer, setSentToServer] = useState(false);
-
   const [form, setForm] = useState({});
 
-  const { addUser } = useStore();
+  const { addUser, user } = useStore();
 
   var stringsForm = {
     title: "Criar conta",
@@ -33,13 +31,36 @@ function SignUpPage(props) {
 
   async function handleSubmitServer() {
     try {
-      const response = await api.post("/user/create", form);
+      const response = await api.post("/user/create", {
+        ...form,
+        login_with: "default_form",
+        user_terms_accepted: true,
+      });
+
       addUser({ ...response.data.user, token: response.data.token });
+
       if (response.data.user.type == "teacher") props.history.push("/topicos");
       else props.history.push("/vincular-turma");
     } catch (err) {
       console.log(err.response.data.error);
       setTextButton({ text: "Criar conta" });
+    }
+  }
+  async function handleGoogleSubmit() {
+    try {
+      const response = await api.put("/finish-create", {
+        ...form,
+        email: user.email,
+      });
+
+      addUser({ ...response.data.user, token: response.data.token });
+
+      if (response.data.user.type == "teacher") props.history.push("/topicos");
+      else props.history.push("/vincular-turma");
+    } catch (err) {
+      console.log(err);
+      setTextButton({ text: "Criar conta" });
+      return;
     }
   }
 
@@ -73,14 +94,7 @@ function SignUpPage(props) {
 
         setOpenUseTermModal(true);
       }}
-      render={({
-        values,
-        errors,
-        handleChange,
-        handleBlur,
-        isSubmitting,
-        handleSubmit,
-      }) => (
+      render={({ values, errors, handleChange, handleBlur, handleSubmit }) => (
         <div className="page">
           <div className="page-single">
             <Container>
@@ -102,14 +116,18 @@ function SignUpPage(props) {
                           <Form.Label>Nome completo</Form.Label>
                           <Form.Input
                             required
-                            requi
                             type="text"
                             placeholder="Digite seu nome completo"
                             name="name"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values && values.name}
-                            error={errors && errors.name}
+                            disabled={user.login_with == "google_api"}
+                            value={
+                              user.login_with == "google_api"
+                                ? user.name
+                                : values.name
+                            }
+                            error={errors.name}
                           />
                         </Form.Group>
                       </Grid.Col>
@@ -123,8 +141,13 @@ function SignUpPage(props) {
                             name="email"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values && values.email}
-                            error={errors && errors.email}
+                            disabled={user.login_with == "google_api"}
+                            value={
+                              user.login_with == "google_api"
+                                ? user.email
+                                : values.email
+                            }
+                            error={errors.email}
                           />
                         </Form.Group>
                       </Grid.Col>
@@ -138,7 +161,7 @@ function SignUpPage(props) {
                             placeholder="Qual sua data de nascimento ?"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values && values.birthday}
+                            value={values.birthday}
                             error={errors && errors.birthday}
                             mask={[
                               /\d/,
@@ -188,7 +211,7 @@ function SignUpPage(props) {
                           <Form.Input
                             required
                             type="text"
-                            placeholder="Informe qual instituição de ensino faz parte"
+                            placeholder="Informe qual instituição de ensino você faz parte"
                             name="institution"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -199,41 +222,45 @@ function SignUpPage(props) {
                       </Grid.Col>
                     </Grid.Row>
 
-                    <Grid.Row>
-                      <Grid.Col md={6} sm={12} xs={12}>
-                        <Form.Group>
-                          <Form.Label>Senha</Form.Label>
-                          <Form.Input
-                            required
-                            type="password"
-                            placeholder="Digite a senha"
-                            name="password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values && values.password}
-                            error={errors && errors.password}
-                          />
-                        </Form.Group>
-                      </Grid.Col>
-                    </Grid.Row>
+                    {user.login_with != "google_api" && (
+                      <>
+                        <Grid.Row>
+                          <Grid.Col md={6} sm={12} xs={12}>
+                            <Form.Group>
+                              <Form.Label>Senha</Form.Label>
+                              <Form.Input
+                                required
+                                type="password"
+                                placeholder="Digite a senha"
+                                name="password"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values && values.password}
+                                error={errors && errors.password}
+                              />
+                            </Form.Group>
+                          </Grid.Col>
+                        </Grid.Row>
 
-                    <Grid.Row>
-                      <Grid.Col md={6}>
-                        <Form.Group>
-                          <Form.Label>Confirmar senha</Form.Label>
-                          <Form.Input
-                            required
-                            type="password"
-                            placeholder="Digite novamente a senha"
-                            name="confirm_password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values && values.confirm_password}
-                            error={errors && errors.confirm_password}
-                          />
-                        </Form.Group>
-                      </Grid.Col>
-                    </Grid.Row>
+                        <Grid.Row>
+                          <Grid.Col md={6}>
+                            <Form.Group>
+                              <Form.Label>Confirmar senha</Form.Label>
+                              <Form.Input
+                                required
+                                type="password"
+                                placeholder="Digite novamente a senha"
+                                name="confirm_password"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values && values.confirm_password}
+                                error={errors && errors.confirm_password}
+                              />
+                            </Form.Group>
+                          </Grid.Col>
+                        </Grid.Row>
+                      </>
+                    )}
                   </FormCard>
                 </Grid.Col>
               </Grid.Row>
@@ -247,8 +274,9 @@ function SignUpPage(props) {
           <PrivacityTermModal
             open={openPrivacityModal}
             setOpen={setOpenPrivacityModal}
-            setSentToServer={setSentToServer}
             handleSubmit={handleSubmitServer}
+            handleGoogleSubmit={handleGoogleSubmit}
+            user={user}
           />
         </div>
       )}

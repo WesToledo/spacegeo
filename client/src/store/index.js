@@ -17,6 +17,19 @@ const store = (set, get) => ({
     token: null,
     linked: null,
     classe: null,
+    login_with: null,
+    picture: null,
+  },
+  setLoginData: (loginData) => {
+    set(
+      produce((oldState) => {
+        oldState.user.name = loginData.user.name;
+        oldState.user.email = loginData.user.email;
+        oldState.user.token = loginData.token;
+        oldState.user.picture = loginData.user.picture;
+        oldState.user.login_with = loginData.login_with;
+      })
+    );
   },
   isLoading: false,
   startLoading: () =>

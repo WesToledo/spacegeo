@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    required: true,
+    // required: true,
   },
   email: {
     type: String,
@@ -17,15 +17,15 @@ const UserSchema = new mongoose.Schema({
   },
   birthday: {
     type: String,
-    require: true,
+    // require: true,
   },
   institution: {
     type: String,
-    require: true,
+    // require: true,
   },
   password: {
     type: String,
-    required: true,
+    // required: true,
     select: false,
   },
   linked: {
@@ -47,14 +47,19 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: "default_form",
   },
+  picture: {
+    type: String,
+    required: true,
+    default: "https://link_image",
+  },
 });
 
-UserSchema.pre("save", async function (next) {
-  const hash = await bcrypt.hash(this.password, 10);
-  this.password = hash;
+// UserSchema.pre("save", async function (next) {
+//   const hash = await bcrypt.hash(this.password, 10);
+//   this.password = hash;
 
-  next();
-});
+//   next();
+// });
 
 const User = mongoose.model("User", UserSchema);
 

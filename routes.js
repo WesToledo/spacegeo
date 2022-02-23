@@ -17,6 +17,7 @@ const answer = require("./src/app/controllers/answer.controller");
 //Auth
 const rootRouter = express.Router();
 rootRouter.post("/login", auth.login);
+rootRouter.put("/finish-create", user.finishCreate);
 
 // Users
 const userRouter = express.Router();

@@ -20,13 +20,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModalAcceptTerms({ open, setOpen, handleSubmit }) {
+export default function ModalAcceptTerms({
+  open,
+  setOpen,
+  handleSubmit,
+  handleGoogleSubmit,
+  user,
+}) {
   const classes = useStyles();
   const handleClose = () => {
     setOpen(false);
   };
 
   function onSubmit() {
+    switch (user.login_with) {
+      case "default_form":
+        handleSubmit();
+        break;
+      case "google_api":
+        handleGoogleSubmit();
+        break;
+    }
     handleSubmit();
     setOpen(false);
   }
