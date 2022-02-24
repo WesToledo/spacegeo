@@ -61,9 +61,23 @@ async function update(req, res) {
 
 async function remove(req, res) {
   try {
+    console.log(req.params.id);
+    const classe = await ClassSchema.findById(req.params.id);
+    console.log(classe);
+
+    await Promise.all(
+      classe.students.map(async (id) => {
+        await UserSchema.updateOne(
+          { _id: id },
+          { linked: false, classe: undefined }
+        );
+      })
+    );
+
     await ClassSchema.findByIdAndRemove(req.params.id);
     return res.status(200).send();
   } catch (err) {
+    console.log(err);
     return res.status(400).send({ error: "Erro ao deletar turma", err });
   }
 }

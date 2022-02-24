@@ -26,6 +26,16 @@ function ClassesPage(props) {
     }
   }
 
+  async function handleDeleteClass(id) {
+    try {
+      await api.delete("/class/remove/" + id);
+      getClasses();
+    } catch (err) {
+      console.log(err);
+      getClasses(); 
+    }
+  }
+
   useEffect(() => {
     getClasses();
   }, []);
@@ -77,6 +87,7 @@ function ClassesPage(props) {
                         }}
                       >
                         <Button
+                          className="m-1"
                           icon="plus"
                           size="sm"
                           color="primary"
@@ -86,6 +97,13 @@ function ClassesPage(props) {
                         >
                           Ver alunos
                         </Button>
+                        <Button
+                          className="m-1"
+                          icon="trash"
+                          size="sm"
+                          color="danger"
+                          onClick={() => handleDeleteClass(classe._id)}
+                        />
                       </div>
                     </Card.Footer>
                   </Card>
