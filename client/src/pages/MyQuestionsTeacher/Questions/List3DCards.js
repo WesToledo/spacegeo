@@ -47,7 +47,7 @@ export default function List3DCards({ objects, setSelected, type, selected }) {
           >
             <Form.Radio
               key={index}
-              checked={selected && selected.obj === obj.obj}
+              checked={selected && selected.obj == obj.obj}
               label={" "}
               name="model"
               onChange={() => {
