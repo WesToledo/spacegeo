@@ -119,8 +119,10 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
                           questionaryClasse._id == possibleClasse._id
                       ).length == 0
                   )
-                  .map((classe) => (
-                    <option value={classe._id}>{classe.name}</option>
+                  .map((classe, index) => (
+                    <option key={index} value={classe._id}>
+                      {classe.name}
+                    </option>
                   ))}
               </Form.Select>
             </Grid.Col>

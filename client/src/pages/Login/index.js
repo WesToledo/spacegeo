@@ -18,6 +18,8 @@ import logoImg from "~/assets/img/logo_novo.png";
 
 function LoginPage(props) {
   const [textButton, setTextButton] = useState({ text: "Entrar" });
+  const [errorMessage, setErrorMessage] = useState("");
+
   const { setLoginData } = useStore();
   const history = useHistory();
 
@@ -72,35 +74,37 @@ function LoginPage(props) {
         props.history.push("/vincular-turma");
       }
     } catch (err) {
-      console.log(err);
+      setErrorMessage(err.response.data.error);
       setTextButton({ text: "Entrar" });
     }
   }
 
   const handleCreateAccountGoogle = async (googleData) => {
-    const response = await api.post("/login", {
-      token: googleData.tokenId,
-      login_with: "google_api",
-    });
+    try {
+      const response = await api.post("/login", {
+        token: googleData.tokenId,
+        login_with: "google_api",
+      });
 
-    console.log(response.data)
+      setLoginData(response.data);
 
-    setLoginData(response.data);
+      if (response.data.completed_profile) {
+        addUser({ ...response.data.user, token: response.data.token });
 
-    if (response.data.completed_profile) {
-      addUser({ ...response.data.user, token: response.data.token });
+        if (response.data.user.type === "teacher") {
+          props.history.push("/topicos");
+        }
 
-      if (response.data.user.type === "teacher") {
-        props.history.push("/topicos");
-      }
-
-      if (response.data.user.linked) {
-        props.history.push("/topicos");
+        if (response.data.user.linked) {
+          props.history.push("/topicos");
+        } else {
+          props.history.push("/vincular-turma");
+        }
       } else {
-        props.history.push("/vincular-turma");
+        history.push("/cadastro");
       }
-    } else {
-      history.push("/cadastro");
+    } catch (err) {
+      setErrorMessage(err.response.data.error);
     }
   };
 
@@ -118,6 +122,7 @@ function LoginPage(props) {
             label={stringsForm.emailLabel}
             placeholder={stringsForm.emailPlaceholder}
             value={values && values.email}
+            error={errorMessage && errorMessage}
           />
           <FormTextInput
             onChange={handleOnChange}

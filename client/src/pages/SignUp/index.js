@@ -13,6 +13,7 @@ import PrivacityTermModal from "./PrivacityTermModal";
 
 function SignUpPage(props) {
   const [textButton, setTextButton] = useState({ text: "Criar conta" });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [openUseTermModal, setOpenUseTermModal] = useState(false);
   const [openPrivacityModal, setOpenPrivacityModal] = useState(false);
@@ -42,7 +43,7 @@ function SignUpPage(props) {
       if (response.data.user.type == "teacher") props.history.push("/topicos");
       else props.history.push("/vincular-turma");
     } catch (err) {
-      console.log(err.response.data.error);
+      setErrorMessage(err.response.data.error);
       setTextButton({ text: "Criar conta" });
     }
   }
@@ -60,6 +61,7 @@ function SignUpPage(props) {
     } catch (err) {
       console.log(err);
       setTextButton({ text: "Criar conta" });
+      setErrorMessage(err.response.data.error);
       return;
     }
   }
@@ -147,7 +149,7 @@ function SignUpPage(props) {
                                 ? user.email
                                 : values.email
                             }
-                            error={errors.email}
+                            error={errorMessage && errorMessage}
                           />
                         </Form.Group>
                       </Grid.Col>

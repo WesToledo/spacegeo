@@ -286,6 +286,10 @@ function QuestionsPage(props) {
               <ModalEditQuestion
                 open={modalEdit}
                 setOpen={setOpenEdit}
+                setClose={() => {
+                  setOpenEdit(false);
+                  setSelectedQuestion(undefined);
+                }}
                 getQuestionary={getQuestionary}
                 idQuestionary={props.match.params.id}
                 selectedQuestion={selectedQuestion}

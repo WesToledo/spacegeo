@@ -303,7 +303,7 @@ export default function NewQuestionModal({
                 </Grid.Col>
               </Grid.Row>
               {alternatives.map((alternative, index) => (
-                <Grid.Row alignItems="center" className="mb-2">
+                <Grid.Row alignItems="center" className="mb-2" key={index}>
                   <Grid.Col width={1}>
                     <Form.StaticText>{`${letters[index]})`}</Form.StaticText>
                   </Grid.Col>

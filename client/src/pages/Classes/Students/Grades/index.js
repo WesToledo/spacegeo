@@ -8,13 +8,14 @@ import Wrapper from "~/components/Wrapper";
 import DataTable from "./Table";
 
 function GradesPage(props) {
-  const [answers, setAnswer] = useState(null);
+  const [answers, setAnswer] = useState([]);
 
   async function getAnswers() {
     try {
       const response = await api.get("/user/grades/" + props.match.params.id);
       console.log(response.data.answers);
-      setAnswer(response.data.answers);
+      // setAnswer(response.data.answers);
+      setAnswer([]);
     } catch (err) {
       console.log(err);
     }
@@ -37,14 +38,18 @@ function GradesPage(props) {
 
   return (
     <Wrapper>
-      {answers != null && (
+      {answers.length != 0 ? (
         <Page.Content title={answers[0].student.name}>
           <Card>
-            {/* <Card.Header>
-            <Card.Options></Card.Options>
-          </Card.Header> */}
             <Card.Body>{answers && <DataTable answers={answers} />}</Card.Body>
-            {/* <Card.Footer>This is standard card footer</Card.Footer> */}
+          </Card>
+        </Page.Content>
+      ) : (
+        <Page.Content>
+          <Card>
+            <Card.Header>
+              <Text>O aluno ainda não respondeu nenhum questionário</Text>
+            </Card.Header>
           </Card>
         </Page.Content>
       )}

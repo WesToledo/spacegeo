@@ -86,6 +86,7 @@ export default function EditModal({
   getQuestionary,
   idQuestionary,
   selectedQuestion,
+  setClose,
 }) {
   const { _id } = useStore((state) => state.user);
 
@@ -119,8 +120,8 @@ export default function EditModal({
   }, []);
 
   useEffect(() => {
-    console.log(question);
-  }, [question]);
+    console.log(selectedQuestion);
+  }, []);
 
   const addNewAlternative = () => {
     setQuestion({
@@ -180,7 +181,7 @@ export default function EditModal({
   const handleClose = () => {
     setIsImgChange(false);
     setSelectedImg(null);
-    setOpen(false);
+    setClose();
   };
 
   // async function onSubmit() {
