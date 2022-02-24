@@ -27,6 +27,15 @@ function MyQuestionsPage(props) {
     }
   }
 
+  async function handleDeleteQuestionary(id) {
+    try {
+      await api.delete("/questionary/remove/" + id);
+      getQuestionarys();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     getQuestionarys();
   }, []);
@@ -80,6 +89,7 @@ function MyQuestionsPage(props) {
                         }}
                       >
                         <Button
+                          className="m-1"
                           icon="edit"
                           size="sm"
                           color="primary"
@@ -88,9 +98,17 @@ function MyQuestionsPage(props) {
                               `/meus-questionarios/${questionary._id}`
                             )
                           }
-                        >
-                          Editar questionário
-                        </Button>
+                        />
+
+                        <Button
+                          className="m-1"
+                          icon="trash"
+                          size="sm"
+                          color="danger"
+                          onClick={() => {
+                            handleDeleteQuestionary(questionary._id);
+                          }}
+                        />
                       </div>
                     </Card.Footer>
                   </Card>

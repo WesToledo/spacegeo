@@ -37,6 +37,11 @@ const QuestionarySchema = new mongoose.Schema({
     required: true,
     default: "teacher",
   },
+  deleted: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 const Questionary = mongoose.model("Questionary", QuestionarySchema);

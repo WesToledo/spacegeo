@@ -86,6 +86,7 @@ async function list(req, res) {
     const questionarys = await QuestionarySchema.find({
       teacher: req.params.idTeacher,
       type: "teacher",
+      deleted: false,
     }).populate("classes");
     res.send({ questionarys });
   } catch (err) {
@@ -115,9 +116,21 @@ async function update(req, res) {
 
 async function remove(req, res) {
   try {
-    await QuestionarySchema.findByIdAndRemove(req.params.id);
-    return res.status(200).send();
+    const questionary = await QuestionarySchema.findById(req.params.id);
+
+    if (questionary.classes.length != 0) {
+      await QuestionarySchema.updateOne(
+        { _id: req.params.id },
+        { deleted: true }
+      );
+
+      return res.status(200).send();
+    } else {
+      await QuestionarySchema.findByIdAndRemove(req.params.id);
+      return res.status(200).send();
+    }
   } catch (err) {
+    console.log(err);
     return res.status(400).send({ error: "Erro ao deletar turma", err });
   }
 }
