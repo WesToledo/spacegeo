@@ -100,7 +100,7 @@ function MyQuestionsPage(props) {
                             />
                             <Text
                               style={{ minWidth: 120, margin: 5 }}
-                            >{`Valor: ${questionary.grade}`}</Text>
+                            >{`Valor: ${questionary.grade.toFixed(2)}`}</Text>
                           </div>
                           {questionary.alreadyAnswered && (
                             <div

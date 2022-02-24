@@ -25,14 +25,12 @@ function InstructionsTeacherPage(props) {
               TEXTO
             </a>
             <br />
-            VÍDEO
-            <br />
             <a
               href={
                 "https://drive.google.com/drive/folders/1-pld8L-03Lksc4Lr5uNsZr1aJzPqZh5e?usp=sharing"
               }
             >
-              Clique aqui
+              VÍDEO
             </a>
           </Card.Body>
         </Card>
