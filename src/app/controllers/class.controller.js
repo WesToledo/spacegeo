@@ -1,9 +1,11 @@
+const { Pricing } = require("aws-sdk");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authConfig = require("../../config/auth.json");
 
 const ClassSchema = require("../models/class");
 const UserSchema = require("../models/user");
+const LogSchema = require("../models/log");
 
 async function create(req, res) {
   try {
@@ -32,8 +34,24 @@ async function index(req, res) {
     const classe = await ClassSchema.findById(req.params.id).populate(
       "students"
     );
-    return res.send({ classe });
+
+    const students = await Promise.all(
+      classe.students.map(async ({ name, email, birthday, _id }) => {
+        const log = await LogSchema.findOne({ user: _id });
+        console.log("LOG", log);
+        return {
+          name,
+          email,
+          birthday,
+          _id,
+          spent_time: log ? (log.spent_time ? log.spent_time : 0) : 0,
+        };
+      })
+    );
+
+    return res.send({ classe: { ...classe, students: students } });
   } catch (err) {
+    console.log(err);
     return res.status(400).send({ error: "Erro ao buscar turma" });
   }
 }

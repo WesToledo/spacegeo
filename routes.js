@@ -9,6 +9,7 @@ const uploadMiddleware = multer(multerConfig);
 const authMiddleware = require("./src/app/middleware/auth");
 
 const user = require("./src/app/controllers/user.controller");
+const log = require("./src/app/controllers/log.controller");
 const classe = require("./src/app/controllers/class.controller");
 const auth = require("./src/app/controllers/authorization.controller");
 const questionary = require("./src/app/controllers/questionary.controller");
@@ -18,6 +19,7 @@ const answer = require("./src/app/controllers/answer.controller");
 const rootRouter = express.Router();
 rootRouter.post("/login", auth.login);
 rootRouter.put("/finish-create", user.finishCreate);
+rootRouter.post("/log", log.log);
 
 // Users
 const userRouter = express.Router();

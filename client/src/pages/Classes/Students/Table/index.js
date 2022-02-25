@@ -31,6 +31,13 @@ export default function DataTable({ students }) {
       },
     },
     {
+      name: "spent_time",
+      label: "Tempo no sistema (min)",
+      options: {
+        display: true,
+      },
+    },
+    {
       name: "actions",
       label: "Mais informações",
       options: {
@@ -53,6 +60,7 @@ export default function DataTable({ students }) {
         name: student.name,
         email: student.email,
         birthday: student.birthday,
+        spent_time: student.spent_time + " min",
         actions: (
           <Button
             color="secondary"

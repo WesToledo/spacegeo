@@ -1,14 +1,24 @@
-// @flow
-
-import * as React from "react";
+import React, { useEffect   } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
 import { Site, RouterContextProvider } from "tabler-react";
 
 import useStore from "~/store";
+import api from "~/services/api";
 
 function SiteWrapper(props) {
   const { user } = useStore();
+
+  useEffect(() => {
+    async function sendLog() {
+      try {
+        await api.post("/log", { user: user._id });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    sendLog();
+  }, []);
 
   console.log("user type", user);
 
