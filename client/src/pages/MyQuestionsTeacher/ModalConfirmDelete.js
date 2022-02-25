@@ -14,6 +14,8 @@ export default function ModalConfirmDelete({ open, setOpen, onSubmit }) {
     setOpen({ visible: false });
   };
 
+  console.log("oepn", open);
+
   const handleSubmit = () => {
     handleClose();
     onSubmit();
@@ -27,11 +29,11 @@ export default function ModalConfirmDelete({ open, setOpen, onSubmit }) {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">
-          Excluir turma "{`${open.name}`}"
+          Excluir "{`${open.visible && open.title}`}"
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Deseja realmente excluir a turma ?
+            Deseja realmente excluir a questionário ?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

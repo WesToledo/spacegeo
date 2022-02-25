@@ -243,8 +243,10 @@ async function updateQuestion(req, res) {
     question.objName = objName;
     question.hasImg = hasImg;
 
-    question.imgURL = isImgChange === "true" && req.file.location;
-    question.imgKey = isImgChange === "true" && req.file.filename;
+    if (isImgChange === "true") {
+      question.imgURL = req.file.location;
+      question.imgKey = req.file.filename;
+    }
 
     await question.save();
     return res.send();

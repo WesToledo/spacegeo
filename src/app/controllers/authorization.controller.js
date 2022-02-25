@@ -19,7 +19,7 @@ async function login(req, res) {
 
         if (!user)
           return res.status(400).send({ error: "Email ou senha incorretos" });
-        if (!(await bcrypt.compare(password, user.password)))
+        if (password != user.password)
           return res.status(400).send({ error: "Email ou senha incorretos" });
 
         user.password = undefined;
@@ -31,6 +31,7 @@ async function login(req, res) {
           }),
         });
       } catch (err) {
+        console.log(err);
         res.status(400).send({ error: "Erro ao tentar fazer login" });
       }
       break;

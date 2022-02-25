@@ -1,4 +1,4 @@
-import React, { useEffect   } from "react";
+import React, { useEffect } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
 import { Site, RouterContextProvider } from "tabler-react";
@@ -53,7 +53,7 @@ function SiteWrapper(props) {
       useExact: false,
       subItems: [
         {
-          value: "Padrão",
+          value: "Questionários Padrões",
           to: "/questionarios-padrao",
           LinkComponent: withRouter(NavLink),
           useExact: false,
@@ -83,7 +83,7 @@ function SiteWrapper(props) {
         useExact: false,
         subItems: [
           {
-            value: "Padrão",
+            value: "Questionários Padrões",
             to: "/questionarios-padrao",
             LinkComponent: withRouter(NavLink),
             useExact: false,

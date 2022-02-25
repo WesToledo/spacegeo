@@ -7,7 +7,7 @@ import { Container, FormCard, Form, Grid } from "tabler-react";
 import api from "~/services/api";
 import useStore from "~/store";
 
-import logoImg from "~/assets/img/tabler.png";
+import logoImg from "~/assets/img/logo_novo.png";
 import ModalAcceptTerms from "./UseTermModal";
 import PrivacityTermModal from "./PrivacityTermModal";
 

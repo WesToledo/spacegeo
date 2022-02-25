@@ -8,9 +8,18 @@ import Wrapper from "~/components/Wrapper";
 import SimpleDialogDemo from "./Modal";
 import useStore from "~/store";
 
+import ModalConfirmDelete from "./ModalConfirmDelete";
+
 function MyQuestionsPage(props) {
   const [open, setOpen] = useState(false);
   const [questionarys, setQuestionarys] = useState([]);
+
+  const [openDeleteModal, setOpenDeleteModal] = useState({
+    visible: false,
+    id: null,
+    name: "",
+  });
+
   const { _id } = useStore((state) => state.user);
 
   function handleOnCreateNewClassClick() {
@@ -27,9 +36,9 @@ function MyQuestionsPage(props) {
     }
   }
 
-  async function handleDeleteQuestionary(id) {
+  async function handleDeleteQuestionary() {
     try {
-      await api.delete("/questionary/remove/" + id);
+      await api.delete("/questionary/remove/" + openDeleteModal.id);
       getQuestionarys();
     } catch (err) {
       console.log(err);
@@ -61,10 +70,67 @@ function MyQuestionsPage(props) {
                 <Grid.Col xl={3} lg={3} md={4} sm={6} xs={12} key={index}>
                   <Card>
                     <Card.Header>
-                      <Card.Title>{questionary.title}</Card.Title>
+                      <Card.Title>
+                        <strong>{questionary.title}</strong>
+                      </Card.Title>
                       <Card.Options></Card.Options>
                     </Card.Header>
                     <Card.Body>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          <Icon prefix="fe" name="clipboard" className="m-2" />
+                          <Text style={{ minWidth: 120, margin: 5 }}>
+                            <b>Questões:</b> {questionary.questions.length}
+                          </Text>
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          <Icon prefix="fe" name="file-minus" className="m-2" />
+                          <Text style={{ minWidth: 120, margin: 5 }}>
+                            <b>Valor:</b> {questionary.grade.toFixed(2)}
+                          </Text>
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          <Icon prefix="fe" name="users" className="m-2" />
+                          <Text style={{ minWidth: 120, margin: 5 }}>
+                            <b>Turmas:</b>
+                            {questionary.classes.length > 0
+                              ? questionary.classes
+                                  .map((classe) => classe.name)
+                                  .join(", ")
+                              : "Nenhuma turma vinculada"}
+                          </Text>
+                        </div>
+                      </div>
+                    </Card.Body>
+                    {/* <Card.Body>
                       <div
                         style={{
                           display: "flex",
@@ -73,6 +139,32 @@ function MyQuestionsPage(props) {
                           justifyContent: "flex-start",
                         }}
                       >
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "colunm",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          <Icon prefix="fe" name="clipboard" className="m-2" />
+                          <Text
+                            style={{ minWidth: 120, margin: 5 }}
+                          >{`Questões: ${questionary.questions.length}`}</Text>
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          <Icon prefix="fe" name="file-minus" className="m-2" />
+                          <Text
+                            style={{ minWidth: 120, margin: 5 }}
+                          >{`Valor: ${questionary.grade.toFixed(2)}`}</Text>
+                        </div>
                         <Icon prefix="fe" name="users" className="m-2" />
                         <Text
                           style={{ minWidth: 120, margin: 5 }}
@@ -80,7 +172,7 @@ function MyQuestionsPage(props) {
                           .map((classe) => classe.name)
                           .join(", ")}`}</Text>
                       </div>
-                    </Card.Body>
+                    </Card.Body> */}
                     <Card.Footer>
                       <div
                         style={{
@@ -106,7 +198,11 @@ function MyQuestionsPage(props) {
                           size="sm"
                           color="danger"
                           onClick={() => {
-                            handleDeleteQuestionary(questionary._id);
+                            setOpenDeleteModal({
+                              visible: true,
+                              id: questionary._id,
+                              title: questionary.title,
+                            });
                           }}
                         />
                       </div>
@@ -121,6 +217,11 @@ function MyQuestionsPage(props) {
             open={open}
             setOpen={setOpen}
             getQuestionarys={getQuestionarys}
+          />
+          <ModalConfirmDelete
+            open={openDeleteModal}
+            setOpen={setOpenDeleteModal}
+            onSubmit={handleDeleteQuestionary}
           />
         </Card>
       </Page.Content>

@@ -5,11 +5,19 @@ import { Page, Grid, Text, Icon, Button, Card } from "tabler-react";
 
 import api from "~/services/api";
 import Wrapper from "~/components/Wrapper";
+
+import ModalConfirmDelete from "./ModalConfirmDelete";
 import SimpleDialogDemo from "./Modal";
 import useStore from "~/store";
 
 function ClassesPage(props) {
   const [open, setOpen] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState({
+    visible: false,
+    id: null,
+    name: "",
+  });
+
   const [classes, setClasses] = useState([]);
   const { _id } = useStore((state) => state.user);
 
@@ -28,11 +36,11 @@ function ClassesPage(props) {
 
   async function handleDeleteClass(id) {
     try {
-      await api.delete("/class/remove/" + id);
+      await api.delete("/class/remove/" + openDeleteModal.id);
       getClasses();
     } catch (err) {
       console.log(err);
-      getClasses(); 
+      getClasses();
     }
   }
 
@@ -102,7 +110,13 @@ function ClassesPage(props) {
                           icon="trash"
                           size="sm"
                           color="danger"
-                          onClick={() => handleDeleteClass(classe._id)}
+                          onClick={() =>
+                            setOpenDeleteModal({
+                              visible: true,
+                              id: classe._id,
+                              name: classe.name,
+                            })
+                          }
                         />
                       </div>
                     </Card.Footer>
@@ -111,11 +125,15 @@ function ClassesPage(props) {
               ))}
             </Grid.Row>
           </Card.Body>
-          {/* <Card.Footer>This is standard card footer</Card.Footer> */}
           <SimpleDialogDemo
             open={open}
             setOpen={setOpen}
             getClasses={getClasses}
+          />
+          <ModalConfirmDelete
+            open={openDeleteModal}
+            setOpen={setOpenDeleteModal}
+            onSubmit={handleDeleteClass}
           />
         </Card>
       </Page.Content>

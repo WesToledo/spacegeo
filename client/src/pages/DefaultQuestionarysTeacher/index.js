@@ -7,8 +7,11 @@ import api from "~/services/api";
 import Wrapper from "~/components/Wrapper";
 import useStore from "~/store";
 
+import ModalConfirmDelete from "../MyQuestionsTeacher/ModalConfirmDelete";
+
 function MyQuestionsPage(props) {
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState({ visible: false, id: undefined });
 
   const [questionarys, setQuestionarys] = useState([]);
   const { _id, classe } = useStore((state) => state.user);

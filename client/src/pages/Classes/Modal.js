@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
+
+import { Button } from "tabler-react";
+
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -35,7 +37,6 @@ export default function FormDialog({ open, setOpen, getClasses }) {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Criar nova turma</DialogTitle>
         <DialogContent>

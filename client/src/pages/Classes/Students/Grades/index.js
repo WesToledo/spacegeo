@@ -48,7 +48,9 @@ function GradesPage(props) {
         <Page.Content>
           <Card>
             <Card.Header>
-              <Text>O aluno ainda não respondeu nenhum questionário</Text>
+              <Text>
+                Esse(a) aluno(a) ainda não respondeu nenhum Questionário!
+              </Text>
             </Card.Header>
           </Card>
         </Page.Content>
