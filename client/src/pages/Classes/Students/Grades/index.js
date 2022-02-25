@@ -14,8 +14,8 @@ function GradesPage(props) {
     try {
       const response = await api.get("/user/grades/" + props.match.params.id);
       console.log(response.data.answers);
+      setAnswer(response.data.answers);
       // setAnswer(response.data.answers);
-      setAnswer([]);
     } catch (err) {
       console.log(err);
     }

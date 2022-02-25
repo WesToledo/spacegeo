@@ -11,6 +11,7 @@ function generateToken(params = {}) {
 }
 
 async function login(req, res) {
+  console.log(req.body);
   switch (req.body.login_with) {
     case "default_form":
       try {
@@ -42,7 +43,7 @@ async function login(req, res) {
           "887032542043-b0ojvgrlv7hd7ol0n45bs9svvdubab07.apps.googleusercontent.com"
         );
 
-        const { token } = req.body;
+        const { token, type } = req.body;
         const ticket = await client.verifyIdToken({
           idToken: token,
           audience:
@@ -58,6 +59,9 @@ async function login(req, res) {
           const user = await UserSchema.create({
             email,
             name,
+            type,
+            user_terms_accepted: true,
+            linked: type === "teacher" ,
             login_with: "google_api",
             picture,
             completed_profile: false,

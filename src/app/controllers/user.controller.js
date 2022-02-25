@@ -61,7 +61,7 @@ async function create(req, res) {
         "887032542043-b0ojvgrlv7hd7ol0n45bs9svvdubab07.apps.googleusercontent.com"
       );
 
-      const { token } = req.body;
+      const { token, type } = req.body;
       const ticket = await client.verifyIdToken({
         idToken: token,
         audience:
@@ -80,6 +80,9 @@ async function create(req, res) {
       const user = await UserSchema.create({
         email,
         name,
+        type,
+        user_terms_accepted: true,
+        linked: type === "teacher" ? true : false,
         login_with: "google_api",
         picture,
       });

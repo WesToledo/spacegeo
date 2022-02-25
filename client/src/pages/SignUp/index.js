@@ -52,6 +52,7 @@ function SignUpPage(props) {
       const response = await api.put("/finish-create", {
         ...form,
         email: user.email,
+        type: form.type,
       });
 
       addUser({ ...response.data.user, token: response.data.token });
@@ -91,7 +92,7 @@ function SignUpPage(props) {
         setForm({
           ...values,
           type: values.type,
-          linked: values.type == "teacher",
+          linked: values.type === "teacher",
         });
 
         setOpenUseTermModal(true);
