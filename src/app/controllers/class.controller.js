@@ -39,12 +39,18 @@ async function index(req, res) {
       classe.students.map(async ({ name, email, birthday, _id }) => {
         const log = await LogSchema.findOne({ user: _id });
         console.log("LOG", log);
+
         return {
           name,
           email,
           birthday,
           _id,
-          spent_time: log ? (log.spent_time ? log.spent_time : 0) : 0,
+          spent_time:
+            log != null
+              ? `${log.spent_time?.hour}h ${log.spent_time?.minutes.toFixed(
+                  0
+                )}min ${log.spent_time?.seconds}s`
+              : 0,
         };
       })
     );

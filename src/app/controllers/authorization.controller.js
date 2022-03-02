@@ -5,6 +5,7 @@ const authConfig = require("../../config/auth.json");
 const { OAuth2Client } = require("google-auth-library");
 
 const UserSchema = require("../models/user");
+const LogSchema = require("../models/log");
 
 function generateToken(params = {}) {
   return jwt.sign({ params }, authConfig.secret);
@@ -24,6 +25,11 @@ async function login(req, res) {
           return res.status(400).send({ error: "Email ou senha incorretos" });
 
         user.password = undefined;
+
+        await LogSchema.findOneAndUpdate(
+          { _id: user._id },
+          { start_date: new Date().toISOString() }
+        );
 
         res.send({
           user,
@@ -61,12 +67,18 @@ async function login(req, res) {
             name,
             type,
             user_terms_accepted: true,
-            linked: type === "teacher" ,
+            linked: type === "teacher",
             login_with: "google_api",
             picture,
             completed_profile: false,
           });
+
           user.password = undefined;
+
+          await LogSchema.findOneAndUpdate(
+            { _id: user._id },
+            { start_date: new Date().toISOString() }
+          );
 
           return res.send({
             user,
@@ -76,6 +88,11 @@ async function login(req, res) {
         }
 
         user.password = undefined;
+
+        await LogSchema.findOneAndUpdate(
+          { _id: user._id },
+          { start_date: new Date().toISOString() }
+        );
 
         res.send({
           user,

@@ -37,15 +37,15 @@ export default function DataTable({ students }) {
         display: true,
       },
     },
-    {
-      name: "actions",
-      label: "Mais informações",
-      options: {
-        display: true,
-        filter: false,
-        viewColumns: false,
-      },
-    },
+    // {
+    //   name: "actions",
+    //   label: "Mais informações",
+    //   options: {
+    //     display: true,
+    //     filter: false,
+    //     viewColumns: false,
+    //   },
+    // },
   ];
 
   const options = {
@@ -60,17 +60,7 @@ export default function DataTable({ students }) {
         name: student.name,
         email: student.email,
         birthday: student.birthday,
-        spent_time: student.spent_time,
-        actions: (
-          <Button
-            color="secondary"
-            icon="arrow-right"
-            RootComponent="a"
-            href={"/turmas/notas/" + student._id}
-          >
-            Ver notas
-          </Button>
-        ),
+        spent_time: student.spent_time + " min",
       });
     });
     setData(rows);

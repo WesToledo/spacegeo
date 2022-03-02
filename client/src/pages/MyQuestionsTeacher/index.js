@@ -210,6 +210,9 @@ function MyQuestionsPage(props) {
                   </Card>
                 </Grid.Col>
               ))}
+              {questionarys.length == 0 && (
+                <Text className="m-3">Nenhum questionário encontrado</Text>
+              )}
             </Grid.Row>
           </Card.Body>
           {/* <Card.Footer>This is standard card footer</Card.Footer> */}

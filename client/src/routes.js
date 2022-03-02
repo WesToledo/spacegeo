@@ -24,6 +24,8 @@ import SubMyQuestionsTeacherPage from "./pages/MyQuestionsTeacher/Questions";
 import InstructionsTeacherPage from "./pages/InstructionsTeacher";
 
 //STUDENT PAGES
+import TeacherStudentsPage from "./pages/Students";
+
 import MyQuestionsStudentPage from "./pages/MyQuestionsStudent";
 import SubMyQuestionsStudentPage from "./pages/MyQuestionsStudent/Questions";
 
@@ -94,18 +96,13 @@ function App() {
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/cadastro" component={SignUpPage} />
-        <PrivateRoute
-          exact
-          path="/vincular-turma"
-          component={ClassBondStudent}
-        />
         {/* PROFESSOR */}
         <PrivateRoute exact path="/turmas" component={ClassesPage} />
         <PrivateRoute exact path="/turmas/:id" component={StudentsPage} />
         <PrivateRoute exact path="/turmas/notas/:id" component={GradesPage} />
+        <PrivateRoute exact path="/alunos" component={TeacherStudentsPage} />
         <PrivateRoute exact path="/topicos" component={TopicosPage} />
         <PrivateRoute exact path="/questionarios" component={QuestionPage} />
-
         {type == "student" && (
           <PrivateRoute
             exact
@@ -113,7 +110,13 @@ function App() {
             component={DefaultQuestionaryStudentPage}
           />
         )}
-
+        {type == "student" && (
+          <PrivateRoute
+            exact
+            path="/vincular-turma"
+            component={ClassBondStudent}
+          />
+        )}
         {type == "student" && (
           <PrivateRoute
             exact
@@ -121,7 +124,6 @@ function App() {
             component={SubDefaultQuestionaryStudentPage}
           />
         )}
-
         {type == "teacher" && (
           <PrivateRoute
             exact
@@ -129,7 +131,14 @@ function App() {
             component={DefaultQuestionaryTeacherPage}
           />
         )}
-
+        {type == "teacher" && (
+          <PrivateRoute
+            exact
+            path="/questionarios-padrao"
+            component={DefaultQuestionaryTeacherPage}
+          />
+        )}
+        TeacherStudentsPage
         {type == "teacher" && (
           <PrivateRoute
             exact
@@ -137,7 +146,6 @@ function App() {
             component={SubDefaultQuestionaryTeacherPage}
           />
         )}
-
         {type == "teacher" ? (
           <PrivateRoute
             exact
@@ -151,7 +159,6 @@ function App() {
             component={MyQuestionsStudentPage}
           />
         )}
-
         {type == "teacher" ? (
           <PrivateRoute
             exact
@@ -165,7 +172,6 @@ function App() {
             component={SubMyQuestionsStudentPage}
           />
         )}
-
         {type == "teacher" ? (
           <PrivateRoute
             exact
@@ -179,7 +185,6 @@ function App() {
             component={SubQuestionPage}
           />
         )}
-
         {type == "teacher" ? (
           <PrivateRoute
             exact
@@ -193,7 +198,6 @@ function App() {
             component={InstructionsStudentPage}
           />
         )}
-
         {/* GEOMETRIA DE POSIÇÃO */}
         {/* LEVEL 1 */}
         {/* 1 */}

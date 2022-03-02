@@ -17,10 +17,14 @@ function SiteWrapper(props) {
         console.log(err);
       }
     }
-    sendLog();
+
+    return () => {
+      sendLog();
+      console.warn("Log sended");
+    };
   }, []);
 
-  console.log("user type", user);
+  console.log("user", user);
 
   const navBarItems = [
     {
@@ -74,6 +78,13 @@ function SiteWrapper(props) {
         value: "Turmas",
         to: "/turmas",
         icon: "check-square",
+        LinkComponent: withRouter(NavLink),
+        useExact: false,
+      },
+      {
+        value: "Alunos",
+        to: "/alunos",
+        icon: "user",
         LinkComponent: withRouter(NavLink),
         useExact: false,
       },

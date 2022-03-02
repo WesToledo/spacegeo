@@ -6,9 +6,21 @@ const LogSchema = new mongoose.Schema({
     ref: "User",
   },
   spent_time: {
-    type: Number,
-    default: 0,
-    required: true,
+    hour: {
+      type: Number,
+      default: 0,
+    },
+    minutes: {
+      type: Number,
+      default: 0,
+    },
+    seconds: {
+      type: Number,
+      default: 0,
+    },
+  },
+  start_date: {
+    type: Date,
   },
   last_access: {
     type: Date,

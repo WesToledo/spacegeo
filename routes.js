@@ -25,6 +25,7 @@ rootRouter.post("/log", log.log);
 const userRouter = express.Router();
 userRouter.post("/create", user.create);
 userRouter.get("/", user.list);
+userRouter.get("/list/by-teacher/:id", user.listStudentsFromTeacher);
 userRouter.get("/:id", user.index);
 userRouter.put("/update/:id", user.update);
 userRouter.delete("/remove/:id", user.remove);

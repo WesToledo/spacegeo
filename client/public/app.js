@@ -1,13 +1,13 @@
-import * as THREE from "./libs/three/three.module.js";
-import { GLTFLoader } from "./libs/three/jsm/GLTFLoader.js";
-import { CanvasUI } from "./libs/CanvasUI.js";
-import { ARButton } from "./libs/ARButton.js";
-import { LoadingBar } from "./libs/LoadingBar.js";
-import { Player } from "./libs/Player.js";
-import { RGBELoader } from "./libs/three/jsm/RGBELoader.js";
-import { XRGestures } from "./libs/XRGestures.js";
+import * as THREE from "../libs/three/three.module.js";
+import { GLTFLoader } from "../libs/three/jsm/GLTFLoader.js";
+import { CanvasUI } from "../libs/CanvasUI.js";
+import { ARButton } from "../libs/ARButton.js";
+import { LoadingBar } from "../libs/LoadingBar.js";
+import { Player } from "../libs/Player.js";
+import { RGBELoader } from "../libs/three/jsm/RGBELoader.js";
+import { XRGestures } from "../libs/XRGestures.js";
 
-const params = {};
+var params = {};
 class App {
   constructor() {
     location.search
@@ -67,7 +67,7 @@ class App {
     const self = this;
 
     loader.load(
-      "./assets/venice_sunset_1k.hdr",
+      "../assets/venice_sunset_1k.hdr",
       (texture) => {
         const envMap = pmremGenerator.fromEquirectangular(texture).texture;
         pmremGenerator.dispose();
@@ -84,14 +84,14 @@ class App {
   initScene() {
     this.loadingBar = new LoadingBar();
 
-    this.assetsPath = "./assets/";
+    this.assetsPath = "../assets/";
     const loader = new GLTFLoader().setPath(this.assetsPath);
     const self = this;
 
     // Load a GLTF resource
     loader.load(
       // resource URL
-      "./models/" + params.obj + ".glb",
+      "/models/" + params.obj + ".glb",
       // called when the resource is loaded
       function (gltf) {
         const object = gltf.scene;
@@ -137,12 +137,15 @@ class App {
 
   createUI() {
     const config = {
-      panelSize: { width: 0.15, height: 0.038 },
-      height: 128,
-      info: { type: "text" },
+      panelSize: { width: 1, height: 1 },
+      height: 1,
+      body: {
+        // backgroundColor: "transparent",
+      },
+      // info: { type: "img" },
     };
     const content = {
-      info: "Toque na tela para mostrar o objeto, e segure para move-lo pelo espaço em 3D",
+      // info: "./assets/gif.gif",
     };
 
     const ui = new CanvasUI(content, config);
@@ -173,10 +176,7 @@ class App {
       self.ui.updateElement("info", "");
       if (!self.knight.object.visible) {
         self.knight.object.visible = true;
-
-        // here set de initial position of the object
-        self.knight.object.position.set(0, 0, 0).add(ev.position);
-
+        self.knight.object.position.set(0, -0.3, -0.5).add(ev.position);
         self.scene.add(self.knight.object);
       }
     });
@@ -184,8 +184,12 @@ class App {
       //console.log( 'doubletap');
       self.ui.updateElement("info", "");
     });
-
     this.gestures.addEventListener("press", (ev) => {
+      //console.log( 'press' );
+      self.ui.updateElement("info", "");
+    });
+    this.gestures.addEventListener("pan", (ev) => {
+      //console.log( ev );
       if (ev.initialise !== undefined) {
         self.startPosition = self.knight.object.position.clone();
       } else {
@@ -193,32 +197,15 @@ class App {
         self.knight.object.position.copy(pos);
         self.ui.updateElement("info", "");
       }
-      self.ui.updateElement("info", "");
     });
-
-    this.gestures.addEventListener("pan", (ev) => {
-      // console.warn(ev);
-      const dist = ev.startPosition - ev.currentPosition;
-      console.log(dist);
-      self.knight.object.rotateX(dist);
-    });
-
-    // this.gestures.addEventListener("pan", (ev) => {
-    //   console.warn("move", ev.target);
-    //   console.warn("drag", ev.target);
-
-    //   // self.knight.object.quaternion.copy(self.startQuaternion);
-
-    //   // self.knight.object.rotateX(ev.theta);
-    //   // self.ui.updateElement("info", "");
-    // });
-
     this.gestures.addEventListener("swipe", (ev) => {
-      // console.log("swipe", ev);
-      // self.knight.object.rotateX(ev.theta);
+      //console.log( ev );
       self.ui.updateElement("info", "");
+      if (self.knight.object.visible) {
+        self.knight.object.visible = false;
+        self.scene.remove(self.knight.object);
+      }
     });
-
     this.gestures.addEventListener("pinch", (ev) => {
       //console.log( ev );
       if (ev.initialise !== undefined) {
@@ -229,14 +216,13 @@ class App {
         self.ui.updateElement("info", "");
       }
     });
-
     this.gestures.addEventListener("rotate", (ev) => {
-      console.log("EV", ev.target);
+      //      sconsole.log( ev );
       if (ev.initialise !== undefined) {
         self.startQuaternion = self.knight.object.quaternion.clone();
       } else {
         self.knight.object.quaternion.copy(self.startQuaternion);
-        self.knight.object.rotateX(ev.theta);
+        self.knight.object.rotateY(ev.theta);
         self.ui.updateElement("info", "");
       }
     });

@@ -65,12 +65,12 @@ function LoginPage(props) {
 
       if (response.data.user.type === "teacher") {
         props.history.push("/topicos");
-      }
-
-      if (response.data.user.linked) {
-        props.history.push("/topicos");
       } else {
-        props.history.push("/vincular-turma");
+        if (response.data.user.linked) {
+          props.history.push("/topicos");
+        } else {
+          props.history.push("/vincular-turma");
+        }
       }
     } catch (err) {
       setErrorMessage(err.response.data.error);
@@ -88,16 +88,17 @@ function LoginPage(props) {
       setLoginData(response.data);
 
       if (response.data.completed_profile) {
+        console.log("response", response.data);
         addUser({ ...response.data.user, token: response.data.token });
 
         if (response.data.user.type === "teacher") {
           props.history.push("/topicos");
-        }
-
-        if (response.data.user.linked) {
-          props.history.push("/topicos");
         } else {
-          props.history.push("/vincular-turma");
+          if (response.data.user.linked) {
+            props.history.push("/topicos");
+          } else {
+            props.history.push("/vincular-turma");
+          }
         }
       } else {
         history.push("/cadastro");

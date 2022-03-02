@@ -5,6 +5,8 @@ const { OAuth2Client } = require("google-auth-library");
 
 const AnswerSchema = require("../models/answer");
 const UserSchema = require("../models/user");
+const ClassSchema = require("../models/class");
+const LogSchema = require("../models/log");
 
 function generateToken(params = {}) {
   return jwt.sign({ params }, authConfig.secret);
@@ -69,7 +71,6 @@ async function create(req, res) {
       });
 
       const { email, name, picture } = ticket.getPayload();
-      console.log(ticket.getPayload());
 
       if (await UserSchema.findOne({ email })) {
         return res
@@ -131,6 +132,51 @@ async function list(req, res) {
   }
 }
 
+async function listStudentsFromTeacher(req, res) {
+  try {
+    const classes = await ClassSchema.find({
+      teacher: req.params.id,
+    }).populate("students");
+
+    console.log("classes", classes);
+
+    var temp = [];
+
+    classes.map((classe) => {
+      for (const student of classe.students) {
+        temp.push(student);
+      }
+    });
+    console.log("students", temp);
+
+    const students = await Promise.all(
+      temp.map(async (student) => {
+        const log = await LogSchema.findOne({ user: student._id });
+        return {
+          name: student.name,
+          email: student.email,
+          birthday: student.birthday,
+          spent_time:
+            log != null
+              ? `${log.spent_time?.hour}h ${log.spent_time?.minutes.toFixed(
+                  0
+                )}min ${log.spent_time?.seconds}s`
+              : 0,
+        };
+      })
+    );
+
+    console.log("studentsstudents", students);
+
+    return res.send({
+      students,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send({ error: "Erro ao buscar usuários" });
+  }
+}
+
 async function update(req, res) {
   try {
     const user = await UserSchema.findByIdAndUpdate(req.params.id, req.body, {
@@ -173,4 +219,5 @@ module.exports = {
   remove,
   getGrades,
   finishCreate,
+  listStudentsFromTeacher,
 };

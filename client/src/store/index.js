@@ -28,6 +28,7 @@ const store = (set, get) => ({
         oldState.user.token = loginData.token;
         oldState.user.picture = loginData.user.picture;
         oldState.user.login_with = loginData.login_with;
+        oldState.user.type = loginData.type;
       })
     );
   },

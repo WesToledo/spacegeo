@@ -2,7 +2,7 @@ import * as THREE from './three/three.module.js';
 
 class Player{
 	constructor(options){
-		const fps = options.fps || 30; //default fps
+		const fps = options.fps || 60; //default fps
 		
 		this.assetsPath = options.assetsPath;
 		this.name = options.name | 'Player';

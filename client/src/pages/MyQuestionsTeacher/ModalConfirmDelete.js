@@ -41,7 +41,7 @@ export default function ModalConfirmDelete({ open, setOpen, onSubmit }) {
             Cancelar
           </Button>
           <Button onClick={handleSubmit} color="danger" icon="trash">
-            Excluir Turma
+            Excluir Questionário
           </Button>
         </DialogActions>
       </Dialog>
