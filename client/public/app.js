@@ -117,7 +117,7 @@ class App {
         self.knight.object.visible = false;
 
         self.knight.action = "Dance";
-        const scale = 0.003;
+        const scale = 0.05;
         self.knight.object.scale.set(scale, scale, scale);
 
         self.loadingBar.visible = false;
@@ -138,14 +138,14 @@ class App {
   createUI() {
     const config = {
       panelSize: { width: 1, height: 1 },
-      height: 1,
+      height: 128,
       body: {
-        // backgroundColor: "transparent",
+        backgroundColor: "transparent",
       },
-      // info: { type: "img" },
+      info: { type: "img" },
     };
     const content = {
-      // info: "./assets/gif.gif",
+      info: "./assets/gif.gif",
     };
 
     const ui = new CanvasUI(content, config);
@@ -217,7 +217,7 @@ class App {
       }
     });
     this.gestures.addEventListener("rotate", (ev) => {
-      //      sconsole.log( ev );
+      // console.log("ROTATE", ev.theta);
       if (ev.initialise !== undefined) {
         self.startQuaternion = self.knight.object.quaternion.clone();
       } else {

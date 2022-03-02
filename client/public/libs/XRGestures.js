@@ -11,7 +11,7 @@ class XRGestures extends THREE.EventDispatcher {
 
     const clock = new THREE.Clock();
 
-    this.last_position = null;
+    this.first_position = null;
 
     this.controller1 = renderer.xr.getController(0);
     this.controller1.userData.gestures = { index: 0 };
@@ -65,7 +65,11 @@ class XRGestures extends THREE.EventDispatcher {
       data.endTime = clock.getElapsedTime();
       const startToEnd = data.endTime - data.startTime;
 
-      //console.log(`XRGestures.onSelectEnd: startToEnd:${startToEnd.toFixed(2)} taps:${data.taps}`);
+      console.log(
+        `XRGestures.onSelectEnd: startToEnd:${startToEnd.toFixed(2)} taps:${
+          data.taps
+        }`
+      );
 
       if (self.type === "swipe") {
         const direction =
@@ -95,6 +99,8 @@ class XRGestures extends THREE.EventDispatcher {
       this.userData.selectPressed = false;
       data.startPosition = undefined;
 
+      this.first_position = null;
+
       self.touchCount--;
     }
   }
@@ -109,6 +115,7 @@ class XRGestures extends THREE.EventDispatcher {
         this.controller2.userData.selectPressed;
     }
     const self = this;
+
     console.log(
       `XRGestures multiTouch: ${result} touchCount:${self.touchCount}`
     );
@@ -153,8 +160,11 @@ class XRGestures extends THREE.EventDispatcher {
       data1.startPosition === undefined
     ) {
       elapsedTime = currentTime - data1.startTime;
-      if (elapsedTime > 0.05)
+      if (elapsedTime > 0.05) {
         data1.startPosition = this.controller1.position.clone();
+        if (this.first_position === null)
+          this.first_position = this.controller1.position.clone();
+      }
     }
 
     if (
@@ -183,6 +193,11 @@ class XRGestures extends THREE.EventDispatcher {
         //console.log( `XRGestures.update dispatchEvent taps:${data1.taps}` );
         switch (data1.taps) {
           case 1:
+            console.log("tap", {
+              x: this.controller1.position.x,
+              y: this.controller1.position.y,
+              z: this.controller1.position.z,
+            });
             this.dispatchEvent({
               type: "tap",
               position: this.controller1.position,
@@ -263,9 +278,23 @@ class XRGestures extends THREE.EventDispatcher {
             }
           }
         } else {
-          console.log(
-            data1.startPosition.distanceTo(this.controller1.position)
-          );
+          const v = data1.startPosition.clone().normalize();
+
+          let dist = v.distanceTo(this.controller1.position);
+          const cross = this.controller1.position.clone().cross(v);
+
+          if (this.up.dot(cross) > 0) dist = -dist;
+          // this.dispatchEvent({ type: "rotate", dist });
+
+          console.log("dist", dist);
+          // console.log("cross", cross);
+
+          // console.log(
+          //   data1.startPosition.distanceTo(this.controller1.position)
+          // );
+          // console.log("data1.startPosition", data1.startPosition);
+          // console.log("this.controller1.position", this.controller1.position);
+          // console.log("this.startVector", this.startVector);
           // console.log("start position -> ", this.controller1.position);
           // console.log(
           //   "start position x -> ",
@@ -317,6 +346,7 @@ class XRGestures extends THREE.EventDispatcher {
         .normalize();
       let theta = this.startVector.angleTo(v);
       const cross = this.startVector.clone().cross(v);
+
       if (this.up.dot(cross) > 0) theta = -theta;
       this.dispatchEvent({ type: "rotate", theta });
     } else if (this.type === "pan") {

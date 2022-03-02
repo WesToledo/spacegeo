@@ -31,6 +31,13 @@ export default function DataTable({ students }) {
       },
     },
     {
+      name: "classe",
+      label: "Turma",
+      options: {
+        display: true,
+      },
+    },
+    {
       name: "spent_time",
       label: "Tempo no sistema (min)",
       options: {
@@ -60,6 +67,7 @@ export default function DataTable({ students }) {
         name: student.name,
         email: student.email,
         birthday: student.birthday,
+        classe: student.classe,
         spent_time: student.spent_time + " min",
       });
     });

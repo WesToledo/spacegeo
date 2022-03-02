@@ -152,10 +152,14 @@ async function listStudentsFromTeacher(req, res) {
     const students = await Promise.all(
       temp.map(async (student) => {
         const log = await LogSchema.findOne({ user: student._id });
+        const { name } = await ClassSchema.findOne({
+          _id: student.classe,
+        }).select("name");
         return {
           name: student.name,
           email: student.email,
           birthday: student.birthday,
+          classe: name,
           spent_time:
             log != null
               ? `${log.spent_time?.hour}h ${log.spent_time?.minutes.toFixed(
