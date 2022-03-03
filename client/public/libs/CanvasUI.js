@@ -105,8 +105,11 @@ class CanvasUI {
       this.config.width,
       this.config.height
     );
+
+    
     this.context = canvas.getContext("2d");
     this.context.save();
+
 
     canvas.addEventListener("ontouchmove", (ev)=>{
         console.log("ev", ev)
