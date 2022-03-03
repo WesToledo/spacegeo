@@ -44,9 +44,11 @@ classRouter.delete("/remove/:id", classe.remove);
 const questionaryRouter = express.Router();
 questionaryRouter.post("/create", questionary.create);
 questionaryRouter.get("/list/:idTeacher", questionary.list);
-questionaryRouter.get("/:idQuestionary/:idStudent", questionary.indexStudent);
 questionaryRouter.get("/:idQuestionary", questionary.indexTeacher);
-questionaryRouter.get("/classes/:idQuestionary", questionary.getClasses);
+
+questionaryRouter.get("/classes/:id", questionary.getClasses);
+questionaryRouter.get("/:idQuestionary/:idStudent", questionary.indexStudent);
+
 questionaryRouter.put("/update/:id", questionary.update);
 questionaryRouter.put("/join", questionary.join);
 questionaryRouter.put("/publish/:id", questionary.publish);

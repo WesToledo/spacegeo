@@ -41,6 +41,7 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
   }
 
   async function getQuestionaryClasses() {
+    console.log("/questionary/classes/" + idQuestionary);
     try {
       const response = await api.get("/questionary/classes/" + idQuestionary);
       setQuestionaryClasses(response.data.questionary.classes);
@@ -143,6 +144,7 @@ export default function ClassesModal({ open, setOpen, idQuestionary }) {
             </Grid.Col>
             {questionaryClasses.map(({ _id, name }) => (
               <Chip
+                key={_id}
                 label={name}
                 variant="outlined"
                 onDelete={() => handleOnDeleteClass(_id)}

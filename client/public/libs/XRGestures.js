@@ -12,6 +12,7 @@ class XRGestures extends THREE.EventDispatcher {
     const clock = new THREE.Clock();
 
     this.first_position = null;
+    this.first_dist = null;
 
     this.controller1 = renderer.xr.getController(0);
     this.controller1.userData.gestures = { index: 0 };
@@ -100,6 +101,7 @@ class XRGestures extends THREE.EventDispatcher {
       data.startPosition = undefined;
 
       this.first_position = null;
+      this.first_dist = null;
 
       self.touchCount--;
     }
@@ -164,6 +166,10 @@ class XRGestures extends THREE.EventDispatcher {
         data1.startPosition = this.controller1.position.clone();
         if (this.first_position === null)
           this.first_position = this.controller1.position.clone();
+        this.first_dist = data1.startPosition
+          .clone()
+          .normalize()
+          .distanceTo(this.controller1.position);
       }
     }
 
@@ -278,15 +284,55 @@ class XRGestures extends THREE.EventDispatcher {
             }
           }
         } else {
+          this.dispatchEvent({
+            type: "rotate",
+            theta: 0,
+            initialise: true,
+            direction: "lateral",
+          });
           const v = data1.startPosition.clone().normalize();
 
-          let dist = v.distanceTo(this.controller1.position);
+          let dist =
+            Math.abs(v.distanceTo(this.controller1.position)) - this.first_dist;
           const cross = this.controller1.position.clone().cross(v);
 
+          this.first_dist = dist;
+
+          var direction = "lateral";
+
           if (this.up.dot(cross) > 0) dist = -dist;
-          // this.dispatchEvent({ type: "rotate", dist });
+
+          if (
+            this.controller1.position.y < data1.startPosition.y &&
+            Math.abs(this.controller1.position.y) -
+              Math.abs(data1.startPosition.y) >
+              0.03
+          ) {
+            direction = "down";
+          }
+
+          if (
+            this.controller1.position.y > data1.startPosition.y &&
+            Math.abs(data1.startPosition.y) -
+              Math.abs(this.controller1.position.y) >
+              0.03
+          ) {
+            direction = "up";
+          }
+
+          console.log(
+            "diff",
+            Math.abs(this.controller1.position.y) -
+              Math.abs(data1.startPosition.y)
+          );
+
+          if (Math.abs(dist) > 0.05) {
+            this.dispatchEvent({ type: "rotate", theta: dist / 10, direction });
+          }
 
           console.log("dist", dist);
+          console.log("first_dist", this.first_dist);
+
           // console.log("cross", cross);
 
           // console.log(

@@ -111,6 +111,9 @@ function SiteWrapper(props) {
   }
 
   const accountDropdownProps = {
+    avatarURL: user.picture
+      ? user.picture
+      : "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
     name: user.name,
     options: [
       {

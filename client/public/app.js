@@ -137,7 +137,7 @@ class App {
 
   createUI() {
     const config = {
-      panelSize: { width: 1, height: 1 },
+      panelSize: { width: 512, height: 512 },
       height: 128,
       body: {
         backgroundColor: "transparent",
@@ -222,7 +222,11 @@ class App {
         self.startQuaternion = self.knight.object.quaternion.clone();
       } else {
         self.knight.object.quaternion.copy(self.startQuaternion);
-        self.knight.object.rotateY(ev.theta);
+        if (ev.direction == "lateral") {
+          self.knight.object.rotateY(ev.theta);
+        } else {
+          self.knight.object.rotateX(ev.theta);
+        }
         self.ui.updateElement("info", "");
       }
     });

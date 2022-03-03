@@ -39,7 +39,7 @@ export default function List3DCards({ objects, setSelected, type, selected }) {
           <div
             key={index}
             style={{
-              width: elementsWidth / 3 - 20,
+              width: elementsWidth / 2 - 20,
               border: "1px solid #ccc",
               padding: "10px",
               margin: "5px",
@@ -65,7 +65,7 @@ export default function List3DCards({ objects, setSelected, type, selected }) {
               // />
               <img
                 src={`${process.env.REACT_APP_URL}/assets/img/${obj.img}`}
-                width={elementsWidth / 3 - 40}
+                width={elementsWidth / 2 - 40}
                 style={{ padding: "1rem" }}
               />
 

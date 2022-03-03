@@ -76,7 +76,7 @@ async function list(req, res) {
 
 async function update(req, res) {
   try {
-    const classe = await ClassSchema.findByIdAndUpdate(req.params.id, req.body);
+    await ClassSchema.findByIdAndUpdate(req.params.id, req.body);
     return res.send();
   } catch (err) {
     return res.status(400).send({ error: "Erro ao editar classe" });

@@ -124,6 +124,9 @@ function ClassesPage(props) {
                 </Grid.Col>
               ))}
             </Grid.Row>
+            {classes.length == 0 && (
+              <Text className="m-5">Nenhuma turma encontrada</Text>
+            )}
           </Card.Body>
           <SimpleDialogDemo
             open={open}

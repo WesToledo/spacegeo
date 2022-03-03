@@ -286,20 +286,19 @@ export default function NewQuestionModal({
                 justifyContent="between"
                 className="mb-2"
               >
-                <Grid.Col width={8}>
+                <Grid.Col width={10}>
                   <Form.Group label="Alternativas"></Form.Group>
                 </Grid.Col>
-                <Grid.Col width={4}>
+                <Grid.Col width={2}>
                   {/* <IconButton color="primary">
                     <AddIcon />
                   </IconButton> */}
                   <Button
+                    className="align-self-right"
                     color="primary"
                     icon="plus"
                     onClick={addNewAlternative}
-                  >
-                    Adicionar alternativa
-                  </Button>
+                  />
                 </Grid.Col>
               </Grid.Row>
               {alternatives.map((alternative, index) => (
@@ -423,7 +422,12 @@ export default function NewQuestionModal({
           <Button onClick={handleClose} color="default" icon="x">
             Cancelar
           </Button>
-          <Button onClick={onSubmit} color="primary" icon="save">
+          <Button
+            onClick={onSubmit}
+            color="primary"
+            icon="save"
+            disabled={form.title == "" || form.title == null}
+          >
             Criar Questão
           </Button>
         </DialogActions>
