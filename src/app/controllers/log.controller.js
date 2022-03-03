@@ -38,23 +38,33 @@ async function log(req, res) {
     if (log) {
       const diff = fullTimeDiff(new Date(log.start_date), new Date());
 
+      log.spent_time.hours += diff.hours.toFixed(0);
+      log.spent_time.minutes += diff.minutes.toFixed(0);
+      log.spent_time.seconds += parseInt(diff.seconds.toFixed(0));
+
       console.log("Diff", diff);
 
-      const minutes = Math.ceil(diff.seconds.toFixed(0) / 60);
+      if (log.spent_time.seconds >= 60) {
+        var minutes_from_seconds = Math.ceil(
+          log.spent_time.seconds.toFixed(0) / 60
+        );
 
-      log.spent_time.hours += diff.hours;
-      log.spent_time.minutes += parseInt(
-        diff.minutes.toFixed(0) + minutes.toFixed(0)
-      );
-      log.spent_time.seconds = diff.seconds.toFixed(0) % 60;
+        log.spent_time.minutes += minutes_from_seconds.toFixed(0);
+        log.spent_time.seconds = parseInt(
+          log.spent_time.seconds.toFixed(0) % 60
+        );
+      }
+
+      if (log.spent_time.minutes >= 60) {
+        var hours_from_minutes = Math.ceil(
+          log.spent_time.minutes.toFixed(0) / 60
+        );
+        log.spent_time.hours += hours_from_minutes;
+        log.spent_time.minutes = parseInt(log.spent_time.minutes % 60);
+      }
 
       log.last_access = new Date().toISOString();
       log.start_date = new Date().toISOString();
-
-      console.log("updated", {
-        minutes: parseInt(diff.minutes.toFixed(0) + minutes.toFixed(0)),
-        seconds: diff.seconds.toFixed(0) % 60,
-      });
 
       await log.save();
       return res.send();

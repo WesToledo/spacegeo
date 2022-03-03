@@ -39,7 +39,7 @@ export default function DataTable({ students }) {
     },
     {
       name: "spent_time",
-      label: "Tempo no sistema (min)",
+      label: "Tempo no sistema",
       options: {
         display: true,
       },
@@ -68,7 +68,7 @@ export default function DataTable({ students }) {
         email: student.email,
         birthday: student.birthday,
         classe: student.classe,
-        spent_time: student.spent_time + " min",
+        spent_time: student.spent_time,
       });
     });
     setData(rows);

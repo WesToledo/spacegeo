@@ -33,7 +33,7 @@ export default function ModalConfirmDelete({ open, setOpen, onSubmit }) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Deseja realmente excluir a questionário ?
+            Deseja realmente excluir o questionário?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

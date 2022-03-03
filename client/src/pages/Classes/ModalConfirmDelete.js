@@ -31,7 +31,7 @@ export default function ModalConfirmDelete({ open, setOpen, onSubmit }) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Deseja realmente excluir a turma ?
+            Deseja realmente excluir a turma?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
