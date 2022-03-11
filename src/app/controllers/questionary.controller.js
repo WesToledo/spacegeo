@@ -253,8 +253,20 @@ async function updateQuestion(req, res) {
 }
 
 async function removeQuestion(req, res) {
+  console.log("removed");
+  const idQuestionary = req.params.idQuestionary;
+
   try {
     await QuestionSchema.findByIdAndRemove(req.params.id);
+
+    const questionary = await QuestionarySchema.findOne({ _id: idQuestionary });
+
+    questionary.questions = questionary.questions.filter(
+      ({ _id }) => _id != req.params.id
+    );
+
+    await questionary.save();
+
     return res.status(200).send();
   } catch (err) {
     return res.status(400).send({ error: "Erro ao deletar turma", err });

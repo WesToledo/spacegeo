@@ -212,7 +212,7 @@ function Aula_1() {
                     </li>
                     <ButtonList
                       video={distintasV}
-                      objName="ob1.1_reta"
+                      objName="ob1.2_paralelas_distintas"
                       audio={distintasA}
                       setCurrentVideo={setCurrentVideo}
                       setOpen={setOpen}

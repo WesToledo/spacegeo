@@ -11,6 +11,8 @@ import ModalEditQuestion from "./EditModal";
 import ClassesModal from "./ClassesModal";
 import Loader from "~/components/Loader";
 
+import ModalConfirmDelete from "./DeleteQuestionModal";
+
 const letters = [
   "a",
   "b",
@@ -64,6 +66,12 @@ function QuestionsPage(props) {
   const [questionary, setQuestionary] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
+  const [openDeleteModal, setOpenDeleteModal] = useState({
+    visible: false,
+    id: null,
+    idQuestionary: null,
+  });
+
   const [publish, setPublish] = useState(false);
 
   const { _id } = useStore((state) => state.user);
@@ -88,10 +96,12 @@ function QuestionsPage(props) {
   function handleOpenClassesModal() {
     setOpenClasses(true);
   }
-  async function handleOnDeleteQuestion(_id) {
-    console.log(_id);
+
+  async function handleOnDeleteQuestion(id, idQuestionary) {
     try {
-      await api.delete("/questionary/question/remove/" + _id);
+      await api.delete(
+        "/questionary/question/remove/" + id + "/" + idQuestionary
+      );
       getQuestionary();
     } catch (err) {
       console.log(err);
@@ -264,7 +274,11 @@ function QuestionsPage(props) {
                               size="sm"
                               color="link"
                               onClick={() => {
-                                handleOnDeleteQuestion(question._id);
+                                setOpenDeleteModal({
+                                  id: question._id,
+                                  visible: true,
+                                  idQuestionary: questionary?._id,
+                                });
                               }}
                             />
                           </div>
@@ -299,6 +313,11 @@ function QuestionsPage(props) {
               open={modalClasses}
               setOpen={setOpenClasses}
               idQuestionary={props.match.params.id}
+            />
+            <ModalConfirmDelete
+              open={openDeleteModal}
+              setOpen={setOpenDeleteModal}
+              onSubmit={handleOnDeleteQuestion}
             />
           </Card>
         </Page.Content>

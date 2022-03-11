@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Page, Grid, Text, Icon, Button, Card } from "tabler-react";
 
@@ -9,6 +9,7 @@ import DataTable from "./Table";
 
 function StudentsPage(props) {
   const [classe, setClasse] = useState(null);
+  const history = useHistory();
 
   async function getClasse() {
     try {
@@ -24,16 +25,29 @@ function StudentsPage(props) {
     getClasse();
   }, []);
 
+  function goBack() {
+    history.push("/turmas");
+  }
+
   return (
     <Wrapper>
       {classe != null && (
         <Page.Content title={classe.name}>
           <Card>
-            {/* <Card.Header>
-            <Card.Options></Card.Options>
-          </Card.Header> */}
+            <Card.Header>
+              <Card.Options>
+                <Button icon="skip-back" color="primary" onClick={goBack}>
+                  Voltar
+                </Button>
+              </Card.Options>
+            </Card.Header>
             <Card.Body>
-              {classe && <DataTable students={classe.students} />}
+              {classe && (
+                <DataTable
+                  students={classe.students}
+                  idClasse={props.match.params.id}
+                />
+              )}
             </Card.Body>
             {/* <Card.Footer>This is standard card footer</Card.Footer> */}
           </Card>

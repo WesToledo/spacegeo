@@ -401,7 +401,7 @@ export default function NewQuestionModal({
                       onChange={(e) => setHasImg(e.target.checked)}
                     />
                   }
-                  label="Anexar imagem ?"
+                  label="Anexar imagem? (somente PNG ou JPG)"
                 />
 
                 {hasImg && (

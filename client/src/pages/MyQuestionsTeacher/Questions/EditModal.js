@@ -426,7 +426,7 @@ export default function EditModal({
                       }}
                     />
                   }
-                  label="Anexar imagem ?"
+                  label="Anexar imagem? (somente PNG ou JPG)"
                 />
 
                 {hasImg && (

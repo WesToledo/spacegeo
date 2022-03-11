@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Page, Grid, Text, Icon, Button, Card } from "tabler-react";
 
@@ -9,6 +9,7 @@ import DataTable from "./Table";
 
 function GradesPage(props) {
   const [answers, setAnswer] = useState([]);
+  const history = useHistory();
 
   async function getAnswers() {
     try {
@@ -21,26 +22,26 @@ function GradesPage(props) {
     }
   }
 
-  // const today = new Date();
-  // const endDate = new Date(startDate.setDate(startDate.getDate() + 7));
-  // const days = parseInt((endDate - today) / (1000 * 60 * 60 * 24));
-  // const hours = parseInt((Math.abs(endDate - today) / (1000 * 60 * 60)) % 24);
-  // const minutes = parseInt(
-  //   (Math.abs(endDate.getTime() - today.getTime()) / (1000 * 60)) % 60
-  // );
-  // const seconds = parseInt(
-  //   (Math.abs(endDate.getTime() - today.getTime()) / 1000) % 60
-  // );
-
   useEffect(() => {
     getAnswers();
   }, []);
+
+  function goBack() {
+    history.push("/turmas");
+  }
 
   return (
     <Wrapper>
       {answers.length != 0 ? (
         <Page.Content title={answers[0].student.name}>
           <Card>
+            <Card.Header>
+              <Card.Options>
+                <Button icon="skip-back" color="primary" onClick={goBack}>
+                  Voltar
+                </Button>
+              </Card.Options>
+            </Card.Header>
             <Card.Body>{answers && <DataTable answers={answers} />}</Card.Body>
           </Card>
         </Page.Content>

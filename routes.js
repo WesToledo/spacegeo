@@ -81,7 +81,7 @@ questionaryRouter.put(
   uploadMiddleware.single("file"),
   questionary.updateQuestion
 );
-questionaryRouter.delete("/question/remove/:id", questionary.removeQuestion);
+questionaryRouter.delete("/question/remove/:id/:idQuestionary", questionary.removeQuestion);
 
 // Questionary
 const answerRouter = express.Router();
