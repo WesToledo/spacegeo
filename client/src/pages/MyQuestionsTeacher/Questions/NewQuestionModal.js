@@ -10,6 +10,7 @@ import { FormControlLabel, Switch } from "@material-ui/core";
 import Dropzone from "./DropZone";
 
 import DeleteIcon from "@material-ui/icons/Delete";
+import ModalConfirmOneAlternative from "./ModalConfirmOneAlternative";
 
 import { Grid, Text, Form, Button } from "tabler-react";
 
@@ -107,6 +108,8 @@ export default function NewQuestionModal({
   const [selected3DObject, setSelected3DObject] = useState(null);
   const [selectedImg, setSelectedImg] = useState(null);
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
     if (!hasObject) {
       setSelected3DObject(null);
@@ -194,27 +197,7 @@ export default function NewQuestionModal({
     setOpen(false);
   };
 
-  // async function onSubmit() {
-  //   try {
-  //     await api.post("/questionary/question/add", {
-  //       title: form.title,
-  //       teacher: _id,
-  //       questionary: idQuestionary,
-  //       alternatives: alternatives,
-  //       rightOne: form.rightOne,
-  //       hasObject: selected3DObject != null,
-  //       path: "none",
-  //       objName: selected3DObject.obj,
-  //     });
-  //     handleClose();
-  //     getQuestionary();
-  //   } catch (err) {
-  //     console.log(err);
-  //     handleClose();
-  //   }
-  // }
-
-  async function onSubmit() {
+  async function onSubmit(skip) {
     var formData = new FormData();
 
     formData.append("title", form.title);
@@ -423,7 +406,13 @@ export default function NewQuestionModal({
             Cancelar
           </Button>
           <Button
-            onClick={onSubmit}
+            onClick={() => {
+              if (alternatives.length == 1) {
+                setModalVisible(true);
+                return;
+              }
+              onSubmit();
+            }}
             color="primary"
             icon="save"
             disabled={form.title == "" || form.title == null}
@@ -431,6 +420,12 @@ export default function NewQuestionModal({
             Criar Questão
           </Button>
         </DialogActions>
+
+        <ModalConfirmOneAlternative
+          open={modalVisible}
+          setOpen={setModalVisible}
+          onSubmit={onSubmit}
+        />
       </Dialog>
     </div>
   );

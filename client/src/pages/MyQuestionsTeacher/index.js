@@ -120,7 +120,7 @@ function MyQuestionsPage(props) {
                         >
                           <Icon prefix="fe" name="users" className="m-2" />
                           <Text style={{ minWidth: 120, margin: 5 }}>
-                            <b>Turmas:</b>
+                            <b>Turmas: </b>
                             {questionary.classes.length > 0
                               ? questionary.classes
                                   .map((classe) => classe.name)
