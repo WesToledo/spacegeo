@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
+import { useHistory } from "react-router-dom";
 
 import { Page, Grid, Button, Card, GalleryCard } from "tabler-react";
 
@@ -11,6 +12,7 @@ import QuestionList from "./QuestionsList";
 function SubQuestionPage(props) {
   const [questionary, setQuestionary] = useState(null);
   const { _id } = useStore((state) => state.user);
+  const history = useHistory();
 
   async function getQuestionary() {
     try {
@@ -28,11 +30,13 @@ function SubQuestionPage(props) {
     getQuestionary();
   }, []);
 
+  function goBack() {
+    history.push("/questionarios-padrao");
+  }
+
   return (
     <Wrapper>
-      {questionary  && (
-        <QuestionList questionary={questionary} />
-      )}
+      {questionary && <QuestionList questionary={questionary} />}
     </Wrapper>
   );
 }

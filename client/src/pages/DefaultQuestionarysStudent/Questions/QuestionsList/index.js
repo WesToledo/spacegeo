@@ -143,6 +143,9 @@ function QuestionCard({ questionary }) {
                     Ver em RA
                   </Button>
                 )}
+                <Button icon="skip-back" color="primary">
+                  Voltar
+                </Button>
               </>
             }
             body={

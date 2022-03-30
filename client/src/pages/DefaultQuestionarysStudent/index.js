@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 
 import { Page, Grid, Text, Icon, Dimmer, Card, Button } from "tabler-react";
 
@@ -9,6 +9,7 @@ import useStore from "~/store";
 
 function MyQuestionsPage(props) {
   const [loading, setLoading] = useState(false);
+
 
   const [questionarys, setQuestionarys] = useState([]);
   const { _id, classe } = useStore((state) => state.user);
@@ -38,12 +39,8 @@ function MyQuestionsPage(props) {
         <Card>
           {/* <Card.Header>
             <Card.Options>
-              <Button
-                icon="plus"
-                color="success"
-                onClick={handleOnCreateNewClassClick}
-              >
-                Criar Questionário
+              <Button icon="skip-back" color="primary" onClick={goBack}>
+                Voltar
               </Button>
             </Card.Options>
           </Card.Header> */}

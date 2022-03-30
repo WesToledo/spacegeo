@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
+import { useHistory } from "react-router-dom";
 
 import { Page, Grid, Button, Card, GalleryCard } from "tabler-react";
 
@@ -7,6 +8,7 @@ import ModalConfirmAnswer from "./ModalConfirmAnswer";
 
 function QuestionCard({ questionary }) {
   const [modalOpen, setModalOpen] = useState(false);
+  const history = useHistory();
 
   const [questions, setQuestions] = useState(
     questionary.questions.map((question, index) => {
@@ -75,6 +77,8 @@ function QuestionCard({ questionary }) {
           };
         })
       );
+    }else{
+      //put here some logic to store the time start linked with ID
     }
   }, [alreadyAnswered]);
 
@@ -120,115 +124,131 @@ function QuestionCard({ questionary }) {
     console.log("asDAAS", questions);
   }, [questions]);
 
+  function goBack() {
+    history.push("/meus-questionarios");
+  }
+
   return (
-    <Page.Content title={questionary.title}>
-      <Grid.Row className="justify-content-center">
-        <Grid.Col lg={6} md={6} xl={6}>
-          <Card
-            className="text-area-indent"
-            title={
-              questions[currentQuestion].num +
-              ". " +
-              questions[currentQuestion].title
-            }
-            options={
-              <>
-                {questions[currentQuestion].hasObject && (
-                  <Button
-                    icon="box"
-                    color="primary"
-                    RootComponent="a"
-                    href={`/ra.html?obj=${questions[currentQuestion].objName}`}
-                    className="text-white"
-                  >
-                    Ver em RA
-                  </Button>
-                )}
-              </>
-            }
-            body={
-              <>
-                {questions[currentQuestion].hasImg ? (
-                  <Grid.Row className="row-cards ">
-                    <Grid.Col width={2}></Grid.Col>
-                    <Grid.Col width={8}>
-                      <GalleryCard>
-                        <GalleryCard.Image
-                          src={questions[currentQuestion].imgURL}
-                        />
-                      </GalleryCard>
-                    </Grid.Col>
-                    <Grid.Col width={2}></Grid.Col>
-                  </Grid.Row>
-                ) : (
-                  <></>
-                )}
-                <Button.List className="white-space">
-                  {questions[currentQuestion].alternatives.length > 0
-                    ? questions[currentQuestion].alternatives.map(
-                        (alternative, index) => (
-                          <Button
-                            block
-                            key={index}
-                            color={handleColor(
-                              alternative.selected,
-                              alternative.correct
-                            )}
-                            value={index}
-                            onClick={handleSelected}
-                            disabled={alreadyAnswered}
-                            // disabled={questions[currentQuestion].confirmed}
-                          >
-                            {alternative.enum}
-                          </Button>
-                        )
-                      )
-                    : "Carregando..."}
-                </Button.List>
-              </>
-            }
-            footer={
-              <Grid.Row>
-                <Grid.Col sm={4} className="text-center">
-                  {currentQuestion > 0 ? (
-                    <Button color="secondary" onClick={handlePreviousQuestion}>
-                      Anterior
+    <Page.Content>
+      <Card
+        title={questionary.title}
+        options={
+          <Button icon="skip-back" color="primary" onClick={goBack}>
+            Voltar a listagem
+          </Button>
+        }
+      >
+        <Grid.Row className="justify-content-center m-2">
+          <Grid.Col lg={6} md={6} xl={6}>
+            <Card
+              className="text-area-indent"
+              title={
+                questions[currentQuestion].num +
+                ". " +
+                questions[currentQuestion].title
+              }
+              options={
+                <>
+                  {questions[currentQuestion].hasObject && (
+                    <Button
+                      icon="box"
+                      color="primary"
+                      RootComponent="a"
+                      href={`/ra.html?obj=${questions[currentQuestion].objName}`}
+                      className="text-white"
+                    >
+                      Ver em RA
                     </Button>
+                  )}
+                </>
+              }
+              body={
+                <>
+                  {questions[currentQuestion].hasImg ? (
+                    <Grid.Row className="row-cards ">
+                      <Grid.Col width={2}></Grid.Col>
+                      <Grid.Col width={8}>
+                        <GalleryCard>
+                          <GalleryCard.Image
+                            src={questions[currentQuestion].imgURL}
+                          />
+                        </GalleryCard>
+                      </Grid.Col>
+                      <Grid.Col width={2}></Grid.Col>
+                    </Grid.Row>
                   ) : (
                     <></>
                   )}
-                </Grid.Col>
+                  <Button.List className="white-space">
+                    {questions[currentQuestion].alternatives.length > 0
+                      ? questions[currentQuestion].alternatives.map(
+                          (alternative, index) => (
+                            <Button
+                              block
+                              key={index}
+                              color={handleColor(
+                                alternative.selected,
+                                alternative.correct
+                              )}
+                              value={index}
+                              onClick={handleSelected}
+                              disabled={alreadyAnswered}
+                              // disabled={questions[currentQuestion].confirmed}
+                            >
+                              {alternative.enum}
+                            </Button>
+                          )
+                        )
+                      : "Carregando..."}
+                  </Button.List>
+                </>
+              }
+              footer={
+                <Grid.Row>
+                  <Grid.Col sm={4} className="text-center">
+                    {currentQuestion > 0 ? (
+                      <Button
+                        color="secondary"
+                        onClick={handlePreviousQuestion}
+                      >
+                        Anterior
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
+                  </Grid.Col>
 
-                <Grid.Col sm={4} className="text-center">
-                  {currentQuestion < questions.length - 1 ? (
-                    <Button color="secondary" onClick={handleNextQuestion}>
-                      Próxima
-                    </Button>
-                  ) : (
-                    questions.filter(
-                      (question) =>
-                        question.alternatives.filter(
-                          (alternative) => alternative.selected == true
-                        ).length > 0
-                    ).length == questions.length && (
-                      <Grid.Col sm={4} className="text-center">
-                        {!alreadyAnswered && (
-                          <Button
-                            color="primary"
-                            onClick={handleSubmitQuestionary}
-                          >
-                            Terminar Questionário
-                          </Button>
-                        )}
-                      </Grid.Col>
-                    )
-                  )}
-                </Grid.Col>
-              </Grid.Row>
-            }
-          />
-        </Grid.Col>
-      </Grid.Row>
+                  <Grid.Col sm={4} className="text-center">
+                    {currentQuestion < questions.length - 1 ? (
+                      <Button color="secondary" onClick={handleNextQuestion}>
+                        Próxima
+                      </Button>
+                    ) : (
+                      questions.filter(
+                        (question) =>
+                          question.alternatives.filter(
+                            (alternative) => alternative.selected == true
+                          ).length > 0
+                      ).length == questions.length && (
+                        <Grid.Col sm={4} className="text-center">
+                          {!alreadyAnswered && (
+                            <Button
+                              color="primary"
+                              onClick={handleSubmitQuestionary}
+                            >
+                              Terminar Questionário
+                            </Button>
+                          )}
+                        </Grid.Col>
+                      )
+                    )}
+                  </Grid.Col>
+                </Grid.Row>
+              }
+            />
+          </Grid.Col>
+        </Grid.Row>
+      </Card>
       <ModalConfirmAnswer
         open={modalOpen}
         setOpen={setModalOpen}

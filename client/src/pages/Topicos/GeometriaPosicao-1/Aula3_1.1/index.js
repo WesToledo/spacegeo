@@ -234,7 +234,7 @@ function Aula_3() {
 
                     <ButtonList
                       video={video3_3b}
-                      objName="3.3a"
+                      objName="3.3b"
                       audio={audio3_3b}
                       setCurrentVideo={setCurrentVideo}
                       setOpen={setOpen}
