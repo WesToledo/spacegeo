@@ -1,4 +1,4 @@
-import { useStore } from "@react-three/fiber";
+import useStore from "../../../../store";
 import React, { useEffect, useReducer, useState } from "react";
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 import { useHistory } from "react-router-dom";

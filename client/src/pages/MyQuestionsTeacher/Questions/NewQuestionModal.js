@@ -358,7 +358,7 @@ export default function NewQuestionModal({
                     onChange={(e) => setHasObject(e.target.checked)}
                   />
                 }
-                label="Anexar Objeto 3D ?"
+                label="Anexar Objeto 3D?"
               />
             </Grid.Col>
           </Grid.Row>
