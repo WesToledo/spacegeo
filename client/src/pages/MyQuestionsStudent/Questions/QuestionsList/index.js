@@ -1,3 +1,4 @@
+import { useStore } from "@react-three/fiber";
 import React, { useEffect, useReducer, useState } from "react";
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 import { useHistory } from "react-router-dom";
@@ -9,6 +10,8 @@ import ModalConfirmAnswer from "./ModalConfirmAnswer";
 function QuestionCard({ questionary }) {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
+
+  const { setTimeBegin } = useStore();
 
   const [questions, setQuestions] = useState(
     questionary.questions.map((question, index) => {
@@ -77,8 +80,9 @@ function QuestionCard({ questionary }) {
           };
         })
       );
-    }else{
+    } else {
       //put here some logic to store the time start linked with ID
+      setTimeBegin(new Date(), questionary._id);
     }
   }, [alreadyAnswered]);
 

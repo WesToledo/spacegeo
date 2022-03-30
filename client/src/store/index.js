@@ -20,6 +20,20 @@ const store = (set, get) => ({
     login_with: null,
     picture: null,
   },
+  questionary: {
+    open: false,
+    id: null,
+    timeBegin: null,
+  },
+  setTimeBegin: (timeBegin, id) => {
+    set(
+      produce((oldState) => {
+        oldState.questionary.open = true;
+        oldState.questionary.id = id;
+        oldState.questionary.timeBegin = timeBegin;
+      })
+    );
+  },
   setLoginData: (loginData) => {
     set(
       produce((oldState) => {

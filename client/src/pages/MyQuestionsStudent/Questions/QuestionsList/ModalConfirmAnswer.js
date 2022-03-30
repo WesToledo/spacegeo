@@ -21,7 +21,7 @@ export default function ModalConfirmAnswer({
   const handleClose = () => {
     setOpen(false);
   };
-  const { _id, classe } = useStore((state) => state.user);
+  const { _id, classe, questionary } = useStore((state) => state.user);
 
   async function onSubmit() {
     const gradePerQuestion = grade / questions.length;
@@ -51,7 +51,7 @@ export default function ModalConfirmAnswer({
             index: alternative.index,
           };
         }),
-        timeBegin: new Date(),
+        timeBegin: questionary.timeBegin,
         timeEnd: new Date(),
         grade: myGrade,
       });
