@@ -92,7 +92,7 @@ export default function DataTable({ answers }) {
         value: answer.questionary.grade.toFixed(2),
         grade: answer.grade.toFixed(2),
         time_spent: `	
-        ${diff.hours}h ${diff.minutes}min ${diff.seconds}s`,
+        ${diff.hours}h ${diff.minutes}min ${parseInt(diff.seconds)}s`,
 
         // actions: (
         //   <Button

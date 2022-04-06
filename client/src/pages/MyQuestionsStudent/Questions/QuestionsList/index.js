@@ -1,6 +1,5 @@
 import useStore from "../../../../store";
 import React, { useEffect, useReducer, useState } from "react";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 import { useHistory } from "react-router-dom";
 
 import { Page, Grid, Button, Card, GalleryCard } from "tabler-react";
@@ -138,7 +137,7 @@ function QuestionCard({ questionary }) {
         title={questionary.title}
         options={
           <Button icon="skip-back" color="primary" onClick={goBack}>
-            Voltar a listagem
+            Meus Questionários
           </Button>
         }
       >
