@@ -231,7 +231,7 @@ function Aula_2() {
                   >
                     <p style={{ margin: 0 }}>Paralelos</p>
                     <p>
-                      Dois planos paralelos e distintos não possuem nenhum plano
+                      Dois planos paralelos e distintos não possuem nenhum ponto
                       em comum.
                     </p>
                   </li>

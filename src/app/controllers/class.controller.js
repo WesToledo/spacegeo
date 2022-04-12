@@ -49,7 +49,7 @@ async function index(req, res) {
             log != null
               ? `${log.spent_time?.hour}h ${log.spent_time?.minutes.toFixed(
                   0
-                )}min ${log.spent_time?.seconds}s`
+                )}m ${log.spent_time?.seconds}s`
               : 0,
         };
       })
