@@ -57,13 +57,13 @@ function SiteWrapper(props) {
       useExact: false,
       subItems: [
         {
-          value: "Questionários Padrões",
+          value: "Padrão",
           to: "/questionarios-padrao",
           LinkComponent: withRouter(NavLink),
           useExact: false,
         },
         {
-          value: "Meus questionários",
+          value: "Meus Questionários",
           to: "/meus-questionarios",
           LinkComponent: withRouter(NavLink),
           useExact: false,
@@ -94,13 +94,13 @@ function SiteWrapper(props) {
         useExact: false,
         subItems: [
           {
-            value: "Questionários Padrões",
+            value: "Padrão",
             to: "/questionarios-padrao",
             LinkComponent: withRouter(NavLink),
             useExact: false,
           },
           {
-            value: "Meus questionários",
+            value: "Meus Questionários",
             to: "/meus-questionarios",
             LinkComponent: withRouter(NavLink),
             useExact: false,

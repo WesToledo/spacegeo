@@ -187,7 +187,19 @@ function QuestionsPage(props) {
                         <Card.Title className="text-area-indent">{`${
                           indexQuestion + 1
                         }) ${question.title}`}</Card.Title>
-                        <Card.Options></Card.Options>
+                        <Card.Options>
+                          {question.hasObject && (
+                            <Button
+                              icon="box"
+                              color="primary"
+                              RootComponent="a"
+                              href={`/ra.html?obj=${question.objName}`}
+                              className="text-white"
+                            >
+                              Ver em RA
+                            </Button>
+                          )}
+                        </Card.Options>
                       </Card.Header>
                       <Card.Body>
                         {question.hasImg && (
