@@ -32,7 +32,7 @@ export default function DataTable({ students }) {
     },
     {
       name: "spent_time",
-      label: "Tempo no sistema (min)",
+      label: "Tempo no sistema",
       options: {
         display: true,
       },

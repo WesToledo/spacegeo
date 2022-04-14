@@ -35,7 +35,7 @@ function MyQuestionsPage(props) {
 
   return (
     <Wrapper>
-      <Page.Content title="Questionários Padrão">
+      <Page.Content title="Padrão">
         <Card>
           {/* <Card.Header>
             <Card.Options>
