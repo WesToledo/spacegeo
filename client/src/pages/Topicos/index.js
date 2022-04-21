@@ -14,7 +14,7 @@ function TopicosPage() {
     {
       name: "Sólidos Geométricos: Poliedros",
       link: "/topicos/poliedros",
-    },
+    }, 
     {
       name: "Sólidos Geométricos: Corpos Redondos",
       link: "/topicos/corpos-redondos",
