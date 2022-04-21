@@ -12,7 +12,7 @@ function TopicosPage() {
       link: "/topicos/geometria-posicao",
     },
     {
-      name: "Sólidos Geométricos: Poliédros",
+      name: "Sólidos Geométricos: Poliedros",
       link: "/topicos/poliedros",
     },
     {
